@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="{{asset('/admin/assets/images/logo.png')}}">
 
     <!-- App title -->
-    <title>مستشفي الولاده والاطفال ببريده</title>
+    <title>قطعة سيارتي</title>
 
     <!-- App CSS -->
     <link href="{{asset('/admin/assets/css/bootstrap-rtl.min.css')}}" rel="stylesheet" type="text/css" />
@@ -37,7 +37,7 @@
 <div class="clearfix"></div>
 <div class="wrapper-page">
     <div class="text-center">
-        <a href="#" class="logo"><span>مستشفى الولادة والأطفال<span>  ببريده</span></span></a>
+        <a href="#" class="logo"><span>قطعة<span>سيارتي</span></span></a>
         {{--<h5 class="text-muted m-t-0 font-600">موقع وتطبيق</h5>--}}
     </div>
 

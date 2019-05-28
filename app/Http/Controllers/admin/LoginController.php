@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 
+
 class LoginController extends Controller
 {
     public function getAdminLogin()
@@ -46,18 +47,8 @@ class LoginController extends Controller
 //                $user->login_count += 1;
                 $user->updated_at = date("Y-m-d H:i:s");
                 $user->save();
-                if($user->role == 'super' || $user->role == 'coordinator'){
+
                     return redirect()->route('homePage');
-                }
-                elseif ($user->role =='warehouse_admin'){
-                    return redirect()->route('exchanges.index');
-                }
-
-                else{
-                    return redirect()->route('orders.myOrders');
-                }
-
-
 
             } else {
                 session()->flash('loginError', "خطأ في إسم المستخدم أو كلمة المرور");

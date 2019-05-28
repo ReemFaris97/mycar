@@ -78,7 +78,7 @@
 
                 <div class="form-group m-t-30 m-b-0">
                     <div class="col-sm-12">
-                        <a href="{{route('administrator.password.request')}}" class="text-muted"><i class="fa fa-lock m-r-5"></i>نسيت كلمة المرور</a>
+                        {{--<a href="{{route('administrator.password.request')}}" class="text-muted"><i class="fa fa-lock m-r-5"></i>نسيت كلمة المرور</a>--}}
                     </div>
                 </div>
             </form>

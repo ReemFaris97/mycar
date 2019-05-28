@@ -10,12 +10,12 @@
         <!-- User -->
         <div class="user-box">
             <div class="user-img">
-                {{--@php $image = auth()->user()->image; @endphp--}}
-                {{--@if($image != null or $image != "")--}}
-                    {{--<img src="{{getimg($image)}}" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">--}}
-                    {{--@else--}}
-                    {{--<img src="{{asset('admin/assets/images/noimage.png')}}" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">--}}
-                    {{--@endif--}}
+                @php $image = auth()->user()->image; @endphp
+                @if($image != null or $image != "")
+                    <img src="{{getimg($image)}}" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
+                    @else
+                    <img src="{{asset('admin/assets/images/noimage.png')}}" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
+                    @endif
 
                 {{--<div class="user-status offline"><i class="zmdi zmdi-dot-circle"></i></div>--}}
             </div>
@@ -47,13 +47,16 @@
                 <li class="text-muted menu-title">القائمة</li>
 
                     <li><a href="{{route('homePage')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>الرئيسية</span></a></li>
+                    <li><a href="{{route('cities.index')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>المدن</span></a></li>
+                    <li><a href="{{route('companies.index')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>الشركات المصنعة</span></a></li>
+                    <li><a href="{{route('models.index')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>الموديلات</span></a></li>
 
-                    <li class="has_sub">
-                        <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-check-circle"></i><span>قائمة خارجيه</span><span class="menu-arrow"></span></a>
-                        <ul class="list-unstyled">
-                            <li><a href="">قائمة داخلية</a></li>
-                        </ul>
-                    </li>
+                    {{--<li class="has_sub">--}}
+                        {{--<a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-check-circle"></i><span>قائمة خارجيه</span><span class="menu-arrow"></span></a>--}}
+                        {{--<ul class="list-unstyled">--}}
+                            {{--<li><a href="">قائمة داخلية</a></li>--}}
+                        {{--</ul>--}}
+                    {{--</li>--}}
 
             </ul>
             <div class="clearfix"></div>

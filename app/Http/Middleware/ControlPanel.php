@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 
 class ControlPanel
@@ -16,7 +17,8 @@ class ControlPanel
      */
     public function handle($request, Closure $next)
     {
-        if(auth()->check() && auth()->user()->role != null){
+        if(auth()->check() && auth()->user()->hasAnyRole()){
+
             if(auth()->user()->is_active != 1){
                 $reason = auth()->user()->suspend_reason;
                 Auth::logout();

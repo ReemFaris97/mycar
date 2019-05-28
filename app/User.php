@@ -37,4 +37,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function hasAnyRole(){
+        if(auth()->check()){
+            if(auth()->user()->roles->count()){
+                return true;
+            }
+        }else{
+            redirect(route('admin.login'));
+        }
+
+    }
+
 }

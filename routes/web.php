@@ -32,24 +32,43 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin'], function () {
 
 });
 
+//Route::get('roles/createSuperAdmin', function () {
+//
+//    // get the user you want to give him role . NOTE: (Role is a group of abilities)
+//    $user = auth()->user();
+//    //    $user->retract('admin');
+//
+//    // assign the * ability to this user ........
+//    $user->assign('*');
+//
+//    // allow this ability to has the permission of everything...
+//    Bouncer::allow('*')->everything();
+////        $user->allow('users_manage');
+//
+//    return "ok";
+//});
 Route::group(['prefix'=>"dashboard",'namespace'=>'admin','middleware'=>'admin'], function (){
 
     route::get('/home','HomeController@index')->name('homePage');
 
+//    route::resource('admins','AdminsController');
+//    route::post('admins/suspendOrActive','AdminsController@suspendOrActivate')->name('admins.suspendOrActivate');
+//    route::post('admins/suspendWithReason','UsersController@suspendWithReason')->name('admins.suspendWithReason');
 
-//    Route::get('roles/createSuperAdmin', function () {
-//
-//        // get the user you want to give him role . NOTE: (Role is a group of abilities)
-//        $user = auth()->user();
-//    //    $user->retract('admin');
-//
-//        // assign the * ability to this user ........
-//        $user->assign('*');
-//
-//        // allow this ability to has the permission of everything...
-//        Bouncer::allow('*')->everything();
-//        $user->allow('users_manage');
-//    });
+
+    route::resource('cities','CitiesController');
+    route::post('cities/suspendOrActivate','CitiesController@suspendOrActivate')->name('cities.suspendOrActivate');
+
+    route::resource('companies','CompaniesController');
+    route::post('companies/suspendOrActivate','CompaniesController@suspendOrActivate')->name('companies.suspendOrActivate');
+
+    route::resource('models','ModelsController');
+    route::post('models/suspendOrActivate','ModelsController@suspendOrActivate')->name('models.suspendOrActivate');
+
+
+
+
+
 
 
 //    route::get('notifications','NotificationsController@index')->name('notifications.index');
