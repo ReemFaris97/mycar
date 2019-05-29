@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
 use App\User;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -18,11 +20,10 @@ class UsersController extends Controller
      */
     public function index()
     {
-        if(auth()->user()->role != 'super') {
-            return abort(401);
-        }
-
-        $users = User::all();
+//        if (!Gate::allows('users_manage')) {
+//            return abort(401);
+//        }
+        $users = User::whereType('user')->get()->reverse();
         return view('admin.users.index',compact('users'));
     }
 
@@ -33,12 +34,11 @@ class UsersController extends Controller
      */
     public function create()
     {
-        if(auth()->user()->role != 'super') {
-            return abort(401);
-        }
-        $specializations = Specialization::all();
-        $departments = Department::all();
-        return view('admin.users.create',compact('specializations','departments'));
+//        if (!Gate::allows('users_manage')) {
+//            return abort(401);
+//        }
+
+        return view('admin.users.create',compact('countries'));
     }
 
     /**
@@ -50,82 +50,19 @@ class UsersController extends Controller
     public function store(Request $request)
     {
 
-        $data = [
-            'name' =>$request->name,
-            'email'      =>$request->email,
-            'phone'      =>$request->phone,
-            'job_number'      =>$request->job_number,
-            'password'   =>$request->password,
-            'password_confirmation'   =>$request->password_confirmation,
-            'role'=>$request->role,
-            'specialize_id'=>$request->specialize_id,
-            "dept_id"=>$request->dept_id,
-            'image' => $request->image,
+        $roles = [
+            'name'=>'required|string|max:191',
+            'phone'=>'required|numeric|unique:users,phone',
+            'password'=>'required|string|confirmed|max:55',
+            'address'=>'required|string|max:191',
         ];
-        $rules = [
-            'name' =>'required|string|max:191',
-            'email'      =>'nullable|email:max:191|unique:users',
-            'phone'      =>'required|string|unique:users',
-            'job_number'      =>'required|string|unique:users',
-            'password'   =>'required|string|confirmed|max:191',
-            'role'=>"required|string|max:191",
-            'specialize_id'=>"required_if:role,technical",
-            "dept_id"=>"required_if:role,dept_admin",
-            'image' => 'nullable|image',
-
-        ];
-
-        $messages = [
-            'name.required'=>"الإسم مطلوب",
-            'phone.required'=>"رقم الجوال مطلوب",
-            'email.required'=>"البريد الإلكتروني مطلوب",
-            'password.required'=>"كلمة المرور مطلوبة",
-            'name.max'=>"اقصى عدد حروف هو 191 حرف",
-            'email.max'=>"اقصى عدد حروف هو 191 حرف",
-            'phone.unique'=>"هذا الهاتف مسجل من قبل",
-            'job_number.required'=>"رقم الوظيفة مطلوب",
-            "role.required"=>"المهمة مطلوبة",
-            "specialize_id.required_if"=>"يجب إختيار تخصص للفني",
-            "dept_id.required_if"=>"يجب إختيار قسم لمسؤول القسم",
-            'image.mimes'=>"يجب ان يكون الملف من النوع JPG, JPEG , PNG",
-        ];
-
-
-        $valResult = Validator::make($data,$rules,$messages);
-
-        if($valResult->passes()){
-
-            $user = new User();
-            $user->name = $request->name;
-            $user->phone = $request->phone;
-            $user->email = $request->email;
-            $user->job_number = $request->job_number;
-            $user->password = bcrypt($request->password);
-
-            if($request->image){
-                $user->image = uploader($request,'image');
-            }
-            $user->role = $request->role;
-
-            if($request->role == 'technical'){
-                $user->specialize_id = $request->specialize_id;
-            }
-
-            if($request->role == 'dept_admin'){
-                $user->dept_id = $request->dept_id;
-            }
-
-            $user->save();
-
-            session()->flash('success','تم إضافة مستخدم للنظام بنجاح');
-            return redirect()->route('users.index');
-
-        }else{
-             $errors = $valResult->messages();
-            return redirect()->back()->withInput()
-                ->withErrors($errors);
-        }
-
+        $this->validate($request,$roles);
+        $inputs = $request->all();
+        $inputs['type'] = 'user';
+        $inputs['password']= Hash::make($request->password);
+        User::create($inputs);
+        session()->flash('success','تم الإضافة بنجاح');
+        return redirect()->route('users.index');
 
     }
 
@@ -137,11 +74,16 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        if(auth()->user()->role != 'super') {
-            return abort(401);
-        }
+//        if (!Gate::allows('users_manage')) {
+//            return abort(401);
+//        }
         $user = User::find($id);
-        return view('admin.users.details',compact('user'));
+        if($user){
+            return view('admin.users.details',compact('user'));
+        }
+        else{
+            return abort(404);
+        }
     }
 
     /**
@@ -152,14 +94,12 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        if(auth()->user()->role != 'super') {
-            return abort(401);
-        }
+//        if (!Gate::allows('users_manage')) {
+//            return abort(401);
+//        }
+        $user = User::findOrFail($id);
+        return view('admin.users.edit',compact('user'));
 
-        $specializations = Specialization::all();
-        $departments = Department::all();
-        $user = User::find($id);
-        return view('admin.users.edit',compact('user','specializations','departments'));
     }
 
     /**
@@ -172,85 +112,24 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
 
-        $user = User::find($id);
-
-        $data = [
-            'name' =>$request->name,
-            'email'      =>$request->email,
-            'phone'      =>$request->phone,
-            'job_number'      =>$request->job_number,
-            'password'   =>$request->password,
-            'password_confirmation'   =>$request->password_confirmation,
-            'role'=>$request->role,
-            'specialize_id'=>$request->specialize_id,
-            "dept_id"=>$request->dept_id,
-            'image' => $request->image,
+        $user= User::findOrFail($id);
+        $roles = [
+            'name'=>'required|string|max:191',
+            'phone'=>'required|numeric|unique:users,phone,'.$user->id,
+            'password'=>'nullable|string|confirmed|max:55',
+            'address'=>'required|string|max:191',
         ];
-        $rules = [
-            'name' =>'required|string|max:191',
-            'email'      =>'nullable|email:max:191|unique:users,email,' . $user->id,
-            'phone'      =>'required|string|unique:users,phone,' . $user->id,
-            'job_number'      =>'required|string|unique:users,job_number,'. $user->id,
-            'password'   =>'nullable|string|confirmed|max:191',
-            'role'=>"required|string|max:191",
-            'specialize_id'=>"required_if:role,technical",
-            "dept_id"=>"required_if:role,dept_admin",
-            'image' => 'nullable|image',
+        $this->validate($request,$roles);
 
-        ];
 
-        $messages = [
-            'name.required'=>"الإسم مطلوب",
-            'phone.required'=>"رقم الجوال مطلوب",
-            'email.required'=>"البريد الإلكتروني مطلوب",
-            'password.required'=>"كلمة المرور مطلوبة",
-            'name.max'=>"اقصى عدد حروف هو 191 حرف",
-            'email.max'=>"اقصى عدد حروف هو 191 حرف",
-            'phone.unique'=>"هذا الهاتف مسجل من قبل",
-            'job_number.required'=>"رقم الوظيفة مطلوب",
-            "role.required"=>"المهمة مطلوبة",
-            "specialize_id.required_if"=>"يجب إختيار تخصص للفني",
-            "dept_id.required_if"=>"يجب إختيار قسم لمسؤول القسم",
-            'image.mimes'=>"يجب ان يكون الملف من النوع JPG, JPEG , PNG",
-        ];
-        $valResult = Validator::make($data,$rules,$messages);
-
-        if($valResult->passes()){
-
-            $user->name = $request->name;
-            $user->phone = $request->phone;
-            $user->email = $request->email;
-            $user->job_number = $request->job_number;
-            $user->password = bcrypt($request->password);
-
-            if($request->image){
-                deleteImg($user->image);
-                $user->image = uploader($request,'image');
-            }
-            $user->role = $request->role;
-
-            if($request->role == 'technical'){
-                $user->specialize_id = $request->specialize_id;
-                $user->dept_id = null;
-            }
-
-            if($request->role == 'dept_admin'){
-                $user->dept_id = $request->dept_id;
-                $user->specialize_id = null;
-            }
-
-            $user->save();
-
-            session()->flash('success','تم تعديل المستخدم بنجاح');
-            return redirect()->back();
-
+        $inputs = $request->all();
+        if($request->password != null){
+            $inputs['password']= Hash::make($request->password);
         }
-        else{
 
-             $errors = $valResult->messages();
-            return redirect()->back()->withInput()
-                ->withErrors($errors);
-        }
+        $user->update($inputs);
+        session()->flash('success','تم تعديل المستخدم بنجاح');
+        return redirect()->back();
 
     }
 
@@ -260,50 +139,44 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request,$id)
+    public function destroy($id)
     {
-        $user = User::find($id);
-        if($user){
-            deleteImg($user->image);
-            $user->delete();
-            return response()->json([
-                'status'=>true,
-                'title'=>'نجاح',
-                'message'=>'تم حذف المستخدم بنجاح'
-            ]);
-        }
-        else{
-            return response()->json([
-                'status'=>false,
-                'title'=>'خطأ',
-                'message'=>'المستخدم غير موجود'
-            ]);
-        }
+        //
     }
 
-    public function activeOrSuspend(Request $request){
+
+    public function getCities(Request $request){
+
+        $cities = City::whereCountryId($request->id)->whereIsActive(1)->get();
+
+        //  return $districts;
+        return response()->json([
+            'status' => true,
+            'data' => $cities
+        ]);
+
+    }
 
 
+    public function suspendOrActivate(Request $request){
 
         $user = User::find($request->id);
 
         if($request->action == 'activate'){
             $user->is_active = 1;
-            $user->suspend_reason = $request->reason;
             $user->save();
             $title = 'نجاح';
             $message = 'تم تفعيل المستخدم بنجاح';
-
+            session()->flash('success',$message);
         }
-
-            elseif ($request->action == 'suspend'){
-                $user->is_active = 0;
-                $user->suspend_reason = $request->reason;
-                $user->save();
-                $title = 'نجاح';
-                $message = 'تم حظر المستخدم بنجاح';
-            }
-
+        elseif ($request->action == 'suspend'){
+            $user->is_active = 0;
+            $user->suspend_reason = $request->reason;
+            $user->save();
+            $title = 'نجاح';
+            $message = 'تم حظر المستخدم بنجاح';
+            session()->flash('success',$message);
+        }
         else{
             return response()->json([
                 'status'=>false,
@@ -317,66 +190,20 @@ class UsersController extends Controller
             'title'=>$title,
             'message'=>$message
         ]);
+
     }
 
+    public function suspendWithReason(Request $request){
+        $user = User::find($request->id);
+        $user->is_active = 0;
+        $user->suspend_reason = $request->suspendReason;
+        $user->save();
 
-    public function getProfile(){
-        $user = auth()->user();
-        return view('admin.users.profile',compact('user'));
-    }
+        return response()->json([
+            'status'=>true,
+            'title'=>'نجاح',
+            'message'=>'تم حظر المستخدم بنجاح'
+        ]);
 
-    public function updateProfile(Request $request){
-        $user = User::find(auth()->id());
-
-        $data = [
-            'name' =>$request->name,
-            'email'      =>$request->email,
-            'phone'      =>$request->phone,
-            'password'   =>$request->password,
-            'password_confirmation'   =>$request->password_confirmation,
-            'image' => $request->image,
-        ];
-        $rules = [
-            'name' =>'required|string|max:191',
-            'email'      =>'nullable|email:max:191|unique:users,email,' . $user->id,
-            'phone'      =>'required|string|unique:users,phone,' . $user->id,
-            'password'   =>'nullable|string|confirmed|max:191',
-            'image' => 'nullable|image',
-
-        ];
-
-        $messages = [
-            'name.required'=>"الإسم مطلوب",
-            'phone.required'=>"رقم الجوال مطلوب",
-            'email.required'=>"البريد الإلكتروني مطلوب",
-            'password.required'=>"كلمة المرور مطلوبة",
-            'name.max'=>"اقصى عدد حروف هو 191 حرف",
-            'email.max'=>"اقصى عدد حروف هو 191 حرف",
-            'phone.unique'=>"هذا الهاتف مسجل من قبل",
-            'image.mimes'=>"يجب ان يكون الملف من النوع JPG, JPEG , PNG",
-        ];
-        $valResult = Validator::make($data,$rules,$messages);
-
-        if($valResult->passes()){
-
-            $user->name = $request->name;
-            $user->phone = $request->phone;
-            $user->email = $request->email;
-            $user->password = bcrypt($request->password);
-
-            if($request->image){
-                deleteImg($user->image);
-                $user->image = uploader($request,'image');
-            }
-
-            $user->save();
-            session()->flash('success','تم تعديل الصفحة الشخصية بنجاح');
-            return redirect()->back();
-        }
-        else{
-            $errors = $valResult->messages();
-            return redirect()->back()->withInput()
-                ->withErrors($errors);
-        }
     }
 }

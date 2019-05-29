@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\City;
+use App\Company;
+use App\CompanyModel;
+use App\Part;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class CitiesController extends Controller
+class PartsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +17,8 @@ class CitiesController extends Controller
      */
     public function index()
     {
-        $cities = City::all();
-
-        return view('admin.cities.index',compact('cities'));
+        $parts = Part::all();
+        return view('admin.parts.index',compact('parts'));
     }
 
     /**
@@ -27,7 +28,8 @@ class CitiesController extends Controller
      */
     public function create()
     {
-        return view('admin.cities.create');
+        $companies = Company::whereIsActive(1)->get();
+        return view('admin.parts.create',compact('companies'));
     }
 
     /**
@@ -38,15 +40,15 @@ class CitiesController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = [
+        $roles = [
             'ar_name'=>'required|string|max:191',
             'en_name'=>'required|string|max:191',
-            'delivery_price'=>'required|numeric'
+            'company_model_id'=>"required|exists:company_models,id"
         ];
-        $this->validate($request,$rules);
-        City::create($request->all());
-        session()->flash('success','تمت الإضافة بنجاح');
-       return redirect()->route('cities.index');
+        $this->validate($request,$roles);
+        Part::create($request->all());
+        session()->flash('success','تم الإضافة بنجاح');
+        return redirect()->route('parts.index');
     }
 
     /**
@@ -68,8 +70,11 @@ class CitiesController extends Controller
      */
     public function edit($id)
     {
-        $city = City::findOrFail($id);
-        return view('admin.cities.edit',compact('city'));
+        $part = Part::findOrFail($id);
+
+        $companies = Company::whereIsActive(1)->get();
+        $company_models = CompanyModel::whereCompanyId($part->company_model->company->id)->get();
+        return view('admin.parts.edit',compact('part','companies','company_models'));
     }
 
     /**
@@ -81,16 +86,16 @@ class CitiesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $rules = [
+        $part = Part::findOrFail($id);
+        $roles = [
             'ar_name'=>'required|string|max:191',
             'en_name'=>'required|string|max:191',
-            'delivery_price'=>'required|numeric'
+            'company_model_id'=>"required|exists:company_models,id"
         ];
-
-        $this->validate($request,$rules);
-        $city = City::find($id)->update($request->all());
+        $this->validate($request,$roles);
+        $part->update($request->all());
         session()->flash('success','تم التعديل بنجاح');
-        return redirect()->route('cities.index');
+        return redirect()->route('parts.index');
     }
 
     /**
@@ -101,44 +106,24 @@ class CitiesController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
-    public function suspendOrActivate(Request $request){
-
-        $city = City::find($request->id);
-
-        if($request->action == 'suspend'){
-            $city->is_active = 0;
-            $city->save();
-            $title = "نجاح";
-            $message = "تم حظر المدينة بنجاح";
-            session()->flash('success','تمت حظر المدينة بنجاح');
-        }else{
-            $city->is_active = 1;
-            $city->save();
-            $title = 'نجاح';
-            $message = 'تم تفعيل المدينة بنجاح';
-            session()->flash('success','تمت تفعيل المدينة بنجاح');
+        $part = Part::find($id);
+        if($part){
+            $part->delete();
+            return response()->json([
+                'status'=>true,
+                'title'=>"نجاح",
+                'message'=>"تم الحذف بنجاح"
+            ]);
         }
-
-        return response()->json([
-            'status'=>true,
-            'title'=>$title,
-            'message'=>$message
-        ]);
-
-
     }
 
-    public function getCities(Request $request){
-
-        $cities = City::whereCountryId($request->id)->whereIsActive(1)->get();
+    public function getCompanyModels(Request $request){
+        $models = CompanyModel::whereCompanyId($request->id)->whereIsActive(1)->get();
 
         //  return $districts;
         return response()->json([
             'status' => true,
-            'data' => $cities
+            'data' => $models
         ]);
-
     }
 }

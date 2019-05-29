@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('title','إدارة مستخدمي النظام')
+@section('title','إدارة المستخدمين')
 
 @section('content')
 
@@ -14,7 +14,7 @@
                 </a>
             </div>
 
-            <h4 class="page-title">مستخدمي النظام</h4>
+            <h4 class="page-title">المستخدمين</h4>
         </div>
     </div>
     <!--End Page-Title -->
@@ -32,8 +32,6 @@
                         <th>م</th>
                         <th>الإسم</th>
                         <th>رقم الجوال</th>
-                        <th>البريد الإلكتروني</th>
-                        <th>المهمة</th>
                         <th>حالة المستخدم</th>
                         <th style="width: 250px;" >العمليات المتاحة</th>
                     </tr>
@@ -45,18 +43,13 @@
                             <td>{{$i++}}</td>
                             <td>{{$row->name}}</td>
                             <td>{{$row->phone}}</td>
-                            <td>{{$row->email}}</td>
                             <td>
-                                @switch($row->role)
-                                @case('technical') فني @break
-                                @case('coordinator') منسق أوامر @break
-                                @case('dept_admin') مسؤول قسم @break
-                                @case('super') مدير مسؤول @break
-                                @case('warehouse_admin') مسؤول مستودع @break
-                                @endswitch
+                            @if($row->is_active != 1)
+                                <label class="label label-danger">غير مفعل</label>
+                                @else
+                                <label class="label label-success">مفعل</label>
+                                @endif
                             </td>
-
-                            <td>{{$row->is_active == 1?'مفعل':'غير مفعل' }}</td>
 
                             <td>
                                 <a href="{{route('users.show',$row->id)}}" class="label label-primary">تفاصيل</a>
@@ -129,7 +122,7 @@
             </div>
         </div>
     </div>
-
+    </div>
 @endsection
 
 @section('scripts')

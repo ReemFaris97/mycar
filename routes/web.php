@@ -65,6 +65,23 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin','middleware'=>'admin'],
     route::resource('models','ModelsController');
     route::post('models/suspendOrActivate','ModelsController@suspendOrActivate')->name('models.suspendOrActivate');
 
+    route::resource('roles','RolesController');
+    route::post('role/delete','RolesController@delete')->name('role.delete');
+
+    route::resource('admins','AdminsController');
+    route::post('admins/suspendOrActive','AdminsController@suspendOrActivate')->name('admins.suspendOrActivate');
+    route::post('admins/suspendWithReason','AdminsController@suspendWithReason')->name('admins.suspendWithReason');
+
+    route::resource('parts','PartsController');
+    Route::post('get-company_models','PartsController@getCompanyModels')->name('getAjaxCompanyModels');
+
+    route::resource('users','UsersController');
+    route::post('users/suspendOrActivate','UsersController@suspendOrActivate')->name('users.suspendOrActivate'); // used here only for activate..
+    route::post('users/suspendWithReason','UsersController@suspendWithReason')->name('users.suspendWithReason');
+    Route::post('get/cities','UsersController@getCities')->name('getAjaxCities');
+
+
+
 
 
 

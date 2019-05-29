@@ -75,10 +75,10 @@
                         </div>
                     </div>
                 </div><!-- end col -->
-
+            </form>
         </div>
         <!-- end row -->
-        </form>
+
     </div><!-- end col -->
     </div>
     <!-- end row -->

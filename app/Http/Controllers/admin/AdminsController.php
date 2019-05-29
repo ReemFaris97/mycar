@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Silber\Bouncer\Database\Role;
 use Validator;
 use App\User;
-//use App\City;
+use App\City;
 //use App\Chat;
 use Illuminate\Support\Facades\Gate;
 
@@ -63,37 +63,37 @@ class AdminsController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = Validator::make(['phone'=>$request->phone],['phone'=>'unique:users'],['phone.unique'=>"هذا الهاتف مسجل من قبل"]);
-        if($validate->passes()){
 
-            $user = new User();
-            $user->name = $request->name;
-            $user->phone = $request->phone;
-            $user->password = Hash::make($request->password);
-            $user->is_active = 1;
-            $user->is_admin = 1;
+            $roles = [
+                'name'=>'string|required|max:191',
+                'phone'=>"string|required|max:191,unique:users,phone",
+                'email'=>'string|required|max:191,unique:users,phone',
+                'password'=>"required|confirmed",
+                'image'=>'nullable|sometimes|image'
+            ];
 
-            if($request->has('image'))
-                $user->image = uploader($request,'image');
+            $this->validate($request,$roles);
 
-            if($user->save()){
+            $inputs = $request->all();
+            $inputs['password']= Hash::make($request->password);
+            $inputs['type'] = 'admin';
+        if($request->has('image'))
+            $inputs['image'] = uploader($request,'image');
+
+
+                $user = User::create($inputs);
+
+
                 foreach ($request->input('roles') as $role) {
                     if ($role && $role != "") {
                         $user->assign($role);
                     }
                 }
 
-                Chat::create(['user_id'=>$user->id]);
+//                Chat::create(['user_id'=>$user->id]);
                 session()->flash('success','تمت إضافة المدير المساعد بنجاح');
-                return redirect()->back();
-            }
+                return redirect()->route('admins.index');
 
-        }
-        else{
-            $errors = $validate->messages();
-            return redirect()->back()->withInput()
-                ->withErrors($errors);
-        }
 
     }
 
@@ -229,7 +229,7 @@ class AdminsController extends Controller
         $user->is_active = 0;
         $user->suspend_reason = $request->suspendReason;
         $user->save();
-
+        session()->flash('success','تم حظر المساعد بنجاح');
         return response()->json([
             'status'=>true,
             'title'=>'نجاح',

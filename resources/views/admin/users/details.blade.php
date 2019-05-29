@@ -46,10 +46,10 @@
                             <h5 style="font-weight: 600;">{{$user->name}}</h5>
                         </div>
 
-                        <div class="col-md-4">
-                            <h4>البريد الإلكتروني:</h4>
-                            <h5 style="font-weight: 600;">{{$user->email}}</h5>
-                        </div>
+                        {{--<div class="col-md-4">--}}
+                            {{--<h4>البريد الإلكتروني:</h4>--}}
+                            {{--<h5 style="font-weight: 600;">{{$user->email}}</h5>--}}
+                        {{--</div>--}}
 
 
                         <div class="col-md-4">
@@ -58,36 +58,10 @@
                         </div>
 
                         <div class="col-md-4">
-                            <h4>رقم الوظيفة:</h4>
-                            <h5 style="font-weight: 600;">{{$user->job_number}}</h5>
+                            <h4>العنوان:</h4>
+                            <h5 style="font-weight: 600;">{{$user->address}}</h5>
                         </div>
 
-
-                        <div class="col-md-4">
-                            <h4>المهمة(الصلاحية)</h4>
-                            <h5 style="font-weight: 600;">
-                                @switch($user->role)
-                                @case('technical') فني @break
-                                @case('coordinator') منسق أوامر @break
-                                @case('dept_admin') مسؤول قسم @break
-                                @case('super') مدير مسؤول @break
-                                @endswitch
-                            </h5>
-                        </div>
-
-                        @if($user->role == 'technical')
-                        <div class="col-md-4">
-                            <h4>التخصص</h4>
-                            <h5 style="font-weight: 600;">{{$user->specialize->name}}</h5>
-                        </div>
-                        @endif
-
-                        @if($user->role == 'dept_admin')
-                            <div class="col-md-4">
-                                <h4>القسم المسؤول عنه</h4>
-                                <h5 style="font-weight: 600;">{{$user->department->name}}</h5>
-                            </div>
-                        @endif
 
 
                         <div class="col-md-4">

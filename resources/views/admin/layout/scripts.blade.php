@@ -146,7 +146,7 @@
     @if(session()->has('success'))
         setTimeout(function () {
         showMessage('{{ session()->get('success') }}');
-    }, 3000);
+    }, 2000);
 
     @endif
 

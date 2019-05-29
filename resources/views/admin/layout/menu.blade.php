@@ -47,9 +47,13 @@
                 <li class="text-muted menu-title">القائمة</li>
 
                     <li><a href="{{route('homePage')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>الرئيسية</span></a></li>
+                    <li><a href="{{route('roles.index')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>الصلاحيات و الأدوار</span></a></li>
+                    <li><a href="{{route('admins.index')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>أعضاء الإدارة</span></a></li>
                     <li><a href="{{route('cities.index')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>المدن</span></a></li>
                     <li><a href="{{route('companies.index')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>الشركات المصنعة</span></a></li>
                     <li><a href="{{route('models.index')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>الموديلات</span></a></li>
+                    <li><a href="{{route('parts.index')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>القطع و المنتجات</span></a></li>
+                    <li><a href="{{route('users.index')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>إدارة المستخدمين</span></a></li>
 
                     {{--<li class="has_sub">--}}
                         {{--<a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-check-circle"></i><span>قائمة خارجيه</span><span class="menu-arrow"></span></a>--}}
