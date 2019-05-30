@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Part extends Model
 {
+    use SoftDeletes;
     protected $fillable = ['ar_name','en_name','company_model_id'];
 
      public function name()
