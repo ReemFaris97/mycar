@@ -6,10 +6,10 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class User extends Authenticatable
 {
-    use Notifiable , HasRolesAndAbilities;
+    use Notifiable , HasRolesAndAbilities,SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email','phone','type','image','address','lat','lng','licence_number','licence_image','commission','is_active'
+        'name', 'email', 'password','phone','type','image','address','lat','lng','licence_number','licence_image','commission','is_active'
     ];
 
     /**

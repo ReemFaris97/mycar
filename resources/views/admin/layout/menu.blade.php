@@ -54,6 +54,9 @@
                     <li><a href="{{route('models.index')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>الموديلات</span></a></li>
                     <li><a href="{{route('parts.index')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>القطع و المنتجات</span></a></li>
                     <li><a href="{{route('users.index')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>إدارة المستخدمين</span></a></li>
+                    <li><a href="{{route('suppliers.index')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>إدارة الموردين</span></a></li>
+                    <li><a href="{{route('instructions.index')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>الإرشادات</span></a></li>
+                    <li><a href="{{request()->root()}}/dashboard/settings/general" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>الإعدادات</span></a></li>
 
                     {{--<li class="has_sub">--}}
                         {{--<a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-check-circle"></i><span>قائمة خارجيه</span><span class="menu-arrow"></span></a>--}}

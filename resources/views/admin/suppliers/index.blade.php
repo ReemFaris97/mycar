@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('title','إدارة المستخدمين')
+@section('title','إدارة الموردين')
 
 @section('content')
 
@@ -8,13 +8,13 @@
         <div class="col-sm-12">
 
             <div class="btn-group pull-right m-t-15">
-                <a href="{{route('users.create')}}" class="btn btn-custom dropdown-toggle waves-effect waves-light">
-                   إضافة مستخدم جديد
+                <a href="{{route('suppliers.create')}}" class="btn btn-custom dropdown-toggle waves-effect waves-light">
+                   إضافة مورد جديد
                     <span class="m-l-5"><i class="fa fa-plus"></i></span>
                 </a>
             </div>
 
-            <h4 class="page-title">المستخدمين</h4>
+            <h4 class="page-title">الموردين</h4>
         </div>
     </div>
     <!--End Page-Title -->
@@ -23,7 +23,7 @@
         <div class="col-sm-12">
             <div class="card-box table-responsive">
 
-                <h4 class="header-title m-t-0 m-b-30">كل المستخدمين</h4>
+                <h4 class="header-title m-t-0 m-b-30">كل الموردين</h4>
 
 
                 <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
@@ -32,13 +32,14 @@
                         <th>م</th>
                         <th>الإسم</th>
                         <th>رقم الجوال</th>
-                        <th>حالة المستخدم</th>
+                        <th>حالة المورد</th>
+                        <th>عدد الطلبات المعتمده</th>
                         <th style="width: 250px;" >العمليات المتاحة</th>
                     </tr>
                     </thead>
                     <tbody>
                     @php $i = 1; @endphp
-                    @foreach($users as $row)
+                    @foreach($suppliers as $row)
                         <tr>
                             <td>{{$i++}}</td>
                             <td>{{$row->name}}</td>
@@ -50,19 +51,22 @@
                                 <label class="label label-success">مفعل</label>
                                 @endif
                             </td>
+                            <th>
+                                number
+                            </th>
 
                             <td>
-                                <a href="{{route('users.show',$row->id)}}" class="label label-primary">تفاصيل</a>
-                                <a href="{{route('users.edit',$row->id)}}" class="label label-warning">تعديل</a>
+                                <a href="{{route('suppliers.show',$row->id)}}" class="label label-primary">تفاصيل</a>
+                                <a href="{{route('suppliers.edit',$row->id)}}" class="label label-warning">تعديل</a>
 
                                 @if(auth()->id() != $row->id)
                                 @if($row->is_active == 1)
-                                    <a id="elementRow{{$row->id}}" href="javascript:;" data-id="{{$row->id}}" data-action="suspend" data-url="{{route('users.suspendOrActivate')}}" class="statusWithReason label label-danger">حظر</a>
+                                    <a id="elementRow{{$row->id}}" href="javascript:;" data-id="{{$row->id}}" data-action="suspend" data-url="{{route('suppliers.suspendOrActivate')}}" class="statusWithReason label label-danger">حظر</a>
                                 @else
-                                    <a id="elementRow{{$row->id}}" href="javascript:;" data-id="{{$row->id}}" data-action="activate" data-url="{{route('users.suspendOrActivate')}}" class="statusWithReason label label-success">تفعيل</a>
+                                    <a id="elementRow{{$row->id}}" href="javascript:;" data-id="{{$row->id}}" data-action="activate" data-url="{{route('suppliers.suspendOrActivate')}}" class="statusWithReason label label-success">تفعيل</a>
                                 @endif
 
-                                <a  id="elementRow{{$row->id}}" href="javascript:;" data-id="{{$row->id}}" data-url="{{route('users.destroy',$row->id)}}" class="removeElement label label-danger">حذف</a>
+                                <a  id="elementRow{{$row->id}}" href="javascript:;" data-id="{{$row->id}}" data-url="{{route('suppliers.destroy',$row->id)}}" class="removeElement label label-danger">حذف</a>
 
                                 @endif
 
@@ -80,7 +84,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 id="modal_header" class="modal-title">تفعيل المستخدم</h4>
+                                <h4 id="modal_header" class="modal-title">تفعيل المورد</h4>
                             </div>
                             <div class="modal-body">
                                     <label for="reason">رسالة التفعيل</label>
@@ -104,7 +108,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 id="modal_header" class="modal-title">حظر المستخدم</h4>
+                                <h4 id="modal_header" class="modal-title">حظر المورد</h4>
                             </div>
                             <div class="modal-body">
                                     <label for="reason">رسالة الحظر</label>
@@ -142,7 +146,7 @@
 
             swal({
                     title: "هل انت متأكد؟",
-                    text: 'هل تريد حذف المستخدم فعلا ؟',
+                    text: 'هل تريد حذف المورد فعلا ؟',
                     type: "error",
                     showCancelButton: true,
                     confirmButtonColor: "#27dd24",
@@ -212,13 +216,13 @@
 
             //  Modal data ....
             if(action === 'suspend'){
-                text = 'هل تريد حظر المستخدم فعلا ؟';
+                text = 'هل تريد حظر المورد فعلا ؟';
                 type = 'error';
                 confirmButtonClass = 'btn-danger waves-effect waves-light';
 
 
             }if(action === 'activate'){
-                text = 'هل تريد تفعيل المستخدم فعلا ؟';
+                text = 'هل تريد تفعيل المورد فعلا ؟';
                 type = 'success';
                 confirmButtonClass = 'btn-success waves-effect waves-light';
 

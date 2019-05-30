@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\admin;
 
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
@@ -10,7 +9,7 @@ use App\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 
-class UsersController extends Controller
+class SuppliersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,11 +18,11 @@ class UsersController extends Controller
      */
     public function index()
     {
-//        if (!Gate::allows('users_manage')) {
+        //        if (!Gate::allows('users_manage')) {
 //            return abort(401);
 //        }
-        $users = User::whereType('user')->get()->reverse();
-        return view('admin.users.index',compact('users'));
+        $suppliers = User::whereType('supplier')->get()->reverse();
+        return view('admin.suppliers.index',compact('suppliers'));
     }
 
     /**
@@ -33,19 +32,14 @@ class UsersController extends Controller
      */
     public function create()
     {
-//        if (!Gate::allows('users_manage')) {
+        //        if (!Gate::allows('users_manage')) {
 //            return abort(401);
 //        }
 
-        return view('admin.users.create');
+        return view('admin.suppliers.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
 
@@ -53,16 +47,22 @@ class UsersController extends Controller
             'name'=>'required|string|max:191',
             'phone'=>'required|numeric|unique:users,phone',
             'password'=>'required|string|confirmed|max:55',
+            'licence_number'=>"required|numeric|unique:users,phone",
+            'commission'=>"required|numeric|max:99",
+            'licence_image'=>'required|mimes:jpg,jpeg,gif,png',
             'address'=>'required|string|max:191',
         ];
+
+
         $this->validate($request,$roles);
+
         $inputs = $request->all();
-        $inputs['type'] = 'user';
-        $inputs['password']= Hash::make($request->password);
+        $inputs['type'] = 'supplier';
+        $inputs['password'] = Hash::make($request->password);
+        $inputs['licence_image'] = uploader($request,'licence_image');
         User::create($inputs);
         session()->flash('success','تم الإضافة بنجاح');
-        return redirect()->route('users.index');
-
+        return redirect()->route('suppliers.index');
     }
 
     /**
@@ -73,16 +73,12 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-//        if (!Gate::allows('users_manage')) {
+        //        if (!Gate::allows('users_manage')) {
 //            return abort(401);
 //        }
-        $user = User::find($id);
-        if($user){
-            return view('admin.users.details',compact('user'));
-        }
-        else{
-            return abort(404);
-        }
+        $supplier = User::findOrFail($id);
+        return view('admin.suppliers.details',compact('supplier'));
+
     }
 
     /**
@@ -93,11 +89,11 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-//        if (!Gate::allows('users_manage')) {
+        //        if (!Gate::allows('users_manage')) {
 //            return abort(401);
 //        }
-        $user = User::findOrFail($id);
-        return view('admin.users.edit',compact('user'));
+        $supplier = User::findOrFail($id);
+        return view('admin.suppliers.edit',compact('supplier'));
 
     }
 
@@ -110,24 +106,33 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user = User::findOrFail($id);
 
-        $user= User::findOrFail($id);
         $roles = [
             'name'=>'required|string|max:191',
             'phone'=>'required|numeric|unique:users,phone,'.$user->id,
             'password'=>'nullable|string|confirmed|max:55',
+            'licence_number'=>"required|numeric|unique:users,phone",
+            'commission'=>"required|numeric|max:99",
+            'licence_image'=>'sometimes|mimes:jpg,jpeg,gif,png',
             'address'=>'required|string|max:191',
         ];
+
+
         $this->validate($request,$roles);
+        $inputs = $request->except('password');
 
-
-         $inputs = $request->except('password');
         if($request->password != null){
             $inputs['password']= Hash::make($request->password);
         }
 
+        if($request->has('licence_image') && $request->licence_image != null){
+            deleteImg($user->licence_image);
+            $inputs['licence_image']= uploader($request,'licence_image');
+        }
+
         $user->update($inputs);
-        session()->flash('success','تم تعديل المستخدم بنجاح');
+        session()->flash('success','تم تعديل بيانات المورد بنجاح');
         return redirect()->back();
 
     }
@@ -152,7 +157,6 @@ class UsersController extends Controller
         }
     }
 
-
     public function getCities(Request $request){
 
         $cities = City::whereCountryId($request->id)->whereIsActive(1)->get();
@@ -164,7 +168,6 @@ class UsersController extends Controller
         ]);
 
     }
-
 
     public function suspendOrActivate(Request $request){
 

@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('title','إنشاء مستخدم جديد')
+@section('title','إنشاء مورد جديد')
 
 @section('styles')
     <style>
@@ -14,9 +14,9 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="btn-group pull-right m-t-15">
-                <a href="{{route('users.index')}}" class="btn btn-custom dropdown-toggle waves-effect waves-light" >رجوع لإدارة المستخدمين<span class="m-l-5"><i class="fa fa-reply"></i></span></a>
+                <a href="{{route('suppliers.index')}}" class="btn btn-custom dropdown-toggle waves-effect waves-light" >رجوع لإدارة الموردين<span class="m-l-5"><i class="fa fa-reply"></i></span></a>
             </div>
-            <h4 class="page-title">إضافة مستخدم جديد</h4>
+            <h4 class="page-title">إضافة مورد جديد</h4>
         </div>
     </div>
 
@@ -25,23 +25,23 @@
             <div class="card-box">
 
 
-                <h4 class="header-title m-t-0 m-b-30">بيانات المستخدم</h4>
+                <h4 class="header-title m-t-0 m-b-30">بيانات المورد</h4>
 
                 <div class="row">
 
-                    <form method="post" action="{{route('users.store')}}" class="form-horizontal" enctype="multipart/form-data">
+                    <form method="post" action="{{route('suppliers.store')}}" class="form-horizontal" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="col-md-2 control-label">الإسم*</label>
+                                {{--<label class="col-md-2 control-label">الإسم*</label>--}}
                                 <div class="col-md-10">
                                     <input type="text" required value="{{old('name')}}"
                                            data-parsley-required-message="هذا الحقل مطلوب"
                                            data-parsley-trigger="keyup"
                                            data-parsley-maxlength="60"
                                            data-parsley-maxlength-message="أقصى عدد حروف هو 60 حرف"
-                                           name="name" class="form-control" placeholder="إسم المستخدم">
+                                           name="name" class="form-control" placeholder="إسم المورد">
 
                                     @if($errors->has('name'))
                                         <p class="help-block">
@@ -54,13 +54,13 @@
 
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="col-md-2 control-label">رقم الجوال*</label>
+                                {{--<label class="col-md-2 control-label">رقم الجوال*</label>--}}
                                 <div class="col-md-10">
                                     <input type="number" required value="{{old('phone')}}"
                                            data-parsley-required-message="هذا الحقل مطلوب"
                                            data-parsley-trigger="keyup"
                                            data-parsley-maxlength="10"
-                                           data-parsley-maxlength-message="أقصى عدد ارقام هو 10 حرف"
+                                           data-parsley-maxlength-message="أقصى عدد ارقام هو 10 ارقام"
                                            {{--data-parsley-pattern="^01[0-2]{1}[0-9]{8}"--}}
                                            {{--data-parsley-pattern-message="برجاء إدخال رقم موبايل بصيغة صحيحة"--}}
                                            {{--oninput="this.value = Math.abs(this.value)"--}}
@@ -77,11 +77,11 @@
                         {{--******************************************************************--}}
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="col-md-2 control-label">كلمة السر*</label>
+                                {{--<label class="col-md-2 control-label">كلمة السر*</label>--}}
                                 <div class="col-md-10">
                                     <input type="password" name="password" id="pass1" value="{{ old('password') }}"
                                            class="form-control" autocomplete="off"
-                                           placeholder="كلمة السر ..."
+                                           placeholder="كلمة المرور ..."
                                            required
                                            data-parsley-trigger="keyup"
                                            data-parsley-required-message="كلمة المرور مطلوبة"
@@ -101,7 +101,7 @@
 
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="col-md-2 control-label">تأكيد كلمة السر*</label>
+                                {{--<label class="col-md-2 control-label">تأكيد كلمة السر*</label>--}}
                                 <div class="col-md-10">
                                     <input data-parsley-equalto="#pass1" name="password_confirmation" type="password" data-parsley-trigger="keyup"
                                            placeholder="تأكيد كلمة المرور ..." class="form-control"
@@ -122,7 +122,76 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                {{--<label class="col-md-2 control-label">رقم السجل التجاري*</label>--}}
+                                <div class="col-md-10">
+                                    <input type="number" required value="{{old('licence_number')}}"
+                                           data-parsley-required-message="هذا الحقل مطلوب"
+                                           data-parsley-trigger="keyup"
+                                           data-parsley-maxlength="25"
+                                           data-parsley-maxlength-message="أقصى عدد ارقام هو 25 رقم"
+                                           {{--data-parsley-pattern="^01[0-2]{1}[0-9]{8}"--}}
+                                           {{--data-parsley-pattern-message="برجاء إدخال رقم موبايل بصيغة صحيحة"--}}
+                                           {{--oninput="this.value = Math.abs(this.value)"--}}
+                                           name="licence_number" class="form-control" placeholder=" رقم السجل التجاري">
+                                    @if($errors->has('licence_number'))
+                                        <p class="help-block" style="color: #FF0000;">
+                                            {{ $errors->first('licence_number') }}
+                                        </p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                {{--<label class="col-md-2 control-label">رقم السجل التجاري*</label>--}}
+                                <div class="col-md-10">
+                                    <input type="number" required value="{{old('commission')}}"
+                                           data-parsley-required-message="هذا الحقل مطلوب"
+                                           data-parsley-trigger="keyup"
+                                           data-parsley-max="99"
+                                           {{--data-parsley-min="1"--}}
+                                           data-parsley-max-message="اقصى نسبة هي 99"
+                                           {{--data-parsley-min-message="اقل نسبة هي 1"--}}
+                                           {{--data-parsley-pattern="^01[0-2]{1}[0-9]{8}"--}}
+                                           {{--data-parsley-pattern-message="برجاء إدخال رقم موبايل بصيغة صحيحة"--}}
+                                           oninput="this.value = Math.abs(this.value)"
+                                           name="commission" class="form-control" placeholder="نسبة التطبيق من المبيعات">
+                                    @if($errors->has('commission'))
+                                        <p class="help-block" style="color: #FF0000;">
+                                            {{ $errors->first('commission') }}
+                                        </p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                {{--<label class="col-md-2 control-label">رقم السجل التجاري*</label>--}}
+                                <div class="col-md-10">
+
+                                    <input name="licence_image" type="file" class="dropify" data-max-file-size="6M"
+                                           data-allowed-file-extensions="png gif jpg jpeg"
+                                           data-errors-position="inside" required placeholder="صورة السجل التجاري"
+                                           data-parsley-required-message="هذا الحقل مطلوب"
+                                    />
+
+                                    @if($errors->has('licence_number'))
+                                        <p class="help-block" style="color: #FF0000;">
+                                            {{ $errors->first('licence_number') }}
+                                        </p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+
                         {{--*******************************************************************--}}
+
 
                         <div class="col-lg-12">
                             <div class="form-group">
@@ -169,6 +238,26 @@
     </div>
 @endsection
 @section('scripts')
+    <script>
+        // Date Picker
+        jQuery('#datepicker').datepicker();
+
+
+        $('.dropify').dropify({
+            messages: {
+                'default': 'إضغط هنا او اسحب وافلت صورة السجل التجاري',
+                'replace': 'إسحب وافلت او إضغط للتعديل',
+                'remove': 'حذف',
+                'error': 'حدث خطأ ما'
+            },
+            error: {
+                'fileSize': 'حجم الصورة كبير (6M max).',
+                'fileExtension': 'نوع الصورة غير مدعوم (png - gif - jpg - jpeg)',
+            }
+        });
+
+
+    </script>
     <script>
 
 

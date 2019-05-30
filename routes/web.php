@@ -80,6 +80,23 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin','middleware'=>'admin'],
     route::post('users/suspendWithReason','UsersController@suspendWithReason')->name('users.suspendWithReason');
     Route::post('get/cities','UsersController@getCities')->name('getAjaxCities');
 
+    route::resource('suppliers','SuppliersController');
+    route::post('suppliers/suspendOrActivate','SuppliersController@suspendOrActivate')->name('suppliers.suspendOrActivate'); // used here only for activate..
+    route::post('suppliers/suspendWithReason','SuppliersController@suspendWithReason')->name('suppliers.suspendWithReason');
+    Route::post('get/cities','SuppliersController@getCities')->name('getAjaxCities');
+
+    route::resource('instructions','InstructionsController');
+
+    Route::group(['prefix'=>'settings','as'=>'setting.'],function (){
+        Route::get('/{slug}','SettingController@index')->name('index');
+        Route::post('/','SettingController@Store')->name('store');
+    });
+
+
+
+
+
+
 
 
 
