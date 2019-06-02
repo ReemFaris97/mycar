@@ -9,12 +9,14 @@ class CreateReplyDetailsTable extends Migration {
 	{
 		Schema::create('reply_details', function(Blueprint $table) {
 			$table->bigIncrements('id');
-			$table->timestamps();
-			$table->unsignedBigInteger('order_details_id');
-			$table->unsignedBigInteger('order_id');
-			$table->double('part_price');
-			$table->double('total_parts');
+            $table->unsignedBigInteger('reply_id');
+            $table->unsignedBigInteger('order_details_id');
+            $table->unsignedBigInteger('order_id');
+            $table->double('part_price');
+            $table->double('total_parts');
 
+            $table->foreign('reply_id')->references('id')->on('replies')
+                ->onDelete('cascade');
 
             $table->foreign('order_details_id')->references('id')->on('order_details')
                 ->onDelete('cascade');
@@ -22,8 +24,9 @@ class CreateReplyDetailsTable extends Migration {
             $table->foreign('order_id')->references('id')->on('orders')
                 ->onDelete('cascade');
 
+            $table->timestamps();
 
-		});
+        });
 	}
 
 	public function down()

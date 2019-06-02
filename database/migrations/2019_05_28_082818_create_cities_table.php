@@ -19,6 +19,7 @@ class CreateCitiesTable extends Migration
             $table->string('en_name');
             $table->double('delivery_price');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

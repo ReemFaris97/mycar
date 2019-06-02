@@ -13,7 +13,7 @@ class CreateOrderDetailsTable extends Migration {
 			$table->unsignedBigInteger('part_id');
 			$table->string('image')->nullable();
 			$table->integer('quantity');
-			$table->unsignedBigInteger('city_id');
+
 			$table->longText('description')->nullable();
 			$table->timestamps();
 
@@ -23,8 +23,6 @@ class CreateOrderDetailsTable extends Migration {
             $table->foreign('part_id')->references('id')->on('parts')
                 ->onDelete('cascade');
 
-            $table->foreign('city_id')->references('id')->on('cities')
-                ->onDelete('cascade');
 		});
 	}
 

@@ -46,6 +46,7 @@
             <ul>
                 <li class="text-muted menu-title">القائمة</li>
 
+
                     <li><a href="{{route('homePage')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>الرئيسية</span></a></li>
                     <li><a href="{{route('roles.index')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>الصلاحيات و الأدوار</span></a></li>
                     <li><a href="{{route('admins.index')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>أعضاء الإدارة</span></a></li>
@@ -55,15 +56,17 @@
                     <li><a href="{{route('parts.index')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>القطع و المنتجات</span></a></li>
                     <li><a href="{{route('users.index')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>إدارة المستخدمين</span></a></li>
                     <li><a href="{{route('suppliers.index')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>إدارة الموردين</span></a></li>
-                    <li><a href="{{route('instructions.index')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>الإرشادات</span></a></li>
-                    <li><a href="{{request()->root()}}/dashboard/settings/general" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>الإعدادات</span></a></li>
-
-                    {{--<li class="has_sub">--}}
-                        {{--<a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-check-circle"></i><span>قائمة خارجيه</span><span class="menu-arrow"></span></a>--}}
-                        {{--<ul class="list-unstyled">--}}
-                            {{--<li><a href="">قائمة داخلية</a></li>--}}
-                        {{--</ul>--}}
-                    {{--</li>--}}
+                    <li><a href="{{route('orders.index')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>طلبات العملاء</span></a></li>
+                <li><a href="{{request()->root()}}/dashboard/settings/general" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>الإعدادات</span></a></li>
+                <li><a href="{{route('instructions.index')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>الإرشادات</span></a></li>
+                <li class="has_sub">
+                        <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-check-circle"></i><span>التقارير</span><span class="menu-arrow"></span></a>
+                        <ul class="list-unstyled">
+                            <li><a href="{{route('report.supplier.sales')}}">تقرير مبيعات مورد</a></li>
+                            <li><a href="">تقرير عروض اسعار مرفوضة من مورد</a></li>
+                            <li><a href="">تقرير طلبات عميل</a></li>
+                        </ul>
+                    </li>
 
             </ul>
             <div class="clearfix"></div>

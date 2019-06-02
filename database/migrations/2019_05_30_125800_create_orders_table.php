@@ -10,15 +10,19 @@ class CreateOrdersTable extends Migration {
 		Schema::create('orders', function(Blueprint $table) {
 			$table->bigIncrements('id');
 			$table->unsignedBigInteger('user_id');
-			$table->softDeletes();
-			$table->unsignedBigInteger('company_id');
-			$table->unsignedBigInteger('company_model_id');
-			$table->integer('year');
-			$table->enum('parts_type', array('new', 'used'));
-			$table->enum('payment_type', array('cash', 'online','network'));
-			$table->enum('status', array('new', 'current', 'accepted', 'completed'));
-			$table->string('completed_status')->nullable();
-			$table->timestamps();
+            $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('company_model_id');
+
+
+            $table->integer('year');
+            $table->enum('parts_type', array('new', 'used'));
+            $table->string('form_image')->nullable();
+            $table->string('structure_number')->nullable();
+            $table->enum('payment_type', array('cash', 'online','network'));
+            $table->enum('status', array('new', 'current', 'accepted', 'completed'));
+            $table->string('completed_status')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade');
@@ -29,7 +33,9 @@ class CreateOrdersTable extends Migration {
             $table->foreign('company_model_id')->references('id')->on('company_models')
                 ->onDelete('cascade');
 
-		});
+
+
+        });
 	}
 
 	public function down()

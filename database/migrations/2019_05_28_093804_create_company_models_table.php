@@ -19,6 +19,7 @@ class CreateCompanyModelsTable extends Migration
             $table->string('ar_name');
             $table->string('en_name');
             $table->timestamps();
+            $table->softDeletes();
             $table->foreign('company_id')->references('id')->on('companies')
                 ->onDelete('cascade');
         });

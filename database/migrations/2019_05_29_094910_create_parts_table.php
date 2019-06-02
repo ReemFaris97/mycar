@@ -19,6 +19,7 @@ class CreatePartsTable extends Migration
             $table->string('en_name');
             $table->unsignedBigInteger('company_model_id');
             $table->timestamps();
+            $table->softDeletes();
             $table->foreign('company_model_id')->references('id')->on('company_models')
                 ->onDelete('cascade');
         });

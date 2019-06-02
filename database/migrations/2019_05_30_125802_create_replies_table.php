@@ -9,6 +9,7 @@ class CreateRepliesTable extends Migration {
 	{
 		Schema::create('replies', function(Blueprint $table) {
 			$table->bigIncrements('id');
+
 			$table->unsignedBigInteger('order_id');
 			$table->unsignedBigInteger('supplier_id');
 			$table->double('total');
