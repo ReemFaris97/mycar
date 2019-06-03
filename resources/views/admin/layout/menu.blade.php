@@ -62,9 +62,9 @@
                 <li class="has_sub">
                         <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-check-circle"></i><span>التقارير</span><span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
-                            <li><a href="{{route('report.supplier.sales')}}">تقرير مبيعات مورد</a></li>
-                            <li><a href="">تقرير عروض اسعار مرفوضة من مورد</a></li>
-                            <li><a href="">تقرير طلبات عميل</a></li>
+                            <li><a href="{{route('report.supplier.sales')}}?type=initial">تقرير مبيعات مورد</a></li>
+                            <li><a href="{{route('report.supplier.refused')}}">تقرير عروض اسعار مرفوضة من مورد</a></li>
+                            <li><a href="{{route('report.customer.orders')}}">تقرير طلبات عميل</a></li>
                         </ul>
                     </li>
 

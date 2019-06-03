@@ -36,6 +36,14 @@ class Order extends Model
         else return false;
    }
 
+   public function winner_reply(){
+        $reply = Reply::find($this->winner_reply_id);
+        if($reply) return $reply;
+        else return false;
+   }
+
+
+
 //   public function userMadeReply(){
 //        if($this->replies->supplier->where('supplier_id',auth()->id())->count() > 0) return true;
 //        else return false;

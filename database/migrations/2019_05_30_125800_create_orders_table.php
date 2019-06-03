@@ -12,7 +12,7 @@ class CreateOrdersTable extends Migration {
 			$table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('company_id');
             $table->unsignedBigInteger('company_model_id');
-
+            $table->unsignedBigInteger('city_id');
 
             $table->integer('year');
             $table->enum('parts_type', array('new', 'used'));
@@ -31,6 +31,9 @@ class CreateOrdersTable extends Migration {
                 ->onDelete('cascade');
 
             $table->foreign('company_model_id')->references('id')->on('company_models')
+                ->onDelete('cascade');
+
+            $table->foreign('city_id')->references('id')->on('cities')
                 ->onDelete('cascade');
 
 

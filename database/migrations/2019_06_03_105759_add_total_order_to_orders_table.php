@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCityIdToOrdersTable extends Migration
+class AddTotalOrderToOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,7 @@ class AddCityIdToOrdersTable extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->unsignedBigInteger('city_id');
-            $table->foreign('city_id')->references('id')->on('cities')
-                ->onDelete('cascade');
+            $table->float('total')->default(0);
         });
     }
 
@@ -28,7 +26,7 @@ class AddCityIdToOrdersTable extends Migration
     public function down()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->dropColumn('city_id');
+            $table->dropColumn('total');
         });
     }
 }
