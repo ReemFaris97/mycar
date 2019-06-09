@@ -23,13 +23,11 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin'], function () {
     route::get('/', 'LoginController@getAdminLogin')->name('admin.login');
     Route::post('/', 'LoginController@login')->name('admin.postLogin');
 
-
 //    // Password Reset Routes...
 //    Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('administrator.password.request');
 //    Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('administrator.password.email');
 //    Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('administrator.password.reset.token');
 //    Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('administrator.password.reset');
-
 });
 
 //Route::get('roles/createSuperAdmin', function () {
@@ -54,7 +52,6 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin','middleware'=>'admin'],
 //    route::resource('admins','AdminsController');
 //    route::post('admins/suspendOrActive','AdminsController@suspendOrActivate')->name('admins.suspendOrActivate');
 //    route::post('admins/suspendWithReason','UsersController@suspendWithReason')->name('admins.suspendWithReason');
-
 
     route::resource('cities','CitiesController');
     route::post('cities/suspendOrActivate','CitiesController@suspendOrActivate')->name('cities.suspendOrActivate');
@@ -100,21 +97,8 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin','middleware'=>'admin'],
     });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 //    route::get('notifications','NotificationsController@index')->name('notifications.index');
 //    route::post('notification/delete','NotificationsController@delete')->name('notification.delete');
-
 
 //    Route::post('user/update/token', function (Request $request) {
 //
@@ -137,11 +121,35 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin','middleware'=>'admin'],
 //
 //    })->name('user.update.token');
 
-
     route::post('/logout','LoginController@logout')->name('admin.logout');
-
 });
 
+
+// **************************************************************************************************
+//***************************************************************************************************
+Route::group(['prefix'=>"supplier",'namespace'=>'supplier'], function (){
+    route::get('/', 'LoginController@getSupplierLogin')->name('supplier.login');
+    route::post('/postPhone','LoginController@postPhoneNumber')->name('supplier.postPhone');
+    Route::post('/supplierLogin', 'LoginController@login')->name('supplier.postLogin');
+});
+
+
+Route::group(['prefix'=>"supplier",'namespace'=>'supplier','middleware'=>"supplier"], function (){
+
+    route::get('home','HomeController@index')->name('supplier.home');
+
+    route::get('orders/new','OrdersController@newOrders')->name('supplier.orders.new');
+    route::get('orders/waiting','OrdersController@waitingOrders')->name('supplier.orders.waiting');
+    route::get('orders/received','OrdersController@received')->name('supplier.orders.received');
+    route::get('orders/finished','OrdersController@finished')->name('supplier.orders.finished');
+
+    route::get('orders/show/{id}','OrdersController@show')->name('supplier.orders.show');
+
+
+
+
+    route::post('/logout','LoginController@logout')->name('supplier.logout');
+});
 
 
 Route::get('/home', 'HomeController@index')->name('home');

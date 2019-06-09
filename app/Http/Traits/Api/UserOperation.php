@@ -62,4 +62,11 @@ trait UserOperation
         $inputs['user_id'] = $user->id;
         return Address::create($inputs);
     }
+
+    public function generateLoginCode($user){
+       $code = '1234';
+        $user->update(['login_code'=>$code]);
+        return $code;
+
+    }
 }

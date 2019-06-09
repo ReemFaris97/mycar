@@ -36,11 +36,26 @@ class Order extends Model
         else return false;
    }
 
+   public function hasAnyReplyByAuthSupplier(){
+        $countCheck =  $this->replies()->where('supplier_id',auth()->id())->count();
+        if($countCheck >0) return 1;
+        else return 0;
+   }
+   public function hasRefusedReplyByAuthSupplier(){
+        $checkFinished =  $this->replies()->where('supplier_id',auth()->id())->where('status','finished')->first();
+        $checkRefused =  $this->replies()->where('supplier_id',auth()->id())->where('status','refused')->first();
+       if($checkRefused) return 1;
+       if($checkFinished) return 0;
+
+   }
+
    public function winner_reply(){
         $reply = Reply::find($this->winner_reply_id);
         if($reply) return $reply;
         else return false;
    }
+
+
 
 
 

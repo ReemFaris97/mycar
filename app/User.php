@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','phone','type','image','address','lat','lng','licence_number','licence_image','commission','is_active'
+        'name', 'email', 'password','phone','login_code','type','image','address','lat','lng','licence_number','licence_image','commission','is_active'
     ];
 
     /**
@@ -48,5 +48,17 @@ class User extends Authenticatable
         }
 
     }
+
+    public function notifications(){
+        return $this->hasMany(Notification::class,'model_id');
+    }
+
+
+//    public function generateLoginCode(){
+//        $code = '1234';
+//        $this->login_code = $code;
+//        $this->save();
+//        return $code;
+//    }
 
 }
