@@ -17,7 +17,7 @@ class LoginController extends Controller
         if (auth()->check() && auth()->user()->type =='supplier') {
             return redirect(route('supplier.home'));
         }
-        return view('supplier.auth.login');
+        return view('suppliers.auth.login');
     }
 
     public function postPhoneNumber(Request $request){
@@ -32,7 +32,7 @@ class LoginController extends Controller
           $code =  $this->generateLoginCode($user);
 
             session()->flash('code_sent','تم ارسال الكود بنجاح');
-            return view('supplier.auth.code_login',compact('user'));
+            return view('suppliers.auth.code_login',compact('user'));
         }
         else
             session()->flash('loginError','الرقم غير موجود');
@@ -52,7 +52,7 @@ class LoginController extends Controller
                 return redirect()->route('supplier.home');
             }else{
                 session()->flash('code_error','عفواً الكود الذي ادخلته غير صحيح');
-                return  view('supplier.auth.code_login',compact('user'));
+                return  view('suppliers.auth.code_login',compact('user'));
             }
         }
         else{
@@ -65,6 +65,6 @@ class LoginController extends Controller
         Auth::guard()->logout();
         $request->session()->flush();
         $request->session()->regenerate();
-        return redirect(url('/supplier'));
+        return redirect(url('/suppliers'));
     }
 }

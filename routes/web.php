@@ -127,14 +127,14 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin','middleware'=>'admin'],
 
 // **************************************************************************************************
 //***************************************************************************************************
-Route::group(['prefix'=>"supplier",'namespace'=>'supplier'], function (){
+Route::group(['prefix'=>"suppliers",'namespace'=>'supplier'], function (){
     route::get('/', 'LoginController@getSupplierLogin')->name('supplier.login');
     route::post('/postPhone','LoginController@postPhoneNumber')->name('supplier.postPhone');
     Route::post('/supplierLogin', 'LoginController@login')->name('supplier.postLogin');
 });
 
 
-Route::group(['prefix'=>"supplier",'namespace'=>'supplier','middleware'=>"supplier"], function (){
+Route::group(['prefix'=>"suppliers",'namespace'=>'supplier','middleware'=>"supplier"], function (){
 
     route::get('home','HomeController@index')->name('supplier.home');
 
@@ -145,9 +145,17 @@ Route::group(['prefix'=>"supplier",'namespace'=>'supplier','middleware'=>"suppli
 
     route::get('orders/show/{id}','OrdersController@show')->name('supplier.orders.show');
 
+    route::get('financial-dues','financialController@index')->name('supplier.financial.dues');
 
 
 
+
+//
+//
+//
+//    route::get('/fn',function (){
+//        return $reply = \App\Reply::find(7)->total();
+//    });
     route::post('/logout','LoginController@logout')->name('supplier.logout');
 });
 

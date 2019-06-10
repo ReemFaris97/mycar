@@ -15,5 +15,14 @@ class Reply extends Model
         return $this->belongsTo(User::class,'supplier_id');
     }
 
+    public function reply_details(){
+        return $this->hasMany(ReplyDetails::class,'reply_id');
+    }
+
+    public function total(){
+        $total = $this->reply_details()->sum('total_parts');
+        return $total;
+    }
+
 
 }

@@ -19,8 +19,8 @@ class supplierMiddleware
         if(auth()->check() && auth()->user()->type =='supplier'){
             if(auth()->user()->is_active != 1){
                 $reason = auth()->user()->suspend_reason;
-                Auth::logout();
                 session()->flash('suspendError',['reason'=>$reason]);
+                Auth::logout();
                 return redirect(route('supplier.login'));
             }
         }

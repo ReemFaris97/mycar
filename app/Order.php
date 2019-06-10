@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Order extends Model
 {
+    use SoftDeletes;
     protected $fillable =  ['user_id','company_id','company_model_id','city_id','year','parts_type','form_image','structure_number','payment_type','status','completed_status'];
 
     public function order_details(){
@@ -57,7 +59,23 @@ class Order extends Model
 
 
 
+   public function checkStatusForAdmin(){
+//    1 new  // 2 new + has offers ( replies )   // 3 accepted  // 4 received   // 5 finished
 
+        switch ($this->status){
+            case 'new' : return '<label class="label label-success"> جديد</label>'; break;
+            case 'waiting' :
+                if($this->winner_reply_id == null)
+                    return '<label class="label label-success"> جديد</label>
+                            <label class="label label-warning"> لديه عروض</label> ' ;
+                else return '<label class="label label-purple">تم اعتماده</label>' ;
+                break;
+
+            case 'received' : return '<label class="label label-pink">تم تسليمه للإدارة</label>' ; break;
+            case 'finished' : return '<label class="label label-inverse">إنتهى</label>'; break;
+
+        }
+   }
 
 //   public function userMadeReply(){
 //        if($this->replies->supplier->where('supplier_id',auth()->id())->count() > 0) return true;

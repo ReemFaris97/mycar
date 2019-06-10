@@ -49,7 +49,7 @@
                         <div class="col-md-4">
                         <h4>حالة الطلب :</h4>
                         <h5 style="font-weight: 600;">
-
+                            {!! $order->checkStatusForAdmin() !!}
                         </h5>
                         </div>
 

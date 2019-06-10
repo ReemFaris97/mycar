@@ -44,7 +44,7 @@
                             <td>{{$order->user->name}}</td>
                             <td>{{$order->order_details->count()}}</td>
                             <td>
-                                    لسه الحالة
+                                  {!! $order->checkStatusForAdmin() !!}
                             </td>
 
                             <td>
