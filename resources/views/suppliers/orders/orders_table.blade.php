@@ -53,7 +53,7 @@
                 {{--<a id="elementRow{{$row->id}}" href="javascript:;" data-id="{{$row->id}}" data-action="activate" data-url="{{route('users.suspendOrActivate')}}" class="statusWithReason label label-success">تفعيل</a>--}}
                 {{--@endif--}}
 
-                <a  id="elementRow{{$order->id}}" href="javascript:;" data-id="{{$order->id}}" data-url="{{route('orders.destroy',$order->id)}}" class="removeElement btn btn-danger waves-effect waves-light btn-sm m-b-5">حذف</a>
+                {{--<a  id="elementRow{{$order->id}}" href="javascript:;" data-id="{{$order->id}}" data-url="{{route('orders.destroy',$order->id)}}" class="removeElement btn btn-danger waves-effect waves-light btn-sm m-b-5">حذف</a>--}}
 
                 {{--@endif--}}
 

@@ -49,6 +49,31 @@ class User extends Authenticatable
 
     }
 
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class,'user_id');
+    }
+
+    public function wallet()
+    {
+        $for_supplier = $this->transactions->where('type','wait')->sum('value');
+        $paid_for_supplier = $this->transactions->where('type','done')->sum('value');
+        $rest = $for_supplier - $paid_for_supplier ;
+        return $rest;
+    }
+
+    public function make_transaction($value,$type,$reason=null)
+    {
+        $transaction = Transaction::create([
+            'value'=>$value,
+            'type'=>$type,
+            'reason'=>$reason,
+            'user_id'=>$this->id,
+        ]);
+        return $transaction;
+    }
+
+
     public function notifications(){
         return $this->hasMany(Notification::class,'model_id');
     }

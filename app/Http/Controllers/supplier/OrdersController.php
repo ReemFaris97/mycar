@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\supplier;
 
 use App\Order;
+use App\Reply;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Traits\Replies_operations;
+use App\Http\Traits\Orders_operations;
 
 class OrdersController extends Controller
 {
+    use Replies_operations,Orders_operations;
 
 //    done
     public function newOrders(){
@@ -51,5 +55,40 @@ class OrdersController extends Controller
     public function show($id){
         $order = Order::findOrFail($id);
         return view('suppliers.orders.details',compact('order'));
+    }
+
+
+    public function pricing(Request $request,$id){
+        $order = Order::find($id);
+
+        if($order->hasAnyReplyByAuthSupplier()){
+            return response()->json([
+                'status'=>false,
+                'title'=>'عفواً',
+                'message'=>"تم تسعير هذا الطلب من قبل"
+            ]);
+        }else {
+            $reply = $this->CreateReply($id);
+            $this->CreateReplyDetails($request,$reply->id,$id);
+            $reply->updateTotal();
+
+            return response()->json([
+                'status'=>true,
+                'title'=>'نجاح',
+                'message'=>"تم إرسال العرض بنجاح"
+            ]);
+        }
+
+    }
+
+    public function test(Request $request,$id){
+        $rules =[
+            'order_id'=>'required|exists:orders,id'
+        ];
+        $reply = Reply::findOrFail($id);
+
+        $this->validate($request,$rules);
+        $this->AcceptReply($request,$reply);
+
     }
 }

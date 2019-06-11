@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Order extends Model
 {
     use SoftDeletes;
-    protected $fillable =  ['user_id','company_id','company_model_id','city_id','year','parts_type','form_image','structure_number','payment_type','status','completed_status'];
+    protected $fillable =  ['user_id','company_id','company_model_id','city_id','year','parts_type','form_image','structure_number','payment_type','status','completed_status','winner_reply_id','app_percentage','total','supplier_percent','supplier_id'];
 
     public function order_details(){
         return $this->hasMany(OrderDetails::class,'order_id');
@@ -57,6 +57,9 @@ class Order extends Model
         else return false;
    }
 
+   public function myReply(){
+        return $this->replies()->where('supplier_id',auth()->id())->first();
+   }
 
 
    public function checkStatusForAdmin(){
@@ -73,9 +76,10 @@ class Order extends Model
 
             case 'received' : return '<label class="label label-pink">تم تسليمه للإدارة</label>' ; break;
             case 'finished' : return '<label class="label label-inverse">إنتهى</label>'; break;
-
         }
    }
+
+
 
 //   public function userMadeReply(){
 //        if($this->replies->supplier->where('supplier_id',auth()->id())->count() > 0) return true;

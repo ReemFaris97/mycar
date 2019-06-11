@@ -145,6 +145,10 @@ Route::group(['prefix'=>"suppliers",'namespace'=>'supplier','middleware'=>"suppl
 
     route::get('orders/show/{id}','OrdersController@show')->name('supplier.orders.show');
 
+//    pricing ---
+    Route::post('order/pricing/{id}','OrdersController@pricing')->name('supplier.order.pricing');
+    Route::get('order/test/something/{id}','OrdersController@test');
+
     route::get('financial-dues','financialController@index')->name('supplier.financial.dues');
 
 
