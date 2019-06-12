@@ -16,17 +16,22 @@
             <td>{{$order->user->name}}</td>
             <td>{{$order->order_details->count()}}</td>
             <td>
-                @if($order->status == 'new')
-                    <label class="label label-success">جديد</label>
-                @endif
+                @if($order->status != 'new' && $order->supplier_id != auth()->id())
 
-                @if($order->status == 'waiting')
-                    @if($order->hasAnyReplyByAuthSupplier())
-                        <label class="label label-primary">قيد الإنتظار</label>
-                    @else
+                    <label class="label label-danger">مرفوض</label>
+                @else
+
+                    @if($order->status == 'new')
                         <label class="label label-success">جديد</label>
                     @endif
-                @endif
+
+                    @if($order->status == 'waiting')
+                        @if($order->hasAnyReplyByAuthSupplier())
+                            <label class="label label-primary">قيد الإنتظار</label>
+                        @else
+                            <label class="label label-success">جديد</label>
+                        @endif
+                    @endif
 
                     @if($order->status == 'received')
                         <label class="label label-success">طلبات معتمده</label>
@@ -39,6 +44,8 @@
                             <label class="label label-purple">منتهي</label>
                         @endif
                     @endif
+
+                @endif
 
             </td>
 

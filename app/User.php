@@ -9,7 +9,7 @@ use Silber\Bouncer\Database\HasRolesAndAbilities;
 use Illuminate\Database\Eloquent\SoftDeletes;
 class User extends Authenticatable
 {
-    use Notifiable , HasRolesAndAbilities,SoftDeletes;
+    use  HasRolesAndAbilities,SoftDeletes;
 
     /**
      * The attributes that are mass assignable.

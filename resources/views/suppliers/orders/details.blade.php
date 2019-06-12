@@ -8,14 +8,14 @@
         .loading-bar {
             display: none;
             position: fixed;
-            z-index: 1000;
+            z-index: 999999999;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            background-image: {{asset('supplier/assets/images/Spinner.gif')}};
+            background-image: url("/supplier/assets/images/Spinner.gif");
             background-position: 50% 50%;
-            background-color: rgba(255,255,255,0.8) ;
+            background-color: rgba(255,255,255,0.3) ;
             background-repeat: no-repeat;
         }
 
@@ -76,6 +76,11 @@
                         <h3>حالة الطلب :</h3>
 
                         <h4 style="font-weight: 600;">
+                    @if($order->status != 'new' && $order->supplier_id != auth()->id())
+
+                                <label class="label label-danger">مرفوض</label>
+                    @else
+
                             @if($order->status == 'new')
                                 <label class="label label-success">جديد</label>
                             @endif
@@ -100,6 +105,7 @@
                                 @endif
                             @endif
 
+                    @endif
                         </h4>
                         </div>
 

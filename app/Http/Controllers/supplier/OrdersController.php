@@ -35,9 +35,10 @@ class OrdersController extends Controller
 //    done
     public function received(){
         $user = auth()->user();
-        $orders = Order::WhereHas('replies', function($query) use ($user) {
-            $query->where('supplier_id',$user->id)->where('status','accepted');
-        })->get();
+//        $orders = Order::WhereHas('replies', function($query) use ($user) {
+//            $query->where('supplier_id',$user->id)->where('status','accepted');
+//        })->get();
+        $orders = Order::whereSupplierId(auth()->id())->get()->reverse();
         return view('suppliers.orders.received',compact('orders'));
     }
 
@@ -45,7 +46,7 @@ class OrdersController extends Controller
 //    done ..
     public function finished(){
         $user = auth()->user();
-        $orders = Order::where('status','finished')->orWhere('status','received')->WhereHas('replies', function($query) use($user) {
+        $orders = Order::where('status','finished')->orWhere('status','waiting')->WhereHas('replies', function($query) use($user) {
             $query->where('supplier_id',$user->id)->where('status','finished')->orWhere('status','refused');
         })->get();
         return view('suppliers.orders.finished',compact('orders'));
@@ -59,6 +60,7 @@ class OrdersController extends Controller
 
 
     public function pricing(Request $request,$id){
+
         $order = Order::find($id);
 
         if($order->hasAnyReplyByAuthSupplier()){

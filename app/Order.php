@@ -60,6 +60,11 @@ class Order extends Model
    public function myReply(){
         return $this->replies()->where('supplier_id',auth()->id())->first();
    }
+   
+   public function orderIsWon(){
+        if($this->supplier_id == auth()->id()) return 1 ;
+        else return 0;
+   }
 
 
    public function checkStatusForAdmin(){
