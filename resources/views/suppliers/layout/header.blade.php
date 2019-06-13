@@ -42,6 +42,26 @@
                     </div>
                     <!-- End Notification bar -->
                 </li>
+
+                <li>
+                    <!-- Notification -->
+                    <div class="notification-box">
+                        <ul class="list-inline m-b-0">
+                            <li>
+                                @if(app()->getLocale() == "ar")
+                                <a style="font-size: 19px; line-height: 63px; margin-right: 15px;" href="{{route('lang',['en'])}}" class="lang">English<img alt="english" src="{{asset('supplier/assets/images/flag2.jpg')}}"></a>
+                                @else
+                                <a style="font-size: 19px; line-height: 63px; margin-right: 15px;" href="{{route('lang',['ar'])}}" class="lang">العربية<img alt="arabic" src="{{asset('supplier/assets/images/flag1.jpg')}}"></a>
+                                @endif
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- End Notification bar -->
+                </li>
+
+
+
+
                 {{--<li class="hidden-xs">--}}
                     {{--<form role="search" class="app-search">--}}
                         {{--<input type="text" placeholder="Search..."--}}

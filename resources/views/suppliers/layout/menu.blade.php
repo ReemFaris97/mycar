@@ -46,7 +46,7 @@
         <!--- Sidemenu -->
         <div id="sidebar-menu">
             <ul>
-                <li class="text-muted menu-title">القائمة</li>
+                <li class="text-muted menu-title">@lang('suppliers.menu')</li>
 
 
                     <li><a href="{{route('supplier.home')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>الرئيسية</span></a></li>

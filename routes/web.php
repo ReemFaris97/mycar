@@ -128,9 +128,18 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin','middleware'=>'admin'],
 // **************************************************************************************************
 //***************************************************************************************************
 Route::group(['prefix'=>"suppliers",'namespace'=>'supplier'], function (){
+    Route::get('set-locale/{locale}', function ($lang) {
+        if (array_key_exists($lang, \Config::get('language'))) {
+            \Session::put('locale', $lang);
+        }
+        return back();
+    })->name('lang');
+
     route::get('/', 'LoginController@getSupplierLogin')->name('supplier.login');
     route::post('/postPhone','LoginController@postPhoneNumber')->name('supplier.postPhone');
     Route::post('/supplierLogin', 'LoginController@login')->name('supplier.postLogin');
+
+
 });
 
 

@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="{{asset('/admin/assets/images/logo.png')}}">
 
     <!-- App title -->
-    <title>قطعة سيارتي</title>
+    <title>@lang('suppliers.title')</title>
 
     <!-- App CSS -->
     <link href="{{asset('/admin/assets/css/bootstrap-rtl.min.css')}}" rel="stylesheet" type="text/css" />
@@ -38,7 +38,7 @@
 <div class="wrapper-page">
     <div class="text-center">
         <a href="#" class="logo">
-            <span>قطعة سيارتي<span> (موردين) </span></span>
+            <span>@lang('suppliers.title')<span> (@lang('suppliers.suppliers')) </span></span>
 
         </a>
         {{--<h5 class="text-muted m-t-0 font-600">موقع وتطبيق</h5>--}}

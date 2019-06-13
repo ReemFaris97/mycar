@@ -1,5 +1,5 @@
 @extends('suppliers.layout.master')
-@section('title','لوحة تحكم الموردين')
+@section('title',__('suppliers.suppliers_panel'))
 
 @section('content')
 
@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-sm-12">
 
-            <h4 class="page-title">الصفحة الرئيسية</h4>
+            <h4 class="page-title">@lang('suppliers.main_page')</h4>
         </div>
     </div>
 

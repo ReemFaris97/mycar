@@ -1260,3 +1260,15 @@ a.logo-wrapper img {
     width: 150px;
 }
 /*Modifications*/
+/****************************************/
+.lang {
+    /*border-right: 2px solid;*/
+    padding: 0 4px 0 0;
+    margin: 0 4px 0 0;
+    vertical-align: middle;
+}
+
+.lang img {
+    width: 22px;
+    margin: 0 7px 0 0;
+}
