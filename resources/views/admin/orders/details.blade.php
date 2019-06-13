@@ -173,7 +173,7 @@
                                 <tr>
                                     <td>{{$i++}}</td>
                                     <td>{{$reply->supplier->name}}</td>
-                                    <td>{{$reply->total}}</td>
+                                    <td>{{$reply->total + $order->delivery_value}}</td>
 
                                 </tr>
                             @endforeach
