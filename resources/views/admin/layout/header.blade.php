@@ -3,7 +3,7 @@
 
     <!-- LOGO -->
     <div class="topbar-left">
-        <a href="{{route('homePage')}}" class="logo"><span>  قطعة<span> سيارتي </span></span><i class="zmdi zmdi-layers"></i></a>
+        <a href="{{route('homePage')}}" class="logo"></a>
     </div>
 
     <!-- Button mobile view to collapse sidebar menu -->

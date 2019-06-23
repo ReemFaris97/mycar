@@ -37,7 +37,8 @@
 <div class="clearfix"></div>
 <div class="wrapper-page">
     <div class="text-center">
-        <a href="#" class="logo"><span>قطعة<span>سيارتي</span></span></a>
+<!--        <a href="#" class="logo"><span>قطعة<span>سيارتي</span></span></a>-->
+        
         {{--<h5 class="text-muted m-t-0 font-600">موقع وتطبيق</h5>--}}
     </div>
 
