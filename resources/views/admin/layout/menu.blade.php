@@ -52,11 +52,14 @@
                     <li><a href="{{route('admins.index')}}" class="waves-effect"><i class="zmdi zmdi-accounts"></i><span>أعضاء الإدارة</span></a></li>
                     <li><a href="{{route('cities.index')}}" class="waves-effect"><i class="zmdi zmdi-pin"></i><span>المدن</span></a></li>
                     <li><a href="{{route('companies.index')}}" class="waves-effect"><i class="zmdi zmdi-device-hub"></i><span>الشركات المصنعة</span></a></li>
-                    <li><a href="{{route('models.index')}}" class="waves-effect"><i class="zmdi zmdi-view-carousel"></i><span>الموديلات</span></a></li>
-                    <li><a href="{{route('parts.index')}}" class="waves-effect"><i class="zmdi zmdi-apps"></i><span>القطع و المنتجات</span></a></li>
+
+{{--                    <li><a href="{{route('models.index')}}" class="waves-effect"><i class="zmdi zmdi-view-carousel"></i><span>الموديلات</span></a></li>--}}
+{{--                    <li><a href="{{route('parts.index')}}" class="waves-effect"><i class="zmdi zmdi-apps"></i><span>القطع و المنتجات</span></a></li>--}}
+
+
                     <li><a href="{{route('users.index')}}" class="waves-effect"><i class="zmdi zmdi-accounts-outline"></i><span>إدارة المستخدمين</span></a></li>
                     <li><a href="{{route('suppliers.index')}}" class="waves-effect"><i class="zmdi zmdi-accounts-outline"></i><span>إدارة الموردين</span></a></li>
-                    <li><a href="{{route('orders.index')}}" class="waves-effect"><i class="zmdi zmdi-border-all"></i><span>طلبات العملاء</span></a></li>
+{{--                    <li><a href="{{route('orders.index')}}" class="waves-effect"><i class="zmdi zmdi-border-all"></i><span>طلبات العملاء</span></a></li>--}}
                 <li><a href="{{request()->root()}}/dashboard/settings/general" class="waves-effect"><i class="zmdi zmdi-settings"></i><span>الإعدادات</span></a></li>
                 <li><a href="{{route('instructions.index')}}" class="waves-effect"><i class="zmdi zmdi-comment-text"></i><span>الإرشادات</span></a></li>
                 <li class="has_sub">
