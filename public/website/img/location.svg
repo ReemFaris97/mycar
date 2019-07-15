@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="77.566" height="80.487" viewBox="0 0 77.566 80.487">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #d054e2;
+        opacity: 0.66;
+      }
+
+      .cls-2 {
+        fill: #a15edd;
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="Group_3847" data-name="Group 3847" transform="translate(-113 -125.071)">
+    <path id="Path_3403" data-name="Path 3403" class="cls-1" d="M77.565,74.732V28.013A6.013,6.013,0,0,0,71.553,22H6.013A6.013,6.013,0,0,0,0,28.013v46.72A6.013,6.013,0,0,0,6.013,80.82H53.83l20.1,21.315a1.127,1.127,0,0,0,1.924-.992l-4.1-20.338a6.013,6.013,0,0,0,5.817-6.073Z" transform="translate(113 103.07)"/>
+    <circle id="Ellipse_79" data-name="Ellipse 79" class="cls-2" cx="18.519" cy="18.519" r="18.519" transform="translate(126.104 149.951) rotate(-34.94)"/>
+    <path id="_ionicons_svg_md-pin" class="cls-3" d="M104.571,32A8.512,8.512,0,0,0,96,40.4c0,6.3,8.571,15.6,8.571,15.6s8.571-9.3,8.571-15.6A8.512,8.512,0,0,0,104.571,32Zm0,11.4a3,3,0,1,1,3.061-3A3,3,0,0,1,104.571,43.4Z" transform="translate(47 111)"/>
+  </g>
+</svg>

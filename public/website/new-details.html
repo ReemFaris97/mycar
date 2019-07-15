@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="HandheldFriendly" content="true">
+    <title> قطعة سيارتى - الرئيسية </title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="shortcut icon" href="img/logo-sm.png">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/timeTo.css">
+    <!-- This for here -->
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <!-- -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style1.css">
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+</head>
+
+
+
+<body>
+    <div class="body-overlay"></div>
+    <!-- Start Loading-Page -->
+    <div class="loader">
+        <div class="loading-window">
+            <div class="car">
+                <div class="strike"></div>
+                <div class="strike strike2"></div>
+                <div class="strike strike3"></div>
+                <div class="strike strike4"></div>
+                <div class="strike strike5"></div>
+                <div class="car-detail spoiler"></div>
+                <div class="car-detail back"></div>
+                <div class="car-detail center"></div>
+                <div class="car-detail center1"></div>
+                <div class="car-detail front"></div>
+                <div class="car-detail wheel"></div>
+                <div class="car-detail wheel wheel2"></div>
+            </div>
+
+            <div class="text">
+                <span>Loading</span><span class="dots">...</span>
+            </div>
+        </div>
+    </div>
+    <!-- End Loading-Page -->
+
+
+    <!-- Start Top Nav -->
+    <section class="top-nav">
+        <div class="row">
+
+            <div class="col-md-7 col-sm-6 col-xs-5 no-padd-sm">
+                <div class="top-r">
+                    جميع قطع الغيار أصلية
+                </div>
+            </div>
+
+            <div class="col-md-5 col-sm-6 col-xs-7 no-padding">
+                <ul class="top-l">
+                    <li>
+                        <a href="sign-divider.html">انضم كمورد</a>
+                    </li> .
+                    <!---- if in arabic -->
+                    <li class="lang">
+                        <a href="#">Eng</a> -
+                        <span>العربية</span>
+                    </li>
+                    <!---- if in english -->
+                    <!--
+                    <li class="lang">
+                        <a href="#">العربية</a> - 
+                        <span>Eng</span>
+                    </li>
+-->
+
+                </ul>
+            </div>
+
+        </div>
+    </section>
+    <!-- End Top Nav -->
+
+
+    <!--Start Navbar-->
+    <div class="navbar">
+        <div class="row">
+
+
+            <div class="col-md-2 col-sm-2 col-xs-4 no-padding">
+                <div class="nav-right">
+                    <a href="begin.html" class="logo-nav"><img src="img/logo.png"></a>
+                </div>
+            </div>
+
+            <div class="col-md-7 col-sm-6 col-xs-2 no-padding">
+                <div class="right-one">
+                    <div id="nav-icon1">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <div class="navy">
+                        <ul class="nav cf" id="ul1">
+                            <li class="active"><a href="begin.html">الرئيسية</a></li>
+                            <li><a href="profile.html">حسابى</a></li>
+                            <li><a href="who-us.html">من نحن</a></li>
+                            <li><a href="contact.html">اتصل بنا</a></li>
+                        </ul>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-4 col-xs-6 no-padding">
+                <ul class="nav-left">
+                    <li>
+                        <button class="modal-btn" id="seven">
+                            سؤال مباشر
+                        </button>
+                    </li>
+
+                    <li>
+                        <button class="modal-btn" id="two">
+                            اتصل بنا
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+    </div>
+    <!--End Navbar-->
+
+
+    <!-- Start Header -->
+    <!--
+    <section class="header" id="header">
+        <div class="in-content">
+            <h4>Welcome to</h4>
+            <div class="in-logo">
+                <img src="img/logo.png">
+            </div>
+        </div>
+    </section>
+-->
+
+    <section class="TABS">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 col-sm-4 col-xs-12 right-tab">
+                    <ul class="nav nav-tabs contan-tabs">
+                        <li><a href="account-information.html"><i class="fas fa-user"></i> معلومات الحساب </a></li>
+                        <li><a href="entitlements.html"><i class="fas fa-file-alt"></i> مستحقاتي</a></li>
+                        <li class="active"><a href="requests.html"><i class="fas fa-list"></i> طلباتي</a></li>
+                        <li><a href="notifications.html"><i class="fas fa-bell"></i> الاشعارات</a></li>
+                        <li><a href="#"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج </a></li>
+                    </ul>
+                </div>
+                <div class="col-md-10 col-sm-8 col-xs-12 ">
+                    <div class="left-tab">
+                        <div class="tab-content ">
+
+                            <div class="details">
+                                <h3>طلباتي
+                                    <span class="span1"></span>
+                                    <span class="span2"></span>
+                                </h3>
+                                <div class="top-details">
+                                    <div class="h-ditails">
+                                        طلب رقم 0000059864
+                                    </div>
+                                    <div class="b-details">
+                                        <ul>
+                                            <li>
+                                                <span>كيا</span>
+                                                <span>سيراتو</span>
+                                                <span>2019</span>
+                                            </li>
+                                            <li>الحاله :
+                                                <span> طلب جديد</span>
+                                            </li>
+                                            <li>رقم الهيكل :
+                                                <span>1657445</span>
+                                                <div>صورة الهيكل :
+                                                    <img src="img/logo.png">
+                                                </div>
+                                            </li>
+
+                                        </ul>
+
+                                    </div>
+                                </div>
+                                <form>
+                                    <table class="mytable">
+                                        <thead>
+                                            <tr>
+                                                <th> م</th>
+                                                <th> اسم القطعة</th>
+                                                <th>رقم القطعة</th>
+                                                <th>النوع </th>
+                                                <th>الكمية</th>
+                                                <th>صورة القطعة</th>
+                                                <th>متوفر</th>
+                                                <th>العرض</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="bord-t">
+                                            <tr>
+                                                <td>1</td>
+                                                <td>حساس ماكينة 1800</td>
+                                                <td>1312</td>
+                                                <td class="type-native">اصلى</td>
+                                                <td> 1</td>
+                                                <td> <img src="img/logo.png"></td>
+                                                <td>
+                                                    <input id="yas1" class="custom-radio" type="radio" name="ok">
+                                                    <label class="custom-label col-icon2" for="yas1"><i class="fas fa-check-circle"></i></label>
+
+                                                    <input id="no1" class="custom-radio" type="radio" name="ok">
+                                                    <label class="custom-label col-icon" for="no1"><i class="fas fa-times-circle"></i></label>
+                                                </td>
+                                                <td>
+                                                    <input type="text">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>صدام خلفى فوق</td>
+                                                <td>1450</td>
+                                                <td class="type-used">تشليح</td>
+                                                <td> 2</td>
+                                                <td> <img src="img/logo.png"></td>
+                                                <td>
+                                                    <input id="yas2" class="custom-radio" type="radio" name="ok1">
+                                                    <label class="custom-label col-icon2" for="yas2"><i class="fas fa-check-circle"></i></label>
+
+                                                    <input id="no2" class="custom-radio" type="radio" name="ok1">
+                                                    <label class="custom-label col-icon" for="no2"><i class="fas fa-times-circle"></i></label>
+                                                </td>
+                                                <td>
+                                                    <input type="text">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>صدام امامى فوق</td>
+                                                <td>1920</td>
+                                                <td class="type-orginal">تجارى</td>
+                                                <td> 3</td>
+                                                <td> <img src="img/logo.png"></td>
+                                                <td>
+                                                    <input id="yas3" class="custom-radio" type="radio" name="ok2">
+                                                    <label class="custom-label col-icon2" for="yas3"><i class="fas fa-check-circle"></i></label>
+
+                                                    <input id="no3" class="custom-radio" type="radio" name="ok2">
+                                                    <label class="custom-label col-icon" for="no3"><i class="fas fa-times-circle"></i></label>
+                                                </td>
+                                                <td>
+                                                    <input type="text">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p id="demo" class="timer"></p>
+                                    <input class="end-details" type="submit" value="تقديم عرض">
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- End Header -->
+
+
+    <!-- Start Footer -->
+    <section class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="row">
+
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="foot1">
+                            <h3>عن قطعة سيارتى</h3>
+                            <ul>
+                                <li> <a href="who-us.html">من نحن</a> </li>
+                                <li> <a href="sign-divider.html">انضم الينا</a> </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="foot1">
+                            <h3>قبل أن تبدأ</h3>
+                            <ul>
+                                <li> <a href="terms.html">الشروط والأحكام</a> </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="foot1">
+                            <h3>اتصل بنا</h3>
+                            <ul>
+                                <li> <a href="mailto:reem@sayarty.com">reem@sayarty.com</a> </li>
+                                <li> <a href="https://wa.me/15551234567">+15551234567</a> </li>
+                                <li> Suadi Arabia - Al qassim </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="foot1">
+                            <h3>تابعونا</h3>
+                            <ul class="social">
+                                <li><a href="#"> <i class="fab fa-instagram"></i> </a></li>
+                                <li><a href="#"> <i class="fab fa-twitter"></i> </a></li>
+                                <li><a href="#"> <i class="fab fa-facebook"></i> </a></li>
+                                <li><a href="#"> <i class="fab fa-google-plus"></i> </a></li>
+                                <li><a href="#"> <i class="fab fa-whatsapp"></i> </a></li>
+                                <li><a href="#"> <i class="fab fa-snapchat-ghost"></i> </a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <form class="subsc">
+                            <h3>ليصلك كل جديد</h3>
+                            <input type="text" class="form-control" placeholder="البريد الالكترونى...">
+                            <button type="submit">
+                                ارسال
+                            </button>
+                        </form>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="sharing">
+            <span>مشاركة الموقع : </span>
+            <ul>
+                <li><a href="#"> <i class="fab fa-instagram"></i> </a></li>
+                <li><a href="#"> <i class="fab fa-twitter"></i> </a></li>
+                <li><a href="#"> <i class="fab fa-facebook"></i> </a></li>
+                <li><a href="#"> <i class="fab fa-google-plus"></i> </a></li>
+                <li><a href="#"> <i class="fab fa-whatsapp"></i> </a></li>
+                <li><a href="#"> <i class="fab fa-snapchat-ghost"></i> </a></li>
+            </ul>
+        </div>
+
+        <div class="copyright">
+            &copy; Qet3et Sayaraty Website by <a href="http://panorama-alqassim.com">Panorama Al Qassim</a>
+        </div>
+
+    </section>
+    <!-- End Footer -->
+
+
+    <!----------------- Start Chat Modal -------------------->
+    <div id="modal-container" class="modaling">
+        <div class="modal-background">
+            <div class="modal">
+                <span class="closeit"> <i class="fas fa-times"></i> </span>
+                <h2>سؤال مباشر - خدمة العملاء</h2>
+
+                <div class="chats">
+                    <div class="chat1 recieve">
+                        <div class="chat-img">
+                            <img src="img/1.png">
+                        </div>
+                        <div class="chat-body">
+                            <p>
+                                مرحبا بك، كيف أساعدك ياقمر ؟
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="chat1 send">
+                        <div class="chat-img">
+                            <img src="img/1.png">
+                        </div>
+                        <div class="chat-body">
+                            <p>
+                                شكرا يا بيه أنا مبشحتش على فكرة والله و شكرا شكرا اوى لحد كده شكرا عاوزة اكتب كلام كتير و انزل سطر عشان كده برغى الحقيقة
+                            </p>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <form class="chatting">
+                    <textarea rows="4" cols="95" name="inbox" id="inbox" class="form-control input-lg" data-fv-field="inbox" placeholder="اكتب رسالتك..."></textarea>
+                    <button type="submit"> <i class="fas fa-arrow-right"></i> </button>
+                </form>
+
+                <!--
+                <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
+                    <rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
+                </svg>
+-->
+            </div>
+        </div>
+    </div>
+    <!----------------- End Chat Modal -------------------->
+
+    <!----------------- Start Call Modal -------------------->
+    <!--
+    <div id="modal-call" class="">
+        <div class="modal-background">
+            <div class="modal">
+                <span class="closeit"> <i class="fas fa-times"></i> </span>
+
+                <a href="index.html"> <img src="img/logo.png"> </a>
+
+                <p>
+                    سيتم الاتصال بك على الرقم <span>+965158156</span>
+                </p>
+                <p>
+                    من أحد موظفين خدمة العملاء
+                </p>
+
+                <div id="countdown-1"></div>
+                <p><button id="reset-1" type="button">Reset this timer</button></p>
+
+                <div class="clock"></div>
+                <div class="clock"></div>
+
+            </div>
+        </div>
+    </div>
+-->
+    <!----------------- End Call Modal -------------------->
+
+    <!--Scroll Button-->
+    <div id="scroll-top">
+        <i class="fa fa-angle-up"></i>
+    </div>
+
+
+
+    <!-- Strat End -->
+    <!--===============================
+         SCRIPT
+         ===================================-->
+
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.time-to.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/all.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+
+    </script>
+
+    <!-- -->
+    <script src="js/script.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.mytable').DataTable();
+        });
+
+    </script>
+    <script>
+            var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
+    var x = setInterval(function () {
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+
+        document.getElementById("demo").innerHTML = hours + "h:" +
+            minutes + "m:" + seconds + "s";
+
+
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "EXPIRED";
+        }
+    }, 1000);
+    </script>
+</body>
+
+</html>

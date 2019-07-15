@@ -1,0 +1,1030 @@
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Style BIG-tabs >>>>>>>>>>>>>>>>>>>>>>>>>>*/
+
+section.TABS {
+    margin-top: 50px;
+    margin-bottom: 50px
+}
+
+section.TABS .right-tab {
+    float: right;
+}
+
+section.TABS .contan-tabs > li {
+    float: none;
+    margin-bottom: 0px;
+    text-align: right;
+}
+
+section.TABS ul.contan-tabs {
+    display: inline-block;
+    background: #FF5E00;
+    padding: 40px 5px;
+    margin-top: 40px;
+}
+
+section.TABS ul.contan-tabs > li > a,
+section.TABS ul.contan-tabs > li > a:hover,
+section.TABS ul.contan-tabs > li > a:focus {
+    color: #FFF;
+    font-weight: 400;
+    padding: 10px 5px;
+    border: none;
+}
+
+section.TABS .contan-tabs > li.active > a,
+section.TABS .contan-tabs > li.active > a:focus,
+section.TABS .contan-tabs > li.active > a:hover {
+    color: #FFF;
+    cursor: default;
+    background-color: #FF5E00;
+    border: none;
+    border-bottom-color: none;
+}
+
+section.TABS ul.contan-tabs > li.active > a:after {
+    content: "";
+    width: 27px;
+    color: #FFF;
+    position: absolute;
+    height: 5px;
+    top: 20px;
+    left: -10px;
+    background: #FFF;
+}
+
+.TABS li a .svg-inline--fa {
+    overflow: visible;
+    margin-left: 5px;
+}
+
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Style account-information >>>>>>>>>>>>>>>>>>>>>>>>>>*/
+section.TABS div#home ul li {
+    width: 100%;
+    margin-bottom: 3px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+section.TABS div#home ul li img {
+    width: 22px;
+    height: 22px;
+}
+
+section.TABS #home h4 {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 12px;
+    margin-top: 10px;
+}
+
+section.TABS #home h3,
+section.TABS #menu1 h3,
+section.TABS #menu2 h3,
+section.TABS #menu3 h3,
+section.TABS .modify h3,
+section.TABS .notifiction h3,
+section.TABS #waiting h3,
+section.TABS .waiting-details h3,
+section.TABS .details h3 {
+    margin-bottom: 25px;
+    margin-top: 5px;
+    font-size: 17px;
+    font-weight: 900;
+    position: relative;
+    width: 110px;
+}
+
+section.TABS #home h3:after,
+section.TABS #menu1 h3:after,
+section.TABS #menu2 h3:after,
+section.TABS #menu3 h3:after,
+section.TABS .modify h3:after,
+section.TABS .notifiction h3:after,
+section.TABS #menu1 h3:after,
+section.TABS .waiting-details h3:after,
+section.TABS .details h3:after {
+    content: " ";
+    width: 80px;
+    height: 3px;
+    background: #333;
+    position: absolute;
+    right: 0px;
+    top: 30px;
+}
+
+section.TABS h3 .span1 {
+    width: 10px;
+    height: 3px;
+    background: #FF5E00;
+    position: absolute;
+    margin-right: 7px;
+    bottom: -15px;
+}
+
+section.TABS h3 .span2 {
+    width: 10px;
+    height: 3px;
+    background: #FF5E00;
+    position: absolute;
+    margin-right: 9px;
+    bottom: -15px;
+    left: 5px;
+}
+
+section.TABS #home ul li a {
+    color: #FF5E00;
+    text-decoration: underline;
+}
+
+
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Style entitlements >>>>>>>>>>>>>>>>>>>>>>>>>>*/
+section.TABS #menu1 h3 .span1 {
+    margin-right: 3px
+}
+
+section.TABS #waiting h3 .span1 {
+    margin-right: 3px
+}
+
+section.TABS .div-money {
+    width: 100px;
+    height: 25px;
+    background: #FF5E00;
+    text-align: center;
+    padding-top: 2px;
+    color: #FFF;
+    font-size: 15px;
+}
+
+section.TABS #menu1 .table-box,
+section.TABS #waiting .table-box {
+    width: 50%;
+    height: 100%;
+    display: inline-block;
+    margin: 20px 120px;
+    border: 1px solid #DDD;
+}
+
+section.TABS .table-box div {
+    text-align: center;
+    padding: 4px;
+}
+
+section.TABS .top-table {
+    background: #FF5E00;
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    color: #FFF
+}
+
+
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Style requests >>>>>>>>>>>>>>>>>>>>>>>>>>*/
+section.TABS #menu2 h3 {
+    margin-left: 30px;
+    display: inline-block;
+
+}
+
+section.TABS #menu2 h3 .span1 {
+    margin-right: 31px;
+}
+
+section.TABS table#mytable {
+    border: 1px solid #DDD;
+}
+
+section.TABS #menu2 table tr th {
+    text-align: center;
+    background-color: #FF5E00;
+    color: #FFF;
+}
+
+section.TABS table tr td a {
+    background: #FF5E00;
+    color: #FFF;
+    padding: 0 10px;
+    border-radius: 20px;
+    border: 1px solid #FF5E00;
+}
+
+section.TABS table tr td a:hover,
+table tr td a:focus {
+    text-decoration: none;
+    color: #FF5E00;
+    background: #FFF;
+    border: 1px solid #FF5E00;
+}
+
+section.TABS #menu2 table tr td {
+    text-align: center;
+}
+
+section.TABS #menu2 table tr td.font-s {
+    font-size: 21px;
+}
+
+section.TABS #menu2 ul {
+    display: inline-block;
+}
+
+section.TABS #menu2 ul li {
+    margin-left: 45px;
+}
+
+ul.nav.nav-tabs.child-tabs {
+    display: inline-block;
+    width: auto;
+    border-bottom: none;
+}
+
+.child-tabs > li.active > a,
+.child-tabs > li.active > a:focus,
+.child-tabs > li.active > a:hover {
+    color: #FFF;
+    cursor: default;
+    background-color: #FF5E00;
+    border: 1px solid transparent;
+    border-bottom-color: transparent;
+    padding: 4px 25px;
+    border-radius: 20px;
+}
+
+ul.child-tabs li a {
+    padding: 4px 25px;
+}
+
+.child-tabs > li > a:focus,
+.child-tabs > li > a:hover {
+    color: #FFF;
+    cursor: default;
+    background-color: #FF5E00;
+    border: 1px solid transparent;
+    border-bottom-color: transparent;
+    padding: 4px 25px;
+    border-radius: 20px;
+}
+
+ul.child-tabs li {
+    float: right;
+}
+
+
+
+ul.child-tabs > li:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    bottom: 0;
+    width: 0%;
+    opacity: 0;
+    border-bottom: 4px solid transparent;
+    border-radius: 15px;
+}
+
+.TABS .big-child table tr td.col-icon {
+    color: green
+}
+
+.TABS .big-child table tr td.col-icon2 {
+    color: red
+}
+
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Style details >>>>>>>>>>>>>>>>>>>>>>>>>>*/
+
+section.TABS .details h3 .span1 {
+    margin-right: 31px;
+}
+
+.details .top-details {
+    margin-bottom: 15px;
+    margin-top: 50px;
+}
+
+.details form tr td input[type="text"] {
+    border: 1px solid #333;
+    width: 80px;
+    padding: 3px 8px;
+}
+
+.details .h-ditails {
+    padding: 8px;
+    background: #FF5E00;
+    color: #FFF;
+}
+
+.b-details {
+    border: 1px solid #333;
+    padding: 4px 10px;
+    border-top-color: transparent;
+    height: 100px;
+}
+
+.b-details ul li {
+    display: inherit;
+    margin-bottom: 6px;
+    font-weight: 600
+}
+
+.b-details ul li div img {
+    width: 45px;
+    height: 20px;
+}
+
+.b-details ul li div {
+    display: inline-block;
+    margin-right: 25px;
+}
+
+.b-details ul li span {
+    margin-left: 10px
+}
+
+.details table tr th {
+    text-align: center;
+    background: #FF5E00;
+    color: #FFF;
+}
+
+.details table tbody.bord-t {
+    border: 1px solid #333 !important;
+    border-top-color: transparent;
+}
+
+.details tr td {
+    text-align: center;
+    font-weight: 600;
+}
+
+.details tr td img {
+    width: 50px;
+}
+
+.details tr td .col-icon2 {
+    color: green;
+}
+
+.details tr td .col-icon {
+    color: red;
+}
+
+.details tr td.type-native {
+    color: red;
+    font-weight: 600;
+}
+
+.details tr td.type-orginal {
+    color: #FF5E00;
+    font-weight: 600;
+}
+
+.details tr td.type-used {
+    color: green;
+    font-weight: 600;
+}
+
+/*
+.details tr td div {
+    border: 1px solid #333;
+}
+*/
+
+.custom-label {
+    transition: .5s all;
+    border: 1px solid transparent;
+    border-radius: 20px;
+}
+
+.custom-label:hover {
+    box-shadow: 0px 0px 20px rgba(3, 3, 3, .5);
+}
+
+.custom-radio:checked + .custom-label {
+    border: 1px solid;
+    box-shadow: 0px 0px 20px rgba(3, 3, 3, .5);
+}
+
+.custom-radio {
+    display: none;
+}
+
+.timer {
+    text-align: center;
+    font-size: 26px;
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+.end-details {
+    text-align: center;
+    width: 165px;
+    padding: 8px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    background-color: #FF5E00;
+    color: #FFF;
+    margin: auto;
+    display: inherit;
+    transition: .5s all;
+}
+
+.end-details:hover {
+    border: 1px solid #FF5E00;
+    background-color: #FFF;
+    color: #FF5E00;
+}
+
+div#DataTables_Table_0_info {
+    float: right;
+
+}
+
+div#DataTables_Table_0_paginate {
+    float: left;
+    margin-top: 8px;
+}
+
+#menu3 tr td input[type="text"] {
+    border: 1px solid #333;
+    padding: 4px 13px;
+    width: 75px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    color: #FFF !important;
+    border: 1px solid #FF5E00;
+    border-radius: 20px;
+    background: none;
+    background-color: #FF5E00;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    color: #FF5E00 !important;
+    border: 1px solid #FF5E00;
+    background: none;
+    background-color: #FFF;
+}
+
+.custom-label {
+    display: inline-flex;
+    transition: .5s all;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    padding: 3px;
+}
+
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Style waiting-details >>>>>>>>>>>>>>>>>>>>>>>>>>*/
+
+section.TABS .waiting-details h3 .span1 {
+    margin-right: 31px;
+}
+
+.waiting-details div#DataTables_Table_0_paginate {
+    float: left;
+    margin-top: 8px;
+    display: none;
+}
+
+.end-waiting-details {
+    width: 60%;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.waiting-details .end-waiting-details div {
+    display: inline-block;
+    width: 49%;
+    padding: 9px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.waiting-details .end-waiting-details div.total-order {
+    background: #FF5E00;
+    color: #FFF;
+    border: 1px solid #FF5E00;
+}
+
+.waiting-details .end-waiting-details div.all-moany {
+    border: 1px solid #333;
+    border-right-color: transparent;
+    margin-right: -5px;
+}
+
+.data-top li {
+    margin-left: 40px;
+}
+
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Style return-details >>>>>>>>>>>>>>>>>>>>>>>>>>*/
+form.return-details > ul > li {
+    display: inherit;
+    padding: 10px;
+}
+
+form.return-details ul li ul {
+    width: 100%;
+}
+
+form.return-details ul li ul li {
+    font-size: 16px;
+    width: 32%;
+    font-weight: 600;
+}
+
+.return-details ul li ul li input {
+    padding: 3px 0px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    text-align: center;
+}
+
+.return-details .txt-return {
+    padding: 10px;
+    width: 100%;
+    display: inline-flex;
+}
+
+.return-details .txt-return label {
+    text-align: right;
+    width: 32%;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.return-details .txt-return textarea {
+    width: 66%;
+    height: 95px;
+    border-radius: 4px;
+    border: 1px solid #333;
+    padding: 3px 10px;
+}
+
+.return-details input[type="submit"] {
+    width: 150px;
+    padding: 5px 2px;
+    border-radius: 20px;
+    background: #FF5E00;
+    margin: auto;
+    display: inherit;
+    color: #FFF;
+    font-weight: 600;
+    border: 1px solid transparent;
+    font-size: 18px;
+    transition: .5s all;
+}
+
+.return-details input[type="submit"]:hover {
+    background: #FFF;
+    color: #FF5E00;
+    border: 1px solid #FF5E00;
+
+}
+
+.return-details li.txt-center {
+    text-align: center;
+}
+
+form.return-details {
+    background: #FFF;
+    margin-top: 40px;
+    padding: 20px 100px;
+    width: 75%;
+    margin: 40px auto;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px rgba(3, 3, 3, .5);
+}
+
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Style notifications >>>>>>>>>>>>>>>>>>>>>>>>>>*/
+
+section.TABS .notifiction h3 .span1 {
+    margin-right: 13px;
+}
+
+.notice {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #DDD;
+    box-shadow: 0px 0px 20px rgba(200, 200, 200, 1);
+    margin-top: 20px;
+    position: relative;
+}
+
+.notice img {
+    display: inline-block;
+    width: 75px;
+    height: 75px;
+}
+
+.notice p {
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 14px;
+}
+
+.back-gr {
+    background-color: #EC9B6C;
+}
+
+section.TABS .notifiction h3 {
+    margin-bottom: 40px
+}
+
+.notice ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Style the list items */
+.notice ul li {
+    border: 1px solid #ddd;
+    margin-top: -1px;
+    /* Prevent double borders */
+    background-color: #f6f6f6;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    display: block;
+    position: relative;
+}
+
+/* Add a light grey background color on hover */
+.notice ul li:hover {
+    background-color: #eee;
+}
+
+
+.notice .close {
+    cursor: pointer;
+    position: absolute;
+    top: 18px;
+    left: 4px;
+    padding: 3px 8px;
+    transform: translate(0%, -50%);
+    border-radius: 50%;
+}
+
+.notice .close:hover {
+    background: #bbb;
+    border-right: 50%;
+}
+
+.notice a {
+    color: #333;
+    transition: .5s all;
+}
+
+.notice a:hover {
+    color: #FF5E00;
+}
+.notice.back-gr a:hover {
+    color: #fff;
+}
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Style modify >>>>>>>>>>>>>>>>>>>>>>>>>>*/
+
+section.TABS .modify h3 .span1 {
+    margin-right: 7px;
+}
+
+.modify form input {
+    display: inherit;
+    width: 100%;
+    border: 1px solid #333;
+    margin-bottom: 20px;
+}
+
+.modify form input:focus {
+    border: 1px solid #FF5E00;
+}
+
+.modify input[type="file"] {
+    border-color: transparent;
+}
+
+.modify form input[type="submit"] {
+    border-color: transparent;
+    padding: 7px 0px;
+    border-radius: 20px;
+    width: 110px;
+    margin: auto;
+    background: #FF5E00;
+    color: #FFF;
+    transition: .5s all;
+    margin-top: 20px
+}
+
+.modify form input[type="submit"]:hover {
+    border-color: #FF5E00;
+    background: #FFF;
+    color: #FF5E00;
+}
+
+.modify form div#map {
+    width: 100%;
+    height: 200px;
+}
+
+.dataTables_info {
+    float: right !important;
+}
+
+.dataTables_paginate.paging_simple_numbers {
+    float: left;
+}
+
+.tab-content input[type="search"] {
+    border: 1px solid #333;
+    margin-right: 5px;
+    border-radius: 5px;
+    padding: 1
+}
+    /********************** Style User ****************************/
+
+    .top-details.data-user {
+        margin: 5px;
+    }
+
+    .top-details.data-user .b-details {
+        height: 130px;
+    }
+.top-details.data-user.payment-data .b-details ul li {
+    border-bottom: 1px solid #ddd;
+}
+.no-border {
+    border-bottom: none
+}
+.top-details.data-user.payment-data .b-details ul li {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.top-details.data-user.payment-data .b-details {
+    height: 100px;
+}
+
+
+
+
+    @media (max-width: 1199px) {
+        form.return-details {
+            padding: 20px 35px;
+        }
+
+        .b-details {
+            height: 110px;
+        }
+
+        /*
+        .return-details .txt-return {
+
+        padding-left: 0;
+    }
+*/
+        .return-details ul li ul li input {
+
+            width: 100%;
+            display: inline-block;
+        }
+    }
+
+    @media (max-width: 991px) {
+        section.TABS #menu2 ul li {
+            margin-left: 10px;
+        }
+
+        section.TABS #menu2 ul {
+            margin-bottom: 15px;
+            margin-top: 30px
+        }
+
+        .b-details {
+            height: 150px;
+        }
+        .top-details.data-user .b-details {
+    height: 175px;
+}
+        .top-details.data-user.payment-data .b-details {
+    height: 140px;
+}
+        form.return-details {
+
+            width: 100%;
+
+        }
+    }
+
+    @media (max-width: 767px) {
+        section.TABS .right-tab {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+
+        section.TABS {
+            margin-top: 0px;
+        }
+
+        section.TABS .contan-tabs > li {
+            display: inline-block;
+        }
+
+        section.TABS ul.contan-tabs > li > a {
+            font-size: 0px !important;
+            padding: 10px;
+        }
+
+        .TABS li a .svg-inline--fa {
+            margin-left: 0px;
+            font-size: 30px;
+        }
+
+        section.TABS ul.contan-tabs > li.active > a:after {
+            content: "";
+            width: 100%;
+            color: #FFF;
+            position: absolute;
+            height: 12px;
+            top: 53px;
+            left: 0px;
+            background: #FFF;
+        }
+
+        .topped {
+            display: none;
+        }
+
+        section.TABS ul.contan-tabs {
+            display: inline-block;
+            background: #FF5E00;
+            padding: 0px 5px;
+            margin-top: 0px;
+            border-color: transparent;
+
+        }
+
+        section.TABS h3 .span2 {
+            left: 5px;
+        }
+
+        section.TABS h3 .span1 {
+            bottom: -9px;
+        }
+
+        section.TABS .modify h3 .span1 {
+            margin-right: 13px;
+        }
+
+        section.TABS #menu1 h3 .span1 {
+            margin-right: 9px;
+        }
+
+        section.TABS #menu1 .table-box,
+        section.TABS #waiting .table-box {
+            width: 100%;
+            margin: 20px 0px;
+
+        }
+
+        section.TABS .table-box div {
+            padding: 2px;
+            font-size: 13px;
+        }
+
+        ul.child-tabs li a {
+            padding: 4px;
+            color: #333;
+            margin-right: 0px;
+        }
+
+        section.TABS #menu2 ul li {
+            margin-left: 5px;
+        }
+
+        .child-tabs > li.active > a,
+        .child-tabs > li.active > a:focus,
+        .child-tabs > li.active > a:hover {
+            padding: 4px 10px;
+        }
+
+        section.TABS #menu2 h3 .span1 {
+            margin-right: 35px;
+        }
+
+        .dataTables_wrapper .dataTables_length {
+            float: left;
+            width: 45px;
+        }
+
+        .dataTables_wrapper .dataTables_length label {
+            font-size: 0px;
+            margin-bottom: 0;
+        }
+
+        .dataTables_wrapper .dataTables_length label select {
+            font-size: 14px
+        }
+
+        .dataTables_wrapper .dataTables_filter {
+            margin-top: 0px;
+        }
+
+        .dataTables_wrapper {
+            margin-top: 25px;
+        }
+
+        .notice a {
+            font-size: 12px;
+            width: 200px;
+            height: 20px;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .notice img {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+        }
+
+        section.TABS .notifiction h3 .span1 {
+            margin-right: 19px;
+        }
+
+        ul.child-tabs li a:hover {
+            padding: 4px;
+            color: #FFF;
+        }
+
+        section.TABS ul.contan-tabs > li > a:hover {
+            padding: 10px;
+        }
+
+        section.TABS h3 .span1 {
+            margin-right: 13px;
+            bottom: -16px;
+        }
+
+        section.TABS h3 .span2 {
+            bottom: -16px;
+        }
+
+        section.TABS .details h3 .span1 {
+            margin-right: 34px;
+        }
+
+        section.TABS #home h3,
+        section.TABS #menu1 h3,
+        section.TABS #menu2 h3,
+        section.TABS #menu3 h3,
+        section.TABS .modify h3,
+        section.TABS .notifiction h3,
+        section.TABS #waiting h3,
+        section.TABS .waiting-details h3,
+        section.TABS .details h3 {
+            font-size: 16px;
+        }
+
+        section.TABS #menu2 ul {
+            display: inline-block;
+            width: 100%;
+        }
+
+        .dataTables_filter label {
+            float: right;
+        }
+
+        section.TABS #menu2 ul li {
+            margin-left: 10px;
+        }
+
+        section.TABS #menu2 ul {
+            margin-bottom: 15px;
+            margin-top: 8px
+        }
+
+    }
+
+    @media (max-width: 480px) {
+
+        section.TABS h3 .span1 {
+            bottom: -9px;
+        }
+
+        section.TABS h3 .span2 {
+            bottom: -9px;
+        }
+
+        .details form .timer {
+            font-size: 18px !important;
+        }
+
+    }
+
+    @media (max-width: 450px) {}
