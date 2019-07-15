@@ -141,7 +141,7 @@ $(document).ready(function () {
      */
     $("#two").click(function () {
         $('#countdown-1').timeTo(120, function () {
-            alert('Countdown finished');
+            // alert('Countdown finished');
         });
         $('#reset-1').click(function () {
             $('#countdown-1').timeTo('reset');

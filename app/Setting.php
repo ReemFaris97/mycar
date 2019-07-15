@@ -34,4 +34,12 @@ class Setting extends Model
 {
     protected $fillable = ['name', 'type', 'value' , 'page', 'slug', 'title'];
 
+    public function value()
+    {
+        if (app()->getLocale() == 'en')
+            return $this->en_value;
+        else
+            return $this->ar_value;
+    }
+
 }

@@ -10,13 +10,8 @@
 function getsetting($name)
 {
     $setting=\App\Setting::where('name',$name)->first();
-    if (!$setting) return "";
-    if ($name == "about" || $name="terms")
-    {
-        $val = strip_tags($setting->value);
-        return str_replace('&nbsp;',' ',$val);
-    }
-    return $setting->value;
+    return $setting->value();
+
 }
 
 function popup($name, $validator = null,$custom = null)
