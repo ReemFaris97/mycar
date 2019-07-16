@@ -68,11 +68,11 @@ $(document).ready(function () {
         $('#chats').scrollTop($('#chats')[0].scrollHeight);
 
         var message = $("textarea").val();
-        function isNullOrEmpty(str){
-            return !str||!str.trim();
+        function isEmptyOrSpaces(str){
+            return str === null || str.match(/^ *$/) !== null;
         }
         if (event.keyCode == 13) {
-            if (isNullOrEmpty(message.value)){
+            if(isEmptyOrSpaces(message)){
                 alert("Enter Some Text In Textarea");
             } else {
 
@@ -93,10 +93,10 @@ $(document).ready(function () {
     $('#sendnow').click(function () {
         $('#inbox').focus();
         var message = $("textarea").val();
-        function isNullOrEmpty(str){
-            return !str||!str.trim();
-        }   
-        if (isNullOrEmpty(message.value)){
+        function isEmptyOrSpaces(str){
+            return str === null || str.match(/^ *$/) !== null;
+        }
+        if(isEmptyOrSpaces(message)){
             alert("Enter Some Text In Textarea");
 
         } else {
@@ -141,11 +141,12 @@ $(document).ready(function () {
      */
     $("#two").click(function () {
         $('#countdown-1').timeTo(120, function () {
-            // alert('Countdown finished');
+            alert('Countdown finished');
         });
         $('#reset-1').click(function () {
             $('#countdown-1').timeTo('reset');
         });
+        
 
     });
 
@@ -181,6 +182,10 @@ $(document).ready(function () {
         $(".verfy").slideDown(500);
     });
 
+    $("#edit-1").on("click", function () {
+        $(".verfy").slideUp(500);
+        $(".step1").slideDown(500);
+    });
 
     $("#step2").click(function () {
         $('#countdown-1').timeTo(120, function () {
@@ -192,6 +197,8 @@ $(document).ready(function () {
 
     });
 
+
+    
     //////////////////////////////
     'use strict';
 
@@ -217,36 +224,29 @@ $(document).ready(function () {
     });
 
 
-    /*****************************/
-//    var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
-//    var x = setInterval(function () {
-//        var now = new Date().getTime();
-//        var distance = countDownDate - now;
-//        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-//        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-//        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-//        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-//
-//
-//        document.getElementById("demo").innerHTML = hours + "h:" +
-//            minutes + "m:" + seconds + "s";
-//
-//
-//        if (distance < 0) {
-//            clearInterval(x);
-//            document.getElementById("demo").innerHTML = "EXPIRED";
-//        }
-//    }, 1000);
+    /************************ Counter *****************************/
+            var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
+    var x = setInterval(function () {
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    /*********************** Input type file **********************/
-//    document.getElementById("uploadBtn").onchange = function () {
-//        document.getElementById("uploadFile").value = this.value.replace("C:\\fakepath\\", "");
-//    };
-//    
-//    document.getElementById("uploadBtn2").onchange = function () {
-//        document.getElementById("uploadFile2").value = this.value.replace("C:\\fakepath\\", "");
-//    };
 
+        document.getElementById("demo").innerHTML = hours + "h:" +
+            minutes + "m:" + seconds + "s";
+
+
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "EXPIRED";
+        }
+    }, 1000);
+    
+    
+    
 
 
 });
