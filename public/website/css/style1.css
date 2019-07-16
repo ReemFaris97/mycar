@@ -77,6 +77,7 @@ section.TABS #home h4 {
     margin-top: 10px;
 }
 
+/*
 section.TABS #home h3,
 section.TABS #menu1 h3,
 section.TABS #menu2 h3,
@@ -111,6 +112,7 @@ section.TABS .details h3:after {
     right: 0px;
     top: 30px;
 }
+*/
 
 section.TABS h3 .span1 {
     width: 10px;
@@ -805,7 +807,7 @@ section.TABS .modify h3 .span1 {
             height: 150px;
         }
         .top-details.data-user .b-details {
-    height: 175px;
+    height: 200px;
 }
         .top-details.data-user.payment-data .b-details {
     height: 140px;

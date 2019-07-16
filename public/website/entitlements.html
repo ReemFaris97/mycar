@@ -6,16 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="HandheldFriendly" content="true">
-    <title> قطعة سيارتى - الرئيسية </title>
+    <title> قطعة سيارتى - مستحقاتى </title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="shortcut icon" href="img/logo-sm.png">
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/timeTo.css">
+     
     <!-- This for here -->
     <link rel="stylesheet" href="css/owl.carousel.css">
     <!-- -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.foundation.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.jqueryui.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.material.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.semanticui.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.uikit.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables_themeroller.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style1.css">
     <script src="js/html5shiv.min.js"></script>
@@ -95,7 +104,7 @@
 
             <div class="col-md-2 col-sm-2 col-xs-4 no-padding">
                 <div class="nav-right">
-                    <a href="begin.html" class="logo-nav"><img src="img/logo.png"></a>
+                    <a href="index.html" class="logo-nav"><img src="img/logo.png"></a>
                 </div>
             </div>
 
@@ -109,8 +118,8 @@
 
                     <div class="navy">
                         <ul class="nav cf" id="ul1">
-                            <li class="active"><a href="begin.html">الرئيسية</a></li>
-                            <li><a href="profile.html">حسابى</a></li>
+                            <li><a href="begin.html">الرئيسية</a></li>
+                            <li class="active"><a href="account-information.html">حسابى</a></li>
                             <li><a href="who-us.html">من نحن</a></li>
                             <li><a href="contact.html">اتصل بنا</a></li>
                         </ul>
@@ -163,7 +172,7 @@
                         <li class="active"><a  href="entitlements.html"><i class="fas fa-file-alt"></i> مستحقاتي</a></li>
                         <li><a href="requests.html"><i class="fas fa-list"></i> طلباتي</a></li>
                         <li><a  href="notifications.html"><i class="fas fa-bell"></i> الاشعارات</a></li>
-                        <li><a  href="#"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج </a></li>
+                        <li><a  href="index.html"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج </a></li>
                     </ul>
                 </div>
                 <div class="col-md-10 col-sm-8 col-xs-12 ">
@@ -171,9 +180,11 @@
                         <div class="tab-content">
                            
                             <div id="menu1" class="in active">
-                                <h3>مستحقاتي
+                                <h3 class="h3-after">مستحقاتي
+<!--
                                     <span class="span1"></span>
                                     <span class="span2"></span>
+-->
                                 </h3>
                                 <h5>إجمالي المبيعات</h5>
                                 <div class="div-money">
@@ -328,7 +339,7 @@
                 <span class="closeit"> <i class="fas fa-times"></i> </span>
                 <h2>سؤال مباشر - خدمة العملاء</h2>
 
-                <div class="chats">
+                <div class="chats" id="chats">
                     <div class="chat1 recieve">
                         <div class="chat-img">
                             <img src="img/1.png">
@@ -355,9 +366,9 @@
 
                 </div>
 
-                <form class="chatting">
-                    <textarea rows="4" cols="95" name="inbox" id="inbox" class="form-control input-lg" data-fv-field="inbox" placeholder="اكتب رسالتك..."></textarea>
-                    <button type="submit"> <i class="fas fa-arrow-right"></i> </button>
+                <form class="chatting" id="my_form">
+                    <textarea rows="4" cols="95" id="inbox" class="form-control input-lg" data-fv-field="inbox" placeholder="اكتب رسالتك..."></textarea>
+                    <button type="button" id="sendnow"> <i class="fas fa-arrow-right"></i> </button>
                 </form>
 
                 <!--
@@ -371,7 +382,6 @@
     <!----------------- End Chat Modal -------------------->
 
     <!----------------- Start Call Modal -------------------->
-    <!--
     <div id="modal-call" class="">
         <div class="modal-background">
             <div class="modal">
@@ -386,16 +396,12 @@
                     من أحد موظفين خدمة العملاء
                 </p>
 
-                <div id="countdown-1"></div>
-                <p><button id="reset-1" type="button">Reset this timer</button></p>
-
-                <div class="clock"></div>
-                <div class="clock"></div>
+                <p id="demo" class="timer"></p>
+                <input class="end-details" type="submit" value="تقديم عرض">
 
             </div>
         </div>
     </div>
--->
     <!----------------- End Call Modal -------------------->
 
     <!--Scroll Button-->
@@ -411,7 +417,7 @@
          ===================================-->
 
     <script src="js/jquery-1.11.1.min.js"></script>
-    <script src="js/jquery.time-to.min.js"></script>
+     
     <script src="js/bootstrap.min.js"></script>
     <script src="js/all.min.js"></script>
     <script src="js/wow.min.js"></script>
@@ -423,13 +429,32 @@
     <!-- -->
     <script src="js/script.js"></script>
 
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.foundation.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.jqueryui.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.material.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.semanticui.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.uikit.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#mytable').DataTable();
+            $('.mytable').DataTable({
+                responsive:true
+            });
+                        
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        $($.fn.dataTable.tables(true)).DataTable()
+           .columns.adjust()
+           .responsive.recalc();
+    }); 
         });
 
     </script>
+    
 </body>
 
 </html>
