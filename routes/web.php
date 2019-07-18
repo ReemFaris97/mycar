@@ -91,6 +91,10 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin','middleware'=>'admin'],
 
     route::resource('instructions','InstructionsController');
 
+    route::resource('contacts','ContactsController');
+    route::resource('proposals','ProposalsController');
+
+
     Route::group(['prefix'=>'settings','as'=>'setting.'],function (){
         Route::get('/{slug}','SettingController@index')->name('index');
         Route::post('/','SettingController@Store')->name('store');

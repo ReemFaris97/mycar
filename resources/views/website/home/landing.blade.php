@@ -11,17 +11,18 @@
     <link rel="shortcut icon" href="{{asset('website/img/logo-sm.png')}}">
     <link rel="stylesheet" href="{{asset('website/css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('website/css/animate.css')}}">
-    <link rel="stylesheet" href="{{asset('website/css/timeTo.css')}}">
+
     <!-- This for here -->
     <link rel="stylesheet" href="{{asset('website/css/owl.carousel.css')}}">
     <link rel="stylesheet" href="{{asset('website/css/jquery.fancybox.min.css')}}">
     <!-- -->
     <link rel="stylesheet" href="{{asset('website/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('website/css/style1.css')}}">
 </head>
 
 
 
-<body>
+<body class="index-body">
 <div class="body-overlay"></div>
 <!-- Start Loading-Page -->
 <div class="loader">
@@ -50,17 +51,17 @@
 
 
 <!-- Start Index -->
-<section class="index all-sections">
+<section class="index">
     <div class="container">
 
         <div class="biginings">
             <div class="row">
 
-                <div class="col-md-7 col-xs-12">
+                <div class="col-sm-7 col-xs-12">
                     <div class="logo-nav"><img src="{{asset('website/img/logo.png')}}"></div>
                 </div>
 
-                <div class="col-md-5 col-xs-12">
+                <div class="col-sm-5 col-xs-12">
                     <a href="sign-divider.html" class="apply"> انضم كمورد </a>
                 </div>
 

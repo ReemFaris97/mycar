@@ -61,7 +61,9 @@
                     <li><a href="{{route('suppliers.index')}}" class="waves-effect"><i class="zmdi zmdi-accounts-outline"></i><span>إدارة الموردين</span></a></li>
 {{--                    <li><a href="{{route('orders.index')}}" class="waves-effect"><i class="zmdi zmdi-border-all"></i><span>طلبات العملاء</span></a></li>--}}
                 <li><a href="{{request()->root()}}/dashboard/settings/general" class="waves-effect"><i class="zmdi zmdi-settings"></i><span>الإعدادات</span></a></li>
+                <li><a href="{{route('contacts.index')}}" class="waves-effect"><i class="zmdi zmdi-comment-text"></i><span>رسالئل التواصل</span></a></li>
                 <li><a href="{{route('instructions.index')}}" class="waves-effect"><i class="zmdi zmdi-comment-text"></i><span>الإرشادات</span></a></li>
+                <li><a href="{{route('proposals.index')}}" class="waves-effect"><i class="zmdi zmdi-comment-text"></i><span>المقترحات</span></a></li>
 
                 <li class="has_sub">
                         <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-check-circle"></i><span>التقارير</span><span class="menu-arrow"></span></a>
