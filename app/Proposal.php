@@ -28,10 +28,10 @@ class Proposal extends Model
         return $this->hasOne(ProposalLikes::class,'proposal_id')->where('like',0);
     }
 
-//    public function checkLike(){
-//        if($this->){
-//
-//        }
-//    }
+    public function checkLike(){
+        if($this->like()->count() >0) { return 1; }
+        elseif ($this->dislike()->count() >0) {return -1;}
+        else { return 0; }
+    }
 
 }
