@@ -16,6 +16,7 @@
             <!--Start Carousel-->
             <div class="slide">
                 <div id="owl-demo" class="owl-carousel owl-theme">
+
                     <div class="item">
                         <div class="carousel-caption">
                             <p class="lead wow slideInDown">
@@ -34,7 +35,7 @@
                             </p>
                         </div>
                         <div class="slide-left">
-                            <img src="{{asset('website/img/slider2.svg')}}">
+                            <img src="{{asset('website/img/slide2.png')}}">
                         </div>
                     </div>
 
@@ -45,7 +46,7 @@
                             </p>
                         </div>
                         <div class="slide-left">
-                            <img src="{{asset('website/img/slider3.svg')}}">
+                            <img src="{{asset('website/img/slide1.png')}}">
                         </div>
                     </div>
 
@@ -56,7 +57,7 @@
                             </p>
                         </div>
                         <div class="slide-left">
-                            <img src="{{asset('website/img/slider4.svg')}}">
+                            <img src="{{asset('website/img/slide2.png')}}">
                         </div>
                     </div>
 
@@ -104,11 +105,15 @@
                             <a data-fancybox="Gallery" data-caption="{{$prop->name()}}" href="{{getimg($prop->image)}}" class="sgsting">
                                 <img src="{{getimg($prop->image)}}">
                             </a>
+
                             <form class="sgst-btns">
-                                <button type="button" class="evl like"> <i class="fas fa-thumbs-up"></i> </button>
-                                <button type="button" class="evl dislike"> <i class="fas fa-thumbs-down"></i> </button>
-                                <button id="AddCommentButton" data-proposalId="{{$prop->id}}" type="button" class="new-evl" data-toggle="modal" data-target="#CommentModal"> اضافة مقترح </button>
+
+                                <button type="button" class="evl like" data-propId="{{$prop->id}}" > <i class="fas fa-thumbs-up"></i> </button>
+                                <button type="button" class="evl dislike" data-propId="{{$prop->id}}" > <i class="fas fa-thumbs-down"></i> </button>
+
+                                <button  data-proposalId="{{$prop->id}}" type="button" class="new-evl AddCommentButton" data-toggle="modal" data-target="#CommentModal"> اضافة مقترح </button>
                             </form>
+
                         </div>
                     </div>
                     @empty
@@ -196,8 +201,8 @@
             }
         });
 
-        $('#AddCommentButton').on('click',function(e) {
-            var id = $(this).attr('data-proposalId')
+        $('.AddCommentButton').on('click',function(e) {
+            var id = $(this).attr('data-proposalId');
 
             $('<input>').attr({
                 type: 'hidden',
@@ -205,6 +210,10 @@
                 name: 'proposal_id',
                 value:id,
             }).appendTo('#CommentForm');
+
+            $('#CommentModal').on('hidden.bs.modal', function () {
+                $("#CommentForm #foo").remove();
+            });
 
         });
 

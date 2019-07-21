@@ -40,7 +40,9 @@ class HomeController extends Controller
 
     public function PostSuggestComment(Request $request){
         $proposal = Proposal::find($request->proposal_id);
+
         if($proposal){
+
             $proposal->comments()->create($request->all());
             return response()->json([
                 'status'=>true,

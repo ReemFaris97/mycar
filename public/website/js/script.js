@@ -156,6 +156,7 @@ $(document).ready(function () {
     $(".like").click(function () {
         $(this).toggleClass("animated bounceIn orange");
         $(".dislike").removeClass("animated fadeOutDown orange");
+
     });
 
     $(".dislike").on("click", function () {

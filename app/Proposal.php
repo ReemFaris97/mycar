@@ -21,11 +21,17 @@ class Proposal extends Model
         return $this->hasMany(ProposalComments::class,'proposal_id');
     }
 
-    public function likes(){
-        return $this->hasMany(ProposalLikes::class,'proposal_id')->where('like',1);
+    public function like(){
+        return $this->hasOne(ProposalLikes::class,'proposal_id')->where('like',1);
     }
-    public function dislikes(){
-        return $this->hasMany(ProposalLikes::class,'proposal_id')->where('like',0);
+    public function dislike(){
+        return $this->hasOne(ProposalLikes::class,'proposal_id')->where('like',0);
     }
+
+//    public function checkLike(){
+//        if($this->){
+//
+//        }
+//    }
 
 }
