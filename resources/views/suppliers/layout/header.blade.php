@@ -3,8 +3,8 @@
 
     <!-- LOGO -->
     <div class="topbar-left">
-        <a href="{{route('supplier.home')}}" class="logo"><span>  قطعة<span> سيارتي </span></span><i class="zmdi zmdi-layers"></i></a>
-        (موردين)
+        <a href="{{route('supplier.home')}}" class="logo">
+        </a>
     </div>
 
     <!-- Button mobile view to collapse sidebar menu -->

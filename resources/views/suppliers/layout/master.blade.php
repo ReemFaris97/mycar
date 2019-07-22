@@ -6,7 +6,7 @@
     <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
     <meta name="author" content="Coderthemes">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="shortcut icon" href="{{asset('supplier/assets/images/favicon.ico')}}">
+    <link rel="shortcut icon" href="{{asset('supplier/assets/images/logo-sm.png')}}">
 
     <!-- Firebase -->
 
