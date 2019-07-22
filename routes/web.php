@@ -188,10 +188,14 @@ Route::group(['namespace'=>'website'], function (){
     Route::get('/','HomeController@landingPage')->name('web.landing');
 
     Route::get('/home','HomeController@home')->name('web.home');
+    Route::post('submit/suggest/comment','HomeController@PostSuggestComment')->name('web.suggest.comment');
+
     Route::get('/about','HomeController@about')->name('web.about');
     Route::get('/terms','HomeController@terms')->name('web.terms');
     Route::get('/contact','HomeController@contact')->name('web.contact');
     Route::post('/contact','HomeController@postContact')->name('web.contact.post');
+
+
 
 
 });
