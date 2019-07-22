@@ -8,7 +8,15 @@
 @section('content')
     <div class="row">
         <div class="col-sm-12">
-
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form data-parsley-validate novalidate method="POST" action="{{route('parts.store')}}" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
@@ -36,7 +44,7 @@
 
                                     <div class="form-group col-sm-6 col-xs-12">
                                         <label for="userName">إسم القطعة بالعربية*</label>
-                                        <input type="text" name="ar_name" required
+                                        <input type="text" name="part_ar_name" required
                                                placeholder="الإسم بالعربية" class="form-control"
                                                data-parsley-required-message="هذا الحقل مطلوب"
                                                {{--oninput="this.value = Math.abs(this.value)"--}}
@@ -51,7 +59,7 @@
                                     </div>
                                     <div class="form-group col-sm-6 col-xs-12">
                                         <label for="userName">إسم القطعة بالإنجليزية*</label>
-                                        <input type="text" name="en_name" required
+                                        <input type="text" name="part_en_name" required
                                                placeholder="الإسم بالإنجليزية" class="form-control"
                                                data-parsley-required-message="هذا الحقل مطلوب"
                                                {{--oninput="this.value = Math.abs(this.value)"--}}
@@ -102,9 +110,38 @@
                                         @endif
                                     </div>
 
+                                    <div class="form-group col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">صورة القطعة</label>
+                                            <div class="col-md-10">
+                                                <input name="image" type="file" class="dropify" data-max-file-size="6M"
+                                                       data-allowed-file-extensions="png gif jpg jpeg"
+                                                       data-errors-position="inside"
+                                                       required data-parsley-required-message="الصورة الرئيسية مطلوبة"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
 
+                                    @if ($errors->has('image'))
+                                        <span class="help-block error_validation" style=" font-size: 13px;color: #ff5757;">
+                                            <strong>{{ $errors->first('image') }}</strong>
+                                            </span>
+                                    @endif
+                                </div>
+
+
+
+                                <div id="appendArea" class="row">
 
                                 </div>
+                                <div class="form-group col-sm-12 col-xs-12">
+                                    <button id="addPartButton" type="button" class="btn btn-inverse btn-rounded w-md waves-effect waves-light m-b-5">إضافة قطعة جديدة
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+
+
                                 <div class="col-xs-12">
 
                                     <div class="form-group text-right m-b-0 ">
@@ -135,6 +172,27 @@
 @endsection
 
 @section('scripts')
+
+    <script>
+        // Date Picker
+        jQuery('#datepicker').datepicker();
+
+
+        $('.dropify').dropify({
+            messages: {
+                'default': 'إضغط هنا او اسحب وافلت الصورة',
+                'replace': 'إسحب وافلت او إضغط للتعديل',
+                'remove': 'حذف',
+                'error': 'حدث خطأ ما'
+            },
+            error: {
+                'fileSize': 'حجم الصورة كبير (6M max).',
+                'fileExtension': 'نوع الصورة غير مدعوم (png - gif - jpg - jpeg)',
+            }
+        });
+
+
+    </script>
     <script>
         $.ajaxSetup({
             headers: {
@@ -160,6 +218,70 @@
             });
 
             //            **************************************
+        });
+
+        $('#addPartButton').click(function(){
+            $('#appendArea').append("  <div>\n" +
+                "                                        <div class=\"form-group col-sm-6 col-xs-12\">\n" +
+                "                                            <label for=\"userName\">الإسم بالعربية*</label>\n" +
+                "                                            <input type=\"text\" name=\"ar_name[]\" required\n" +
+                "                                                   placeholder=\"الإسم بالعربية\" class=\"form-control\"\n" +
+                "                                                   data-parsley-required-message=\"هذا الحقل مطلوب\"\n" +
+                "                                                   {{--oninput=\"this.value = Math.abs(this.value)\"--}}\n" +
+                "                                                   data-parsley-trigger=\"keyup\"\n" +
+                "                                                   data-parsley-maxlength=\"50\"\n" +
+                "                                                   data-parsley-maxlength-message=\"اقصى عدد حروف هو 50 حرف\" >\n" +
+                "\n" +
+                "                                        </div>\n" +
+                "\n" +
+                "                                        <div class=\"form-group col-sm-6 col-xs-12\">\n" +
+                "                                            <label for=\"userName\">إسم بالإنجليزية*</label>\n" +
+                "                                            <input type=\"text\" name=\"en_name[]\" required\n" +
+                "                                                   placeholder=\"الإسم بالعربية\" class=\"form-control\"\n" +
+                "                                                   data-parsley-required-message=\"هذا الحقل مطلوب\"\n" +
+                "                                                   {{--oninput=\"this.value = Math.abs(this.value)\"--}}\n" +
+                "                                                   data-parsley-trigger=\"keyup\"\n" +
+                "                                                   data-parsley-maxlength=\"50\"\n" +
+                "                                                   data-parsley-maxlength-message=\"اقصى عدد حروف هو 50 حرف\">\n" +
+                "\n" +
+                "                                        </div>\n" +
+                "\n" +
+                "                                        <div class=\"form-group col-sm-6 col-xs-12\">\n" +
+                "                                            <label for=\"userName\">كود القطعة*</label>\n" +
+                "                                            <input type=\"text\" name=\"code[]\" required\n" +
+                "                                                   placeholder=\"كود القطعة\" class=\"form-control\"\n" +
+                "                                                   data-parsley-required-message=\"هذا الحقل مطلوب\"\n" +
+                "                                                   {{--oninput=\"this.value = Math.abs(this.value)\"--}}\n" +
+                "                                                   data-parsley-trigger=\"keyup\"\n" +
+                "                                                   data-parsley-maxlength=\"50\"\n" +
+                "                                                   data-parsley-maxlength-message=\"اقصى عدد حروف هو 50 حرف\">\n" +
+                "\n" +
+                "                                        </div>\n" +
+                "\n" +
+                "                                        <div class=\"form-group col-sm-6 col-xs-12\">\n" +
+                "                                            <label for=\"userName\">رقم القطعة*</label>\n" +
+                "                                            <input type=\"number\" name=\"number[]\" required\n" +
+                "                                                   placeholder=\"رقم القطعة في الصورة\" class=\"form-control\"\n" +
+                "                                                   data-parsley-required-message=\"هذا الحقل مطلوب\"\n" +
+                "                                                   oninput=\"this.value = Math.abs(this.value)\"\n" +
+                "                                                   data-parsley-trigger=\"keyup\"\n" +
+                "                                                   data-parsley-maxlength=\"50\"\n" +
+                "                                                   data-parsley-maxlength-message=\"اقصى عدد حروف هو 50 حرف\">\n" +
+                "                                        </div>\n" +
+                "\n" +
+                "                                        <div class=\"form-group col-sm-12 col-xs-12\">\n" +
+                "                                            <div class=\"form-group\">\n" +
+                "                                                <label class=\"col-md-2 control-label\">صورة القطعة</label>\n" +
+                "                                                <div class=\"col-md-10\">\n" +
+                "                                                    <input name=\"images[]\" type=\"file\" class=\"\" data-max-file-size=\"6M\"\n" +
+                "                                                           data-allowed-file-extensions=\"png gif jpg jpeg\"\n" +
+                "                                                           data-errors-position=\"inside\"\n" +
+                "                                                           required data-parsley-required-message=\"صورة القطعة مطلوبة\"\n" +
+                "                                                    />\n" +
+                "                                                </div>\n" +
+                "                                            </div>\n" +
+                "                                        </div>\n" +
+                "                                    </div>");
         });
     </script>
 @endsection

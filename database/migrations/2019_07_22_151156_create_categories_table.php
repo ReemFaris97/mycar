@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePartsTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,11 @@ class CreatePartsTable extends Migration
      */
     public function up()
     {
-        Schema::create('parts', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('ar_name');
             $table->string('en_name');
-            $table->unsignedBigInteger('company_model_id');
             $table->timestamps();
-            $table->softDeletes();
-            $table->foreign('company_model_id')->references('id')->on('company_models')
-                ->onDelete('cascade');
         });
     }
 
@@ -32,6 +28,6 @@ class CreatePartsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('parts');
+        Schema::dropIfExists('categories');
     }
 }

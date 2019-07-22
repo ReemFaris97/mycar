@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Company;
-use App\CompanyModel;
-use App\Part;
+use App\Category;
+use App\SubCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class PartsController extends Controller
+class SubCategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,8 @@ class PartsController extends Controller
      */
     public function index()
     {
-        $parts = Part::all();
-        return view('admin.parts.index',compact('parts'));
+        $subCats = SubCategory::all()->reverse();
+        return view('admin.subcategories.index',compact('subCats'));
     }
 
     /**
@@ -28,8 +27,8 @@ class PartsController extends Controller
      */
     public function create()
     {
-        $companies = Company::whereIsActive(1)->get();
-        return view('admin.parts.create',compact('companies'));
+        $categories = Category::all();
+        return view('admin.subcategories.create',compact('categories'));
     }
 
     /**
@@ -40,25 +39,16 @@ class PartsController extends Controller
      */
     public function store(Request $request)
     {
-
-//        return $request->all();
-        $roles = [
-            'part_ar_name'=>'required|string|max:191',
-            'part_en_name'=>'required|string|max:191',
-            'company_model_id'=>"required|exists:company_models,id",
-            'image'=>'required|image',
-            'ar_name'=>'required|array',
-            'en_name'=>'required|array',
-            'number'=>'required|numeric',
-            'code'=>'required|string',
-            'images'=>'required|array',
-            'images.*'=>"image",
+        $rules = [
+            'ar_name'=>'required|string|max:191',
+            'en_name'=>'required|string|max:191',
+            'category_id'=>'required|numeric|exists:categories,id',
         ];
-        $this->validate($request,$roles);
-        return "validation is OK";
-        Part::create($request->all());
+        $this->validate($request,$rules);
+
+        SubCategory::create($request->all());
         session()->flash('success','تم الإضافة بنجاح');
-        return redirect()->route('parts.index');
+        return redirect()->back();
     }
 
     /**
@@ -80,11 +70,9 @@ class PartsController extends Controller
      */
     public function edit($id)
     {
-        $part = Part::findOrFail($id);
-
-        $companies = Company::whereIsActive(1)->get();
-        $company_models = CompanyModel::whereCompanyId($part->company_model->company->id)->get();
-        return view('admin.parts.edit',compact('part','companies','company_models'));
+        $categories = Category::all();
+        $subCat = SubCategory::findOrFail($id);
+        return view('admin.subcategories.edit',compact('categories','subCat'));
     }
 
     /**
@@ -96,16 +84,16 @@ class PartsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $part = Part::findOrFail($id);
-        $roles = [
+        $subCat = SubCategory::findOrFail($id);
+        $rules = [
             'ar_name'=>'required|string|max:191',
             'en_name'=>'required|string|max:191',
-            'company_model_id'=>"required|exists:company_models,id"
+            'category_id'=>'required|numeric|exists:categories,id',
         ];
-        $this->validate($request,$roles);
-        $part->update($request->all());
+        $this->validate($request,$rules);
+        $subCat->update($request->all());
         session()->flash('success','تم التعديل بنجاح');
-        return redirect()->route('parts.index');
+        return redirect()->back();
     }
 
     /**
@@ -116,24 +104,20 @@ class PartsController extends Controller
      */
     public function destroy($id)
     {
-        $part = Part::find($id);
-        if($part){
-            $part->delete();
+        $subCat = SubCategory::find($id);
+        if($subCat){
+            $subCat->delete();
             return response()->json([
                 'status'=>true,
                 'title'=>"نجاح",
                 'message'=>"تم الحذف بنجاح"
             ]);
+        }else{
+            return response()->json([
+                'status'=>false,
+                'title'=>"خطأ",
+                'message'=>"غير موجود او تم حذفه من قبل"
+            ]);
         }
-    }
-
-    public function getCompanyModels(Request $request){
-        $models = CompanyModel::whereCompanyId($request->id)->whereIsActive(1)->get();
-
-        //  return $districts;
-        return response()->json([
-            'status' => true,
-            'data' => $models
-        ]);
     }
 }

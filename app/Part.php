@@ -21,4 +21,8 @@ class Part extends Model
      public function company_model(){
          return $this->belongsTo(CompanyModel::class,'company_model_id');
      }
+
+     public function part_images(){
+         return $this->hasMany(PartImages::class,'part_id');
+     }
 }

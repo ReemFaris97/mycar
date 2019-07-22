@@ -69,6 +69,10 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin','middleware'=>'admin'],
     route::post('admins/suspendOrActive','AdminsController@suspendOrActivate')->name('admins.suspendOrActivate');
     route::post('admins/suspendWithReason','AdminsController@suspendWithReason')->name('admins.suspendWithReason');
 
+    Route::resource('categories','CategoriesController');
+    Route::resource('subcategories','SubCategoriesController');
+
+
     route::resource('parts','PartsController');
     Route::post('get-company_models','PartsController@getCompanyModels')->name('getAjaxCompanyModels');
 
