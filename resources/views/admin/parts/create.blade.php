@@ -17,7 +17,7 @@
                     </ul>
                 </div>
             @endif
-            <form data-parsley-validate novalidate method="POST" action="{{route('parts.store')}}" enctype="multipart/form-data">
+            <form id="partForm" data-parsley-validate novalidate method="POST" action="{{route('parts.store')}}" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
                 <div class="row">
@@ -41,6 +41,43 @@
                                 <div class="col-xs-12">
 
 
+                                    <div class="form-group col-sm-6 col-xs-12">
+                                        <label for="userName">القسم الرئيسي</label>
+
+                                        <select class="col-xs-6 form-control" required
+                                                name="category_id" id="category"
+                                                data-parsley-trigger="select"
+                                                data-parsley-required-message="هذا الحقل إجباري">
+                                            <option value="" selected disabled>إختار القسم الرئيسي</option>
+                                            @foreach ($categories  as $category)
+                                                <option value="{{$category->id}}">{{$category->ar_name}}</option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('category_id'))
+                                            <span class="help-block error_validation" style=" font-size: 13px;color: #ff5757;">
+                                            <strong>{{ $errors->first('category_id') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+
+                                    <div class="form-group col-sm-6 col-xs-12">
+                                        <label for="userName">القسم الفرعي</label>
+
+                                        <select class="col-xs-6 form-control" required
+                                                name="sub_category_id" id="subCategory"
+                                                data-parsley-trigger="select"
+                                                data-parsley-required-message="هذا الحقل إجباري">
+
+                                        </select>
+                                        @if ($errors->has('sub_category_id'))
+                                            <span class="help-block error_validation" style=" font-size: 13px;color: #ff5757;">
+                                                <strong>{{ $errors->first('sub_category_id') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+
+
+
 
                                     <div class="form-group col-sm-6 col-xs-12">
                                         <label for="userName">إسم القطعة بالعربية*</label>
@@ -57,6 +94,7 @@
                                             </span>
                                         @endif
                                     </div>
+
                                     <div class="form-group col-sm-6 col-xs-12">
                                         <label for="userName">إسم القطعة بالإنجليزية*</label>
                                         <input type="text" name="part_en_name" required
@@ -99,7 +137,7 @@
                                                 name="company_model_id" id="company_model"
                                                 data-parsley-trigger="select"
                                                 data-parsley-required-message="هذا الحقل إجباري">
-                                            <option value="" selected disabled>إختار الموديل</option>
+
 
 
                                         </select>
@@ -130,13 +168,31 @@
                                     @endif
                                 </div>
 
-
-
-                                <div id="appendArea" class="row">
-
+                                <div id="CodePanel">
+                                <div class="form-group col-lg-12 col-xs-12">
+                                    <label class="col-md-3 control-label">الكود</label>
+                                    <div class="form-group">
+                                        <div class="col-md-6">
+                                            <input id="codeInput" type="text" name="code" class="form-control" placeholder="كود القطغة" >
+                                        </div>
+                                    </div>
                                 </div>
+                                </div>
+
+                                <div class="form-group col-lg-12 col-xs-12">
+                                    <label class="col-md-3 control-label">هل يوجد قطع آخرى ؟</label>
+                                    <div class="form-group">
+                                        <div class="col-md-3">
+                                            <input id="mainCheck" type="checkbox" name="otherParts"  data-plugin="switchery" data-color="#ffaa00"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div id="appendArea" class="row"></div>
+
                                 <div class="form-group col-sm-12 col-xs-12">
-                                    <button id="addPartButton" type="button" class="btn btn-inverse btn-rounded w-md waves-effect waves-light m-b-5">إضافة قطعة جديدة
+                                    <button style="display: none;" id="addPartButton" type="button" class="btn btn-inverse btn-rounded w-md waves-effect waves-light m-b-5">إضافة قطعة جديدة
                                         <i class="fa fa-plus"></i>
                                     </button>
                                 </div>
@@ -201,24 +257,88 @@
         });
 
         $(document).ready(function () {
-            $('#company').change(function () {
+
+            $('#partForm').submit(function () {
+
+                if(($('input[type=checkbox]').prop('checked')) && $('#appendArea').children().length == 0 ) {
+                    alert('يجب إضافة قطع تابعة للقطعة الأولى');
+                    return false;
+                }else{
+                    this.submit();
+                }
+            });
+
+
+
+            $('#category').change(function () {
                 var id = $(this).val();
                 $.ajax({
                     type: 'POST',
-                    url: '{{ route('getAjaxCompanyModels') }}',
+                    url: '{{ route('ajax.get.subcategories') }}',
                     data: {id: id},
                     dataType: 'json',
                     success: function (data) {
-                        $('#company_model').empty();
-                        $.each(data.data, function (element, ele) {
-                            $('#company_model').append("<option value='"+ele.id+"'>" + ele.ar_name + "</option>");
-                        });
+                        $('#subCategory').html(data.data);
                     }
                 });
             });
 
             //            **************************************
         });
+
+        $('#mainCheck').change(function () {
+            if(this.checked){
+
+                $('#CodePanel').hide();
+                $('#codeInput').removeAttr('required data-parsley-required-message');
+                $('#addPartButton').show();
+            }
+            else{
+                $('#CodePanel').show();
+                $('#codeInput').attr({
+                    'required':'required',
+                    'data-parsley-required-message':'هذا الحقل مطلوب',
+                });
+
+                $('#addPartButton').hide();
+                if ( $('#appendArea').children().length > 0 ) {
+                    $('#appendArea').empty();
+                }
+            }
+        });
+
+
+
+        $('#company').change(function () {
+            var id = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('ajax.get.companymodels') }}',
+                data: {id: id},
+                dataType: 'json',
+                success: function (data) {
+                    $('#company_model').html(data.data);
+                }
+            });
+        });
+
+        //***************************************************************
+        $('#teamSelect').change(function () {
+            var id = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('ajax.get.subcategories') }}',
+                data: {id: id},
+                dataType: 'json',
+                success: function (data) {
+                    $('#user_id').html(data.data);
+                }
+            });
+        });
+
+
+
+        //*****************************************************************
 
         $('#addPartButton').click(function(){
             $('#appendArea').append("  <div>\n" +
@@ -248,7 +368,7 @@
                 "\n" +
                 "                                        <div class=\"form-group col-sm-6 col-xs-12\">\n" +
                 "                                            <label for=\"userName\">كود القطعة*</label>\n" +
-                "                                            <input type=\"text\" name=\"code[]\" required\n" +
+                "                                            <input type=\"text\" name=\"codes[]\" required\n" +
                 "                                                   placeholder=\"كود القطعة\" class=\"form-control\"\n" +
                 "                                                   data-parsley-required-message=\"هذا الحقل مطلوب\"\n" +
                 "                                                   {{--oninput=\"this.value = Math.abs(this.value)\"--}}\n" +
@@ -260,7 +380,7 @@
                 "\n" +
                 "                                        <div class=\"form-group col-sm-6 col-xs-12\">\n" +
                 "                                            <label for=\"userName\">رقم القطعة*</label>\n" +
-                "                                            <input type=\"number\" name=\"number[]\" required\n" +
+                "                                            <input type=\"number\" name=\"numbers[]\" required\n" +
                 "                                                   placeholder=\"رقم القطعة في الصورة\" class=\"form-control\"\n" +
                 "                                                   data-parsley-required-message=\"هذا الحقل مطلوب\"\n" +
                 "                                                   oninput=\"this.value = Math.abs(this.value)\"\n" +

@@ -64,6 +64,11 @@ function uploader($request,$img_name)
     $path = \Storage::disk('public')->putFile(uploadpath(), $request->file($img_name));
     return $path;
 }
+function arrayUploader($request,$img_name,$i)
+{
+    $path = \Storage::disk('public')->putFile(uploadpath(), $request->file($img_name)[$i]);
+    return $path;
+}
 
 function statuss($status = null)
 {

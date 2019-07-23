@@ -129,6 +129,10 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin','middleware'=>'admin'],
 //
 //    })->name('user.update.token');
 
+//    Ajax Routes ..........
+    Route::post('get/subcategories','AjaxController@getSubCategoriesById')->name('ajax.get.subcategories');
+    Route::post('get/companymodels','AjaxController@getCompanyModelsById')->name('ajax.get.companymodels');
+
     route::post('/logout','LoginController@logout')->name('admin.logout');
 });
 

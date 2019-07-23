@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Category;
 use App\Company;
 use App\CompanyModel;
 use App\Part;
+use App\SubCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Traits\PartsOperations;
 
 class PartsController extends Controller
 {
+    use PartsOperations;
     /**
      * Display a listing of the resource.
      *
@@ -29,7 +33,8 @@ class PartsController extends Controller
     public function create()
     {
         $companies = Company::whereIsActive(1)->get();
-        return view('admin.parts.create',compact('companies'));
+        $categories = Category::all();
+        return view('admin.parts.create',compact('companies','categories'));
     }
 
     /**
@@ -40,23 +45,27 @@ class PartsController extends Controller
      */
     public function store(Request $request)
     {
-
-//        return $request->all();
         $roles = [
+            'sub_category_id'=>'required|numeric|exists:sub_categories,id',
             'part_ar_name'=>'required|string|max:191',
             'part_en_name'=>'required|string|max:191',
             'company_model_id'=>"required|exists:company_models,id",
             'image'=>'required|image',
-            'ar_name'=>'required|array',
-            'en_name'=>'required|array',
-            'number'=>'required|numeric',
-            'code'=>'required|string',
-            'images'=>'required|array',
+            'ar_name'=>'sometimes|array',
+            'en_name'=>'sometimes|array',
+            'numbers'=>'sometimes|array',
+            'codes'=>'sometimes|array',
+            'code'=>'nullable|string',
+            'images'=>'sometimes|array',
             'images.*'=>"image",
         ];
         $this->validate($request,$roles);
-        return "validation is OK";
-        Part::create($request->all());
+        $part = $this->AddPart($request);
+
+        if($request->has('otherParts') && $request->otherParts == 'on'){
+            $this->AddPartImages($request,$part);
+        }
+
         session()->flash('success','تم الإضافة بنجاح');
         return redirect()->route('parts.index');
     }
@@ -81,10 +90,12 @@ class PartsController extends Controller
     public function edit($id)
     {
         $part = Part::findOrFail($id);
-
+        $categories = Category::all();
+        $subCategories = SubCategory::where('category_id',$part->subCategory->category->id)->get();
         $companies = Company::whereIsActive(1)->get();
-        $company_models = CompanyModel::whereCompanyId($part->company_model->company->id)->get();
-        return view('admin.parts.edit',compact('part','companies','company_models'));
+        $models = CompanyModel::where('company_id',$part->company_model->company->id)->get();
+
+        return view('admin.parts.edit',compact('part','categories','subCategories','companies','models'));
     }
 
     /**
