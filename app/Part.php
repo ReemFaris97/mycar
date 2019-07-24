@@ -29,4 +29,9 @@ class Part extends Model
      public function subCategory(){
          return $this->belongsTo(SubCategory::class,'sub_category_id');
      }
+
+     public function checkIfHasParts(){
+         if($this->code == null) return 1;
+         else return 0 ;
+     }
 }

@@ -225,6 +225,7 @@
     </div>
     <!-- end row -->
 
+
 @endsection
 
 @section('scripts')
@@ -338,71 +339,60 @@
 
 
 
+
         //*****************************************************************
 
         $('#addPartButton').click(function(){
-            $('#appendArea').append("  <div>\n" +
-                "                                        <div class=\"form-group col-sm-6 col-xs-12\">\n" +
-                "                                            <label for=\"userName\">الإسم بالعربية*</label>\n" +
-                "                                            <input type=\"text\" name=\"ar_name[]\" required\n" +
-                "                                                   placeholder=\"الإسم بالعربية\" class=\"form-control\"\n" +
-                "                                                   data-parsley-required-message=\"هذا الحقل مطلوب\"\n" +
-                "                                                   {{--oninput=\"this.value = Math.abs(this.value)\"--}}\n" +
-                "                                                   data-parsley-trigger=\"keyup\"\n" +
-                "                                                   data-parsley-maxlength=\"50\"\n" +
-                "                                                   data-parsley-maxlength-message=\"اقصى عدد حروف هو 50 حرف\" >\n" +
-                "\n" +
-                "                                        </div>\n" +
-                "\n" +
-                "                                        <div class=\"form-group col-sm-6 col-xs-12\">\n" +
-                "                                            <label for=\"userName\">إسم بالإنجليزية*</label>\n" +
-                "                                            <input type=\"text\" name=\"en_name[]\" required\n" +
-                "                                                   placeholder=\"الإسم بالعربية\" class=\"form-control\"\n" +
-                "                                                   data-parsley-required-message=\"هذا الحقل مطلوب\"\n" +
-                "                                                   {{--oninput=\"this.value = Math.abs(this.value)\"--}}\n" +
-                "                                                   data-parsley-trigger=\"keyup\"\n" +
-                "                                                   data-parsley-maxlength=\"50\"\n" +
-                "                                                   data-parsley-maxlength-message=\"اقصى عدد حروف هو 50 حرف\">\n" +
-                "\n" +
-                "                                        </div>\n" +
-                "\n" +
-                "                                        <div class=\"form-group col-sm-6 col-xs-12\">\n" +
-                "                                            <label for=\"userName\">كود القطعة*</label>\n" +
-                "                                            <input type=\"text\" name=\"codes[]\" required\n" +
-                "                                                   placeholder=\"كود القطعة\" class=\"form-control\"\n" +
-                "                                                   data-parsley-required-message=\"هذا الحقل مطلوب\"\n" +
-                "                                                   {{--oninput=\"this.value = Math.abs(this.value)\"--}}\n" +
-                "                                                   data-parsley-trigger=\"keyup\"\n" +
-                "                                                   data-parsley-maxlength=\"50\"\n" +
-                "                                                   data-parsley-maxlength-message=\"اقصى عدد حروف هو 50 حرف\">\n" +
-                "\n" +
-                "                                        </div>\n" +
-                "\n" +
-                "                                        <div class=\"form-group col-sm-6 col-xs-12\">\n" +
-                "                                            <label for=\"userName\">رقم القطعة*</label>\n" +
-                "                                            <input type=\"number\" name=\"numbers[]\" required\n" +
-                "                                                   placeholder=\"رقم القطعة في الصورة\" class=\"form-control\"\n" +
-                "                                                   data-parsley-required-message=\"هذا الحقل مطلوب\"\n" +
-                "                                                   oninput=\"this.value = Math.abs(this.value)\"\n" +
-                "                                                   data-parsley-trigger=\"keyup\"\n" +
-                "                                                   data-parsley-maxlength=\"50\"\n" +
-                "                                                   data-parsley-maxlength-message=\"اقصى عدد حروف هو 50 حرف\">\n" +
-                "                                        </div>\n" +
-                "\n" +
-                "                                        <div class=\"form-group col-sm-12 col-xs-12\">\n" +
-                "                                            <div class=\"form-group\">\n" +
-                "                                                <label class=\"col-md-2 control-label\">صورة القطعة</label>\n" +
-                "                                                <div class=\"col-md-10\">\n" +
-                "                                                    <input name=\"images[]\" type=\"file\" class=\"\" data-max-file-size=\"6M\"\n" +
-                "                                                           data-allowed-file-extensions=\"png gif jpg jpeg\"\n" +
-                "                                                           data-errors-position=\"inside\"\n" +
-                "                                                           required data-parsley-required-message=\"صورة القطعة مطلوبة\"\n" +
-                "                                                    />\n" +
-                "                                                </div>\n" +
-                "                                            </div>\n" +
-                "                                        </div>\n" +
-                "                                    </div>");
+            $('#appendArea').append(' <div class="the-appended-item">\n' +
+                '        <div class="form-group col-sm-6 col-xs-12">\n' +
+                '            <label for="userName">الإسم بالعربية*</label>\n' +
+                '            <input type="text" name="ar_name[]" required="" placeholder="الإسم بالعربية" class="form-control" data-parsley-required-message="هذا الحقل مطلوب" data-parsley-trigger="keyup" data-parsley-maxlength="50" data-parsley-maxlength-message="اقصى عدد حروف هو 50 حرف">\n' +
+                '\n' +
+                '        </div>\n' +
+                '\n' +
+                '        <div class="form-group col-sm-6 col-xs-12">\n' +
+                '            <label for="userName">إسم بالإنجليزية*</label>\n' +
+                '            <input type="text" name="en_name[]" required="" placeholder="الإسم بالعربية" class="form-control" data-parsley-required-message="هذا الحقل مطلوب" data-parsley-trigger="keyup" data-parsley-maxlength="50" data-parsley-maxlength-message="اقصى عدد حروف هو 50 حرف">\n' +
+                '\n' +
+                '        </div>\n' +
+                '\n' +
+                '        <div class="form-group col-sm-6 col-xs-12">\n' +
+                '            <label for="userName">كود القطعة*</label>\n' +
+                '            <input type="text" name="codes[]" required="" placeholder="كود القطعة" class="form-control" data-parsley-required-message="هذا الحقل مطلوب" data-parsley-trigger="keyup" data-parsley-maxlength="50" data-parsley-maxlength-message="اقصى عدد حروف هو 50 حرف">\n' +
+                '\n' +
+                '        </div>\n' +
+                '\n' +
+                '        <div class="form-group col-sm-6 col-xs-12">\n' +
+                '            <label for="userName">رقم القطعة*</label>\n' +
+                '            <input type="number" name="numbers[]" required="" placeholder="رقم القطعة في الصورة" class="form-control" data-parsley-required-message="هذا الحقل مطلوب" oninput="this.value = Math.abs(this.value)" data-parsley-trigger="keyup" data-parsley-maxlength="50" data-parsley-maxlength-message="اقصى عدد حروف هو 50 حرف">\n' +
+                '        </div>\n' +
+                '\n' +
+                '        <div class="form-group col-sm-6 col-xs-12">\n' +
+                '            <div class="form-group">\n' +
+                '                <label class="col-md-2 control-label">صورة القطعة</label>\n' +
+                '                <div class="col-md-10">\n' +
+                '                    <input name="images[]" type="file" class="" data-max-file-size="6M" data-allowed-file-extensions="png gif jpg jpeg" data-errors-position="inside" required="" data-parsley-required-message="صورة القطعة مطلوبة">\n' +
+                '                </div>\n' +
+                '            </div>\n' +
+                '        </div>\n' +
+                '\n' +
+                '        <div class="form-group col-sm-6 col-xs-12">\n' +
+                '            <div class="form-group">\n' +
+                '                <div class="col-md-10">\n' +
+                '                    <button type="button" class="btn btn-danger form-control removeAppended" >حذف</button>\n' +
+                '                </div>\n' +
+                '            </div>\n' +
+                '        </div>\n' +
+                '    </div>');
+
+            $('.removeAppended').click(function () {
+                $(this).parents(".the-appended-item").remove();
+            });
+
+
         });
+
+
     </script>
 @endsection
 

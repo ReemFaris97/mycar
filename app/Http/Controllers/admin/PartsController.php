@@ -90,6 +90,7 @@ class PartsController extends Controller
     public function edit($id)
     {
         $part = Part::findOrFail($id);
+
         $categories = Category::all();
         $subCategories = SubCategory::where('category_id',$part->subCategory->category->id)->get();
         $companies = Company::whereIsActive(1)->get();
@@ -107,6 +108,7 @@ class PartsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        return $request->all();
         $part = Part::findOrFail($id);
         $roles = [
             'ar_name'=>'required|string|max:191',
