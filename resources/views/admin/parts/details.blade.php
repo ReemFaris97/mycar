@@ -101,14 +101,14 @@
                                     </td>
                                     <td>
 
-                                        <a href="javascript:;" data-toggle="modal" data-target="#updateImageModal" data-image="{{getimg($part_image->image)}}" data-object="{{json_encode($part_image)}}"  data-url="" class="UpdatePartImage label label-danger">تعديل</a>
-                                        <a  id="elementRow{{$part_image->id}}" href="javascript:;" data-id="{{$part_image->id}}"  data-url="" class="removeElement label label-danger">حذف</a>
+                                        <a href="{{route('admin.partimage.edit',$part_image->id)}}"  class="label label-danger">تعديل</a>
+                                        <a  id="elementRow{{$part_image->id}}" href="javascript:;" data-id="{{$part_image->id}}"  class="removeElement label label-danger">حذف</a>
                                     </td>
                                 </tr>
                                 @endforeach
                                 </tbody>
                             </table>
-                            <form id="UpdateImageForm" data-parsley-validate novalidate method="POST" action="" enctype="multipart/form-data">
+                            <form id="UpdateImageForm" data-parsley-validate novalidate method="POST" action="{{route('ajax.update.partImage')}}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div id="updateImageModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                                     <div class="modal-dialog">
@@ -153,12 +153,13 @@
 
                                                     <div class="col-md-12">
                                                         <div class="form-group no-margin">
-                                                            <label for="field-7" class="control-label">صورة القطعة</label>
+                                                            <label for="field-7" class="control-label">تبديل صورة القطعة</label>
 
-                                                            <input  id="image" name="image" type="file" class="dropify" data-max-file-size="6M"
+                                                            <input  id="image" name="image" type="file"
+                                                                   class="dropify"
+                                                                   data-max-file-size="6M"
                                                                    data-allowed-file-extensions="png gif jpg jpeg"
                                                                    data-errors-position="inside"
-                                                                   data-parsley-required-message="هذا الحقل مطلوب"
                                                                    data-show-remove="false"
                                                                    data-default-file=""
                                                             />
@@ -200,8 +201,6 @@
 
         $(document).ready(function() {
 
-
-
             $('.image-popup').magnificPopup({
                 type: 'image',
                 closeOnContentClick: true,
@@ -214,10 +213,9 @@
             });
         });
 
-
         $('.dropify').dropify({
             messages: {
-                'default': 'إضغط هنا او اسحب وافلت الصورة',
+                'default': 'إضغط هنا او اسحب وافلت لتبديل الصورة',
                 'replace': 'إسحب وافلت او إضغط للتعديل',
                 'remove': 'حذف',
                 'error': 'حدث خطأ ما'
@@ -230,65 +228,77 @@
 
 
 
-        $('body').on('click', '.UpdatePartImage', function () {
-
-            var url = $(this).attr('data-url');
-            var imageObject = $(this).attr('data-object');
-            var ar_name = JSON.parse(imageObject).ar_name;
-            var en_name = JSON.parse(imageObject).en_name;
-            var code = JSON.parse(imageObject).code;
-            var number = JSON.parse(imageObject).number;
-            var image = $(this).attr('data-image');
-
-            $('#ar_name').val(ar_name);
-            $('#en_name').val(en_name);
-            $('#code').val(code);
-            $('#number').val(number);
-            $('#image').attr("data-default-file",image);
-
-
-            $('#UpdateImageForm').on('submit',function (e) {
-                e.preventDefault();
-                var suspendReason = $('#suspendField').val();
-
-                $.ajax({
-                    type:'post',
-                    url :url,
-                    data:{id:id,suspendReason:suspendReason},
-                    dataType:'json',
-                    success:function(data){
-                        if(data.status == true){
-                            var title = data.title;
-                            var msg = data.message;
-                            toastr.options = {
-                                positionClass : 'toast-top-left',
-                                onclick:null
-                            };
-
-                            var $toast = toastr['success'](msg,title);
-                            $toastlast = $toast
-
-                            function pageRedirect() {
-                                window.location.href ='{{route('admins.index')}}';
-                            }
-                            setTimeout(pageRedirect(), 750);
-                        }else {
-                            var title = data.title;
-                            var msg = data.message;
-                            toastr.options = {
-                                positionClass : 'toast-top-left',
-                                onclick:null
-                            };
-
-                            var $toast = toastr['error'](msg,title);
-                            $toastlast = $toast
-                        }
-                    }
-                });
-
-            })
-
-        });
+        // $('body').on('click', '.UpdatePartImage', function () {
+        //     var id = $(this).attr('data-id');
+        //     var imageObject = $(this).attr('data-object');
+        //     $('#UpdateImageForm').append('<input type="hidden" name="id" value="'+id+'">');
+        //     var ar_name = JSON.parse(imageObject).ar_name;
+        //     var en_name = JSON.parse(imageObject).en_name;
+        //     var code = JSON.parse(imageObject).code;
+        //     var number = JSON.parse(imageObject).number;
+        //     var image = $(this).attr('data-image');
+        //
+        //
+        //     $('#ar_name').val(ar_name);
+        //     $('#en_name').val(en_name);
+        //     $('#code').val(code);
+        //     $('#number').val(number);
+        //     $('#image').attr("data-default-file",image);
+        //
+        //
+        //
+        //
+        //     $('#UpdateImageForm').on('submit',function (e) {
+        //         e.preventDefault();
+        //         var form = $(this);
+        //         form.parsley().validate();
+        //         if (form.parsley().isValid()) {
+        //             var formData = new FormData(this);
+        //             $.ajax({
+        //                 type: 'POST',
+        //                 url: $(this).attr('action'),
+        //                 data: formData,
+        //                 cache: false,
+        //                 contentType: false,
+        //                 processData: false,
+        //                 success: function (data) {
+        //
+        //                     if (data.status === true) {
+        //
+        //                         var title = data.title;
+        //                         var msg = data.message;
+        //                         toastr.options = {
+        //                             positionClass : 'toast-top-left',
+        //                             onclick:null
+        //                         };
+        //                         var $toast = toastr['success'](msg,title);
+        //                         $toastlast = $toast;
+        //                         $('#UpdateImageForm').each(function () {
+        //                             this.reset();
+        //                         });
+        //
+        //
+        //                     } else {
+        //                         var title = data.title;
+        //                         var msg = data.message;
+        //                         toastr.options = {
+        //                             positionClass : 'toast-top-left',
+        //                             onclick:null
+        //                         };
+        //                         var $toast = toastr['error'](msg,title);
+        //                         $toastlast = $toast;
+        //
+        //                     }
+        //                 },
+        //                 error: function (data) {
+        //
+        //                 }
+        //             });
+        //         }
+        //
+        //     })
+        //
+        // });
     </script>
 
 

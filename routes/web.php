@@ -76,6 +76,8 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin','middleware'=>'admin'],
     route::resource('parts','PartsController');
     Route::post('get-company_models','PartsController@getCompanyModels')->name('getAjaxCompanyModels');
 
+    Route::resource('images','PartsImagesController');
+
     route::resource('users','UsersController');
     route::post('users/suspendOrActivate','UsersController@suspendOrActivate')->name('users.suspendOrActivate'); // used here only for activate..
     route::post('users/suspendWithReason','UsersController@suspendWithReason')->name('users.suspendWithReason');
@@ -132,6 +134,7 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin','middleware'=>'admin'],
 //    Ajax Routes ..........
     Route::post('get/subcategories','AjaxController@getSubCategoriesById')->name('ajax.get.subcategories');
     Route::post('get/companymodels','AjaxController@getCompanyModelsById')->name('ajax.get.companymodels');
+
 
     route::post('/logout','LoginController@logout')->name('admin.logout');
 });
