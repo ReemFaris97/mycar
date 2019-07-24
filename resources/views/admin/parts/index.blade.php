@@ -37,6 +37,8 @@
                         <th>إسم قطعة الغيار بالإنجليزية</th>
                         <th>اسم الشركة المصنعة</th>
                         <th>الموديل</th>
+                        <th>نوع القطعة</th>
+
                         <th>العمليات المتاحة</th>
                     </tr>
                     </thead>
@@ -48,10 +50,18 @@
                             <td>{{$i++}}</td>
                             <td>{{$row->ar_name}}</td>
                             <td>{{$row->en_name}}</td>
-                            <td>{{$row->company_model->company->ar_name}}
-                            <td>{{$row->company_model->ar_name}}
+                            <td>{{$row->company_model->company->ar_name}}</td>
+                            <td>{{$row->company_model->ar_name}}</td>
+                            <td>
+                                @if($row->code == null)
+                                    بها قطع آخرى
+                                @else
+                                    قطعة أساسية
+                                @endif
                             </td>
+
                             <td style="width: 150px;">
+                                <a href="{{route('parts.show',$row->id)}}" class="label label-primary">تفاصيل</a>
                                 <a href="{{route('parts.edit',$row->id)}}" class="label label-warning">تعديل</a>
                                 <a  id="elementRow{{$row->id}}" href="javascript:;" data-id="{{$row->id}}"  data-url="{{route('parts.destroy',$row->id)}}" class="removeElement label label-danger">حذف</a>
                             </td>

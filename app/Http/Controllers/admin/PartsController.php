@@ -45,6 +45,7 @@ class PartsController extends Controller
      */
     public function store(Request $request)
     {
+
         $roles = [
             'sub_category_id'=>'required|numeric|exists:sub_categories,id',
             'part_ar_name'=>'required|string|max:191',
@@ -78,7 +79,8 @@ class PartsController extends Controller
      */
     public function show($id)
     {
-        //
+        $part = Part::findOrFail($id);
+        return view('admin.parts.details',compact('part'));
     }
 
     /**
@@ -108,15 +110,24 @@ class PartsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return $request->all();
         $part = Part::findOrFail($id);
         $roles = [
-            'ar_name'=>'required|string|max:191',
-            'en_name'=>'required|string|max:191',
-            'company_model_id'=>"required|exists:company_models,id"
+            'sub_category_id'=>'required|numeric|exists:sub_categories,id',
+            'part_ar_name'=>'required|string|max:191',
+            'part_en_name'=>'required|string|max:191',
+            'company_model_id'=>"required|exists:company_models,id",
+            'image'=>'sometimes|image',
+            'ar_name'=>'sometimes|array',
+            'en_name'=>'sometimes|array',
+            'numbers'=>'sometimes|array',
+            'codes'=>'sometimes|array',
+            'code'=>'nullable|string',
+            'images'=>'sometimes|array',
+            'images.*'=>"image",
         ];
+
         $this->validate($request,$roles);
-        $part->update($request->all());
+        $this->updatePart($request,$part);
         session()->flash('success','تم التعديل بنجاح');
         return redirect()->route('parts.index');
     }

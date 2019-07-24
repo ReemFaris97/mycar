@@ -28,7 +28,7 @@ trait PartsOperations
         $codes = $request->codes;
         $numbers = $request->numbers;
         $images = $request->images;
-        foreach ($images as $image)
+//        foreach ($images as $image)
         for ($i=0;$i < count($ar_names);$i++){
             $part->part_images()->create([
                 'ar_name'=>$ar_names[$i],
@@ -40,4 +40,24 @@ trait PartsOperations
         }
 
     }
+
+    public function updatePart($request,$part){
+        $data['ar_name'] = $request->part_ar_name;
+        $data['en_name'] = $request->part_en_name;
+        if($request->has('image') && $request->image != null){
+            deleteImg($part->image);
+            $data['image'] = uploader($request,'image');
+        }
+        if($request->has('code') && $request->code !=null) {
+            $data['code'] = $request->code;
+        }
+        $data['company_model_id'] = $request->company_model_id;
+        $data['sub_category_id'] = $request->sub_category_id;
+        $part->update($data);
+        return $part;
+    }
+
+
+
+
 }
