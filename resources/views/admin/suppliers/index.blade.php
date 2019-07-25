@@ -56,6 +56,7 @@
                             </th>
 
                             <td>
+                                <a href="{{route('suppliers.wallet',$row->id)}}" class="label label-success">المحفظة</a>
                                 <a href="{{route('suppliers.show',$row->id)}}" class="label label-primary">تفاصيل</a>
                                 <a href="{{route('suppliers.edit',$row->id)}}" class="label label-warning">تعديل</a>
 

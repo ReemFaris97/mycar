@@ -54,13 +54,23 @@ class User extends Authenticatable
         return $this->hasMany(Transaction::class,'user_id');
     }
 
+
+    public function MoneyOnUser(){
+        return  $this->transactions->where('type','on')->where('order_id','!=',null)->sum('value');
+    }
+
+    public function MoneyForUser(){
+        return $this->transactions->where('type','for')->where('order_id','!=',null)->sum('value');
+    }
+
     public function wallet()
     {
-        $for_supplier = $this->transactions->where('type','wait')->sum('value');
-        $paid_for_supplier = $this->transactions->where('type','done')->sum('value');
-        $rest = $for_supplier - $paid_for_supplier ;
+        $for_supplier = $this->transactions->where('type','for')->sum('value');
+        $on_supplier = $this->transactions->where('type','on')->sum('value');
+        $rest = $for_supplier - $on_supplier ;
         return $rest;
     }
+
 
     public function make_transaction($value,$type,$reason=null)
     {
@@ -77,6 +87,8 @@ class User extends Authenticatable
     public function notifications(){
         return $this->hasMany(Notification::class,'model_id');
     }
+
+
 
 
 //    public function generateLoginCode(){

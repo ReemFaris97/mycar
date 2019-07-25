@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
@@ -215,6 +216,22 @@ class SuppliersController extends Controller
             'title'=>'نجاح',
             'message'=>'تم حظر المستخدم بنجاح'
         ]);
+
+    }
+    
+
+    public function getWalletPage($id){
+        $supplier = User::find($id);
+        return view('admin.suppliers.wallet',compact('supplier'));
+    }
+    public function postSupplierMoney(Request $request,$id){
+        $transaction = new Transaction();
+        $transaction->value = $request->value;
+        $transaction->type = $request->type;
+        $transaction->user_id = $id;
+        $transaction->save();
+        session()->flash('success','تم تصفية الحساب بنجاح');
+        return redirect()->back();
 
     }
 }

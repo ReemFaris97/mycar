@@ -16,10 +16,8 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->float('value');
-            $table->string('reason')->nullable();
-            $table->enum('type',['wait','done']);
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->bigInteger('order_id')->nullable();
+            $table->enum('type',['for','on']);
             $table->timestamps();
         });
     }

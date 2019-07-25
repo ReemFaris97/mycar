@@ -86,7 +86,10 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin','middleware'=>'admin'],
     route::resource('suppliers','SuppliersController');
     route::post('suppliers/suspendOrActivate','SuppliersController@suspendOrActivate')->name('suppliers.suspendOrActivate'); // used here only for activate..
     route::post('suppliers/suspendWithReason','SuppliersController@suspendWithReason')->name('suppliers.suspendWithReason');
-//    Route::post('get/cities','SuppliersController@getCities')->name('getAjaxCities');
+
+    route::get('supplier/{id}/wallet','SuppliersController@getWalletPage')->name('suppliers.wallet');
+    route::post('supplier/{id}/wallet','SuppliersController@postSupplierMoney')->name('post.supplier.wallet');
+
 
     route::resource('orders','OrdersController');
 
