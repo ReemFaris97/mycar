@@ -7,10 +7,10 @@
         <div class="col-sm-12">
 
             <div class="btn-group pull-right m-t-15">
-                <button onclick="window.history.back();"  class="btn btn-custom dropdown-toggle waves-effect waves-light">
+                <a href="{{route('parts.index')}}"  class="btn btn-custom dropdown-toggle waves-effect waves-light">
                     رجوع
                     <span class="m-l-5"><i class="fa fa-arrow-left"></i></span>
-                </button>
+                </a>
 
             </div>
 
@@ -101,84 +101,14 @@
                                     </td>
                                     <td>
 
-                                        <a href="{{route('admin.partimage.edit',$part_image->id)}}"  class="label label-danger">تعديل</a>
-                                        <a  id="elementRow{{$part_image->id}}" href="javascript:;" data-id="{{$part_image->id}}"  class="removeElement label label-danger">حذف</a>
+                                        <a href="{{route('part-image.edit',$part_image->id)}}"  class="label label-danger">تعديل</a>
+                                        <a  id="elementRow{{$part_image->id}}" href="javascript:;" data-id="{{$part_image->id}}" data-url="{{route('part-image.destroy',$part_image->id)}}"  class="removeElement label label-danger">حذف</a>
                                     </td>
                                 </tr>
                                 @endforeach
                                 </tbody>
                             </table>
-                            <form id="UpdateImageForm" data-parsley-validate novalidate method="POST" action="{{route('ajax.update.partImage')}}" enctype="multipart/form-data">
-                                {{ csrf_field() }}
-                                <div id="updateImageModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                <h4 class="modal-title">تعديل الصورة</h4>
-                                            </div>
-                                            <div class="modal-body">
 
-                                                {{--<input type="hidden" id="idHolder">--}}
-
-
-                                                <div class="row">
-
-                                                    <div class="col-md-12">
-                                                        <div class="form-group no-margin">
-                                                            <label for="field-7" class="control-label">الإسم بالعربية</label>
-                                                            <input type="text" id="ar_name" name="ar_name" class="form-control" placeholder="إسم القطعة بالعربية" required data-parsley-required-message="هذا الحقل مطلوب">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <div class="form-group no-margin">
-                                                            <label for="field-7" class="control-label">الإسم بالإنجليزية</label>
-                                                            <input type="text" id="en_name" name="en_name" class="form-control" placeholder="إسم القطعة بالإنجليزية" required data-parsley-required-message="هذا الحقل مطلوب">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-12">
-                                                        <div class="form-group no-margin">
-                                                            <label for="field-7" class="control-label">الكود</label>
-                                                            <input type="text" id="code" name="code" class="form-control" placeholder="الكود" required data-parsley-required-message="هذا الحقل مطلوب">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-12">
-                                                        <div class="form-group no-margin">
-                                                            <label for="field-7" class="control-label">رقم القطعة</label>
-                                                            <input type="number" id="number" name="number" class="form-control" placeholder="رقم القطعة" min="1" required data-parsley-required-message="هذا الحقل مطلوب">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-12">
-                                                        <div class="form-group no-margin">
-                                                            <label for="field-7" class="control-label">تبديل صورة القطعة</label>
-
-                                                            <input  id="image" name="image" type="file"
-                                                                   class="dropify"
-                                                                   data-max-file-size="6M"
-                                                                   data-allowed-file-extensions="png gif jpg jpeg"
-                                                                   data-errors-position="inside"
-                                                                   data-show-remove="false"
-                                                                   data-default-file=""
-                                                            />
-                                                        </div>
-                                                    </div>
-
-
-
-
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">إلغاء</button>
-                                                <button type="submit" class="btn btn-success waves-effect waves-light">تعديل</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- /.modal -->
-                            </form>
                         </div>
                         @endif
 
@@ -226,79 +156,63 @@
             }
         });
 
+        $('body').on('click', '.removeElement', function () {
+            var id = $(this).attr('data-id');
+            var url = $(this).attr('data-url');
+            var tr = $(this).closest($('#elementRow' + id).parent().parent());
 
+            swal({
+                    title: "هل انت متأكد؟",
+                    text: 'هل تريد حذف القطعة فعلا ؟',
+                    type: "error",
+                    showCancelButton: true,
+                    confirmButtonColor: "#27dd24",
+                    confirmButtonText: "موافق",
+                    cancelButtonText: "إلغاء",
+                    confirmButtonClass:"btn-danger waves-effect waves-light",
+                    closeOnConfirm: true,
+                    closeOnCancel: true,
+                },
+                function (isConfirm) {
+                    if(isConfirm){
+                        $.ajax({
+                            type:'delete',
+                            url :url,
+                            data:{id:id},
+                            dataType:'json',
+                            success:function(data){
+                                if(data.status == true){
+                                    var title = data.title;
+                                    var msg = data.message;
+                                    toastr.options = {
+                                        positionClass : 'toast-top-left',
+                                        onclick:null
+                                    };
 
-        // $('body').on('click', '.UpdatePartImage', function () {
-        //     var id = $(this).attr('data-id');
-        //     var imageObject = $(this).attr('data-object');
-        //     $('#UpdateImageForm').append('<input type="hidden" name="id" value="'+id+'">');
-        //     var ar_name = JSON.parse(imageObject).ar_name;
-        //     var en_name = JSON.parse(imageObject).en_name;
-        //     var code = JSON.parse(imageObject).code;
-        //     var number = JSON.parse(imageObject).number;
-        //     var image = $(this).attr('data-image');
-        //
-        //
-        //     $('#ar_name').val(ar_name);
-        //     $('#en_name').val(en_name);
-        //     $('#code').val(code);
-        //     $('#number').val(number);
-        //     $('#image').attr("data-default-file",image);
-        //
-        //
-        //
-        //
-        //     $('#UpdateImageForm').on('submit',function (e) {
-        //         e.preventDefault();
-        //         var form = $(this);
-        //         form.parsley().validate();
-        //         if (form.parsley().isValid()) {
-        //             var formData = new FormData(this);
-        //             $.ajax({
-        //                 type: 'POST',
-        //                 url: $(this).attr('action'),
-        //                 data: formData,
-        //                 cache: false,
-        //                 contentType: false,
-        //                 processData: false,
-        //                 success: function (data) {
-        //
-        //                     if (data.status === true) {
-        //
-        //                         var title = data.title;
-        //                         var msg = data.message;
-        //                         toastr.options = {
-        //                             positionClass : 'toast-top-left',
-        //                             onclick:null
-        //                         };
-        //                         var $toast = toastr['success'](msg,title);
-        //                         $toastlast = $toast;
-        //                         $('#UpdateImageForm').each(function () {
-        //                             this.reset();
-        //                         });
-        //
-        //
-        //                     } else {
-        //                         var title = data.title;
-        //                         var msg = data.message;
-        //                         toastr.options = {
-        //                             positionClass : 'toast-top-left',
-        //                             onclick:null
-        //                         };
-        //                         var $toast = toastr['error'](msg,title);
-        //                         $toastlast = $toast;
-        //
-        //                     }
-        //                 },
-        //                 error: function (data) {
-        //
-        //                 }
-        //             });
-        //         }
-        //
-        //     })
-        //
-        // });
+                                    var $toast = toastr['success'](msg,title);
+                                    $toastlast = $toast;
+
+                                    tr.find('td').fadeOut(1000, function () {
+                                        tr.remove();
+                                    });
+                                }else {
+                                    var title = data.title;
+                                    var msg = data.message;
+                                    toastr.options = {
+                                        positionClass : 'toast-top-left',
+                                        onclick:null
+                                    };
+
+                                    var $toast = toastr['error'](msg,title);
+                                    $toastlast = $toast
+                                }
+                            }
+                        });
+                    }
+
+                }
+            );
+        });
     </script>
 
 

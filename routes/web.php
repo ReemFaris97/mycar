@@ -76,7 +76,7 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin','middleware'=>'admin'],
     route::resource('parts','PartsController');
     Route::post('get-company_models','PartsController@getCompanyModels')->name('getAjaxCompanyModels');
 
-    Route::resource('images','PartsImagesController');
+    Route::resource('part-image','PartsImagesController');
 
     route::resource('users','UsersController');
     route::post('users/suspendOrActivate','UsersController@suspendOrActivate')->name('users.suspendOrActivate'); // used here only for activate..
