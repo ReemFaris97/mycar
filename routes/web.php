@@ -90,6 +90,8 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin','middleware'=>'admin'],
 
     route::resource('orders','OrdersController');
 
+    Route::resource('return-items','ReturnsController');
+
 //    Reports ............
     route::get('reports/supplier/sales','ReportsController@SupplierSales')->name('report.supplier.sales');
     route::get('reports/supplier/refused','ReportsController@SupplierRefused')->name('report.supplier.refused');
