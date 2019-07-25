@@ -33,29 +33,34 @@
                         <th>إسم المستخدم</th>
                         <th>رقم الطلب</th>
                         <th>حالة طلب الإسترجاع</th>
+                        <th>وصف طلب الإسترجاع</th>
                         <th>خيارات</th>
                     </tr>
                     </thead>
                     <tbody>
                     @php $i = 1; @endphp
 
-{{--                    @foreach($categories as $row)--}}
-{{--                        <tr>--}}
-{{--                            <td>{{$i++}}</td>--}}
-{{--                            <td>{{$row->ar_name}}</td>--}}
-{{--                            <td>{{$row->en_name}}</td>--}}
-
-{{--                            <td style="width: 150px;">--}}
-{{--                                --}}{{--                                @if($row->is_active == 1)--}}
-{{--                                --}}{{--                                    <a href="javascript:;" data-id="{{$row->id}}" data-action="suspend" data-url="{{route('cities.suspendOrActivate')}}" class="suspendOrActivate label label-danger">حظر</a>--}}
-{{--                                --}}{{--                                @else--}}
-{{--                                --}}{{--                                    <a href="javascript:;" data-id="{{$row->id}}" data-action="activate" data-url="{{route('cities.suspendOrActivate')}}" class="suspendOrActivate label label-success">تفعيل</a>--}}
-{{--                                --}}{{--                                @endif--}}
-{{--                                <a href="{{route('categories.edit',$row->id)}}" class="label label-warning">تعديل</a>--}}
-{{--                                <a  id="elementRow{{$row->id}}" href="javascript:;" data-id="{{$row->id}}"  data-url="{{route('categories.destroy',$row->id)}}" class="removeElement label label-danger">حذف</a>--}}
-{{--                            </td>--}}
-{{--                        </tr>--}}
-{{--                    @endforeach--}}
+                    @foreach($returnItems as $row)
+                        <tr>
+                            <td>{{$i++}}</td>
+                            <td>{{$row->user->name}}</td>
+                            <td>{{$row->order->id}}</td>
+                            <td>
+                                @switch($row->status)
+                                @case('waiting') جاري الإنتظار @break
+                                @case('accepted') تم الموافقة @break
+                                @case('refused') تم الرفض @break
+                                @endswitch
+                            </td>
+                            <td>{{$row->reason}}</td>
+                            <td style="width: 150px;">
+                                @if($row->status =='waiting')
+                                    <a href="javascript:;" data-id="{{$row->id}}" data-action="accept" data-url="{{route('ajax.change.returnStatus')}}" class="suspendOrActivate label label-success">موافقة</a>
+                                    <a href="javascript:;" data-id="{{$row->id}}" data-action="refuse" data-url="{{route('ajax.change.returnStatus')}}" class="suspendOrActivate label label-danger">رفض</a>
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
 
@@ -76,29 +81,47 @@
     </script>
 
     <script>
-        $('body').on('click', '.removeElement', function () {
+        $('body').on('click', '.suspendOrActivate', function () {
             var id = $(this).attr('data-id');
             var url = $(this).attr('data-url');
-            var tr = $(this).closest($('#elementRow' + id).parent().parent());
+            var $tr = $(this).closest($('#elementRow' + id).parent().parent());
+            var action = $(this).attr('data-action');
+            var text = '';
+            var type = '';
+            var confirmButtonClass = '';
+            var redirectionRoute = '';
+
+            if(action == 'refuse'){
+                text = 'هل تريد رفض طلب الإسترجاع فعلا ؟';
+                type = 'error';
+                confirmButtonClass = 'btn-danger waves-effect waves-light';
+                redirectionRoute = '{{route('return-items.index')}}';
+
+            }if(action =='accept'){
+                text = 'هل تريد قبول طلب الإسترجاع فعلا ؟';
+                type = 'success';
+                confirmButtonClass = 'btn-success waves-effect waves-light';
+                redirectionRoute = '{{route('return-items.index')}}';
+            }
 
             swal({
                     title: "هل انت متأكد؟",
-                    text: 'هل تريد حذف القسم فعلا ؟',
-                    type: "error",
+                    text: text,
+                    type: type,
                     showCancelButton: true,
                     confirmButtonColor: "#27dd24",
                     confirmButtonText: "موافق",
                     cancelButtonText: "إلغاء",
-                    confirmButtonClass:"btn-danger waves-effect waves-light",
+                    confirmButtonClass:confirmButtonClass,
                     closeOnConfirm: true,
                     closeOnCancel: true,
                 },
                 function (isConfirm) {
                     if(isConfirm){
                         $.ajax({
-                            type:'delete',
+                            type:'post',
                             url :url,
-                            data:{id:id},
+                            data:{id:id,action:action},
                             dataType:'json',
                             success:function(data){
                                 if(data.status == true){
@@ -112,9 +135,14 @@
                                     var $toast = toastr['success'](msg,title);
                                     $toastlast = $toast;
 
-                                    tr.find('td').fadeOut(1000, function () {
-                                        tr.remove();
-                                    });
+//                                    $tr.find('td').fadeOut(100,function () {
+//                                        $tr.remove();
+//                                    });
+
+                                    function pageRedirect() {
+                                        window.location.href =redirectionRoute;
+                                    }
+                                    setTimeout(pageRedirect(), 750);
                                 }else {
                                     var title = data.title;
                                     var msg = data.message;

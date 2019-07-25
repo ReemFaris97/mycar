@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\CompanyModel;
+use App\ReturnItem;
 use App\SubCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -27,5 +28,34 @@ class AjaxController extends Controller
             'data' => view('admin.parts.getAjaxCarModel')->with('Models',$Models)->render()
         ]);
 
+    }
+
+    public function changeReturnRequestStatus(Request $request){
+        $returnItem = ReturnItem::find($request->id);
+        if($returnItem){
+            if($request->action == 'accept'){
+                $returnItem->status ='accepted';
+                $returnItem->save();
+                return response()->json([
+                    'status'=>true,
+                    'title'=>"نجاح",
+                    'message'=>"تم قبول طلب الإسترجاع بنجاح"
+                ]);
+            }else{
+                $returnItem->status ='refused';
+                $returnItem->save();
+                return response()->json([
+                    'status'=>true,
+                    'title'=>"نجاح",
+                    'message'=>"تم رفض طلب الإسترجاع بنجاح"
+                ]);
+            }
+        }else{
+            return response()->json([
+                'status'=>false,
+                'title'=>"خطأ",
+                'message'=>"طلب الإسترجاع ربما تم تغيير حالته من قبل او غير موجود"
+            ]);
+        }
     }
 }

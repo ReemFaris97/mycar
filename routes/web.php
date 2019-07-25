@@ -136,6 +136,8 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin','middleware'=>'admin'],
 //    Ajax Routes ..........
     Route::post('get/subcategories','AjaxController@getSubCategoriesById')->name('ajax.get.subcategories');
     Route::post('get/companymodels','AjaxController@getCompanyModelsById')->name('ajax.get.companymodels');
+    Route::post('return-items/change/status','AjaxController@changeReturnRequestStatus')->name('ajax.change.returnStatus');
+
 
 
     route::post('/logout','LoginController@logout')->name('admin.logout');
