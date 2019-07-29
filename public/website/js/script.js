@@ -156,7 +156,6 @@ $(document).ready(function () {
     $(".like").click(function () {
         $(this).toggleClass("animated bounceIn orange");
         $(".dislike").removeClass("animated fadeOutDown orange");
-
     });
 
     $(".dislike").on("click", function () {
@@ -169,15 +168,16 @@ $(document).ready(function () {
 
 
     //////////////////////////////// Suggest modal ///////////////////////////////////////////////////////////////
-    // $('.new-evl').click(function () {
-    //
-    //     $(this).closest(".sgst-btns").append('<div id="myModal" class="modal fade suggest-mdl" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal"><i class="fas fa-times"></i></button><h4 class="modal-title">اضافة اقتراح</h4></div><form><div class="form-group"><textarea rows="4" cols="95" id="inbox" class="form-control input-lg" data-fv-field="inbox" placeholder="اكتب اقتراحك..."></textarea></div><div class="modal-footer"><button type="submit" data-dismiss="modal">ارسال</button></div></form></div></div></div>');
-    //
-    // });
+    $('.new-evl').click(function () {
+
+        $(this).closest(".sgst-btns").append('<div id="myModal" class="modal fade suggest-mdl" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal"><i class="fas fa-times"></i></button><h4 class="modal-title">اضافة اقتراح</h4></div><form><div class="form-group"><textarea rows="4" cols="95" id="inbox" class="form-control input-lg" data-fv-field="inbox" placeholder="اكتب اقتراحك..."></textarea></div><div class="modal-footer"><button type="submit" data-dismiss="modal">ارسال</button></div></form></div></div></div>');
+
+    });
 
 
     ///////////////////////////////// Sign Modal //////////////////////////////////////
     $(".verfy").slideUp();
+    $(".area").slideUp();
     $("#step2").on("click", function () {
         $(".step1").slideUp(500);
         $(".verfy").slideDown(500);
@@ -197,6 +197,13 @@ $(document).ready(function () {
         });
 
     });
+    
+    $("#step3").on("click", function () {
+        $(".verfy").slideUp(500);
+        $(".step1").slideUp(500);
+        $(".area").slideDown(500);
+    });
+    
 
 
     

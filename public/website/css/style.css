@@ -1826,14 +1826,11 @@ button#reset-1:hover , button#reset-1:focus{
     opacity: 1;
 }
 /********************************* Suggest Modal ****************************/
-.suggest-mdl{
-    
-}
 .suggest-mdl .modal-dialog{
     height: 230px;
     width: 400px;
     margin: 0 auto;
-    top: calc(50% - 115px);
+    top: 25%;
 }
 .suggest-mdl .modal-header .close {
     margin-top: -2px;
@@ -1859,15 +1856,6 @@ button#reset-1:hover , button#reset-1:focus{
     line-height: 1.42857143;
     color: #ff5e00;
     font-family: 'Cairo-Bold', sans-serif;
-}
-.suggest-mdl .modal-content{
-    
-}
-.suggest-mdl .modal-header{
-    
-}
-.suggest-mdl .modal-body{
-    
 }
 .suggest-mdl form{
     width: 95%;
@@ -2393,7 +2381,75 @@ tt-hover {
     padding: 0;
     display: block;
 }
-
+/****************************************area *******************/
+.area{
+    text-align: center;
+}
+.area h5{
+    color: #ff5e00;
+}
+.area .signing{
+    
+}
+.area .choose{
+    color: #ff5e00;
+    font-family: 'Cairo-Bold', sans-serif;
+    margin: 18px auto !important;
+}
+/***************** Radio **************************/
+.radio-list {
+    text-align: center;
+    margin: 35px auto;
+}
+.radio-list .rad{
+    display: inline-block;
+    position: relative;
+  padding: 0 22px 0 0;
+        margin: 0 20px 0 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+    color: #212121;
+    font-size: 14px;
+}
+.rad input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.rad .checkmark {
+  position: absolute;
+  top: 3px;
+  right: 0;
+  height: 17px;
+  width: 17px;
+  background-color: #c1bbbb;
+  border-radius: 50%;
+}
+.rad:hover input ~ .checkmark {
+  background-color: #969595;
+}
+.rad input:checked ~ .checkmark {
+  background-color: #fe5e00;
+}
+.rad .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.rad input:checked ~ .checkmark:after {
+  display: block;
+}
+.rad .checkmark:after {
+    top: 5px;
+    left: 5px;
+    width: 7px;
+    height: 7px;
+	border-radius: 50%;
+	background: white;
+}
 /**************** End Sign Modal ****************/
 /******************* End Sign Divider  .HTML ********************************/
 
@@ -2577,6 +2633,17 @@ table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, tab
 /*** End Quantity ***/
 /******************* End Return Modal ********************************/
 /******************* End finished details .HTML ********************************/
+
+
+
+/******************* Start Form Wizard .HTML ********************************/
+.wizard{
+    
+}
+/*form styles*/
+
+
+/******************* End Form Wizard .HTML ********************************/
 
 
 
