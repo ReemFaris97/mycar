@@ -62,9 +62,23 @@
 
         <div class="content-in">
 
-            <a href="begin.html" class="logo-nav"><img src="{{asset('website/img/logo.png')}}"></a>
+            <a href="{{route('web.landing')}}" class="logo-nav"><img src="{{asset('website/img/logo.png')}}"></a>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-            <form autocomplete="off" data-parsley-validate novalidate class="form2 signing" method="post" action="">
+            @if (session()->has('success'))
+                <div class="alert alert-success">
+                    <h3>{{session()->get('success')}}</h3>
+                </div>
+            @endif
+            <form autocomplete="off" data-parsley-validate novalidate class="form2 signing" method="post" action="{{route('web.post.register.supplier')}}" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
                 <div class="form-group">
@@ -73,7 +87,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="number" name="number" required  data-parsley-required-message="هذا الحقل مطلوب" class="form-control" placeholder="رقم الهاتف">
+                    <input type="number" name="phone" required  data-parsley-required-message="هذا الحقل مطلوب" class="form-control" placeholder="رقم الهاتف">
                     <span class="focus-border"><i></i></span>
                 </div>
 
@@ -133,10 +147,10 @@
 
 
                 <div class="form-group">
-                    <input id="uploadFile" name="licence_image" required data-parsley-required-message="هذا الحقل مطلوب" class="f-input form-control" placeholder="صورة السجل التجارى" />
+                    <input id="uploadFile"  class="f-input form-control" placeholder="صورة السجل التجارى" />
                     <div class="fileUpload btn btn--browse">
                         <span>Browse</span>
-                        <input id="uploadBtn" type="file" class="upload" />
+                        <input id="uploadBtn" type="file" required data-parsley-required-message="هذا الحقل مطلوب" name="licence_image" class="upload" />
                     </div>
                     <span class="focus-border"><i></i></span>
                 </div>
@@ -150,23 +164,59 @@
 {{--                    <span class="focus-border"><i></i></span>--}}
 {{--                </div>--}}
 
-                <div class="form-group">
-                    <textarea rows="4" cols="95" class="form-control input-lg input-sm" data-fv-field="inbox" placeholder="اوصف العنوان"></textarea>
-                    <span class="focus-border"><i></i></span>
-                </div>
+{{--                <div class="form-group">--}}
+{{--                    <textarea rows="4" cols="95" class="form-control input-lg input-sm" data-fv-field="inbox" placeholder="اوصف العنوان"></textarea>--}}
+{{--                    <span class="focus-border"><i></i></span>--}}
+{{--                </div>--}}
 
 
-                <div class="form-data">
-                    <label>اللوكيشن</label>
-                    <div class="form-group">
-                        <div id="mapholder"></div>
-                        <input type="button" onclick="getLocation();" class="form-control" />
-                        <span class="focus-border"><i></i></span>
-                    </div>
-                </div>
+
+
+{{--                    <label>اللوكيشن</label>--}}
+{{--                    <div class="form-group">--}}
+{{--                        <div id="mapholder"></div>--}}
+{{--                        <input type="button" onclick="getLocation();" class="form-control" />--}}
+
+
+                        <input id="pac-input" name="address" required value="{{ old('address') }}"
+                               data-parsley-required-message="العنوان مطلوب"
+                               class="controls"
+                               type="text"
+                               style="z-index: 0;position: absolute;top: 11px;left: 113px;height: 34px;width: 63%;"
+                               placeholder="ابحث عن عنوان او حدد موقعك على الخريطة">
+
+                        @if($errors->has('address'))
+                            <p class="help-block error">
+                                {{ $errors->first('address') }}
+                            </p>
+                        @endif
+
+{{--                </div>--}}
+
+                <div id="map" style="width: 100%; height: 450px;"></div>
+                <input type="hidden" name="lat" id="lat"/>
+                <input type="hidden" name="lng" id="lng"/>
+
+
+
+{{--                <div class="form-data">--}}
+{{--                    <label>اللوكيشن</label>--}}
+{{--                    <div class="form-group">--}}
+{{--                        <div id="mapholder"></div>--}}
+{{--                        <input type="button" onclick="getLocation();" class="form-control" />--}}
+{{--                        <span class="focus-border"><i></i></span>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
 
                 <button type="submit"  class="upload">تسجيل كمورد</button>
+                <a href="{{route('supplier.home')}}"  class="upload">الدخول كمورد</a>
+
+
+
+                {{--                <button type="button" data-toggle="modal" data-target="#signModal" class="submit-in">--}}
+                {{--                    <i class="fas fa-arrow-right"></i>--}}
+                {{--                </button>--}}
 
 
                 {{--   Modals Buttons--}}
@@ -286,40 +336,40 @@
 
 </script>
 <!--- This for here only -->
-<script>
-    function showLocation(position) {
-        var latitude = position.coords.latitude;
-        var longitude = position.coords.longitude;
-        var latlongvalue = position.coords.latitude + "," +
-            position.coords.longitude;
-        var img_url = "https://maps.googleapis.com/maps/api/staticmap?center=" +
-            latlongvalue + "&zoom=14&size=400x300&key=AIzaSyAa8HeLH2lQMbPeOiMlM9D1VxZ7pbGQq8o";
-        document.getElementById("mapholder").innerHTML =
-            "<img src='" + img_url + "'>";
-    }
+{{--<script>--}}
+{{--    function showLocation(position) {--}}
+{{--        var latitude = position.coords.latitude;--}}
+{{--        var longitude = position.coords.longitude;--}}
+{{--        var latlongvalue = position.coords.latitude + "," +--}}
+{{--            position.coords.longitude;--}}
+{{--        var img_url = "https://maps.googleapis.com/maps/api/staticmap?center=" +--}}
+{{--            latlongvalue + "&zoom=14&size=400x300&key=AIzaSyAa8HeLH2lQMbPeOiMlM9D1VxZ7pbGQq8o";--}}
+{{--        document.getElementById("mapholder").innerHTML =--}}
+{{--            "<img src='" + img_url + "'>";--}}
+{{--    }--}}
 
 
-    function errorHandler(err) {
-        if (err.code == 1) {
-            alert("Error: Access is denied!");
-        } else if (err.code == 2) {
-            alert("Error: Position is unavailable!");
-        }
-    }
+{{--    function errorHandler(err) {--}}
+{{--        if (err.code == 1) {--}}
+{{--            alert("Error: Access is denied!");--}}
+{{--        } else if (err.code == 2) {--}}
+{{--            alert("Error: Position is unavailable!");--}}
+{{--        }--}}
+{{--    }--}}
 
-    function getLocation() {
-        if (navigator.geolocation) {
-            // timeout at 60000 milliseconds (60 seconds)
-            var options = {
-                timeout: 60000
-            };
-            navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
-        } else {
-            alert("Sorry, browser does not support geolocation!");
-        }
-    }
+{{--    function getLocation() {--}}
+{{--        if (navigator.geolocation) {--}}
+{{--            // timeout at 60000 milliseconds (60 seconds)--}}
+{{--            var options = {--}}
+{{--                timeout: 60000--}}
+{{--            };--}}
+{{--            navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);--}}
+{{--        } else {--}}
+{{--            alert("Sorry, browser does not support geolocation!");--}}
+{{--        }--}}
+{{--    }--}}
 
-</script>
+{{--</script>--}}
 
 <!---------------- Input type file --------------------->
 <script>
@@ -333,6 +383,151 @@
 
 </script>
 <!---->
+<script>
+
+
+    function initAutocomplete() {
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 24.774265, lng: 46.738586},
+            zoom: 8,
+            mapTypeId: 'roadmap'
+        });
+
+
+        var marker;
+        google.maps.event.addListener(map, 'click', function (event) {
+            map.setZoom();
+            var mylocation = event.latLng;
+            map.setCenter(mylocation);
+
+
+            $('#lat').val(event.latLng.lat());
+            $('#lng').val(event.latLng.lng());
+
+
+            codeLatLng(event.latLng.lat(), event.latLng.lng());
+
+            setTimeout(function () {
+                if (!marker)
+                    marker = new google.maps.Marker({position: mylocation, map: map});
+                else
+                    marker.setPosition(mylocation);
+            }, 600);
+
+        });
+
+
+        // Create the search box and link it to the UI element.
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function () {
+            searchBox.setBounds(map.getBounds());
+        });
+
+
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function () {
+            var places = searchBox.getPlaces();
+            // var location = place.geometry.location;
+            // var lat = location.lat();
+            // var lng = location.lng();
+            if (places.length == 0) {
+                return;
+            }
+
+            // Clear out the old markers.
+            markers.forEach(function (marker) {
+                marker.setMap(null);
+            });
+            markers = [];
+
+
+            // For each place, get the icon, name and location.
+            var bounds = new google.maps.LatLngBounds();
+            places.forEach(function (place) {
+                if (!place.geometry) {
+                    console.log("Returned place contains no geometry");
+                    return;
+                }
+                var icon = {
+                    url: place.icon,
+                    size: new google.maps.Size(71, 71),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(17, 34),
+                    scaledSize: new google.maps.Size(25, 25)
+                };
+
+                // Create a marker for each place.
+                markers.push(new google.maps.Marker({
+                    map: map,
+                    icon: icon,
+                    title: place.name,
+                    position: place.geometry.location
+                }));
+
+                if (place.geometry.viewport) {
+                    // Only geocodes have viewport.
+                    bounds.union(place.geometry.viewport);
+                } else {
+                    bounds.extend(place.geometry.location);
+                }
+                $('#lat').val(place.geometry.location.lat());
+                $('#lng').val(place.geometry.location.lng());
+                $('#address').val(place.formatted_address);
+
+            });
+
+
+            map.fitBounds(bounds);
+        });
+
+    }
+
+
+    function showPosition(position) {
+
+        map.setCenter({lat: position.coords.latitude, lng: position.coords.longitude});
+        codeLatLng(position.coords.latitude, position.coords.longitude);
+
+
+    }
+
+
+    function codeLatLng(lat, lng) {
+
+        var geocoder = new google.maps.Geocoder();
+        var latlng = new google.maps.LatLng(lat, lng);
+        geocoder.geocode({
+            'latLng': latlng
+        }, function (results, status) {
+            if (status === google.maps.GeocoderStatus.OK) {
+                if (results[1]) {
+                    // console.log(results[1].formatted_address);
+                    $("#demo").html(results[1].formatted_address);
+
+                    $("#addressProfile").val(results[1].formatted_address);
+                    $("#pac-input").val(results[1].formatted_address);
+
+                } else {
+                }
+            } else {
+                alert('Geocoder failed due to: ' + status);
+            }
+        });
+    }
+
+
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjBZsq9Q11itd0Vjz_05CtBmnxoQIEGK8&language=ar&libraries=places&callback=initAutocomplete"
+        async defer></script>
+
 
 <script src="{{asset('website/js/script.js')}}"></script>
 

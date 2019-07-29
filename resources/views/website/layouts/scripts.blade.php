@@ -20,6 +20,35 @@
 
 @yield('scripts')
 
+<script>
+    // This piece of code for toaster notification....
 
+    @if(session()->has('success'))
+    setTimeout(function () {
+        showMessage('{{ session()->get('success') }}');
+    }, 2000);
+
+    @endif
+
+    function showMessage(message) {
+        var shortCutFunction = 'success';
+        var msg = message;
+        var title = "نجاح";
+        toastr.options = {
+            positionClass: 'toast-top-center',
+            onclick: null,
+            showMethod: 'slideDown',
+            hideMethod: "slideUp",
+            showDuration: "1000",
+            hideDuration: "1000",
+            timeOut: "1500",
+            extendedTimeOut: "2000",
+        };
+        var $toast = toastr[shortCutFunction](msg, title);
+        // Wire up an event handler to a button in the toast, if it exists
+        $toastlast = $toast;
+    }
+
+</script>
 <script src="{{asset('website/js/script.js')}}"></script>
 
