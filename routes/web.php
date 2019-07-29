@@ -87,6 +87,8 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin','middleware'=>'admin'],
     route::post('suppliers/suspendOrActivate','SuppliersController@suspendOrActivate')->name('suppliers.suspendOrActivate'); // used here only for activate..
     route::post('suppliers/suspendWithReason','SuppliersController@suspendWithReason')->name('suppliers.suspendWithReason');
 
+    route::post('suppliers/join/accept','SuppliersController@acceptJoinRequest')->name('suppliers.acceptJoinRequest');
+
     route::get('supplier/{id}/wallet','SuppliersController@getWalletPage')->name('suppliers.wallet');
     route::post('supplier/{id}/wallet','SuppliersController@postSupplierMoney')->name('post.supplier.wallet');
 
