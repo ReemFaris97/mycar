@@ -62,7 +62,7 @@
                 </div>
 
                 <div class="col-sm-5 col-xs-12">
-                    <a href="sign-divider.html" class="apply"> انضم كمورد </a>
+                    <a href="{{route('web.get.register.supplier')}}" class="apply"> انضم كمورد </a>
                 </div>
 
             </div>

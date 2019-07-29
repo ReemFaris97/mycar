@@ -205,6 +205,8 @@ Route::group(['namespace'=>'website'], function (){
 
     Route::get('/','HomeController@landingPage')->name('web.landing');
 
+    Route::get('/supplier/register','SupplierController@getRegisterPage')->name('web.get.register.supplier');
+
     Route::get('/home','HomeController@home')->name('web.home');
     Route::post('submit/suggest/comment','HomeController@PostSuggestComment')->name('web.suggest.comment');
 
