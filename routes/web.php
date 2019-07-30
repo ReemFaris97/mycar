@@ -227,7 +227,4 @@ Route::group(['namespace'=>'website'], function (){
     Route::get('/contact','HomeController@contact')->name('web.contact');
     Route::post('/contact','HomeController@postContact')->name('web.contact.post');
 
-
-
-
 });

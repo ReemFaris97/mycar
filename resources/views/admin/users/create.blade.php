@@ -36,8 +36,10 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label">الإسم*</label>
                                 <div class="col-md-10">
-                                    <input type="text" required value="{{old('name')}}"
-                                           data-parsley-required-message="هذا الحقل مطلوب"
+                                    <input type="text"
+                                           value="{{old('name')}}"
+                                           {{-- required --}}
+{{--                                           data-parsley-required-message="هذا الحقل مطلوب"--}}
                                            data-parsley-trigger="keyup"
                                            data-parsley-maxlength="60"
                                            data-parsley-maxlength-message="أقصى عدد حروف هو 60 حرف"
@@ -75,53 +77,53 @@
                         </div>
 
                         {{--******************************************************************--}}
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label class="col-md-2 control-label">كلمة السر*</label>
-                                <div class="col-md-10">
-                                    <input type="password" name="password" id="pass1" value="{{ old('password') }}"
-                                           class="form-control" autocomplete="off"
-                                           placeholder="كلمة السر ..."
-                                           required
-                                           data-parsley-trigger="keyup"
-                                           data-parsley-required-message="كلمة المرور مطلوبة"
-                                           data-parsley-maxlength="55"
-                                           data-parsley-minlength="6"
-                                           data-parsley-maxlength-message=" أقصى عدد الحروف المسموح بها هى (55) حرف"
-                                           data-parsley-minlength-message=" أقل عدد الحروف المسموح بها هى (6) حرف"
-                                    />
-                                    @if($errors->has('password'))
-                                        <p class="help-block">
-                                            {{ $errors->first('password') }}
-                                        </p>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
+{{--                        <div class="col-lg-6">--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label class="col-md-2 control-label">كلمة السر*</label>--}}
+{{--                                <div class="col-md-10">--}}
+{{--                                    <input type="password" name="password" id="pass1" value="{{ old('password') }}"--}}
+{{--                                           class="form-control" autocomplete="off"--}}
+{{--                                           placeholder="كلمة السر ..."--}}
+{{--                                           required--}}
+{{--                                           data-parsley-trigger="keyup"--}}
+{{--                                           data-parsley-required-message="كلمة المرور مطلوبة"--}}
+{{--                                           data-parsley-maxlength="55"--}}
+{{--                                           data-parsley-minlength="6"--}}
+{{--                                           data-parsley-maxlength-message=" أقصى عدد الحروف المسموح بها هى (55) حرف"--}}
+{{--                                           data-parsley-minlength-message=" أقل عدد الحروف المسموح بها هى (6) حرف"--}}
+{{--                                    />--}}
+{{--                                    @if($errors->has('password'))--}}
+{{--                                        <p class="help-block">--}}
+{{--                                            {{ $errors->first('password') }}--}}
+{{--                                        </p>--}}
+{{--                                    @endif--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label class="col-md-2 control-label">تأكيد كلمة السر*</label>
-                                <div class="col-md-10">
-                                    <input data-parsley-equalto="#pass1" name="password_confirmation" type="password" data-parsley-trigger="keyup"
-                                           placeholder="تأكيد كلمة المرور ..." class="form-control"
-                                           autocomplete="off"
-                                           id="passWord2" required
-                                           data-parsley-required-message="تأكيد كلمة المرور مطلوب"
-                                           data-parsley-equalto-message="تأكيد كلمة المرور غير متطابقة"
-                                           data-parsley-maxlength="55"
-                                           data-parsley-minlength="6"
-                                           data-parsley-maxlength-message=" أقصى عدد الحروف المسموح بها هى (55) حرف"
-                                           data-parsley-minlength-message=" أقل عدد الحروف المسموح بها هى (6) حرف">
+{{--                        <div class="col-lg-6">--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label class="col-md-2 control-label">تأكيد كلمة السر*</label>--}}
+{{--                                <div class="col-md-10">--}}
+{{--                                    <input data-parsley-equalto="#pass1" name="password_confirmation" type="password" data-parsley-trigger="keyup"--}}
+{{--                                           placeholder="تأكيد كلمة المرور ..." class="form-control"--}}
+{{--                                           autocomplete="off"--}}
+{{--                                           id="passWord2" required--}}
+{{--                                           data-parsley-required-message="تأكيد كلمة المرور مطلوب"--}}
+{{--                                           data-parsley-equalto-message="تأكيد كلمة المرور غير متطابقة"--}}
+{{--                                           data-parsley-maxlength="55"--}}
+{{--                                           data-parsley-minlength="6"--}}
+{{--                                           data-parsley-maxlength-message=" أقصى عدد الحروف المسموح بها هى (55) حرف"--}}
+{{--                                           data-parsley-minlength-message=" أقل عدد الحروف المسموح بها هى (6) حرف">--}}
 
-                                    @if($errors->has('password_confirmation'))
-                                        <p class="help-block erro">
-                                            {{ $errors->first('password_confirmation') }}
-                                        </p>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
+{{--                                    @if($errors->has('password_confirmation'))--}}
+{{--                                        <p class="help-block erro">--}}
+{{--                                            {{ $errors->first('password_confirmation') }}--}}
+{{--                                        </p>--}}
+{{--                                    @endif--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         {{--*******************************************************************--}}
 
                         <div class="col-lg-12">
