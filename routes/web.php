@@ -87,6 +87,8 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin','middleware'=>'admin'],
     route::post('suppliers/suspendOrActivate','SuppliersController@suspendOrActivate')->name('suppliers.suspendOrActivate'); // used here only for activate..
     route::post('suppliers/suspendWithReason','SuppliersController@suspendWithReason')->name('suppliers.suspendWithReason');
 
+    route::post('suppliers/join/accept','SuppliersController@acceptJoinRequest')->name('suppliers.acceptJoinRequest');
+
     route::get('supplier/{id}/wallet','SuppliersController@getWalletPage')->name('suppliers.wallet');
     route::post('supplier/{id}/wallet','SuppliersController@postSupplierMoney')->name('post.supplier.wallet');
 
@@ -201,9 +203,21 @@ Route::group(['prefix'=>"suppliers",'namespace'=>'supplier','middleware'=>"suppl
 // **************************************************************************************************
 //***************************************************************************************************
 
+
+
 Route::group(['namespace'=>'website'], function (){
 
+    Route::get('set-locale/{locale}', function ($lang) {
+        if (array_key_exists($lang, \Config::get('language'))) {
+            \Session::put('locale', $lang);
+        }
+        return back();
+    })->name('lang');
+
     Route::get('/','HomeController@landingPage')->name('web.landing');
+
+    Route::get('/supplier/register','SupplierController@getRegisterPage')->name('web.get.register.supplier');
+    Route::post('/supplier/register','SupplierController@RegisterSupplier')->name('web.post.register.supplier');
 
     Route::get('/home','HomeController@home')->name('web.home');
     Route::post('submit/suggest/comment','HomeController@PostSuggestComment')->name('web.suggest.comment');

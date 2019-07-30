@@ -14,7 +14,7 @@
 
                 <div class="col-lg-6 col-md-7 col-sm-8 col-xs-12">
                     <div class="who-right">
-                        <h3 class="h3-after">من نحن</h3>
+                        <h3 class="h3-after">@lang('web.about')</h3>
 
                         <p>
                             {!! getsetting('about') !!}

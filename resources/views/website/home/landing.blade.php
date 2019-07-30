@@ -62,7 +62,7 @@
                 </div>
 
                 <div class="col-sm-5 col-xs-12">
-                    <a href="sign-divider.html" class="apply"> انضم كمورد </a>
+                    <a href="{{route('web.get.register.supplier')}}" class="apply"> @lang('web.join_as_supplier') </a>
                 </div>
 
             </div>
@@ -70,18 +70,18 @@
 
         <div class="ordering">
             <p>
-                لا تتردد امامك <span class="stp">4</span> خطوات بسيطة
+                @lang('web.dont_hesitate') <span class="stp">4</span> @lang('web.simple_steps')
             </p>
             <p>
-                رد مباشر من شركات قطع الغيار فى غضون <span class="stp">4</span> دقائق
+                @lang('web.direct_reply') <span class="stp">4</span> @lang('web.minutes')
             </p>
         </div>
 
-        <a data-fancybox="Gallery" data-caption="كيفية الطلب" href="{{asset('website/img/index.png')}}" class="inx">
+        <a data-fancybox="Gallery" data-caption="@lang('web.how_to_order')" href="{{asset('website/img/index.png')}}" class="inx">
             <img src="{{asset('website/img/index.png')}}">
         </a>
 
-        <a href="wizard-divider.html" class="apply"> البحث عن موزع </a>
+        <a href="wizard-divider.html" class="apply"> @lang('web.search_supplier') </a>
 
     </div>
 </section>

@@ -218,6 +218,19 @@ class SuppliersController extends Controller
         ]);
 
     }
+
+    public function acceptJoinRequest(Request $request){
+        $user = User::find($request->id);
+        if($user){
+            $user->is_accepted = 1;
+            $user->save();
+            return response()->json([
+                'status'=>true,
+                'title'=>'نجاح',
+                'message'=>'تم قبول المورد بنجاح'
+            ]);
+        }
+    }
     
 
     public function getWalletPage($id){

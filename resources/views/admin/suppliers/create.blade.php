@@ -180,9 +180,9 @@
                                            data-parsley-required-message="هذا الحقل مطلوب"
                                     />
 
-                                    @if($errors->has('licence_number'))
+                                    @if($errors->has('licence_image'))
                                         <p class="help-block" style="color: #FF0000;">
-                                            {{ $errors->first('licence_number') }}
+                                            {{ $errors->first('licence_image') }}
                                         </p>
                                     @endif
                                 </div>
@@ -262,7 +262,6 @@
 
 
         function initAutocomplete() {
-
 
             var map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: 24.774265, lng: 46.738586},

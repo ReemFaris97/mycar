@@ -33,7 +33,7 @@
                         <th>الإسم</th>
                         <th>رقم الجوال</th>
                         <th>حالة المورد</th>
-                        <th>عدد الطلبات المعتمده</th>
+                        <th>حالة طلب الإنضمام</th>
                         <th style="width: 250px;" >العمليات المتاحة</th>
                     </tr>
                     </thead>
@@ -52,15 +52,23 @@
                                 @endif
                             </td>
                             <th>
-                                number
+                                @if($row->is_accepted == 1)
+                                    <label class="label label-success">تم القبول</label>
+                                    @else
+                                    <label class="label label-warning">معلق</label>
+                                @endif
                             </th>
 
                             <td>
+                                @if($row->is_accepted != 1)
+                                    <a id="elementRow{{$row->id}}" href="javascript:;" data-id="{{$row->id}}"  data-url="{{route('suppliers.acceptJoinRequest')}}" class="AcceptJoinRequest label label-success">قبول</a>
+                                @endif
                                 <a href="{{route('suppliers.wallet',$row->id)}}" class="label label-success">المحفظة</a>
                                 <a href="{{route('suppliers.show',$row->id)}}" class="label label-primary">تفاصيل</a>
                                 <a href="{{route('suppliers.edit',$row->id)}}" class="label label-warning">تعديل</a>
 
                                 @if(auth()->id() != $row->id)
+
                                 @if($row->is_active == 1)
                                     <a id="elementRow{{$row->id}}" href="javascript:;" data-id="{{$row->id}}" data-action="suspend" data-url="{{route('suppliers.suspendOrActivate')}}" class="statusWithReason label label-danger">حظر</a>
                                 @else
@@ -341,6 +349,70 @@
                 }
             );
         })
+    </script>
+
+    <script>
+
+        $('body').on('click', '.AcceptJoinRequest', function () {
+            var id = $(this).attr('data-id');
+            var url = $(this).attr('data-url');
+            var tr = $(this).closest($('#elementRow' + id).parent().parent());
+
+            swal({
+                    title: "هل انت متأكد؟",
+                    text: 'هل تريد قبول طلب إنضمام للمورد ؟',
+                    type: "success",
+                    showCancelButton: true,
+                    confirmButtonColor: "#27dd24",
+                    confirmButtonText: "موافق",
+                    cancelButtonText: "إلغاء",
+                    confirmButtonClass:"btn-success waves-effect waves-light",
+                    closeOnConfirm: true,
+                    closeOnCancel: true,
+                },
+                function (isConfirm) {
+                    if(isConfirm){
+                        $.ajax({
+                            type:'post',
+                            url :url,
+                            data:{id:id},
+                            dataType:'json',
+                            success:function(data){
+                                if(data.status == true){
+                                    var title = data.title;
+                                    var msg = data.message;
+                                    toastr.options = {
+                                        positionClass : 'toast-top-left',
+                                        onclick:null
+                                    };
+
+                                    var $toast = toastr['success'](msg,title);
+                                    $toastlast = $toast;
+
+                                    function slowReload(){
+                                        location.reload();
+                                    }
+                                    setTimeout(slowReload, 3000);
+
+
+                                }else {
+                                    var title = data.title;
+                                    var msg = data.message;
+                                    toastr.options = {
+                                        positionClass : 'toast-top-left',
+                                        onclick:null
+                                    };
+
+                                    var $toast = toastr['error'](msg,title);
+                                    $toastlast = $toast
+                                }
+                            }
+                        });
+                    }
+
+                }
+            );
+        });
 
     </script>
 
