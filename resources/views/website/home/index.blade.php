@@ -20,7 +20,7 @@
                     <div class="item">
                         <div class="carousel-caption">
                             <p class="lead wow slideInDown">
-                                ستجد جميع قطع الغيار الجديدة والمستعملة لدى سيارتك
+                                @lang('web.find_new_and_spare_parts')
                             </p>
                         </div>
                         <div class="slide-left">
@@ -31,7 +31,7 @@
                     <div class="item">
                         <div class="carousel-caption">
                             <p class="lead wow slideInDown">
-                                ستجد جميع قطع الغيار الجديدة والمستعملة لدى سيارتك
+                                @lang('web.find_new_and_spare_parts')
                             </p>
                         </div>
                         <div class="slide-left">
@@ -42,7 +42,7 @@
                     <div class="item">
                         <div class="carousel-caption">
                             <p class="lead wow slideInDown">
-                                ستجد جميع قطع الغيار الجديدة والمستعملة لدى سيارتك
+                                @lang('web.find_new_and_spare_parts')
                             </p>
                         </div>
                         <div class="slide-left">
@@ -53,7 +53,7 @@
                     <div class="item">
                         <div class="carousel-caption">
                             <p class="lead wow slideInDown">
-                                ستجد جميع قطع الغيار الجديدة والمستعملة لدى سيارتك
+                                @lang('web.find_new_and_spare_parts')
                             </p>
                         </div>
                         <div class="slide-left">
@@ -111,7 +111,7 @@
                                 <button type="button" class="evl like" data-propId="{{$prop->id}}" > <i class="fas fa-thumbs-up"></i> </button>
                                 <button type="button" class="evl dislike" data-propId="{{$prop->id}}" > <i class="fas fa-thumbs-down"></i> </button>
 
-                                <button  data-proposalId="{{$prop->id}}" type="button" class="new-evl AddCommentButton" data-toggle="modal" data-target="#CommentModal"> اضافة مقترح </button>
+                                <button  data-proposalId="{{$prop->id}}" type="button" class="new-evl AddCommentButton" data-toggle="modal" data-target="#CommentModal"> @lang('web.add_suggest') </button>
                             </form>
 
                         </div>
@@ -119,7 +119,7 @@
                     @empty
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                             <div class="suggest">
-                                <a data-fancybox="Gallery" data-caption="عنوان المقترح" href="{{asset('website/img/soon.png')}}" class="sgsting">
+                                <a data-fancybox="Gallery" data-caption="@lang('web.suggest_title')" href="{{asset('website/img/soon.png')}}" class="sgsting">
                                     <img src="{{asset('website/img/soon.png')}}">
                                 </a>
 {{--                                <form class="sgst-btns">--}}
@@ -142,22 +142,22 @@
     <!-- Start Index -->
     <section class="index all-sections">
         <div class="container">
-            <h2 class="h2-after"> كيفية الطلب </h2>
+            <h2 class="h2-after">@lang('web.how_to_order') </h2>
 
             <div class="ordering">
                 <p>
-                    لا تتردد امامك <span class="stp">4</span> خطوات بسيطة
+                    @lang('web.dont_hesitate') <span class="stp">4</span> @lang('web.simple_steps')
                 </p>
                 <p>
-                    رد مباشر من شركات قطع الغيار فى غضون <span class="stp">4</span> دقائق
+                    @lang('web.direct_reply') <span class="stp">4</span> @lang('web.minutes')
                 </p>
             </div>
 
-            <a data-fancybox="Gallery" data-caption="كيفية الطلب" href="{{asset('website/img/index.png')}}" class="inx">
+            <a data-fancybox="Gallery" data-caption="@lang('web.how_to_order')" href="{{asset('website/img/index.png')}}" class="inx">
                 <img src="{{asset('website/img/index.png')}}">
             </a>
 
-            <a href="wizard-divider.html" class="apply"> البحث عن موزع </a>
+            <a href="wizard-divider.html" class="apply"> @lang('web.search_supplier') </a>
 
         </div>
     </section>
@@ -170,17 +170,17 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><i class="fas fa-times"></i></button>
-                    <h4 class="modal-title">اضافة اقتراح</h4>
+                    <h4 class="modal-title">@lang('web.add_suggest')</h4>
                 </div>
 
                 <form data-parsley-validate novalidate id="CommentForm" method="post" action="{{route('web.suggest.comment')}}">
                         {{csrf_field()}}
                     <div class="form-group">
-                        <textarea name="comment" required data-parsley-required-message="هذا الحقل مطلوب" rows="4" cols="95" id="inbox" class="form-control input-lg" data-fv-field="inbox" placeholder="اكتب اقتراحك..."></textarea>
+                        <textarea name="comment" required data-parsley-required-message="@lang('web.field_required')" rows="4" cols="95" id="inbox" class="form-control input-lg" data-fv-field="inbox" placeholder="@lang('web.write_suggest')"></textarea>
                         <input type="hidden" name="user_id" value="3">
                     </div>
                     <div class="modal-footer">
-                        <button id="commentSubmitButton" type="submit">ارسال</button>
+                        <button id="commentSubmitButton" type="submit">@lang('web.send')</button>
                     </div>
                 </form>
 

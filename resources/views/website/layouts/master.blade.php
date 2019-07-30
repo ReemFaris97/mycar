@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="HandheldFriendly" content="true">
-    <title> قطعة سيارتى - الرئيسية </title>
+    <title> @lang('web.site_name') - @lang('web.main') </title>
     @yield('styles')
     @include('website.layouts.styles')
 
@@ -59,7 +59,7 @@
     <div class="modal-background">
         <div class="modal">
             <span class="closeit"> <i class="fas fa-times"></i> </span>
-            <h2>سؤال مباشر - خدمة العملاء</h2>
+            <h2>@lang('web.direct_q_customer_service')</h2>
 
             <div class="chats" id="chats">
                 <div class="chat1 recieve">
@@ -89,7 +89,7 @@
             </div>
 
             <form class="chatting" id="my_form">
-                <textarea rows="4" cols="95" id="inbox" class="form-control input-lg" data-fv-field="inbox" placeholder="اكتب رسالتك..."></textarea>
+                <textarea rows="4" cols="95" id="inbox" class="form-control input-lg" data-fv-field="inbox" placeholder="@lang('web.enter_message')"></textarea>
                 <button type="button" id="sendnow"> <i class="fas fa-arrow-right"></i> </button>
             </form>
 
@@ -114,10 +114,10 @@
             </a>
 
             <p>
-                سيتم الاتصال بك على الرقم <span>+965158156</span>
+                @lang('web.you_will_be_contacted_by')<span>+965158156</span>
             </p>
             <p>
-                من أحد موظفين خدمة العملاء
+                @lang('web.by_service_agent')
             </p>
 
             <div id="countdown-1"></div>
@@ -235,7 +235,7 @@
     function showMessage(message) {
         var shortCutFunction = 'success';
         var msg = message;
-        var title = "نجاح";
+        var title = "@lang('web.success')";
         toastr.options = {
             positionClass: 'toast-top-left',
             onclick: null,

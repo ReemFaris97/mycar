@@ -33,7 +33,7 @@
     function showMessage(message) {
         var shortCutFunction = 'success';
         var msg = message;
-        var title = "نجاح";
+        var title = "@lang('web.success')";
         toastr.options = {
             positionClass: 'toast-top-center',
             onclick: null,

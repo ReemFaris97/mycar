@@ -203,7 +203,16 @@ Route::group(['prefix'=>"suppliers",'namespace'=>'supplier','middleware'=>"suppl
 // **************************************************************************************************
 //***************************************************************************************************
 
+
+
 Route::group(['namespace'=>'website'], function (){
+
+    Route::get('set-locale/{locale}', function ($lang) {
+        if (array_key_exists($lang, \Config::get('language'))) {
+            \Session::put('locale', $lang);
+        }
+        return back();
+    })->name('lang');
 
     Route::get('/','HomeController@landingPage')->name('web.landing');
 

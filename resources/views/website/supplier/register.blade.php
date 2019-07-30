@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="HandheldFriendly" content="true">
-    <title> قطعة سيارتى - انضم كمورد </title>
+    <title>@lang('web.site_name') - @lang('web.join_as_supplier') </title>
     <!-- Notification css (Toastr) -->
     <link href="{{asset('admin/assets/plugins/toastr/toastr.min.css')}}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{asset('website/css/bootstrap.min.css')}}">
@@ -82,12 +82,12 @@
                 {{ csrf_field() }}
 
                 <div class="form-group">
-                    <input type="text" autocomplete="off" class="form-control" name="name" required  data-parsley-required-message="هذا الحقل مطلوب" placeholder="الإسم ..">
+                    <input type="text" autocomplete="off" class="form-control" name="name" required  data-parsley-required-message="@lang('web.field_required')" placeholder="@lang('web.name')">
                     <span class="focus-border"><i></i></span>
                 </div>
 
                 <div class="form-group">
-                    <input type="number" name="phone" required  data-parsley-required-message="هذا الحقل مطلوب" class="form-control" placeholder="رقم الهاتف">
+                    <input type="number" name="phone" required  data-parsley-required-message="@lang('web.field_required')" class="form-control" placeholder="@lang('web.phone')">
                     <span class="focus-border"><i></i></span>
                 </div>
 
@@ -95,14 +95,14 @@
                     <input
                         type="password" name="password" id="pass1"
                         class="form-control" autocomplete="off"
-                        placeholder="كلمة المرور ..."
+                        placeholder="@lang('web.password')"
                         required
                         data-parsley-trigger="keyup"
-                        data-parsley-required-message="كلمة المرور مطلوبة"
+                        data-parsley-required-message="@lang('web.field_required')"
                         data-parsley-maxlength="55"
                         data-parsley-minlength="6"
-                        data-parsley-maxlength-message=" أقصى عدد الحروف المسموح بها هى (55) حرف"
-                        data-parsley-minlength-message=" أقل عدد الحروف المسموح بها هى (6) حرف"
+                        data-parsley-maxlength-message=" @lang('web.max_char_55')"
+                        data-parsley-minlength-message=" @lang('web.min_char_6')"
                     >
                     <span class="focus-border"><i></i></span>
                 </div>
@@ -110,36 +110,36 @@
                 <div class="form-group">
                     <input
                         data-parsley-equalto="#pass1" name="password_confirmation" type="password" data-parsley-trigger="keyup"
-                        placeholder="تأكيد كلمة المرور ..." class="form-control"
+                        placeholder="@lang('web.password_confirmation')" class="form-control"
                         autocomplete="off"
                         id="passWord2" required
-                        data-parsley-required-message="تأكيد كلمة المرور مطلوب"
-                        data-parsley-equalto-message="تأكيد كلمة المرور غير متطابقة"
+                        data-parsley-required-message="@lang('web.field_required')"
+                        data-parsley-equalto-message="@lang('web.pass_conf_not_equal')"
                         data-parsley-maxlength="55"
                         data-parsley-minlength="6"
-                        data-parsley-maxlength-message=" أقصى عدد الحروف المسموح بها هى (55) حرف"
-                        data-parsley-minlength-message=" أقل عدد الحروف المسموح بها هى (6) حرف"
+                        data-parsley-maxlength-message=" @lang('web.max_char_55')"
+                        data-parsley-minlength-message="@lang('web.min_char_6')"
                     >
                     <span class="focus-border"><i></i></span>
                 </div>
 
 
                 <div class="form-group">
-                    <input type="text" name="licence_number" required data-parsley-required-message="هذا الحقل مطلوب" class="form-control" placeholder="رقم السجل التجارى">
+                    <input type="text" name="licence_number" required data-parsley-required-message="@lang('web.field_required')" class="form-control" placeholder="@lang('web.comm_reg_no')">
                     <span class="focus-border"><i></i></span>
                 </div>
 
                 <div class="form-group">
                     <input type="number" name="commission" required
-                                           data-parsley-required-message="هذا الحقل مطلوب"
+                                           data-parsley-required-message="@lang('web.field_required')"
                                            data-parsley-trigger="keyup"
                                            data-parsley-max="99"
                                            data-parsley-min="1"
-                                           data-parsley-max-message="اقصى نسبة هي 99"
-                                           data-parsley-min-message="اقل نسبة هي 1"
+                                           data-parsley-max-message="@lang('web.max_percent_99')"
+                                           data-parsley-min-message="@lang('web.min_percent_1')"
 {{--                                           data-parsley-pattern="^01[0-2]{1}[0-9]{8}"--}}
 {{--                                           data-parsley-pattern-message="برجاء إدخال رقم موبايل بصيغة صحيحة"--}}
-                           class="form-control" placeholder="نسبة التطبيق من المبيعات">
+                           class="form-control" placeholder="@lang('web.app_percent_of_sales')">
                     <span class="focus-border"><i></i></span>
                 </div>
 
@@ -147,10 +147,10 @@
 
 
                 <div class="form-group">
-                    <input id="uploadFile"  class="f-input form-control" placeholder="صورة السجل التجارى" />
+                    <input id="uploadFile"  class="f-input form-control" placeholder="@lang('web.comm_reg_image')" />
                     <div class="fileUpload btn btn--browse">
                         <span>Browse</span>
-                        <input id="uploadBtn" type="file" required data-parsley-required-message="هذا الحقل مطلوب" name="licence_image" class="upload" />
+                        <input id="uploadBtn" type="file" required data-parsley-required-message="@lang('web.field_required')" name="licence_image" class="upload" />
                     </div>
                     <span class="focus-border"><i></i></span>
                 </div>
@@ -179,11 +179,11 @@
 
 
                         <input id="pac-input" name="address" required value="{{ old('address') }}"
-                               data-parsley-required-message="العنوان مطلوب"
+                               data-parsley-required-message="@lang('web.address_required')"
                                class="controls"
                                type="text"
                                style="z-index: 0;position: absolute;top: 11px;left: 113px;height: 34px;width: 63%;"
-                               placeholder="ابحث عن عنوان او حدد موقعك على الخريطة">
+                               placeholder="@lang('web.search_your_location')">
 
                         @if($errors->has('address'))
                             <p class="help-block error">
@@ -209,8 +209,8 @@
 {{--                </div>--}}
 
 
-                <button type="submit"  class="upload">تسجيل كمورد</button>
-                <a href="{{route('supplier.home')}}"  class="upload">الدخول كمورد</a>
+                <button type="submit"  class="upload">@lang('web.register_as_supplier')</button>
+                <a href="{{route('supplier.home')}}"  class="upload">@lang('web.login_as_supplier')</a>
 
 
 

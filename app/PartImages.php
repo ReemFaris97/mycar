@@ -12,4 +12,12 @@ class PartImages extends Model
     public function part(){
         return $this->belongsTo(Part::class,'part_id');
     }
+
+    public function name()
+    {
+        if (app()->getLocale() == 'ar')
+            return $this->ar_name;
+        else
+            return $this->en_name;
+    }
 }

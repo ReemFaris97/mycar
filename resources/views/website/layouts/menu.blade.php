@@ -21,10 +21,10 @@
 
                 <div class="navy">
                     <ul class="nav cf" id="ul1">
-                        <li class="{{Request::is('/')?'active':''}}"><a href="{{route('web.home')}}">الرئيسية</a></li>
-                        <li class=""><a href="account-information.html">حسابى</a></li>
-                        <li class="{{Request::is('about')?'active':''}}"><a href="{{route('web.about')}}">من نحن</a></li>
-                        <li class="{{Request::is('/contact')?'active':''}}"><a href="{{route('web.contact')}}">اتصل بنا</a></li>
+                        <li class="{{Request::is('/')?'active':''}}"><a href="{{route('web.home')}}">@lang('web.main')</a></li>
+                        <li class=""><a href="account-information.html">@lang('web.my_acc')</a></li>
+                        <li class="{{Request::is('about')?'active':''}}"><a href="{{route('web.about')}}">@lang('web.about')</a></li>
+                        <li class="{{Request::is('/contact')?'active':''}}"><a href="{{route('web.contact')}}">@lang('web.contact')</a></li>
                     </ul>
 
                 </div>
@@ -36,13 +36,13 @@
             <ul class="nav-left">
                 <li>
                     <button class="modal-btn" id="seven">
-                        سؤال مباشر
+                       @lang('web.direct_q')
                     </button>
                 </li>
 
                 <li>
                     <button class="modal-btn" id="two">
-                        اتصل بنا
+                        @lang('web.contact')
                     </button>
                 </li>
             </ul>
