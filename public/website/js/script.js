@@ -176,35 +176,35 @@ $(document).ready(function () {
 
 
     ///////////////////////////////// Sign Modal //////////////////////////////////////
-    $(".verfy").slideUp();
-    $(".area").slideUp();
-    $("#step2").on("click", function () {
-        $(".step1").slideUp(500);
-        $(".verfy").slideDown(500);
-    });
-
-    $("#edit-1").on("click", function () {
-        $(".verfy").slideUp(500);
-        $(".step1").slideDown(500);
-    });
-
-    $("#step2").click(function () {
-        $('#countdown-1').timeTo(120, function () {
-            alert('Countdown finished');
-        });
-        $('#reset-1').click(function () {
-            $('#countdown-1').timeTo('reset');
-        });
-
-    });
-    
-    $("#step3").on("click", function () {
-        $(".verfy").slideUp(500);
-        $(".step1").slideUp(500);
-        $(".area").slideDown(500);
-    });
-    
-
+    // $(".verfy").slideUp();
+    // $(".area").slideUp();
+    // $("#step2").on("click", function () {
+    //     $(".step1").slideUp(500);
+    //     $(".verfy").slideDown(500);
+    // });
+    //
+    // $("#edit-1").on("click", function () {
+    //     $(".verfy").slideUp(500);
+    //     $(".step1").slideDown(500);
+    // });
+    //
+    // $("#step2").click(function () {
+    //     $('#countdown-1').timeTo(120, function () {
+    //         alert('Countdown finished');
+    //     });
+    //     $('#reset-1').click(function () {
+    //         $('#countdown-1').timeTo('reset');
+    //     });
+    //
+    // });
+    //
+    // $("#step3").on("click", function () {
+    //     $(".verfy").slideUp(500);
+    //     $(".step1").slideUp(500);
+    //     $(".area").slideDown(500);
+    // });
+    //
+    //
 
     
     //////////////////////////////

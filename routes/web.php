@@ -214,6 +214,11 @@ Route::group(['namespace'=>'website'], function (){
         return back();
     })->name('lang');
 
+    Route::post('/sign-or-register','LoginController@checkPhoneOrRegister')->name('web.sign.phone');
+
+
+
+
     Route::get('/','HomeController@landingPage')->name('web.landing');
 
     Route::get('/supplier/register','SupplierController@getRegisterPage')->name('web.get.register.supplier');
@@ -226,5 +231,7 @@ Route::group(['namespace'=>'website'], function (){
     Route::get('/terms','HomeController@terms')->name('web.terms');
     Route::get('/contact','HomeController@contact')->name('web.contact');
     Route::post('/contact','HomeController@postContact')->name('web.contact.post');
+
+
 
 });
