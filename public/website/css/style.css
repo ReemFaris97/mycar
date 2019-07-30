@@ -346,7 +346,7 @@ input[type=number]::-webkit-outer-spin-button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 100;
+    z-index: 999999;
 }
 @keyframes spin {
   0% {
@@ -2635,15 +2635,6 @@ table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, tab
 /******************* End finished details .HTML ********************************/
 
 
-
-/******************* Start Form Wizard .HTML ********************************/
-.wizard{
-    
-}
-/*form styles*/
-
-
-/******************* End Form Wizard .HTML ********************************/
 
 
 

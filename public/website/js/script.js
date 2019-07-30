@@ -1,17 +1,5 @@
 $(document).ready(function () {
 
-    /*Start Input Image*/
-    // ADD IMAGE
-    $('.image-uploader').change(function (event) {
-        $(this).parents('.images-upload-block').append('<div class="uploaded-block"><img src="' + URL.createObjectURL(event.target.files[0]) + '"><button class="close">&times;</button></div>');
-    });
-
-    // REMOVE IMAGE
-    $('.images-upload-block').on('click', '.close', function () {
-        $(this).parents('.uploaded-block').remove();
-    });
-    /*End Input Image*/
-
     /// loading website
 
     jQuery(window).load(function () {
@@ -224,6 +212,13 @@ $(document).ready(function () {
         }
     });
 
+    
+    /******************* Toggle ******************/
+     $(".tgle").slideUp();
+        $(".to-tgle").click(function(){
+            $(".tgle").slideToggle(500);
+        });
+    
 
     $("#scroll-top").click(function () {
         $("html,body").animate({
