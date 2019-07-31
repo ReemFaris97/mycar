@@ -237,4 +237,7 @@ Route::group(['namespace'=>'website','middleware'=>'userMiddleware'], function (
     Route::get('/contact','HomeController@contact')->name('web.contact');
     Route::post('/contact','HomeController@postContact')->name('web.contact.post');
 
+    Route::get('/profile','ProfileController@profile')->name('web.profile');
+    Route::get('/notifications','ProfileController@notifications')->name('web.notifications');
+
 });

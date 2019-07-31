@@ -422,9 +422,6 @@
     });
 
 
-
-
-
     $("#stepWithNoAction").on("click", function () {
         if(phoneNumber == $('#phoneNumber').val()){
             $(".step1").slideUp(500);
@@ -459,11 +456,6 @@
 
     });
 
-    // $("#step3").on("click", function () {
-    //     $(".verfy").slideUp(500);
-    //     $(".step1").slideUp(500);
-    //     $(".area").slideDown(500);
-    // });
 
     $("#stepwithNoAction").on("click", function () {
         if(phoneNumber == $('#phoneNumber').val()){
@@ -472,6 +464,12 @@
         }
 
     });
+
+    // $("#step3").on("click", function () {
+    //     $(".verfy").slideUp(500);
+    //     $(".step1").slideUp(500);
+    //     $(".area").slideDown(500);
+    // });
 
 </script>
 

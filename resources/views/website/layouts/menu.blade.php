@@ -22,7 +22,7 @@
                 <div class="navy">
                     <ul class="nav cf" id="ul1">
                         <li class="{{Request::is('/')?'active':''}}"><a href="{{route('web.home')}}">@lang('web.main')</a></li>
-                        <li class=""><a href="account-information.html">@lang('web.my_acc')</a></li>
+                        <li class=""><a href="{{route('web.profile')}}">@lang('web.my_acc')</a></li>
                         <li class="{{Request::is('about')?'active':''}}"><a href="{{route('web.about')}}">@lang('web.about')</a></li>
                         <li class="{{Request::is('/contact')?'active':''}}"><a href="{{route('web.contact')}}">@lang('web.contact')</a></li>
                     </ul>
