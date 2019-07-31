@@ -26,9 +26,9 @@
                     <div class="foot1">
                         <h3>@lang('web.contact')</h3>
                         <ul>
-                            <li> <a href="mailto:reem@sayarty.com">mail@sayaraty.com</a> </li>
-                            <li> <a href="https://wa.me/15551234567">+15551234567</a> </li>
-                            <li>@lang('web.ksa_qassem') </li>
+                            <li><a href="mailto:reem@sayarty.com">mail@sayaraty.com</a></li>
+                            <li><a href="https://wa.me/15551234567">+15551234567</a></li>
+                            <li>@lang('web.ksa_qassem')</li>
                         </ul>
                     </div>
                 </div>

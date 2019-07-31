@@ -50,9 +50,9 @@ class UsersController extends Controller
     {
 
         $roles = [
-            'name'=>'required|string|max:191',
+            'name'=>'nullable|string|max:191',
             'phone'=>'required|numeric|unique:users,phone',
-            'password'=>'required|string|confirmed|max:55',
+//            'password'=>'required|string|confirmed|max:55',
             'address'=>'required|string|max:191',
         ];
         $this->validate($request,$roles);
@@ -113,9 +113,9 @@ class UsersController extends Controller
 
         $user= User::findOrFail($id);
         $roles = [
-            'name'=>'required|string|max:191',
+            'name'=>'nullable|string|max:191',
             'phone'=>'required|numeric|unique:users,phone,'.$user->id,
-            'password'=>'nullable|string|confirmed|max:55',
+//            'password'=>'nullable|string|confirmed|max:55',
             'address'=>'required|string|max:191',
         ];
         $this->validate($request,$roles);
