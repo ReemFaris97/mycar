@@ -64,7 +64,7 @@ trait UserOperation
     }
 
     public function generateLoginCode($user){
-       $code = '1234';
+        $code = '1234';
         $user->update(['login_code'=>$code]);
         return $code;
 

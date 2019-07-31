@@ -57,4 +57,9 @@ return [
     "register_as_supplier"=>"تسجيل كمورد",
     "login_as_supplier"=>"الدخول كمورد",
     "before_you_start"=>"قبل ان تبدأ",
+
+
+    "login_code_sent_successfully"=>"تم ارسال كود الدخول بنجاح",
+    "error"=>"خطأ",
+    "user_registered_successfully"=>"الرقم غير موجود .. تم تسجيل الرقم بنجاح",
 ];

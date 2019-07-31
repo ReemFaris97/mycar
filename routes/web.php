@@ -215,6 +215,7 @@ Route::group(['namespace'=>'website'], function (){
     })->name('lang');
 
     Route::post('/sign-or-register','LoginController@checkPhoneOrRegister')->name('web.sign.phone');
+    Route::post('/check-code','LoginController@checkLoginCode')->name('web.sign.phone');
 
 
 

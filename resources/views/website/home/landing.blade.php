@@ -115,16 +115,20 @@
 
             <form id="phoneForm" data-parsley-validate method="post" action="{{route('web.sign.phone')}}" class="form2 signing step1">
                 <div class="form-group">
-                    <input type="number" name="phone" required data-parsley-required-message="رقم الهاتف مطلوب"  class="form-control" placeholder="رقم الهاتف">
+                    <input type="number" id="phoneNumber" name="phone" required data-parsley-required-message="رقم الهاتف مطلوب"  class="form-control" placeholder="رقم الهاتف">
                     <span class="sm-icon"> <i class="fas fa-paper-plane"></i> </span>
                     <span class="focus-border"><i></i></span>
                 </div>
+
                 <button type="submit" class="submit-in" id="step2"> <i class="fas fa-arrow-right"></i> </button>
+
+                <button type="button" style="display: none;" class="submit-in" id="stepWithNoAction"> <i class="fas fa-arrow-right"></i> </button>
+
             </form>
 
 
             <div class="verfy">
-                <form class="form2 signing" action="begin.html">
+                <form id="checkCodeForm" data-parsley-validate method="post" action="{{route('web.sign.checkCode')}}" class="form2 signing" >
                     <p>
                         تم ارسال رمز مكون من 4 ارقام الى هاتفك الجوال و أدخله أدناه للمتابعة
                     </p>
@@ -243,7 +247,7 @@
 <script>
     $(".verfy").slideUp();
     $(".area").slideUp();
-
+    var phoneNumber;
 
     $('#phoneForm').on('submit', function (e) {
         e.preventDefault();
@@ -269,7 +273,17 @@
                         };
                         var $toast = toastr['success'](msg,title);
                         $toastlast = $toast;
+                        // form.each(function () {
+                        //     this.reset();
+                        // });
+                        phoneNumber = data.phone;
+                        //replace button for not send again ...
+                        $('#step2').hide();
+                        $('#stepWithNoAction').show();
 
+
+                        $(".step1").slideUp(750);
+                        $(".verfy").slideDown(750);
 
 
                     } else {
@@ -281,6 +295,9 @@
                         };
                         var $toast = toastr['error'](msg,title);
                         $toastlast = $toast;
+                        form.each(function () {
+                            this.reset();
+                        });
 
                     }
                 },
@@ -292,22 +309,28 @@
     });
 
 
-    // $("#step2").on("click", function () {
-    // if($('#phoneForm').parsley()){
-    //     alert('SUCCESS');
-    // }else{
-    //     alert('FAILED');
-    // }
+    $("#stepWithNoAction").on("click", function () {
+        if(phoneNumber == $('#phoneNumber').val()){
+            $(".step1").slideUp(500);
+            $(".verfy").slideDown(500);
+        }else{
+            $('#stepWithNoAction').hide();
+            $('#step2').show();
+            phoneNumber = $('#phoneNumber').val();
+        }
 
-        //
-        // $(".step1").slideUp(500);
-        // $(".verfy").slideDown(500);
-    // });
+    });
 
 
     $("#edit-1").on("click", function () {
         $(".verfy").slideUp(500);
         $(".step1").slideDown(500);
+
+        if(! phoneNumber == $('#phoneNumber').val()){
+            $('#stepWithNoAction').hide();
+            $('#step2').show();
+        }
+
     });
 
     $("#step2").click(function () {
@@ -326,6 +349,13 @@
         $(".area").slideDown(500);
     });
 
+    $("#stepwithNoAction").on("click", function () {
+        if(phoneNumber == $('#phoneNumber').val()){
+            $(".step1").slideUp(500);
+            $(".verfy").slideDown(500);
+        }
+
+    });
 
 </script>
 
