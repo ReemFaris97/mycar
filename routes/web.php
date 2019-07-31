@@ -215,15 +215,19 @@ Route::group(['namespace'=>'website'], function (){
     })->name('lang');
 
     Route::post('/sign-or-register','LoginController@checkPhoneOrRegister')->name('web.sign.phone');
-    Route::post('/check-code','LoginController@checkLoginCode')->name('web.sign.phone');
+    Route::post('/check-code','LoginController@checkLoginCode')->name('web.sign.checkCode');
+    Route::post('/update-user-region','LoginController@updateAuthUserRegion')->name('web.update.auth.region');
 
 
+    Route::get('/supplier/register','SupplierController@getRegisterPage')->name('web.get.register.supplier');
+    Route::post('/supplier/register','SupplierController@RegisterSupplier')->name('web.post.register.supplier');
 
 
     Route::get('/','HomeController@landingPage')->name('web.landing');
 
-    Route::get('/supplier/register','SupplierController@getRegisterPage')->name('web.get.register.supplier');
-    Route::post('/supplier/register','SupplierController@RegisterSupplier')->name('web.post.register.supplier');
+});
+
+Route::group(['namespace'=>'website','middleware'=>'userMiddleware'], function (){
 
     Route::get('/home','HomeController@home')->name('web.home');
     Route::post('submit/suggest/comment','HomeController@PostSuggestComment')->name('web.suggest.comment');
@@ -232,7 +236,5 @@ Route::group(['namespace'=>'website'], function (){
     Route::get('/terms','HomeController@terms')->name('web.terms');
     Route::get('/contact','HomeController@contact')->name('web.contact');
     Route::post('/contact','HomeController@postContact')->name('web.contact.post');
-
-
 
 });

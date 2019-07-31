@@ -62,4 +62,7 @@ return [
     "login_code_sent_successfully"=>"تم ارسال كود الدخول بنجاح",
     "error"=>"خطأ",
     "user_registered_successfully"=>"الرقم غير موجود .. تم تسجيل الرقم بنجاح",
+    "login_successfully"=>"الكود صحيح .. تم تسجيل الدخول بنجاح",
+    "error_code_false"=>"عفواً .. الكود الذي ادخلته غير صحيح",
+    "login_success_done"=>"تم تغيير النطاق والدخول بنجاح",
 ];

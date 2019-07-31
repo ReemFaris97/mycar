@@ -133,7 +133,7 @@
                         تم ارسال رمز مكون من 4 ارقام الى هاتفك الجوال و أدخله أدناه للمتابعة
                     </p>
                     <div class="form-group">
-                        <input type="number" class="form-control" placeholder="الكود المرسل">
+                        <input type="number" name="code" class="form-control" placeholder="الكود المرسل">
                         <span class="sm-icon"> <i class="fas fa-check-circle"></i> </span>
                         <span class="focus-border"><i></i></span>
                     </div>
@@ -142,13 +142,13 @@
                     <!--                <input class="end-details" type="submit" value="تقديم عرض">-->
 
                     <!--  <button type="button" class="resend">اعادة ارسال</button>-->
-                    <button type="button" class="submit-in" id="step3"> <i class="fas fa-arrow-right"></i> </button>
+                    <button type="submit" class="submit-in" > <i class="fas fa-arrow-right"></i> </button>
                 </form>
                 <button id="edit-1" type="button" class="resend"> تعديل رقم الهاتف </button>
             </div>
 
             <div class="area">
-                <form class="form2 signing" action="begin.html">
+                <form id="regionForm" class="form2 signing" action="{{route('web.update.auth.region')}}" method="POST">
 
                     <h5 class="choose">
                         اختر مكانك
@@ -156,16 +156,16 @@
 
                     <div class="radio-list">
                         <label class="rad">داخل بريدة
-                            <input type="radio" checked="checked" name="radio">
+                            <input type="radio" value="inside" checked="checked" name="region">
                             <span class="checkmark"></span>
                         </label>
                         <label class="rad">خارج بريدة
-                            <input type="radio" name="radio">
+                            <input type="radio" value="outside" name="region">
                             <span class="checkmark"></span>
                         </label>
                     </div>
 
-                    <button type="submit" class="submit-in" id="step4"> <i class="fas fa-arrow-right"></i> </button>
+                    <button type="submit" class="submit-in" > <i class="fas fa-arrow-right"></i> </button>
                 </form>
             </div>
 
@@ -285,6 +285,8 @@
                         $(".step1").slideUp(750);
                         $(".verfy").slideDown(750);
 
+                        $('#checkCodeForm').append('<input type="hidden" name="phone" value="'+phoneNumber+'">');
+
 
                     } else {
                         var title = data.title;
@@ -307,6 +309,120 @@
             });
         }
     });
+
+    $('#checkCodeForm').on('submit', function (e) {
+        e.preventDefault();
+        var form = $(this);
+        form.parsley().validate();
+        if (form.parsley().isValid()) {
+            var formData = new FormData(this);
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+
+                    if (data.status === true) {
+                        var title = data.title;
+                        var msg = data.message;
+                        toastr.options = {
+                            positionClass : 'toast-top-left',
+                            onclick:null
+                        };
+                        var $toast = toastr['success'](msg,title);
+                        $toastlast = $toast;
+                            $(".verfy").slideUp(500);
+                            $(".step1").slideUp(500);
+                            $(".area").slideDown(500);
+
+
+                        // form.each(function () {
+                        //     this.reset();
+                        // });
+
+
+                    } else {
+                        var title = data.title;
+                        var msg = data.message;
+                        toastr.options = {
+                            positionClass : 'toast-top-left',
+                            onclick:null
+                        };
+                        var $toast = toastr['error'](msg,title);
+                        $toastlast = $toast;
+                        form.each(function () {
+                            this.reset();
+                        });
+
+                    }
+                },
+                error: function (data) {
+
+                }
+            });
+        }
+    });
+
+    $('#regionForm').on('submit', function (e) {
+        e.preventDefault();
+        var form = $(this);
+        form.parsley().validate();
+        if (form.parsley().isValid()) {
+            var formData = new FormData(this);
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+
+                    if (data.status === true) {
+                        var title = data.title;
+                        var msg = data.message;
+                        toastr.options = {
+                            positionClass : 'toast-top-left',
+                            onclick:null
+                        };
+                        var $toast = toastr['success'](msg,title);
+                        $toastlast = $toast;
+
+                        setTimeout(function(){
+                            window.location.href ="{{route('web.home')}}";
+                        }, 2000);
+                        // form.each(function () {
+                        //     this.reset();
+                        // });
+
+
+                    } else {
+                        var title = data.title;
+                        var msg = data.message;
+                        toastr.options = {
+                            positionClass : 'toast-top-left',
+                            onclick:null
+                        };
+                        var $toast = toastr['error'](msg,title);
+                        $toastlast = $toast;
+                        // form.each(function () {
+                        //     this.reset();
+                        // });
+
+                    }
+                },
+                error: function (data) {
+
+                }
+            });
+        }
+    });
+
+
+
 
 
     $("#stepWithNoAction").on("click", function () {
@@ -343,11 +459,11 @@
 
     });
 
-    $("#step3").on("click", function () {
-        $(".verfy").slideUp(500);
-        $(".step1").slideUp(500);
-        $(".area").slideDown(500);
-    });
+    // $("#step3").on("click", function () {
+    //     $(".verfy").slideUp(500);
+    //     $(".step1").slideUp(500);
+    //     $(".area").slideDown(500);
+    // });
 
     $("#stepwithNoAction").on("click", function () {
         if(phoneNumber == $('#phoneNumber').val()){
