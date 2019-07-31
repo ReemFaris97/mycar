@@ -150,7 +150,7 @@
                                     <label for="userName">اختيار الشركة</label>
                                     <div class="company-radio">
                                         <div class="rad1">
-                                            <input type="radio" name="choice" id="choose-1" value="1" />
+                                            <input type="radio" name="choice" id="choose-1" class="required" />
                                             <label for="choose-1">
                                                 <img src="img/toyota.jpg" />
                                                 <p>تويوتا</p>
@@ -158,7 +158,7 @@
                                         </div>
 
                                         <div class="rad1">
-                                            <input type="radio" name="choice" id="choose-2" value="2" />
+                                            <input type="radio" name="choice" id="choose-2" class="required" />
                                             <label for="choose-2">
                                                 <img src="img/lexus.png" />
                                                 <p>ليكزس</p>
@@ -199,7 +199,6 @@
                                     <div class="form-data">
                                         <label> ادخل رقم الهيكل أو ارفق صورة الاستمارة</label>
                                         <div class="form-group">
-                                            <div id="mapholder"></div>
                                             <input type="number" class="form-control" />
                                             <span class="focus-border"><i></i></span>
                                         </div>
@@ -243,17 +242,7 @@
                             <div class="form-group">
                                 <label>معلومات السيارة الحالية</label>
                                 <p class="dtls">تويوتا كرولا 2019</p>
-                                <!--
-                                <div class="actions clearfix">
-                                    <ul role="menu" aria-label="Pagination">
-                                    <li class="" aria-disabled="false">
--->
                                 <a href="#previous" role="menuitem" class="replace"> تبديل السيارة </a>
-                                <!--
-                                    </li>
-                                    </ul>
-                                </div>
--->
                             </div>
                         </div>
 
@@ -269,34 +258,84 @@
                                 </button>
                             </div>
                         </div>
-
-                        <label for="surname">Last name *</label>
-                        <input id="surname" name="surname" type="text" class="required">
-                        <label for="email">Email *</label>
-                        <input id="email" name="email" type="text" class="required email">
-                        <label for="address">Address</label>
-                        <input id="address" name="address" type="text">
-                        <p>(*) Mandatory</p>
                     </form>
                 </section>
 
-                <h3>الأسعار</h3>
+                <h3>البحث عن موزع</h3>
                 <section>
+                    <h3 class="h3-after">الطلبات</h3>
                     <form id="account-form" action="#">
+<!--
                         <div class="row">
                             <label for="userName">User name *</label>
                             <input id="userName" name="userName" type="text" class="required">
                         </div>
+-->
+                        
                         <div class="row">
-                            <label for="password">Password *</label>
-                            <input id="password" name="password" type="text" class="required">
+                            
+                            
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label>السيارات السابقة</label>
+                                <p class="model1">تويوتا كرولا 2019</p>
+                                <p class="model1">تويوتا فورتشينر 2019</p>
+                            </div>
                         </div>
-                        <div class="row">
 
-                            <label for="confirm">Confirm Password *</label>
-                            <input id="confirm" name="confirm" type="text" class="required">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label>معلومات السيارة الحالية</label>
+                                <p class="dtls">تويوتا كرولا 2019</p>
+                                <a href="#previous" role="menuitem" class="replace"> تبديل السيارة </a>
+                            </div>
                         </div>
-                        <p>(*) Mandatory</p>
+                            
+                            <div class="col-xs-12">
+                            <div class="products">
+                                <div class="prod1">
+                                    <button class="close"> <i class="fas fa-times"></i> </button>
+                                    <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
+                                    <span class="qnt">12</span>
+                                </div>
+                                <div class="prod1">
+                                    <button class="close"> <i class="fas fa-times"></i> </button>
+                                    <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
+                                    <span class="qnt">12</span>
+                                </div>
+                                <div class="prod1">
+                                    <button class="close"> <i class="fas fa-times"></i> </button>
+                                    <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
+                                    <span class="qnt">12</span>
+                                </div>
+                                <div class="prod1">
+                                    <button class="close"> <i class="fas fa-times"></i> </button>
+                                    <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
+                                    <span class="qnt">12</span>
+                                </div>
+                                <div class="prod1">
+                                    <button class="close"> <i class="fas fa-times"></i> </button>
+                                    <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
+                                    <span class="qnt">12</span>
+                                </div>
+                                <div class="prod1">
+                                    <button class="close"> <i class="fas fa-times"></i> </button>
+                                    <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
+                                    <span class="qnt">12</span>
+                                </div>
+                                <div class="prod1">
+                                    <button class="close"> <i class="fas fa-times"></i> </button>
+                                    <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
+                                    <span class="qnt">12</span>
+                                </div>
+                            </div>
+                            </div>
+                            
+                            
+                    <h3 class="h3-after">البحث عن موزع</h3>
+                            
+                        </div>
+
                     </form>
                 </section>
 
@@ -472,6 +511,113 @@
     </div>
     <!----------------- End Call Modal -------------------->
 
+    <!-- name-piece Modal -->
+    <div class="modal fade modalIn" id="name-piece" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="h3-after">اختر القطع</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+
+                <div class="modal-body">
+                    <form class="navbar-form " role="search">
+
+                        <div class="row">
+
+                            <div class="col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <label>قسم رئيسى</label>
+                                    <select class="js-select2" title="قسم رئيسى">
+                                        <option>هاى لوكس</option>
+                                        <option>سوبر لوكس</option>
+                                        <option>لوكس جدا</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <label>قسم فرعى</label>
+                                    <select class="js-select2">
+                                        <option>هاى لوكس</option>
+                                        <option>سوبر لوكس</option>
+                                        <option>لوكس جدا</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12">
+                                <div class="form-data">
+                                    <label>قسم فرعى</label>
+                                    <div class="form-group searchh">
+                                        <input type="text" class="form-control" placeholder="بحث ...">
+                                        <button type="submit">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                        <span class="focus-border"><i></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12">
+                            <ul class="all-dtls">
+                                <li>
+                                    <ul class="inDetails">
+                                        <li>
+                                            <span class="name-p">اسم القطعة فرعى</span>
+                                        </li>
+                                        <li>
+                                            <label class="new-p">
+                                                <input type="checkbox" class="if-check">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <ul class="inDetails">
+                                        <li>
+                                            <span class="name-p">اسم القطعة فرعى</span>
+                                        </li>
+                                        <li>
+                                            <label class="new-p">
+                                                <input type="checkbox" class="if-check">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <ul class="inDetails">
+                                        <li>
+                                            <span class="name-p">اسم القطعة فرعى</span>
+                                        </li>
+                                        <li>
+                                            <label class="new-p">
+                                                <input type="checkbox" class="if-check">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                </div>
+
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+  
 
     <!-- image-piece Modal -->
     <div class="modal fade modalIn" id="img-piece" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -893,22 +1039,18 @@
                     $('#fxd-btn').removeAttr('disabled');
                 }
 
-
-              
-
-
-
-
             });
         });
 
     </script>
 
 
-    <!------------ Enabled Submit ------------------->
+    <!------------ Remove Piece ------------------->
     <script>
         $(document).ready(function() {
-
+            $(".close").click(function(){
+                $(this).parent(".prod1").fadeOut(500);
+            })
         });
 
     </script>
