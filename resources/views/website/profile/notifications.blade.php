@@ -46,24 +46,6 @@
                                     </div>
                                 @endforelse
 
-
-{{--                                <div class="notice">--}}
-{{--                                    <button type="button" class="close">×</button>--}}
-{{--                                    <img src="{{asset('website/img/bell.svg')}}">--}}
-{{--                                    <a href="#">لا يوجد لديك عرض جديد بخصوص طلب رقم 24843</a>--}}
-{{--                                </div>--}}
-
-{{--                                <div class="notice back-gr">--}}
-{{--                                    <button type="button" class="close">&times;</button>--}}
-{{--                                    <img src="{{asset('website/img/bell.svg')}}">--}}
-{{--                                    <a href="#"> لا يوجد لديك عرض جديد بخصوص طلب رقم 24843</a>--}}
-{{--                                </div>--}}
-{{--                                <div class="notice back-gr">--}}
-{{--                                    <button type="button" class="close">&times;</button>--}}
-{{--                                    <img src="{{asset('website/img/bell.svg')}}">--}}
-{{--                                    <a href="#"> لا يوجد لديك عرض جديد بخصوص طلب رقم 24843</a>--}}
-{{--                                </div>--}}
-
                             </div>
 
                         </div>

@@ -22,12 +22,8 @@
                     <div class="left-tab">
                         <div class="tab-content">
                             <div class="modify">
-                                <h3 class="h3-after">@lang('web.my_info')
-                                    <!--
-                                                                        <span class="span1"></span>
-                                                                        <span class="span2"></span>
-                                    -->
-                                </h3>
+                                <h3 class="h3-after">@lang('web.my_info')</h3>
+
                                 <form action="{{route('web.profile.update')}}" method="post" enctype="multipart/form-data">
                                         {{csrf_field()}}
                                     <label>@lang('web.name')</label>
@@ -228,20 +224,6 @@
             });
         }
 
-
-        {{--$(".company_name").attr({--}}
-        {{--"data-parsley-trigger": "focusout",--}}
-        {{--"data-parsley-required-message": "<?php __('trans.field_required') ?>",--}}
-        {{--"data-parsley-maxlength": "15",--}}
-        {{--"data-parsley-maxlength-message": "تجاوزت الحد الأقصى لعدد الحروف المسموحة وهى 15 ",--}}
-        {{--"data-parsley-minlength": "3",--}}
-        {{--"data-parsley-minlength-message": "اقل عدد حروف مسموح به هو 3 حروف"--}}
-
-        {{--});--}}
-
-
-        {{--@include('validate')--}}
-
     </script>
     <script>
 
@@ -409,9 +391,6 @@
                 }
             });
         }
-
-
-
 
 
     </script>

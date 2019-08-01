@@ -465,12 +465,6 @@
 
     });
 
-    // $("#step3").on("click", function () {
-    //     $(".verfy").slideUp(500);
-    //     $(".step1").slideUp(500);
-    //     $(".area").slideDown(500);
-    // });
-
 </script>
 
 

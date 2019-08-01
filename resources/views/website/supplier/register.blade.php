@@ -155,27 +155,6 @@
                     <span class="focus-border"><i></i></span>
                 </div>
 
-{{--                <div class="form-group">--}}
-{{--                    <input id="uploadFile2" class="f-input form-control" placeholder="صورة المحل" />--}}
-{{--                    <div class="fileUpload btn btn--browse">--}}
-{{--                        <span>Browse</span>--}}
-{{--                        <input id="uploadBtn2" type="file" class="upload" />--}}
-{{--                    </div>--}}
-{{--                    <span class="focus-border"><i></i></span>--}}
-{{--                </div>--}}
-
-{{--                <div class="form-group">--}}
-{{--                    <textarea rows="4" cols="95" class="form-control input-lg input-sm" data-fv-field="inbox" placeholder="اوصف العنوان"></textarea>--}}
-{{--                    <span class="focus-border"><i></i></span>--}}
-{{--                </div>--}}
-
-
-
-
-{{--                    <label>اللوكيشن</label>--}}
-{{--                    <div class="form-group">--}}
-{{--                        <div id="mapholder"></div>--}}
-{{--                        <input type="button" onclick="getLocation();" class="form-control" />--}}
 
 
                         <input id="pac-input" name="address" required value="{{ old('address') }}"
@@ -191,23 +170,9 @@
                             </p>
                         @endif
 
-{{--                </div>--}}
-
                 <div id="map" style="width: 100%; height: 450px;"></div>
                 <input type="hidden" name="lat" id="lat"/>
                 <input type="hidden" name="lng" id="lng"/>
-
-
-
-{{--                <div class="form-data">--}}
-{{--                    <label>اللوكيشن</label>--}}
-{{--                    <div class="form-group">--}}
-{{--                        <div id="mapholder"></div>--}}
-{{--                        <input type="button" onclick="getLocation();" class="form-control" />--}}
-{{--                        <span class="focus-border"><i></i></span>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
 
                 <button type="submit"  class="upload">@lang('web.register_as_supplier')</button>
                 <a href="{{route('supplier.home')}}"  class="upload">@lang('web.login_as_supplier')</a>
@@ -234,83 +199,6 @@
 </section>
 <!-- End sign-up -->
 
-
-
-
-{{--<!--- Start Sign Modal --->--}}
-{{--<div id="signModal" class="modal fade suggest-mdl" role="dialog">--}}
-{{--    <div class="modal-dialog">--}}
-
-{{--        <div class="modal-content">--}}
-{{--            <div class="modal-header">--}}
-{{--                <button type="button" class="close" data-dismiss="modal"><i class="fas fa-times"></i></button>--}}
-{{--                <h4 class="modal-title">تسجيل الدخول</h4>--}}
-{{--            </div>--}}
-
-
-{{--            <div class="logo-nav"><img src="{{asset('website/img/logo.png')}}"></div>--}}
-
-{{--            <form class="form2 signing step1">--}}
-{{--                <div class="form-group">--}}
-{{--                    <input type="number" class="form-control" placeholder="رقم الهاتف">--}}
-{{--                    <span class="sm-icon"> <i class="fas fa-paper-plane"></i> </span>--}}
-{{--                    <span class="focus-border"><i></i></span>--}}
-{{--                </div>--}}
-{{--                <button type="button" class="submit-in" id="step2"> <i class="fas fa-arrow-right"></i> </button>--}}
-{{--            </form>--}}
-
-
-{{--            <div class="verfy">--}}
-{{--                <form class="form2 signing" action="begin.html">--}}
-{{--                    <p>--}}
-{{--                        تم ارسال رمز مكون من 4 ارقام الى هاتفك الجوال و أدخله أدناه للمتابعة--}}
-{{--                    </p>--}}
-{{--                    <div class="form-group">--}}
-{{--                        <input type="number" class="form-control" placeholder="الكود المرسل">--}}
-{{--                        <span class="sm-icon"> <i class="fas fa-check-circle"></i> </span>--}}
-{{--                        <span class="focus-border"><i></i></span>--}}
-{{--                    </div>--}}
-
-{{--                    <p id="demo" class="timer"></p>--}}
-{{--                    <!--                <input class="end-details" type="submit" value="تقديم عرض">-->--}}
-
-{{--                    <!--  <button type="button" class="resend">اعادة ارسال</button>-->--}}
-{{--                    <button type="button" class="submit-in" id="step3"> <i class="fas fa-arrow-right"></i> </button>--}}
-{{--                </form>--}}
-{{--                <button id="edit-1" type="button" class="resend"> تعديل رقم الهاتف </button>--}}
-{{--            </div>--}}
-
-{{--            <div class="area">--}}
-{{--                <form class="form2 signing" action="begin.html">--}}
-
-{{--                    <h5 class="choose">--}}
-{{--                        اختر مكانك--}}
-{{--                    </h5>--}}
-
-{{--                    <div class="radio-list">--}}
-{{--                        <label class="rad">داخل بريدة--}}
-{{--                            <input type="radio" checked="checked" name="radio">--}}
-{{--                            <span class="checkmark"></span>--}}
-{{--                        </label>--}}
-{{--                        <label class="rad">خارج بريدة--}}
-{{--                            <input type="radio" name="radio">--}}
-{{--                            <span class="checkmark"></span>--}}
-{{--                        </label>--}}
-{{--                    </div>--}}
-
-{{--                    <button type="submit" class="submit-in" id="step3"> <i class="fas fa-arrow-right"></i> </button>--}}
-{{--                </form>--}}
-{{--            </div>--}}
-
-
-{{--        </div>--}}
-
-{{--    </div>--}}
-{{--</div>--}}
-{{--<!--- End Sign Modal --->--}}
-
-
-<!-- Strat End -->
 <!--===============================
      SCRIPT
      ===================================-->
@@ -335,41 +223,7 @@
     new WOW().init();
 
 </script>
-<!--- This for here only -->
-{{--<script>--}}
-{{--    function showLocation(position) {--}}
-{{--        var latitude = position.coords.latitude;--}}
-{{--        var longitude = position.coords.longitude;--}}
-{{--        var latlongvalue = position.coords.latitude + "," +--}}
-{{--            position.coords.longitude;--}}
-{{--        var img_url = "https://maps.googleapis.com/maps/api/staticmap?center=" +--}}
-{{--            latlongvalue + "&zoom=14&size=400x300&key=AIzaSyAa8HeLH2lQMbPeOiMlM9D1VxZ7pbGQq8o";--}}
-{{--        document.getElementById("mapholder").innerHTML =--}}
-{{--            "<img src='" + img_url + "'>";--}}
-{{--    }--}}
 
-
-{{--    function errorHandler(err) {--}}
-{{--        if (err.code == 1) {--}}
-{{--            alert("Error: Access is denied!");--}}
-{{--        } else if (err.code == 2) {--}}
-{{--            alert("Error: Position is unavailable!");--}}
-{{--        }--}}
-{{--    }--}}
-
-{{--    function getLocation() {--}}
-{{--        if (navigator.geolocation) {--}}
-{{--            // timeout at 60000 milliseconds (60 seconds)--}}
-{{--            var options = {--}}
-{{--                timeout: 60000--}}
-{{--            };--}}
-{{--            navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);--}}
-{{--        } else {--}}
-{{--            alert("Sorry, browser does not support geolocation!");--}}
-{{--        }--}}
-{{--    }--}}
-
-{{--</script>--}}
 
 <!---------------- Input type file --------------------->
 <script>

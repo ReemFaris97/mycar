@@ -122,11 +122,6 @@
                                 <a data-fancybox="Gallery" data-caption="@lang('web.suggest_title')" href="{{asset('website/img/soon.png')}}" class="sgsting">
                                     <img src="{{asset('website/img/soon.png')}}">
                                 </a>
-{{--                                <form class="sgst-btns">--}}
-{{--                                    <button type="button" class="evl like"> <i class="fas fa-thumbs-up"></i> </button>--}}
-{{--                                    <button type="button" class="evl dislike"> <i class="fas fa-thumbs-down"></i> </button>--}}
-{{--                                    <button type="button" class="new-evl" data-toggle="modal" data-target="#myModal"> اضافة مقترح </button>--}}
-{{--                                </form>--}}
                             </div>
                         </div>
                     @endforelse
