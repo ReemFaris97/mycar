@@ -24,7 +24,7 @@ return [
     "about_site_name"=>"عن قطعة سيارتى",
     "join_us"=>"انضم الينا",
     "terms_and_conditions"=>"الشروط والأحكام",
-    "ksa_qassem"=>" Suadi Arabia - Al qassim",
+    "ksa_qassem"=>"المملكة العربية السعودية - القصيم",
     "follow_us"=>"تابعونا",
     "email"=>"البريد الالكترونى...",
     "get_all_news"=>"ليصلك كل جديد",
