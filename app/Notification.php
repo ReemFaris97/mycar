@@ -15,4 +15,14 @@ class Notification extends Model
             $this->forceFill(['is_read' => 1])->save();
         }
     }
+
+    public function title(){
+        if(app()->getLocale() == 'ar')  return $this->ar_title;
+        else return $this->en_title;
+    }
+
+    public function message(){
+        if(app()->getLocale() == 'ar')  return $this->ar_message;
+        else return $this->en_message;
+    }
 }

@@ -57,4 +57,23 @@ return [
     "register_as_supplier"=>"Register as a supplier",
     "login_as_supplier"=>"Log in as a resource",
     "before_you_start"=>"Before you start",
+
+
+    "login_code_sent_successfully"=>"Login code sent successfully",
+    "error"=>"Error",
+    "user_registered_successfully"=>"The number does not exist .. The number was successfully registered",
+    "login_successfully"=>"Code is valid .. Login successfully",
+    "error_code_false"=>"Sorry, the code you entered is invalid",
+    "login_success_done"=>"Region updated and login successfully",
+    "address"=>"Address",
+    "deleted_successfully"=>"Deleted successfully",
+    "profile_updated_successfully"=>"Account data has been successfully modified",
+    "my_info"=>"My Info",
+    "inside_b"=>"Inside Buraidah",
+    "outside_b"=>"Outside Buraidah",
+    "search_in_map"=>"Search for an address or select your location on the map",
+    "edit"=>"edit",
+    "notifications"=>"Notifications",
+    "no_notify"=>"You currently have no notifications",
+    "personal_info"=>"personal information",
 ];

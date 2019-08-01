@@ -19,13 +19,13 @@
                     <div class="left-tab">
                         <div class="tab-content">
                             <div id="home" class="in active">
-                                <h3 class="h3-after">معلوماتى
+                                <h3 class="h3-after">@lang('web.my_info')
                                     <!--
                             <span class="span1"></span>
                             <span class="span2"></span>
                                     -->
                                 </h3>
-                                <h4>المعلومات الشخصية</h4>
+                                <h4>@lang('web.personal_info')</h4>
                                 <ul>
                                     <li>@lang('web.name') :
                                         <span class="name-account"> {{optional($user)->name}}</span>
@@ -34,23 +34,11 @@
                                         <span class="phone-number">{{$user->phone}}</span>
                                     </li>
 
-                                    <!------- show   this in  user ------->
-{{--                                    <li> رقم السجل التجاري :--}}
-{{--                                        <span class="number-record">122</span>--}}
-{{--                                    </li>--}}
-{{--                                    <li> صورة السجل :--}}
-{{--                                        <img class="img-record" src="{{asset('website/img/logo-sm.png')}}">--}}
-{{--                                    </li>--}}
-{{--                                    <li> صورة المحل :--}}
-{{--                                        <img class="img-shop" src="{{asset('website/img/logo-sm.png')}}">--}}
-{{--                                    </li>--}}
-                                    <!------------------>
-
                                     <li> @lang('web.address') :
                                         <span class="place">{{optional($user)->address}}</span>
                                     </li>
                                     <li>
-                                        <a href="modify.html">تعديل</a>
+                                        <a href="{{route('web.profile.edit')}}">@lang('web.edit')</a>
                                     </li>
                                 </ul>
                             </div>

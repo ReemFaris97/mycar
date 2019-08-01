@@ -238,6 +238,14 @@ Route::group(['namespace'=>'website','middleware'=>'userMiddleware'], function (
     Route::post('/contact','HomeController@postContact')->name('web.contact.post');
 
     Route::get('/profile','ProfileController@profile')->name('web.profile');
+    Route::get('/profile/edit','ProfileController@editProfile')->name('web.profile.edit');
+    Route::post('/profile/update','ProfileController@updateProfile')->name('web.profile.update');
+
     Route::get('/notifications','ProfileController@notifications')->name('web.notifications');
+
+    Route::post('/notifications/delete','ProfileController@deleteNotificaiton')->name('web.delete.notification');
+
+
+    route::post('user/logout','LoginController@logout')->name('web.user.logout');
 
 });
