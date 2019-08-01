@@ -186,9 +186,9 @@
 
                 {{--   Modals Buttons--}}
 
-                <button type="button" data-toggle="modal" data-target="#signModal" class="submit-in">
-                    <i class="fas fa-arrow-right"></i>
-                </button>
+{{--                <button type="button" data-toggle="modal" data-target="#signModal" class="submit-in">--}}
+{{--                    <i class="fas fa-arrow-right"></i>--}}
+{{--                </button>--}}
 
             </form>
 
