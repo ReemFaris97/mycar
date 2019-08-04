@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="35.643" height="23.762" viewBox="0 0 35.643 23.762">
+  <g id="credit-card" transform="translate(0 -85.333)">
+    <g id="Group_3783" data-name="Group 3783" transform="translate(0 85.333)">
+      <g id="Group_3782" data-name="Group 3782" transform="translate(0 0)">
+        <path id="Path_3426" data-name="Path 3426" d="M31.93,85.333H3.713A3.718,3.718,0,0,0,0,89.046v16.336a3.718,3.718,0,0,0,3.713,3.713H31.93a3.718,3.718,0,0,0,3.713-3.713V89.046A3.718,3.718,0,0,0,31.93,85.333Zm2.228,20.049a2.23,2.23,0,0,1-2.228,2.228H3.713a2.23,2.23,0,0,1-2.228-2.228V89.046a2.23,2.23,0,0,1,2.228-2.228H31.93a2.23,2.23,0,0,1,2.228,2.228v16.336Z" transform="translate(0 -85.333)"/>
+      </g>
+    </g>
+    <g id="Group_3785" data-name="Group 3785" transform="translate(0 89.788)">
+      <g id="Group_3784" data-name="Group 3784" transform="translate(0 0)">
+        <path id="Path_3427" data-name="Path 3427" d="M34.9,149.333H.743a.743.743,0,0,0-.743.743v4.455a.743.743,0,0,0,.743.743H34.9a.743.743,0,0,0,.743-.743v-4.455A.743.743,0,0,0,34.9,149.333Zm-.743,4.455H1.485v-2.97H34.157v2.97Z" transform="translate(0 -149.333)"/>
+      </g>
+    </g>
+    <g id="Group_3787" data-name="Group 3787" transform="translate(4.455 100.184)">
+      <g id="Group_3786" data-name="Group 3786" transform="translate(0 0)">
+        <path id="Path_3428" data-name="Path 3428" d="M73.653,298.667H64.743a.743.743,0,1,0,0,1.485h8.911a.743.743,0,1,0,0-1.485Z" transform="translate(-64 -298.667)"/>
+      </g>
+    </g>
+    <g id="Group_3789" data-name="Group 3789" transform="translate(4.455 103.154)">
+      <g id="Group_3788" data-name="Group 3788" transform="translate(0 0)">
+        <path id="Path_3429" data-name="Path 3429" d="M73.653,341.333H64.743a.743.743,0,1,0,0,1.485h8.911a.743.743,0,1,0,0-1.485Z" transform="translate(-64 -341.333)"/>
+      </g>
+    </g>
+    <g id="Group_3791" data-name="Group 3791" transform="translate(25.247 98.699)">
+      <g id="Group_3790" data-name="Group 3790" transform="translate(0 0)">
+        <path id="Path_3430" data-name="Path 3430" d="M366.38,277.333h-1.485a2.23,2.23,0,0,0-2.228,2.228v1.485a2.23,2.23,0,0,0,2.228,2.228h1.485a2.23,2.23,0,0,0,2.228-2.228v-1.485A2.23,2.23,0,0,0,366.38,277.333Zm.743,3.713a.743.743,0,0,1-.743.743h-1.485a.743.743,0,0,1-.743-.743v-1.485a.743.743,0,0,1,.743-.743h1.485a.743.743,0,0,1,.743.743Z" transform="translate(-362.667 -277.333)"/>
+      </g>
+    </g>
+  </g>
+</svg>

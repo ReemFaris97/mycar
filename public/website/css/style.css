@@ -2414,6 +2414,9 @@ tt-hover {
     color: #212121;
     font-size: 14px;
 }
+.radio-list .rad:first-child {
+    margin: 0;
+}
 .rad input {
   position: absolute;
   opacity: 0;
@@ -2821,7 +2824,7 @@ table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, tab
     }
     #nav-icon1 {
             display: block;
-    z-index: 999;
+    z-index: 999999;
     line-height: 43px;
     position: absolute;
     left: 0;
@@ -3238,4 +3241,10 @@ table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, tab
     .apply{
         font-size: 22px !important
     }
+}
+
+
+#map{
+    height: 400px;
+    width:100%
 }

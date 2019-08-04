@@ -20,6 +20,9 @@
 <!--venobox lightbox-->
 <link rel="stylesheet" href="{{asset('admin/assets/plugins/magnific-popup/dist/magnific-popup.css')}}"/>
 
+<!-- fontawesome -->
+<link rel="stylesheet" href="{{asset('admin/assets/css/all.min.css')}}"/>
+
 
 
 <link href="{{asset('admin/assets/plugins/bootstrap-sweetalert/sweet-alert.css')}}" rel="stylesheet" type="text/css" />
@@ -46,3 +49,6 @@
 <![endif]-->
 
 <script src="{{asset('admin/assets/js/modernizr.min.js')}}"></script>
+
+<!-- fontawesome -->
+<script src="{{asset('admin/assets/js/all.min.js')}}"></script>
