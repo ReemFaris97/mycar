@@ -100,14 +100,15 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        // Initialize Firebase
+        // Initialize Firebase ....
         var config = {
-            apiKey: "AIzaSyALBgynBWwxUuhRz8C9MzpoZdExcMLJawU",
-            authDomain: "panorama-hospital.firebaseapp.com",
-            databaseURL: "https://panorama-hospital.firebaseio.com",
-            projectId: "panorama-hospital",
-            storageBucket: "panorama-hospital.appspot.com",
-            messagingSenderId: "509474417332"
+            apiKey: "AIzaSyDYkaLf81OdUKQrb5ASJMfLRAo-zZGbhTQ",
+            authDomain: "mycar-part.firebaseapp.com",
+            databaseURL: "https://mycar-part.firebaseio.com",
+            projectId: "mycar-part",
+            storageBucket: "",
+            messagingSenderId: "439752799792",
+            appId: "1:439752799792:web:252944a701d8d363"
         };
         firebase.initializeApp(config);
 

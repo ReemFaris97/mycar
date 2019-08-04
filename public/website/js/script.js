@@ -245,8 +245,8 @@ $(document).ready(function () {
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 
-        document.getElementById("demo").innerHTML = hours + "h:" +
-            minutes + "m:" + seconds + "s";
+        // document.getElementById("demo").innerHTML = hours + "h:" +
+        //     minutes + "m:" + seconds + "s";
 
 
         if (distance < 0) {

@@ -105,6 +105,12 @@ class User extends Authenticatable
     }
 
 
+    public function devices(){
+        return $this->hasMany(Device::class);
+    }
+
+
+
 
 //    public function generateLoginCode(){
 //        $code = '1234';

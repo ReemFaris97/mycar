@@ -13,7 +13,7 @@ namespace App\Libraries;
 class firebase
 {
 //    const SERVER_API_KEY = '';
-    private $header = ['Authorization: key=AAAAE4YUuy8:APA91bH0EYUeayYC3PFuOzdUvcbe3c6QVEJEuyU3Pa9wCspofloMZ8jOfureUKs-bpGQ5-pdKSS0XnMi4RcJGDzU3nPUeIN69XY68uHrGTbhQZFbt7xU_lf5BrHI5xWf8Twg3c9hLp5V', 'Content-Type:Application/json',];
+    private $header = ['Authorization: key=AAAAZmNPNjA:APA91bEfgIfyomsIoTiO2wHfgsUMC9eBioDAMuiECEJQqiI6Ap2O7KcWVl1Hrne7voD2dqI9O-L6qkP9dAbHhEz3r9LdTBT0-Y-_ZBJPEo0cXr3ha0RZfci5ZMwJqV9xED5OGutvxdDO', 'Content-Type:Application/json',];
 
     public  function sendNotify($tokens,$title,$body,$icon=null,$image=null,$click_action=null,$username = null){
 
@@ -48,8 +48,40 @@ class firebase
         if ($err) {
             return "cURL Error #:" . $err;
         }
-//        else {
-//            return $response;
-//        }
+
+    }
+
+
+    public  function sendMessage($tokens,$body,$icon=null,$image=null){
+
+        $msg = [
+            "body"=>$body,
+            "icon"=>$icon,
+            "image"=>$image,
+        ];
+
+        $payload = ['registration_ids'=>$tokens,
+            'data'=>$msg,
+        ];
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://fcm.googleapis.com/fcm/send",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => json_encode($payload),
+            CURLOPT_HTTPHEADER => $this->header
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+            return "cURL Error #:" . $err;
+        }
+
     }
 }
