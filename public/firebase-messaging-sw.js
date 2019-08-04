@@ -7,13 +7,13 @@ importScripts('https://www.gstatic.com/firebasejs/5.9.1/firebase-messaging.js');
 
 // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyCBp7tT_DxP3kyenx4vx5C9f51WBUPewXM",
-    authDomain: "panorama-task-manager.firebaseapp.com",
-    databaseURL: "https://panorama-task-manager.firebaseio.com",
-    projectId: "panorama-task-manager",
-    storageBucket: "panorama-task-manager.appspot.com",
-    messagingSenderId: "83853884207",
-    appId: "1:83853884207:web:b69a67025f896883"
+    apiKey: "AIzaSyDYkaLf81OdUKQrb5ASJMfLRAo-zZGbhTQ",
+    authDomain: "mycar-part.firebaseapp.com",
+    databaseURL: "https://mycar-part.firebaseio.com",
+    projectId: "mycar-part",
+    storageBucket: "",
+    messagingSenderId: "439752799792",
+    appId: "1:439752799792:web:252944a701d8d363"
 };
 firebase.initializeApp(config);
 

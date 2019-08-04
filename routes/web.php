@@ -125,7 +125,8 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin','middleware'=>'admin'],
 
 //    route::get('notifications','NotificationsController@index')->name('notifications.index');
 //    route::post('notification/delete','NotificationsController@delete')->name('notification.delete');
-
+//update Token
+    Route::post('user/update/token','AjaxController@updateUserToken')->name('user.update.token');
 //    Route::post('user/update/token', function (Request $request) {
 //
 //        $user = \App\User::whereId($request->id)->first();

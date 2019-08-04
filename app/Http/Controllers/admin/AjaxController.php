@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\CompanyModel;
+use App\Device;
 use App\ReturnItem;
 use App\SubCategory;
 use Illuminate\Http\Request;
@@ -56,6 +57,27 @@ class AjaxController extends Controller
                 'title'=>"خطأ",
                 'message'=>"طلب الإسترجاع ربما تم تغيير حالته من قبل او غير موجود"
             ]);
+        }
+    }
+
+
+
+    public function updateUserToken(Request $request){
+        $user = \App\User::whereId($request->id)->first();
+
+        if ($request->token) {
+            $data = \App\Device::where('device', $request->token)->first();
+            if ($data) {
+                $data->user_id = $user->id;
+                $data->save();
+            } else {
+
+                $data = new Device();
+                $data->device = $request->token;
+                $data->user_id = $user->id;
+                $data->type = 'web';
+                $data->save();
+            }
         }
     }
 }
