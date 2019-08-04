@@ -14,6 +14,18 @@
     <link rel="stylesheet" href="css/select2.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/wizard.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.foundation.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.jqueryui.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.material.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.semanticui.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.uikit.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables_themeroller.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
+
 </head>
 
 
@@ -138,10 +150,11 @@
     <section class="wizards">
         <div class="container">
             <div id="jquery-steps">
-                <h3>إضافة سيارة</h3>
+                <h3></h3>
                 <section>
+                    <button type="button" class="delt-all">إلغاء الطلب</button>
                     <h3 class="h3-after">إضافة سيارة</h3>
-                    <form id="account-form" action="#">
+                    <form id="account-form" action="distributers.html" novalidate="validate">
 
                         <div class="row">
 
@@ -150,16 +163,16 @@
                                     <label for="userName">اختيار الشركة</label>
                                     <div class="company-radio">
                                         <div class="rad1">
-                                            <input type="radio" name="choice" id="choose-1" class="required" />
-                                            <label for="choose-1">
+                                            <input type="radio" name="choiceb" id="choose-1" class="required" />
+                                            <label for="choose-1" class="lbl1">
                                                 <img src="img/toyota.jpg" />
                                                 <p>تويوتا</p>
                                             </label>
                                         </div>
 
                                         <div class="rad1">
-                                            <input type="radio" name="choice" id="choose-2" class="required" />
-                                            <label for="choose-2">
+                                            <input type="radio" name="choiceb" id="choose-2" class="required" />
+                                            <label for="choose-2" class="lbl1">
                                                 <img src="img/lexus.png" />
                                                 <p>ليكزس</p>
                                             </label>
@@ -168,67 +181,78 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-6 col-xs-12">
-                                <div class="form-group">
-                                    <label>الموديل</label>
-                                    <select class="js-select2">
-                                        <option>هاى لوكس</option>
-                                        <option>سوبر لوكس</option>
-                                        <option>لوكس جدا</option>
-                                    </select>
+                            <div class="up-tgle">
+                                <div class="col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label>الموديل</label>
+                                        <select class="js-select2" id="locationCodesSelect2">
+                                            <option>هاى لوكس</option>
+                                            <option>سوبر لوكس</option>
+                                            <option>لوكس جدا</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-sm-6 col-xs-12">
-                                <div class="form-group">
-                                    <label>السنة</label>
-                                    <select class="js-select2">
-                                        <option>2019</option>
-                                        <option>2018</option>
-                                        <option>2017</option>
-                                    </select>
+                                <div class="col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label>السنة</label>
+                                            
+                                        <select class="js-select2">
+                                            <option>2019</option>
+                                            <option>2018</option>
+                                            <option>2017</option>
+                                        </select>
+                                    
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="col-xs-12">
-                                <a class="to-tgle">ما لقيت سيارتك ؟ (ديزل - بنزين) - إرفق رقم الهيكل لتطابق القطع 100%</a>
                             </div>
 
                             <div class="tgle col-xs-12 no-padding">
-                                <div class="col-xs-8">
+                                <div class="col-sm-8 col-xs-12">
                                     <div class="form-data">
                                         <label> ادخل رقم الهيكل أو ارفق صورة الاستمارة</label>
                                         <div class="form-group">
-                                            <input type="number" class="form-control" />
+                                            <input type="number" class="form-control" name="choiseC" id="dwn-btn" />
                                             <span class="focus-border"><i></i></span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <!--------- Image ----------->
-                                <div class="col-xs-4">
+                                <div class="col-sm-4 col-xs-12">
                                     <div class="profile-pic">
                                         <div class="images-upload-block photo">
                                             <label class="upload-img photo" for="upp-btn">
-                                                <input type="file" id="upp-btn" accept="image/*" class="image-uploader form-control">
+                                                <input type="file" id="upp-btn" accept="image/*" class="image-uploader form-control" name="choiseC">
                                                 <b><i class="fas fa-image"></i></b>
                                             </label>
                                         </div>
                                         <div class="images-upload-block" id="appended-pic"></div>
-
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-xs-12">
+                                <a class="to-tgle">
+                                    <span class="text-up">
+                                        ما لقيت سيارتك ؟ (ديزل - بنزين) - إرفق رقم الهيكل لتطابق القطع 100%
+                                    </span>
+                                    <span class="text-down">
+                                        أدخل موديل السيارة أو السنة
+                                    </span>
+                                </a>
+                            </div>
+
+                            
 
 
                         </div>
 
                     </form>
                 </section>
-                <h3>بيانات الطلب</h3>
+                <h3></h3>
                 <section>
                     <h3 class="h3-after">بيانات الطلب</h3>
-                    <form id="profile-form">
+                    <form id="profile-form" novalidate="validate">
 
                         <div class="col-xs-12">
                             <div class="form-group">
@@ -242,7 +266,7 @@
                             <div class="form-group">
                                 <label>معلومات السيارة الحالية</label>
                                 <p class="dtls">تويوتا كرولا 2019</p>
-                                <a href="#previous" role="menuitem" class="replace"> تبديل السيارة </a>
+                                <a href="#previous" role="menuitem" class="replace" id="goPrev"> تبديل السيارة </a>
                             </div>
                         </div>
 
@@ -261,90 +285,151 @@
                     </form>
                 </section>
 
-                <h3>البحث عن موزع</h3>
+                <h3></h3>
                 <section>
+                    <button type="button" class="delt-all">إلغاء الطلب</button>
                     <h3 class="h3-after">الطلبات</h3>
-                    <form id="account-form" action="#">
-<!--
+                    <form id="account-form" action="distributers.html" novalidate="validate">
+                        <!--
                         <div class="row">
                             <label for="userName">User name *</label>
                             <input id="userName" name="userName" type="text" class="required">
                         </div>
 -->
-                        
+
                         <div class="row">
-                            
-                            
-                        <div class="col-xs-12">
-                            <div class="form-group">
-                                <label>السيارات السابقة</label>
-                                <p class="model1">تويوتا كرولا 2019</p>
-                                <p class="model1">تويوتا فورتشينر 2019</p>
-                            </div>
-                        </div>
 
-                        <div class="col-xs-12">
-                            <div class="form-group">
-                                <label>معلومات السيارة الحالية</label>
-                                <p class="dtls">تويوتا كرولا 2019</p>
-                                <a href="#previous" role="menuitem" class="replace"> تبديل السيارة </a>
-                            </div>
-                        </div>
-                            
+
                             <div class="col-xs-12">
-                            <div class="products">
-                                <div class="prod1">
-                                    <button class="close"> <i class="fas fa-times"></i> </button>
-                                    <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
-                                    <span class="qnt">12</span>
-                                </div>
-                                <div class="prod1">
-                                    <button class="close"> <i class="fas fa-times"></i> </button>
-                                    <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
-                                    <span class="qnt">12</span>
-                                </div>
-                                <div class="prod1">
-                                    <button class="close"> <i class="fas fa-times"></i> </button>
-                                    <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
-                                    <span class="qnt">12</span>
-                                </div>
-                                <div class="prod1">
-                                    <button class="close"> <i class="fas fa-times"></i> </button>
-                                    <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
-                                    <span class="qnt">12</span>
-                                </div>
-                                <div class="prod1">
-                                    <button class="close"> <i class="fas fa-times"></i> </button>
-                                    <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
-                                    <span class="qnt">12</span>
-                                </div>
-                                <div class="prod1">
-                                    <button class="close"> <i class="fas fa-times"></i> </button>
-                                    <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
-                                    <span class="qnt">12</span>
-                                </div>
-                                <div class="prod1">
-                                    <button class="close"> <i class="fas fa-times"></i> </button>
-                                    <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
-                                    <span class="qnt">12</span>
+                                <div class="form-group">
+                                    <label>السيارات السابقة</label>
+                                    <p class="model1">تويوتا كرولا 2019</p>
+                                    <p class="model1">تويوتا فورتشينر 2019</p>
                                 </div>
                             </div>
+
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label>معلومات السيارة الحالية</label>
+                                    <p class="dtls">تويوتا كرولا 2019</p>
+                                </div>
                             </div>
-                            
-                            
-                    <h3 class="h3-after">البحث عن موزع</h3>
-                            
+
+                            <div class="col-xs-12">
+                                <div class="products">
+                                    <div class="prod1">
+                                        <button class="close"> <i class="fas fa-times"></i> </button>
+                                        <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
+                                        <span class="qnt">12</span>
+                                    </div>
+                                    <div class="prod1">
+                                        <button class="close"> <i class="fas fa-times"></i> </button>
+                                        <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
+                                        <span class="qnt">12</span>
+                                    </div>
+                                    <div class="prod1">
+                                        <button class="close"> <i class="fas fa-times"></i> </button>
+                                        <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
+                                        <span class="qnt">12</span>
+                                    </div>
+                                    <div class="prod1">
+                                        <button class="close"> <i class="fas fa-times"></i> </button>
+                                        <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
+                                        <span class="qnt">12</span>
+                                    </div>
+                                    <div class="prod1">
+                                        <button class="close"> <i class="fas fa-times"></i> </button>
+                                        <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
+                                        <span class="qnt">12</span>
+                                    </div>
+                                    <div class="prod1">
+                                        <button class="close"> <i class="fas fa-times"></i> </button>
+                                        <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
+                                        <span class="qnt">12</span>
+                                    </div>
+                                    <div class="prod1">
+                                        <button class="close"> <i class="fas fa-times"></i> </button>
+                                        <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
+                                        <span class="qnt">12</span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-xs-12">
+                                <div class="distributers">
+                                    <h3 class="h3-after">البحث عن موزع</h3>
+
+                                    <div class="radio-list">
+                                        <label class="rad">أصلية
+                                            <input class="required" aria-required="true" type="radio" checked="checked" name="radio">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="rad">تشليح
+                                            <input class="required" aria-required="true" type="radio" name="radio">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="rad">تجارية
+                                            <input class="required" aria-required="true" type="radio" name="radio">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+
+                                    <b>
+                                        المدينة :-
+                                        <span>بريدة</span>
+                                    </b>
+
+                                    <b>
+                                        اختر الموزع
+                                    </b>
+
+                                    <div class="radio-list dist-list">
+                                        <label class="rad">
+                                            <div class="checking"> القصيم لتجارة قطع الغيار </div>
+                                            <input class="required" aria-required="true" type="radio" checked="checked" name="radio2" data-toggle="modal" data-target="#not-avl" data-dismiss='modal'>
+                                            <span class="checkmark"></span>
+                                            <span class="check-img">
+                                                <img src="img/logo.png">
+                                            </span>
+                                            <b>مواعيد العمل :
+                                                <span> السبت - الخميس , 9 صباحا - 11 مساءا </span>
+                                            </b>
+                                        </label>
+                                        <label class="rad">
+                                            <div class="checking"> القصيم لتجارة قطع الغيار </div>
+                                            <input class="required" aria-required="true" type="radio" name="radio2">
+                                            <span class="checkmark"></span>
+                                            <span class="check-img">
+                                                <img src="img/logo.png">
+                                            </span>
+                                            <b>مواعيد العمل :
+                                                <span> السبت - الخميس , 9 صباحا - 11 مساءا </span>
+                                            </b>
+                                        </label>
+                                        <label class="rad">
+                                            <div class="checking"> القصيم لتجارة قطع الغيار </div>
+                                            <input class="required" aria-required="true" type="radio" name="radio2">
+                                            <span class="checkmark"></span>
+                                            <span class="check-img">
+                                                <img src="img/logo.png">
+                                            </span>
+                                            <b>مواعيد العمل :
+                                                <span> السبت - الخميس , 9 صباحا - 11 مساءا </span>
+                                            </b>
+                                        </label>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
                         </div>
 
                     </form>
                 </section>
 
-                <h3>الدفع</h3>
-                <section>
-                    <form id="form-1">
-                        <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required"> <label for="acceptTerms">I agree with the Terms and Conditions.</label>
-                    </form>
-                </section>
+
             </div>
         </div>
     </section>
@@ -549,75 +634,74 @@
 
                             <div class="col-xs-12">
                                 <div class="form-data">
-                                    <label>قسم فرعى</label>
+                                    <label>البحث بالاسم</label>
                                     <div class="form-group searchh">
-                                        <input type="text" class="form-control" placeholder="بحث ...">
+                                        <input id="myInput" type="text" class="form-control" placeholder="بحث ...">
+                                        <!--
                                         <button type="submit">
                                             <i class="fas fa-search"></i>
                                         </button>
+-->
                                         <span class="focus-border"><i></i></span>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col-xs-12">
-                            <ul class="all-dtls">
-                                <li>
-                                    <ul class="inDetails">
-                                        <li>
-                                            <span class="name-p">اسم القطعة فرعى</span>
-                                        </li>
-                                        <li>
-                                            <label class="new-p">
-                                                <input type="checkbox" class="if-check">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </li>
-                                    </ul>
-                                </li>
 
-                                <li>
-                                    <ul class="inDetails">
-                                        <li>
-                                            <span class="name-p">اسم القطعة فرعى</span>
-                                        </li>
-                                        <li>
-                                            <label class="new-p">
-                                                <input type="checkbox" class="if-check">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </li>
-                                    </ul>
-                                </li>
+                            <div class="col-xs-12">
+                                <ul class="all-dtls" id="myList">
+                                    <li>
+                                        <ul class="inDetails">
+                                            <li>
+                                                <label class="new-p">
+                                                    <input type="checkbox" class="if-check">
+                                                    <span class="checkmark"></span>
+                                                    <span class="name-p">اسم القطعة فرعى</span>
+                                                </label>
+                                            </li>
 
-                                <li>
-                                    <ul class="inDetails">
-                                        <li>
-                                            <span class="name-p">اسم القطعة فرعى</span>
-                                        </li>
-                                        <li>
-                                            <label class="new-p">
-                                                <input type="checkbox" class="if-check">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </li>
-                                    </ul>
-                                </li>
+                                        </ul>
+                                    </li>
 
-                            </ul>
+                                    <li>
+                                        <ul class="inDetails">
+                                            <li>
+                                                <label class="new-p">
+                                                    <input type="checkbox" class="if-check">
+                                                    <span class="checkmark"></span>
+                                                    <span class="name-p">منتج غديد</span>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li>
+                                        <ul class="inDetails">
+                                            <li>
+                                                <label class="new-p">
+                                                    <input type="checkbox" class="if-check">
+                                                    <span class="checkmark"></span>
+                                                    <span class="name-p">نيو برودكت</span>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                </ul>
+
+                            </div>
 
                         </div>
 
+                        <input class="fxd-btn" id="fxd-btn" type="submit" value="إتمام" data-dismiss='modal' disabled>
+                    </form>
                 </div>
 
-                </form>
+
             </div>
-
-
         </div>
     </div>
-  
+
 
     <!-- image-piece Modal -->
     <div class="modal fade modalIn" id="img-piece" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -829,7 +913,7 @@
 
                         </div>
 
-                        <input class="fxd-btn" id="fxd-btn" type="submit" value="إتمام" data-dismiss='modal'>
+                        <input class="fxd-btn" id="fxd-btn" type="submit" value="إتمام" data-dismiss='modal' disabled>
                     </section>
                 </div>
 
@@ -837,6 +921,44 @@
             </div>
         </div>
     </div>
+
+
+
+    <!-- NOT AVALAIBLE Modal -->
+    <div id="not-avl" class="modal fade suggest-mdl" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><i class="fas fa-times"></i></button>
+                </div>
+
+                <div class="logo-nav"><img src="img/logo.png"></div>
+
+                <div class="choosing">
+
+                    <p>
+                        الموزع غير متاح حاليا سنذكرك عندما يكون متاح
+                    </p>
+
+                    <button type="submit" class="submit-in" data-dismiss='modal'> موافق </button>
+                    <button type="submit" class="submit-in" data-dismiss='modal'>غير موافق </button>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
     <!--Scroll Button-->
     <div id="scroll-top">
         <i class="fa fa-angle-up"></i>
@@ -894,16 +1016,19 @@
                     return true;
                 },
                 onFinished: function(event, currentIndex) {
-                    alert("Submitted!");
+                    //                    alert("Submitted!");
                 }
             });
         })
+        $(document).delegate('#goPrev', 'click', function() {
+            var a = $(".wizard").steps("previous");
+            if (!a) {
+                $(".wizard").steps("finish");
+            }
+        });
 
     </script>
     <!-- End Form -->
-
-
-
     <script src="js/jquery.fancybox.min.js"></script>
     <script src="js/all.min.js"></script>
     <script src="js/script.js"></script>
@@ -977,28 +1102,35 @@
     <!------------ IF Checked --------------->
     <script>
         $(document).ready(function() {
+            //            status of each input type number 
             var empty = true;
+            //            total number of appended input type number
             var numss = 0;
             $('.new-p :checkbox').change(function() {
                 var $this = $(this);
                 if ($this.is(':checked')) {
-
                     var newInput = $('<li class="addme"><div class="quant"><div class="count"><div class="value-button cart-qty-plus" > <i class="fas fa-arrow-circle-up"></i> </div><input type="number" id="number" class="number"><div class="value-button cart-qty-minus" > <i class="fas fa-arrow-circle-down"></i> </div></div></div></li>');
-
                     $($this).closest('.inDetails').append(newInput);
 
+
+                    //                    input number simulator function
                     var incrementPlus;
                     var incrementMinus;
-
-                    var buttonPlus = $(".cart-qty-plus");
-                    var buttonMinus = $(".cart-qty-minus");
-
+                    var buttonPlus = $(this).parents('li').next("li.addme").find(".cart-qty-plus");
+                    var buttonMinus = $(this).parents('li').next("li.addme").find(".cart-qty-minus");
                     var incrementPlus = buttonPlus.click(function() {
                         var $n = $(this)
                             .parent(".count")
                             .parent(".quant")
                             .find(".number");
                         $n.val(Number($n.val()) + 1);
+
+                        if (Number($n.val()) == 0 || Number($n.val()) == 0) {
+                            empty = true;
+                        } else {
+                            empty = false;
+                        }
+
                     });
                     var incrementMinus = buttonMinus.click(function() {
                         var $n = $(this)
@@ -1010,33 +1142,38 @@
                             $n.val(amount - 1);
                         }
 
+
+                        if (Number($n.val()) == 0 || Number($n.val()) == 0) {
+                            empty = true;
+                        } else {
+                            empty = false;
+                        }
+
                     });
                     numss++;
                 } else {
                     numss--;
-
                     $($this).closest('.inDetails').find('.addme').remove();
                 }
 
                 $('.inDetails .number').each(function() {
-                    $(this).keyup(function() {
+                    $(this).change(function() {
                         if (($(this).val().length == 0) || ($(this).val() == 0)) {
-                            alert('empty');
                             empty = true;
                         } else {
-                            alert('filled');
                             empty = false;
                         }
                     });
-
-
                 });
+
 
                 console.log(empty);
                 if ((numss == 0) || (empty == true)) {
                     $('#fxd-btn').attr('disabled', 'disabled');
+                    console.log("11111111111111");
                 } else {
                     $('#fxd-btn').removeAttr('disabled');
+                    console.log("99999999999999999999");
                 }
 
             });
@@ -1044,17 +1181,140 @@
 
     </script>
 
+    <!---------- Radio Button Required ------------>
+    <script>
+        $(document).ready(function() {
+            var $radio = $('input:radio[name="choice"]');
+            $radio.addClass("validate[required]");
+        });
+
+    </script>
+    <!--------------------------------------------->
+
 
     <!------------ Remove Piece ------------------->
     <script>
         $(document).ready(function() {
-            $(".close").click(function(){
+            $(".close").click(function() {
                 $(this).parent(".prod1").fadeOut(500);
             })
         });
 
     </script>
     <!---------------------------------->
+
+    <!------------  Toggle ------------------->
+    <script>
+        $(document).ready(function() {
+            $(".tgle").slideUp();
+            $(".text-down").slideUp();
+            $(".to-tgle").click(function() {
+                $(".tgle").slideToggle(500);
+                $(".up-tgle").slideToggle(500);
+                $(".text-down").slideToggle(500);
+                $(".text-up").slideToggle(500);
+
+            });
+        });
+
+    </script>
+
+
+
+    <!----------- Search Input -------------------->
+    <script>
+        $(document).ready(function() {
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myList li").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+
+    </script>
+    <!-------------------->
+
+
+
+    <!--------- Form Submit --------------->
+<!--
+    <script>
+        onFinished: function(event, currentIndex) {
+            $("#account-form").submit();
+        }
+
+    </script>
+-->
+    <!------------------------------------>
+
+
+
+    
+    <script>
+//$(document).ready(function() {
+//var parentElement = $(".new-select");
+//
+//        if ($('.select2').length) {
+//            $('.select2').select2({
+//                "dropdownParent": parentElement,
+//                "allowClear": !0,
+//                "width": "100%"
+//            });
+//        }
+//});
+$('select').select2().on('select2:open', function() {
+  var container = .$('.select2-container').last();
+  /*Add some css-class to container or reposition it*/
+});
+    </script>
+
+    <!----------- Input Required ----------->
+<!--
+    <script>
+        $(document).ready(function() {
+            $("#account-form").validate({
+                rules: {
+                    "choiseC]": "required"
+                },
+                messages: {
+                    "choiseC": "Please select category",
+                }
+            });
+
+        });
+
+    </script>
+-->
+    <!--
+    account-form
+dwn-btn
+upp-btn
+-->
+    <!--------------------->
+
+    <!--------- Data Table ---------------->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.foundation.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.jqueryui.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.material.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.semanticui.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.uikit.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.mytable').DataTable({
+                responsive: true
+            });
+        });
+
+    </script>
+
+
 </body>
 
 </html>

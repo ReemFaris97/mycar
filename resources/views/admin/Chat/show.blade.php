@@ -10,6 +10,114 @@
 {{--    @endphp--}}
 {{--@endsection--}}
 
+
+@section('styles')
+<style>
+    .chat-panel {
+    position: relative;
+    padding: 15px 15px 100px 15px;
+}
+    .chats{
+    margin: 40px 0;
+    height: calc(100% - 137px);
+    overflow-y: auto;
+    padding: 15px
+}
+.chat1{
+    width: 100%;
+    display: inline-block;
+    margin: 0 0 15px 0;
+    position: relative;
+}
+.chat1 .chat-img{
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+}
+.chat1 .chat-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.chat-body{
+    padding: 10px;
+    color: #fff;
+    max-width: calc(100% - 48px);
+    min-width: 50%;
+}
+.chat-body p{
+    margin: 0;
+    text-align: right;
+    overflow-wrap: break-word;
+}
+/*** Recieve chat ***/
+.recieve{
+    padding: 0 0 0 48px;
+}
+.recieve .chat-img{
+    border: 1px solid #FF5E0E;
+    float: left;
+    left: 0;
+}
+.recieve .chat-body{
+    float: left;
+    border-radius: 10px 10px 10px 0;
+    background-color: #FF5E0E;
+    margin: 0 0 0 5px;
+}
+/*** Send chat ***/
+.send{
+    padding: 0 48px 0 0;
+}
+.send .chat-img{
+    float: right;
+    right: 0;
+    border: 1px solid #868686;
+}
+.send .chat-body{
+    float: right;
+    border-radius: 10px 10px 0 10px;
+    background-color: #868686;
+    margin: 0 5px 0 0;
+}
+/***************** Form Chat ************/
+.chatting{
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    border-top: 1px solid #eee;
+    padding: 10px 5px;
+}
+.chatting .form-control{
+    float: left;
+    width: calc(100% - 40px) !important;
+}
+.chatting .form-control:hover , .chatting .form-control:focus{
+    background-color: #d2d2d2;
+}
+.chatting .form-control:focus{
+    border: 1px solid #ff5e0e;
+}
+.chatting button{
+    float: right;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #ff5e0e;
+}
+.chatting button:hover , .chatting button:focus{
+    opacity: .7;
+}
+</style>
+@endsection
+
+
 @section('content')
 
 
@@ -84,7 +192,81 @@
 
 @endsection
 @section('scripts')
+<script>
+     ////////////// chat modal/////////////////////////////////////////////////////////////////////////////////////////
+    $('#seven').click(function () {
+        //////////////////// textarea focus //////////////////////////////////////
+        $('#inbox').focus();
+        var buttonId = $(this).attr('id');
+        $('#modal-container').removeAttr('class').addClass(buttonId);
+        $('body').addClass('modal-active');
+        $('#chats').scrollTop($('#chats')[0].scrollHeight);
+    });
 
+    $('.closeit').click(function () {
+        $('#modal-container').addClass('out');
+        $('body').removeClass('modal-active');
+    });
+
+
+    ///////////////////// enter submit /////////////
+    $('#inbox').keydown(function () {
+        $('#chats').scrollTop($('#chats')[0].scrollHeight);
+
+        var message = $("textarea").val();
+
+        function isEmptyOrSpaces(str) {
+            return str === null || str.match(/^ *$/) !== null;
+        }
+        if (event.keyCode == 13) {
+            if (isEmptyOrSpaces(message)) {
+                alert("Enter Some Text In Textarea");
+            } else {
+
+                var msgSend = $(".chat1.send").val();
+                $(".chats").append('<div class="chat1 send"><div class="chat-img"><img src="img/1.png"></div><div class="chat-body"><p class="newmsg">' + message + '</p></div></div>');
+                //      $(".newmsg").text();
+                //      $('#my_form').submit();
+                //      alert("Your message is sent succesfully:- " );
+            }
+            $("textarea").val('');
+            $('#chats').scrollTop($('#chats')[0].scrollHeight);
+            return false;
+            $('#inbox').focus();
+
+        }
+    });
+
+    $('#sendnow').click(function () {
+        $('#inbox').focus();
+        var message = $("textarea").val();
+
+        function isEmptyOrSpaces(str) {
+            return str === null || str.match(/^ *$/) !== null;
+        }
+        if (isEmptyOrSpaces(message)) {
+            alert("Enter Some Text In Textarea");
+
+        } else {
+
+            var msgSend = $(".chat1.send").val();
+            $(".chats").append('<div class="chat1 send"><div class="chat-img"><img src="img/1.png"></div><div class="chat-body"><p class="newmsg">' + message + '</p></div></div>');
+            //                $(".newmsg").text();
+
+            //                $('#my_form').submit();
+            //                alert("Your message is sent succesfully:- " );
+        }
+        $("textarea").val('');
+
+        //                var len = $('#chats').height();
+        //                console.log(len);
+        //               $('#chats').scrollTop(len * 1000);
+
+        $('#chats').scrollTop($('#chats')[0].scrollHeight);
+
+        return false;
+    });
+</script>
 
 
 @endsection

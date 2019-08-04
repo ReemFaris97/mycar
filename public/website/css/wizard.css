@@ -8,6 +8,7 @@
 *  Latest update: Aug 10, 2016
 *
 * ---------------------------------------------------------------------------- */
+
 .wizard {
   width: 100%;
 }
@@ -55,6 +56,8 @@
   margin-top: 40px;
   margin-bottom: 40px;
   display: block;
+    
+    font-weight: bold;
 }
 .wizard > .steps > ul > li:before,
 .wizard > .steps > ul > li:after {
@@ -132,19 +135,20 @@ border-color: #ff5e00;
 .wizard > .steps .number {
     color: #fff;
     background-color: #8f9396;
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  margin-left: -19px;
-  width: 38px;
-  height: 38px;
-  border: 2px solid #eeeeee;
-  font-size: 14px;
-  border-radius: 50%;
-  z-index: 10;
-  line-height: 34px;
-  text-align: center;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -19px;
+    width: 38px;
+    height: 38px;
+    border: 2px solid #eeeeee;
+    font-size: 18px;
+    border-radius: 50%;
+    z-index: 10;
+    line-height: 35px;
+    text-align: center;
+    font-weight: bold;
 }
 .panel-flat > .wizard > .steps > ul {
   border-top: 1px solid #ddd;
@@ -250,7 +254,8 @@ label.error{
     cursor: pointer;
 }
 .company-radio input[type=radio] {
-  display: none;
+opacity: 0;
+    margin: 0;
 }
 
 .company-radio img:hover {
@@ -263,10 +268,10 @@ label.error{
   cursor: pointer;
 }
 
-.company-radio input[type=radio]:checked + label > img {
+.company-radio input[type=radio]:checked ~ .lbl1 > img {
       border: 2px solid #ff5e00;
 }
-.company-radio input[type=radio]:checked + label > p {
+.company-radio input[type=radio]:checked ~ .lbl1 > p {
       color: #ff5e00;
 }
 /***************************** SELECT 2 **********************************************/
@@ -277,7 +282,7 @@ label.error{
     -webkit-box-shadow: 0px 8px 11px 0px rgb(234, 230, 230);
     -moz-box-shadow: 0px 8px 11px 0px rgb(234, 230, 230);
     box-shadow: 0px 8px 11px 0px rgb(234, 230, 230);
-    height: 34px;
+    height: 40px;
     border-radius: 6px;
 }
 
@@ -310,6 +315,9 @@ label.error{
     height: 32px;
     width: 33px;
 }
+.select2.select2-container{
+      border: 1px solid transparent;
+}
 .select2-container--default .select2-selection--single .select2-selection__arrow b {
     border-color: #313131 transparent transparent transparent;
     border-width: 6px 6px 0 6px;
@@ -317,15 +325,10 @@ label.error{
 .select2.select2-container.select2-container--open .select2-selection.select2-selection--single {
   background: #f8f8f8;
 }
-
 .select2.select2-container.select2-container--open .select2-selection.select2-selection--single .select2-selection__arrow {
   -webkit-border-radius: 0 6px 0 0;
   -moz-border-radius: 0 6px 0 0;
   border-radius: 0 6px 0 0;
-}
-
-.select2.select2-container.select2-container--open .select2-selection.select2-selection--multiple {
-  border: 0
 }
 
 .select2.select2-container.select2-container--focus .select2-selection , .wizards .form-control{
@@ -337,6 +340,9 @@ label.error{
     background-color: transparent;
 }
 
+.select2-container--open{
+    border: 1px solid #ff5e00 !important;
+}
 .select2.select2-container .select2-selection--multiple {
   height: auto;
   min-height: 34px;
@@ -428,6 +434,20 @@ label.error{
     border-color: transparent transparent #1d1c1c transparent;
     border-width: 0 5px 6px 5px;
 }
+
+span.selection {
+position: absolute !important;
+    width: 98% !important;
+    height: 100% !important;
+    right: 0 !important;
+    left: 0 !important;
+    margin: 0 auto !important;
+}
+.select2-container{
+    display: block !important;
+    direction: rtl !important;
+}
+
 /********************** Image ***************************************/
 
 .images-upload-block a {
@@ -437,8 +457,8 @@ label.error{
 }
 .upload-img {
     display: inline-block;
-    width: 50px;
-    height: 50px;
+    width: 100%;
+    height: 100%;
     line-height: 50px;
     text-align: center;
     position: relative;
@@ -503,7 +523,7 @@ label.error{
 }
 .uploaded-block {
     position: relative;
-    top: -23px;
+    top: 0;
     left: 0;
     right: 0;
     width: 80px;
@@ -513,7 +533,14 @@ label.error{
     display: inline-block;
     background-color: #fff;
     text-align: center;
-    margin: 0 20px 0 0;
+}
+div#appended-pic {
+    width: 80px;
+    height: 80px;
+    top: -23px;
+    right: 0;
+    left: 0;
+    margin: -20px auto 0 auto;
 }
 .images-upload-block .close {
     top: -16px;
@@ -604,6 +631,7 @@ label.error{
     padding: 0;
     z-index: 99;
     position: relative;
+    overflow: auto;
 }
 
 .modalIn {
@@ -765,7 +793,7 @@ label.error{
     list-style: none;
   counter-reset: my-awesome-counter;
 }
-.all-dtls li{
+.all-dtls > li{
     padding: 0 8px 0 0;
     margin: 0 0 6px 0;
     counter-increment: my-awesome-counter;
@@ -793,9 +821,12 @@ label.error{
 .inDetails{
     display: flex;
     justify-content: space-between;
-    width: 80%;
+    width: 60%;
     font-weight: bold;
     margin: 0 auto;
+}
+.inDetails li {
+    margin: 0 0 10px 0;
 }
 .piece-sm{
     width: 70px;
@@ -809,7 +840,9 @@ label.error{
 }
 .name-p{
     color: #ff5e00;
+    vertical-align: middle;
 }
+
 /******* Custom Checkmark *****************/
 
 .new-p{
@@ -881,6 +914,11 @@ position: absolute;
 .new-p input:checked ~ .checkmark:after {
     content: '\f00c';
 }
+li.addme {
+    position: absolute;
+    left: 0;
+    top: -5px;
+}
 /*** Start Quantity ***/
 .quant .value-button {
     display: inline-block;
@@ -942,12 +980,10 @@ position: absolute;
 #name-piece .all-dtls > li:before{
     display: none
 }
-.inDetails {
+#name-piece .inDetails {
     width: 50%;
     margin: 0;
-}
-.searchh{
-    
+    position: relative;
 }
 .form-group {
     margin-bottom: 25px !important;
@@ -961,23 +997,37 @@ position: absolute;
     box-shadow: 0px 8px 11px 0px rgb(234, 230, 230) !important;
 }
 .modalIn .modal-body form .searchh button {
-    height: 34px;
+    height: 30px;
     background-color: #b7ada2 !important;
-    width: 34px;
-    line-height: 34px;
+    width: 30px;
+    line-height: 27px;
     text-align: center;
     color: #fff;
     display: inline-block;
     position: absolute;
     left: 10px;
     border-radius: 50%;
-    top: 2px;
+    top: calc(50% - 15px);
     margin: 0;
     padding: 0;
-    font-size: 17px;
 }
 .modalIn .modal-body form .searchh button:hover , .modalIn .modal-body form .searchh button:focus{
     background-color: #ff5e00 !important;
+}
+#name-piece .new-p .checkmark {
+    left: auto;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+}
+#name-piece .new-p {
+     width: auto; 
+     height: auto; 
+     text-align: right; 
+     line-height: auto; 
+    vertical-align: middle;
+    padding: 0 40px 0 0;
 }
 /******************************************************************************************************************************************* Step 3 *****************************************************************************************/
 .products{
@@ -988,8 +1038,8 @@ position: absolute;
     margin: 0 auto;
 }
 .prod1{
-    width: 200px;
-    padding: 20px 10px;
+    width: 199px;
+    padding: 20px 5px;
     height: 140px;
     border: 1px solid #ddd;
     border-radius: 6px;
@@ -1018,8 +1068,9 @@ position: absolute;
 .prod1 .close svg{
     font-size: 15px;
 }
-.prod1 h4{
-    
+.prod1 h4 {
+    height: 39px;
+    overflow: hidden;
 }
 .prod1 .qnt{
     background-color: #ff5e00;
@@ -1033,17 +1084,447 @@ position: absolute;
     word-break: break-all;
     margin: 15px auto 0 auto;
 }
+/************* Distributers ****************/
+.distributers .radio-list{
+    text-align: right;
+    margin: 0 0 15px 0;
+}
+.distributers b{
+    font-size: 15px;
+    display: block;
+    margin: 0 0 15px 0;
+}
+.distributers b span{
+    margin: 0 8px 0 0;
+    font-weight: 100;
+}
+.dist-list .rad{
+    margin: 0 0 8px 0 !important;
+    display: block;
+    padding: 0 30px 0 0;
+}
+.dist-list .rad .checkmark {
+    top: 15px;
+}
+.dist-list .checking{
+    border: 1px solid #b3aaaa;
+    width: max-content;
+    border-radius: 6px;
+    padding: 2px 10px;
+    font-weight: 100;
+    display: inline-block;
+}
+.dist-list .check-img{
+    display: inline-block;
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 6px;
+    overflow: hidden;
+    -webkit-box-shadow: 0px 8px 11px 0px rgb(234, 230, 230) !important;
+    -moz-box-shadow: 0px 8px 11px 0px rgb(234, 230, 230) !important;
+    box-shadow: 0px 8px 11px 0px rgb(234, 230, 230) !important;
+    margin: 0 20px 0 0;
+    border: 1px solid transparent;
+}
+.dist-list img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.dist-list .rad b{
+    display: inline-block;
+    margin: 0 60px 0 0;
+}
+.rad input:checked ~ .check-img{
+    border-color: #fe5e00;
+}
+
+
+/****************************************** NOT AVALAIBLE Modal *************************************/
+#not-avl{
+    text-align: center;
+}
+#not-avl .modal-content {
+    padding: 7px 7px 25px 7px;
+}
+#not-avl .modal-header {
+    border-bottom: 0;
+}
+#not-avl .choosing{
+    
+}
+#not-avl .choosing p{
+    margin: 15px auto 35px auto;
+    font-size: 16px;
+}
+#not-avl .choosing .submit-in{
+    box-shadow: none;
+    font-size: 15px !important;
+    width: 130px !important;
+    border-radius: 25px !important;
+    height: 37px !important;
+    line-height: 36px !important;
+    background-color: #ff5e00;
+    margin: 0 2px;
+}
+#not-avl .choosing .submit-in:hover , #not-avl .choosing .submit-in:focus{
+    opacity: .8;
+}
+
+
+
+
+/****************************************************************************************************************************************************** DISTRIBUTERS.HTML *****************************************************************************************************************/
+
+
+/****************************************************************************** STEP 4 ***************************************************************************************/
+.delt-all{
+    margin: 0 auto 15px auto;
+    text-align: center;
+    display: table;
+    background-color: #ff5e00;
+    border-radius: 25px;
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+}
+.delt-all:hover , .delt-all:focus{
+    opacity: .7;
+}
+.trn{
+    display: block;
+    color: #ff5e00;
+    text-decoration: underline;
+    font-weight: bold;
+}
+.trn:hover , .trn:focus{
+    color: #212121;
+}
+.the-distrb{
+    text-align: center;
+}
+.the-distrb b{
+    font-size: 20px;
+}
+.the-distrb b h4{
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 16px;
+    font-weight: bold;
+}
+.tfasel{
+    margin: 11px auto;
+    width: 80%;
+}
+.tools{
+    background-image: url('../img/tools.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 15px 15px 0 0;
+    height: 150px;
+    overflow: hidden;
+}
+/******************* Table **************/
+.tfasel table.dataTable.no-footer {
+    width: 100% !important;
+    border: 1px solid #9e9e9e;
+}
+.tfasel  table.dataTable thead>tr>th.sorting_asc, .tfasel  table.dataTable thead>tr>th.sorting_desc, .tfasel  table.dataTable thead>tr>th.sorting, .tfasel  table.dataTable thead>tr>td.sorting_asc, .tfasel  table.dataTable thead>tr>td.sorting_desc, .tfasel  table.dataTable thead>tr>td.sorting {
+    text-align: center;
+    background-color: #ff5e00;
+    color: #fff;
+}
+.tfasel table.dataTable thead .sorting:before, .tfasel table.dataTable thead .sorting_asc:before, .tfasel table.dataTable thead .sorting_desc:before, .tfasel table.dataTable thead .sorting_asc_disabled:before, .tfasel table.dataTable thead .sorting_desc_disabled:before ,
+.tfasel table.dataTable thead .sorting:after, .tfasel table.dataTable thead .sorting_asc:after, .tfasel table.dataTable thead .sorting_desc:after, .tfasel table.dataTable thead .sorting_asc_disabled:after, .tfasel table.dataTable thead .sorting_desc_disabled:after{
+    display: none !important
+}
+
+.tfasel table img {
+    width: 50px;
+    max-height: 50px;
+    object-fit: contain;
+}
+
+.tfasel table .close{
+    float: none;
+    color: #fff;
+    text-shadow: none;
+    opacity: 1;
+    background-color: #ff5e00;
+    width: 25px;
+    height: 25px;
+    line-height: 26px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 16px;
+}
+.tfasel table .close:hover , .tfasel table .close:focus{
+    background-color: #ddd;
+}
+.tfasel .dataTables_wrapper .dataTables_paginate .paginate_button.current, .tfasel .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    color: #fff !important;
+    border: 0;
+    background-color: #ff5e00 !important;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, #dcdcdc));
+    background: -webkit-linear-gradient(top, #fff 0%, #dcdcdc 100%);
+    background: -moz-linear-gradient(top, #fff 0%, #dcdcdc 100%);
+    background: -ms-linear-gradient(top, #fff 0%, #dcdcdc 100%);
+    background: -o-linear-gradient(top, #fff 0%, #dcdcdc 100%);
+    background: none;
+    border-radius: 50%;
+}
+.tfasel div.dataTables_wrapper div.dataTables_filter span.input {
+    margin-left: 0;
+}
+.tfasel div.dataTables_wrapper div.dataTables_filter input {
+    border: 1px solid #333;
+    border-radius: 6px;
+    margin: 0 8px 0 0;
+}
+.tfasel div.dataTables_wrapper div.dataTables_length select {
+    width: 75px;
+    display: inline-block;
+    text-align: center;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 0;
+    min-height: auto;
+}
+.tfasel div.dataTables_wrapper {
+    position: relative;
+    margin: 15px auto;
+}
+.tfasel div.dataTables_wrapper div.dataTables_filter {
+    margin: 0 0 15px 0;
+}
+
+/*********************************************** SHA7N **************************************************************/
+.deliver .dist-list .rad {
+    padding: 0 23px 0 0;
+}
+.deliver .dist-list .checking{
+    font-weight: bold;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+        width: auto;
+}
+.deliver .dist-list .check-img {
+    width: 25px;
+    height: 25px;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0 5px;
+    border: 0;
+}
+.deliver .dist-list .rad .checkmark {
+    top: 7px;
+}
+.deliver .trn {
+    margin: 0 10px 0 0;
+    display: inline-block;
+}
+.map1 {
+    margin: 40px auto 0 auto;
+}
+#map , #temp{
+    width: 100%;
+    height: 400px;
+    margin: 0 auto 20px auto;
+}
+/*****************/
+#div1 , #div2{
+    margin: 30px auto 0 auto
+}
+div#temp {
+    width: 100%;
+    height: 400px;
+}
+#description {
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+#infowindow-content .title {
+    font-weight: bold;
+}
+
+#infowindow-content {
+    display: none;
+}
+
+#map #infowindow-content {
+    display: inline;
+}
+
+.pac-card {
+    margin: 10px 10px 0 0;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    font-family: Roboto;
+}
+
+#pac-container {
+    padding-bottom: 12px;
+    margin-right: 12px;
+}
+
+.pac-controls {
+    display: inline-block;
+    padding: 5px 11px;
+}
+
+.pac-controls label {
+    font-size: 13px;
+    font-weight: 300;
+}
+
+ #pac-input ,  #temp-input {
+    background-color: #eee;
+    font-size: 15px;
+    font-weight: 300;
+    margin-left: 12px;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    width: 80% !important;
+    position: relative;
+     right: 0;
+}
+
+ #pac-input ,  #temp-input:focus {
+    border-color: #ff5e00;
+}
+
+#title {
+    color: #fff;
+    background-color: #4d90fe;
+    font-size: 25px;
+    font-weight: 500;
+    padding: 6px 12px;
+}
+
+#target {
+    width: 345px;
+}
+/*******************/
+#div2{
+    display: none;
+}
+
+.deliver .delt-all{
+    width: 130px;
+    height: 45px;
+    line-height: 44px;
+    font-size: 18px;
+}
+/* Payment Table */
+.p-tble,
+.p-tble td{
+    border: 1px solid #9e9e9e;
+}
+.p-tble th {
+    text-align: center;
+}
+.p-tble {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px auto 0 auto;
+}
+.p-tble th,
+.p-tble td {
+    height: 40px;
+}
+.p-tble th{
+    background-color: #ff5e00;
+    color: #fff;
+}
+.p-tble td{
+   font-weight: bold;
+}
+/****************** Payment Radio Buttons ************************/
+.carry .form-group {
+    width: 400px;
+    margin: 0 auto 25px auto;
+}
+.carry .form-control{
+    padding: 9px 37px 9px 9px!important;
+}
+.form-img {
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 12.5px);
+    width: 25px !important;
+    height: 25px !important;
+    z-index: 9;
+}
+.carry2 img {
+    background-color: #fff;
+    height: 100px;
+    margin: 0 0 5px 0;
+}
+.carry2 .rad1 p {
+    display: block;
+    font-weight: bold;
+    padding: 0;
+    text-align: center;
+}
+.bold-in{
+    display: inline-block;
+    font-weight: bold;
+    font-size: 19px;
+    margin: 0 0 0 12px;
+}
+.carry2 .photo{
+    margin: 0;
+}
+.carry2 .profile-pic .images-upload-block {
+    top: 18px;
+}
+.carry2 .profile-pic {
+    margin: 20px auto 0 auto;
+}
+
+
+
+/******************************************************************************************************************************************************* Done .HTML ********************************************************************************************************************/
+.done{
+    text-align: center;
+}
+.done span{
+    color: #ff5e00;
+    font-size: 60px;
+    opacity: .8;
+}
+.done p{
+    font-size: 20px;
+    margin: 8px auto 0 auto;
+}
+
+
+
 
 /********************************************************************************************************************************************************************** Media **************************************************************************************************************/
+@media (max-width: 991px) {
+    .tfasel {
+        width: 100%;
+    }
+}
 @media (max-width: 768px) {
+    .wizard > .content > .body {
+        padding: 0 20px;
+    }
+    
   .wizard > .steps > ul {
     margin-bottom: 20px;
   }
-  .wizard > .steps > ul > li {
-    display: block;
-    float: left;
-    width: 50%;
-  }
+
   .wizard > .steps > ul > li > a {
     margin-bottom: 0;
   }
@@ -1052,14 +1533,125 @@ position: absolute;
     content: '';
   }
   .wizard > .steps > ul > li:last-child:after {
-    background-color: #00BCD4;
+    background-color: #ffdb18;
   }
+    .dist-list .rad b {
+    display: block;
+    margin: 6px 0 10px 0;
 }
-@media (max-width: 480px) {
-  .wizard > .steps > ul > li {
+    .inDetails {
     width: 100%;
-  }
-  .wizard > .steps > ul > li.current:after {
-    background-color: #ff5e00;
-  }
+    }
+    #details .all-dtls > li {
+    padding: 0 38px 0 0;
+    }
+    li.addme {
+    position: static;
+    }
+    .fxd-btn {
+    position: static;
+    }
+    a.piece1 {
+    margin: 0 auto 20px auto;
+}
+    #details .inDetails {
+    display: block;
+    }
+    #details span.code-p {
+    display: inline-block;
+    text-align: center;
+    word-break: break-all;
+}
+    #details .inDetails li {
+    margin: 0 0 10px 0;
+    width: 49%;
+}
+    div#DataTables_Table_0_paginate , div#DataTables_Table_0_info{
+        margin: 0 auto;
+        width: 100%;
+        text-align: center;
+    }
+    div#DataTables_Table_0_length{
+        display: none;
+    }
+    div.dataTables_wrapper div.dataTables_filter label , .tfasel div.dataTables_wrapper div.dataTables_filter{
+    float: none !important;
+    margin-bottom: 0;
+    text-align: center !important;
+    margin: 0 auto;
+        width: 100% !important;
+}
+    .carry .form-group {
+        width: 100%;
+    }
+    table.dataTable tbody th, table.dataTable tbody td {
+        vertical-align: top;
+    }
+    
+}
+@media (max-width: 500px) {
+    
+}
+
+
+
+@media (max-width: 480px) {
+    .company-radio .rad1:first-child {
+        margin: 0;
+    }
+    .wizard > .actions > ul {
+        display: flex;
+    }
+    .photo{
+        margin: 0;
+    }
+    .profile-pic .images-upload-block{
+        display: block;
+    }
+    .model1 {
+        display: block;
+        margin: 0 0px 5px 10px;
+        width: max-content;
+    }
+    .model1:last-child {
+        margin: 0;
+    }
+    .btn-piece {
+        display: block;
+        margin: 0 auto 5px auto;
+    }
+    .btn-piece:last-child{
+        margin: 0 auto;
+    }
+    .prod1 {
+        width: 48%;
+        margin: 0 2px 25px 2px;
+            padding: 10px 5px;
+        height: 114px;
+    }
+    .prod1 h4 {
+        font-size: 14px !important;
+    }
+    .prod1 .qnt {
+    width: 40px;
+    height: 30px;
+    line-height: 29px;
+}
+    
+    .dist-list .check-img {
+    display: block;
+    margin: 5px 0 0 0 !important;
+    }
+    
+    .filtrtion {
+        justify-content: center;
+    }
+    .filtrtion .item1 {
+        width: 45%;
+    margin: 0 4px 20px 4px;
+}
+    .filtrtion .item1 h4 {
+    width: 95%;
+    font-size: 14px !important;
+    }
 }

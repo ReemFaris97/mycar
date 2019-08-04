@@ -56,11 +56,12 @@ $(document).ready(function () {
         $('#chats').scrollTop($('#chats')[0].scrollHeight);
 
         var message = $("textarea").val();
-        function isEmptyOrSpaces(str){
+
+        function isEmptyOrSpaces(str) {
             return str === null || str.match(/^ *$/) !== null;
         }
         if (event.keyCode == 13) {
-            if(isEmptyOrSpaces(message)){
+            if (isEmptyOrSpaces(message)) {
                 alert("Enter Some Text In Textarea");
             } else {
 
@@ -81,10 +82,11 @@ $(document).ready(function () {
     $('#sendnow').click(function () {
         $('#inbox').focus();
         var message = $("textarea").val();
-        function isEmptyOrSpaces(str){
+
+        function isEmptyOrSpaces(str) {
             return str === null || str.match(/^ *$/) !== null;
         }
-        if(isEmptyOrSpaces(message)){
+        if (isEmptyOrSpaces(message)) {
             alert("Enter Some Text In Textarea");
 
         } else {
@@ -134,7 +136,7 @@ $(document).ready(function () {
         $('#reset-1').click(function () {
             $('#countdown-1').timeTo('reset');
         });
-        
+
 
     });
 
@@ -164,37 +166,37 @@ $(document).ready(function () {
 
 
     ///////////////////////////////// Sign Modal //////////////////////////////////////
-    // $(".verfy").slideUp();
-    // $(".area").slideUp();
-    // $("#step2").on("click", function () {
-    //     $(".step1").slideUp(500);
-    //     $(".verfy").slideDown(500);
-    // });
-    //
-    // $("#edit-1").on("click", function () {
-    //     $(".verfy").slideUp(500);
-    //     $(".step1").slideDown(500);
-    // });
-    //
-    // $("#step2").click(function () {
-    //     $('#countdown-1').timeTo(120, function () {
-    //         alert('Countdown finished');
-    //     });
-    //     $('#reset-1').click(function () {
-    //         $('#countdown-1').timeTo('reset');
-    //     });
-    //
-    // });
-    //
-    // $("#step3").on("click", function () {
-    //     $(".verfy").slideUp(500);
-    //     $(".step1").slideUp(500);
-    //     $(".area").slideDown(500);
-    // });
-    //
-    //
+    $(".verfy").slideUp();
+    $(".area").slideUp();
+    $("#step2").on("click", function () {
+        $(".step1").slideUp(500);
+        $(".verfy").slideDown(500);
+    });
 
-    
+    $("#edit-1").on("click", function () {
+        $(".verfy").slideUp(500);
+        $(".step1").slideDown(500);
+    });
+
+    $("#step2").click(function () {
+        $('#countdown-1').timeTo(120, function () {
+            alert('Countdown finished');
+        });
+        $('#reset-1').click(function () {
+            $('#countdown-1').timeTo('reset');
+        });
+
+    });
+
+    $("#step3").on("click", function () {
+        $(".verfy").slideUp(500);
+        $(".step1").slideUp(500);
+        $(".area").slideDown(500);
+    });
+
+
+
+
     //////////////////////////////
     'use strict';
 
@@ -212,13 +214,18 @@ $(document).ready(function () {
         }
     });
 
-    
-    /******************* Toggle ******************/
-     $(".tgle").slideUp();
-        $(".to-tgle").click(function(){
-            $(".tgle").slideToggle(500);
-        });
-    
+
+
+    ///////////// Modal Overflow
+
+    $('.modal').on('shown.bs.modal', function () {
+        $("body").css('overflow', 'hidden')
+    });
+    $('.modal').on('hidden.bs.modal', function () {
+        $("body").css('overflow', 'visible')
+    });
+
+
 
     $("#scroll-top").click(function () {
         $("html,body").animate({
@@ -228,7 +235,7 @@ $(document).ready(function () {
 
 
     /************************ Counter *****************************/
-            var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
+    var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
     var x = setInterval(function () {
         var now = new Date().getTime();
         var distance = countDownDate - now;
@@ -247,9 +254,9 @@ $(document).ready(function () {
             document.getElementById("demo").innerHTML = "EXPIRED";
         }
     }, 1000);
-    
-    
-    
+
+
+
 
 
 });
