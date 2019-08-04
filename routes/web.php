@@ -49,6 +49,15 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin','middleware'=>'admin'],
 
     route::get('/home','HomeController@index')->name('homePage');
 
+
+    Route::get('/chat/{id}', 'ChatController@show')->name('chat.show');
+    Route::get('/chat', 'ChatController@index')->name('chat.index');
+    Route::get('/message/{id}', 'MessageController@index')->name('message');
+    Route::post('/message/{id}', 'MessageController@store')->name('message.store');
+
+
+
+
 //    route::resource('admins','AdminsController');
 //    route::post('admins/suspendOrActive','AdminsController@suspendOrActivate')->name('admins.suspendOrActivate');
 //    route::post('admins/suspendWithReason','UsersController@suspendWithReason')->name('admins.suspendWithReason');

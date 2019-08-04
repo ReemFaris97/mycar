@@ -63,6 +63,7 @@
                                 @endif
 
                                 <a  id="elementRow{{$row->id}}" href="javascript:;" data-id="{{$row->id}}" data-url="{{route('users.destroy',$row->id)}}" class="removeElement label label-danger">حذف</a>
+                                    <a href="{{route('chat.show',$row->channel_info()['chat_id'])}}" class="label label-info">المحادثه</a>
 
                                 @endif
 

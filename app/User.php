@@ -88,6 +88,21 @@ class User extends Authenticatable
         return $this->hasMany(Notification::class,'model_id');
     }
 
+    public function messages()
+    {
+        return $this->hasMany(Message::class,'user_id');
+    }
+
+    public function channel_info()
+    {
+        $chat = Chat::where('user_id',$this->id)->first();
+        if (!$chat)
+        {
+            $chat = Chat::create(['user_id'=>$this->id]);
+        }
+        $data=['chat_id'=>$chat->id, 'channel_name'=>$chat->channel_name(), 'total_message'=>$chat->total_message_pages()];
+        return $data;
+    }
 
 
 
