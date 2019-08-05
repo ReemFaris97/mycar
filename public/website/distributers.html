@@ -518,17 +518,25 @@
         function initAutocomplete() {
             
             "use strict";
+            
+        
+            
             var mapOptions = {
                 scrollwheel: false,
                 zoom: 13,
+                                    marker: marker,
 
                 center: {
                     lat: 59.325,
-                    lng: 18.070
+                    lng: 18.067
                 },
             };
 
             var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+            
+            
+            
+            
             $("#from-home").click(function() {
                 $("#map").attr("id", "temp");
                 $(".from-home").attr("id", "map");
@@ -538,8 +546,18 @@
                 var input = document.getElementById('pac-input');
                 var searchBox = new google.maps.places.SearchBox(input);
                 map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
+                       var marker = new google.maps.Marker({
+                map: map,
+                icon: 'img/flag-map-marker.png',
+                title: 'قطعة سيارتى',
+                position: {
+                    lat: 59.325,
+                    lng: 18.067
+                }
             });
+                
+            });
+            
             $("#from-shop").click(function() {
                 $("#map").attr("id", "temp");
                 $(".from-shop").attr("id", "map");
@@ -554,28 +572,30 @@
             map.addListener('bounds_changed', function() {
                 searchBox.setBounds(map.getBounds());
             });
+            
+            
 
-//            var marker = new google.maps.Marker({
-//                map: map,
-//                draggable: true,
-//                icon: 'img/flag-map-marker.png',
-//                title: 'قطعة سيارتى',
-//                animation: google.maps.Animation.DROP,
-//                position: {
-//                    lat: 59.327,
-//                    lng: 18.067
-//                }
-//            });
-//            marker.addListener('click', toggleBounce);
-//        }
-//
-//        function toggleBounce() {
-//            if (marker.getAnimation() !== null) {
-//                marker.setAnimation(null);
-//            } else {
-//                marker.setAnimation(google.maps.Animation.BOUNCE);
-//            }
-//        }
+                var marker = new google.maps.Marker({
+                map: map,
+                draggable: true,
+                icon: 'img/flag-map-marker.png',
+                title: 'قطعة سيارتى',
+                animation: google.maps.Animation.DROP,
+                position: {
+                    lat: 59.325,
+                    lng: 18.067
+                }
+            });
+            marker.addListener('click', toggleBounce);
+        }
+
+        function toggleBounce() {
+            if (marker.getAnimation() !== null) {
+                marker.setAnimation(null);
+            } else {
+                marker.setAnimation(google.maps.Animation.BOUNCE);
+            }
+        }
             
             var markers = [];
         // Listen for the event fired when the user selects a prediction and retrieve
@@ -627,7 +647,7 @@ animation: google.maps.Animation.DROP,
           });
           map.fitBounds(bounds);
         });
-      }
+    
 
     </script>
 
