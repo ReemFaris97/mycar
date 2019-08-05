@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
+    protected $fillable =['user_id','chat_id','body'];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -20,5 +22,11 @@ class Message extends Model
         return 'Chat.'.$this->chat_id;
 
     }
+
+    public function getSelfMessageAttribute()
+    {
+        return $this->user_id === auth()->user()->id;
+    }
+
 
 }

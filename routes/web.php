@@ -11,7 +11,7 @@
 |
 */
 
-use Illuminate\Http\Request;
+
 Auth::routes();
 Route::get('/', function () {
     return view('welcome');
@@ -52,8 +52,10 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin','middleware'=>'admin'],
 
     Route::get('/chat/{id}', 'ChatController@show')->name('chat.show');
     Route::get('/chat', 'ChatController@index')->name('chat.index');
-    Route::get('/message/{id}', 'MessageController@index')->name('message');
+//    Route::get('/message/{id}', 'MessageController@index')->name('message');
     Route::post('/message/{id}', 'MessageController@store')->name('message.store');
+
+    Route::get('test-send/{id}','MessageController@test')->name('message.test');
 
 
 
@@ -125,27 +127,9 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin','middleware'=>'admin'],
 
 //    route::get('notifications','NotificationsController@index')->name('notifications.index');
 //    route::post('notification/delete','NotificationsController@delete')->name('notification.delete');
+//update Token
+    Route::post('user/update/token','AjaxController@updateUserToken')->name('user.update.token');
 
-//    Route::post('user/update/token', function (Request $request) {
-//
-//        $user = \App\User::whereId($request->id)->first();
-//
-//        if ($request->token) {
-//            $data = \App\Device::where('device', $request->token)->first();
-//            if ($data) {
-//                $data->user_id = $user->id;
-//                $data->save();
-//            } else {
-//
-//                $data = new \App\Device;
-//                $data->device = $request->token;
-//                $data->user_id = $user->id;
-//                $data->type = 'web';
-//                $data->save();
-//            }
-//        }
-//
-//    })->name('user.update.token');
 
 //    Ajax Routes ..........
     Route::post('get/subcategories','AjaxController@getSubCategoriesById')->name('ajax.get.subcategories');
@@ -237,6 +221,9 @@ Route::group(['namespace'=>'website'], function (){
 });
 
 Route::group(['namespace'=>'website','middleware'=>'userMiddleware'], function (){
+    Route::post('user/update/token','AjaxController@updateUserToken')->name('web.update.token');
+
+
 
     Route::get('/home','HomeController@home')->name('web.home');
     Route::post('submit/suggest/comment','HomeController@PostSuggestComment')->name('web.suggest.comment');

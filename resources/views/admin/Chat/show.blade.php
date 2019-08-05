@@ -1,6 +1,6 @@
 @extends('admin.layout.master')
 @section('title')
-    محادثة مع العضو  {{$channel->user->name}}
+    محادثة مع العضو  {{$channel->user->phone}}
 @endsection
 
 {{--@section('header')--}}
@@ -131,7 +131,7 @@
         <!-- Inverse colors -->
         <div class="panel panel-flat">
             <div class="panel-heading">
-                <h6 class="panel-title">محادثة مع العضو  {{$channel->user->name}}
+                <h6 class="panel-title">محادثة مع العضو  {{$channel->user->phone}}
                 </h6>
 <!--
                 <div class="heading-elements">
@@ -144,37 +144,37 @@
 -->
             </div>
             <div class="chat-panel">
-
-                <div class="chats" id="chats">
+                <div class="chats" id="chats" style=" height: 250px;overflow-x: hidden; overflow-y: auto; " >
+                    @foreach($channel->messages as $message)
+                        @if($message->user_id != auth()->id())
                     <div class="chat1 recieve">
                         <div class="chat-img">
-                            <img src="{{asset('webssite/img/1.png')}}">
+                            <img src="{{getimg($message->user->image)}}">
                         </div>
                         <div class="chat-body">
                             <p>
-                                مرحبا بك، كيف أساعدك ياقمر ؟
+                                {{$message->body}}
                             </p>
                         </div>
                     </div>
-
+                        @else
                     <div class="chat1 send">
                         <div class="chat-img">
-                            <img src="{{asset('webssite/img/1.png')}}">
+                            <img src="{{getimg($message->user->image)}}">
                         </div>
                         <div class="chat-body">
                             <p>
-                                شكرا يا بيه أنا مبشحتش على فكرة والله و شكرا شكرا اوى لحد كده شكرا عاوزة اكتب كلام كتير و انزل سطر عشان كده برغى الحقيقة
+                                {{$message->body}}
                             </p>
                         </div>
                     </div>
-
-
-
+                        @endif
+                     @endforeach
                 </div>
 
-                <form class="chatting" id="my_form">
-                    <textarea rows="4" cols="95" id="inbox" class="form-control input-lg" data-fv-field="inbox" placeholder="اكتب رسالتك..."></textarea>
-                    <button type="button" id="sendnow"> <i class="fas fa-arrow-right"></i> </button>
+                <form data-parsley-validate novalidate class="chatting" id="messageForm" method="post" action="{{route('message.store',$channel->id)}}" >
+                    <textarea name="body" required rows="4" cols="95" id="inbox" class="form-control input-lg" data-fv-field="inbox" placeholder="اكتب رسالتك..."></textarea>
+{{--                    <button type="submit" id="sendnow"> <i class="fas fa-arrow-right"></i> </button>--}}
                 </form>
 
             </div>
@@ -192,6 +192,13 @@
 
 @endsection
 @section('scripts')
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
 <script>
      ////////////// chat modal/////////////////////////////////////////////////////////////////////////////////////////
     $('#seven').click(function () {
@@ -222,17 +229,78 @@
             if (isEmptyOrSpaces(message)) {
                 alert("Enter Some Text In Textarea");
             } else {
+                      var form = $('#messageForm');
 
-                var msgSend = $(".chat1.send").val();
-                $(".chats").append('<div class="chat1 send"><div class="chat-img"><img src="img/1.png"></div><div class="chat-body"><p class="newmsg">' + message + '</p></div></div>');
-                //      $(".newmsg").text();
-                //      $('#my_form').submit();
-                //      alert("Your message is sent succesfully:- " );
+
+                        $.ajax({
+                            type: 'POST',
+                            url: form.attr('action'),
+                            data: {body:message},
+                            // cache: false,
+                            // contentType: false,
+                            // processData: false,
+                            success: function (data) {
+
+                                if (data.status === true) {
+
+                                    var title = data.title;
+                                    var msg = data.message;
+                                    toastr.options = {
+                                        positionClass : 'toast-top-left',
+                                        onclick:null
+                                    };
+                                    // var $toast = toastr['success'](msg,title);
+                                    // $toastlast = $toast;
+                                    $('#messageForm').each(function () {
+                                        this.reset();
+                                    });
+
+                                    var msgSend = $(".chat1.send").val();
+                                    $(".chats").append('<div class="chat1 send"><div class="chat-img"><img src="img/1.png"></div><div class="chat-body"><p class="newmsg">' + message + '</p></div></div>');
+                                    $("textarea").val('');
+                                    $('#chats').scrollTop($('#chats')[0].scrollHeight);
+                                    return false;
+                                    $('#inbox').focus();
+
+                                } else {
+                                    var title = data.title;
+                                    var msg = data.message;
+                                    toastr.options = {
+                                        positionClass : 'toast-top-left',
+                                        onclick:null
+                                    };
+                                    var $toast = toastr['error'](msg,title);
+                                    $toastlast = $toast;
+
+                                }
+                            },
+                            error: function (data) {
+
+                            }
+                        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+                // var msgSend = $(".chat1.send").val();
+                // $(".chats").append('<div class="chat1 send"><div class="chat-img"><img src="img/1.png"></div><div class="chat-body"><p class="newmsg">' + message + '</p></div></div>');
+                // //      $(".newmsg").text();
+                // //      $('#my_form').submit();
+                // //      alert("Your message is sent succesfully:- " );
             }
-            $("textarea").val('');
-            $('#chats').scrollTop($('#chats')[0].scrollHeight);
-            return false;
-            $('#inbox').focus();
+            // $("textarea").val('');
+            // $('#chats').scrollTop($('#chats')[0].scrollHeight);
+            // return false;
+            // $('#inbox').focus();
 
         }
     });
