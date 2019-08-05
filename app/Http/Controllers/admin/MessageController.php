@@ -35,7 +35,6 @@ class MessageController extends Controller
     public function store(Request $request,$chat_id)
     {
 
-
         $message = $request->user()->messages()->create([
             'body' => $request->body,
             'chat_id'=>$chat_id,
