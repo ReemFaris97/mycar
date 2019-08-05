@@ -42,12 +42,12 @@ class MessageController extends Controller
         $message->load(['user']);
 
         $chat = Chat::find($chat_id);
-        $receiver_id = $chat->messages()->where('user_id','!=',auth()->id())->first()->user_id;
+        $receiver_id = $chat->user_id;
         if($receiver_id){
             $tokens = Device::where('user_id',$receiver_id)->pluck('device');
 
             $firebase = new firebase();
-            $firebase->sendMessage($tokens,$message->body,null,"here is the user image");
+            $firebase->sendMessage(['dg1F0uwBjSU:APA91bGAoO52SAOsk9imw23KPv51T9Fr5YwXLQZhsOOAFh9EoXHfCzntr48sg9PCzWtHwXKYo3j3RSmx9LIV6oXt1Jtf1bsNK-Ah9ljiN8y6a2jHQ4f-0wQzpk76xq1-oa544r_LdhSs'],$message->body,null,"here is the user image");
             return response()->json([
                     'status'=>true,
                     'title'=>"نجاح",

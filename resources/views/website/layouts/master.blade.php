@@ -325,62 +325,70 @@
 
     }
 
-
-    messaging.onMessage(function(payload) {
+    messaging.onMessage((payload) => {
         console.log('Message received. ', payload);
-        //        title = payload.data.title;
-        //        options = {
-        //            'body':payload.data.body,
-        //            'icon':payload.data.icon,
-        //            'image':payload.data.image,
-        //        };
-
-        // $('#notifyPanel').prepend(
-        //
-        //     '<li class="list-group-item"> '+
-        //     '<a href="'+payload.data.click_action+'" class="user-list-item"><span class="name">'+payload.data.username+'</span>'+
-        //     '<div class="avatar">'+
-        //     '<img src="'+payload.data.image+'" alt="">'+
-        //     '</div>'+
-        //     '<div class="user-desc">'+
-        //     '<span class="name">'+payload.data.title+'</span><span class="desc"> '+payload.data.body+' </span>'+
-        //     '</div>'+
-        //     '</a>'+
-        //     '</li>'
-        // );
-
-        // var sound = document.getElementById("myAudio");
-        // if(sound.play()){
-        //     console.log('sound played well');
-        // }
-        // else
-        // {
-        //     console.log('can not be played');
-        // }
-
-
-        toastr.options = {
-            "closeButton": false,
-            "debug": false,
-            "newestOnTop": false,
-            "progressBar": false,
-            "positionClass": "toast-top-right",
-            "preventDuplicates": false,
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "20000",
-            "extendedTimeOut": "20000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        }
-
-        toastr["success"](payload.data.title,payload.data.body);
-
-
+        // [START_EXCLUDE]
+        // Update the UI to include the received message.
+        // appendMessage(payload);
+        // [END_EXCLUDE]
     });
+
+    // messaging.onMessage(function(payload) {
+    //     alert('received');
+    //     console.log('Message received. ', payload);
+    //     //        title = payload.data.title;
+    //     //        options = {
+    //     //            'body':payload.data.body,
+    //     //            'icon':payload.data.icon,
+    //     //            'image':payload.data.image,
+    //     //        };
+    //
+    //     // $('#notifyPanel').prepend(
+    //     //
+    //     //     '<li class="list-group-item"> '+
+    //     //     '<a href="'+payload.data.click_action+'" class="user-list-item"><span class="name">'+payload.data.username+'</span>'+
+    //     //     '<div class="avatar">'+
+    //     //     '<img src="'+payload.data.image+'" alt="">'+
+    //     //     '</div>'+
+    //     //     '<div class="user-desc">'+
+    //     //     '<span class="name">'+payload.data.title+'</span><span class="desc"> '+payload.data.body+' </span>'+
+    //     //     '</div>'+
+    //     //     '</a>'+
+    //     //     '</li>'
+    //     // );
+    //
+    //     // var sound = document.getElementById("myAudio");
+    //     // if(sound.play()){
+    //     //     console.log('sound played well');
+    //     // }
+    //     // else
+    //     // {
+    //     //     console.log('can not be played');
+    //     // }
+    //
+    //
+    //     toastr.options = {
+    //         "closeButton": false,
+    //         "debug": false,
+    //         "newestOnTop": false,
+    //         "progressBar": false,
+    //         "positionClass": "toast-top-right",
+    //         "preventDuplicates": false,
+    //         "onclick": null,
+    //         "showDuration": "300",
+    //         "hideDuration": "1000",
+    //         "timeOut": "20000",
+    //         "extendedTimeOut": "20000",
+    //         "showEasing": "swing",
+    //         "hideEasing": "linear",
+    //         "showMethod": "fadeIn",
+    //         "hideMethod": "fadeOut"
+    //     }
+    //
+    //     toastr["success"](payload.data.title,payload.data.body);
+    //
+    //
+    // });
 
 </script>
 <!-- -->
