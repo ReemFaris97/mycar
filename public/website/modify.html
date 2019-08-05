@@ -436,24 +436,30 @@
     
     
      <script>
-        function initMap() {
-            var myLatLng = {
-                lat: 21.388869,
-                lng: 39.707132
-            };
+        var marker;
 
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 8,
-                center: myLatLng
-            });
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: {lat: 59.325, lng: 18.070}
+        });
 
-            var marker = new google.maps.Marker({
-                position: myLatLng,
-                map: map,
-                title: 'Cars ',
-                icon: 'img/marker.png'
-            });
+        marker = new google.maps.Marker({
+          map: map,
+          draggable: true,
+          animation: google.maps.Animation.DROP,
+          position: {lat: 59.327, lng: 18.067}
+        });
+        marker.addListener('click', toggleBounce);
+      }
+
+      function toggleBounce() {
+        if (marker.getAnimation() !== null) {
+          marker.setAnimation(null);
+        } else {
+          marker.setAnimation(google.maps.Animation.BOUNCE);
         }
+      }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBi7RVqBGvLWMhmV_uv81zZ2Iv1ZvWOT9M&callback=initMap" async defer></script>
 </body>

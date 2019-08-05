@@ -154,7 +154,7 @@
                 <section>
                     <button type="button" class="delt-all">إلغاء الطلب</button>
                     <h3 class="h3-after">إضافة سيارة</h3>
-                    <form id="account-form" action="distributers.html" novalidate="validate">
+                    <form id="account-form" action="distributers2.html" novalidate="validate">
 
                         <div class="row">
 
@@ -183,7 +183,7 @@
 
                             <div class="up-tgle">
                                 <div class="col-sm-6 col-xs-12">
-                                    <div class="form-group">
+                                    <div class="form-group custom-gp">
                                         <label>الموديل</label>
                                         <select class="js-select2" id="locationCodesSelect2">
                                             <option>هاى لوكس</option>
@@ -252,7 +252,7 @@
                 <h3></h3>
                 <section>
                     <h3 class="h3-after">بيانات الطلب</h3>
-                    <form id="profile-form" novalidate="validate">
+                    <form id="profile-form" action="distributers3.html" novalidate="validate">
 
                         <div class="col-xs-12">
                             <div class="form-group">
@@ -289,7 +289,7 @@
                 <section>
                     <button type="button" class="delt-all">إلغاء الطلب</button>
                     <h3 class="h3-after">الطلبات</h3>
-                    <form id="account-form" action="distributers.html" novalidate="validate">
+                    <form id="orders-form" action="distributers.html" novalidate="validate">
                         <!--
                         <div class="row">
                             <label for="userName">User name *</label>
@@ -318,37 +318,37 @@
                             <div class="col-xs-12">
                                 <div class="products">
                                     <div class="prod1">
-                                        <button class="close"> <i class="fas fa-times"></i> </button>
+                                        <a class="close"> <i class="fas fa-times"></i> </a>
                                         <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
                                         <span class="qnt">12</span>
                                     </div>
                                     <div class="prod1">
-                                        <button class="close"> <i class="fas fa-times"></i> </button>
+                                        <a class="close"> <i class="fas fa-times"></i> </a>
                                         <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
                                         <span class="qnt">12</span>
                                     </div>
                                     <div class="prod1">
-                                        <button class="close"> <i class="fas fa-times"></i> </button>
+                                        <a class="close"> <i class="fas fa-times"></i> </a>
                                         <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
                                         <span class="qnt">12</span>
                                     </div>
                                     <div class="prod1">
-                                        <button class="close"> <i class="fas fa-times"></i> </button>
+                                        <a class="close"> <i class="fas fa-times"></i> </a>
                                         <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
                                         <span class="qnt">12</span>
                                     </div>
                                     <div class="prod1">
-                                        <button class="close"> <i class="fas fa-times"></i> </button>
+                                        <a class="close"> <i class="fas fa-times"></i> </a>
                                         <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
                                         <span class="qnt">12</span>
                                     </div>
                                     <div class="prod1">
-                                        <button class="close"> <i class="fas fa-times"></i> </button>
+                                        <a class="close"> <i class="fas fa-times"></i> </a>
                                         <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
                                         <span class="qnt">12</span>
                                     </div>
                                     <div class="prod1">
-                                        <button class="close"> <i class="fas fa-times"></i> </button>
+                                        <a class="close"> <i class="fas fa-times"></i> </a>
                                         <h4> اسم القطعة اسم القطعة اسم القطعة </h4>
                                         <span class="qnt">12</span>
                                     </div>
@@ -362,15 +362,15 @@
 
                                     <div class="radio-list">
                                         <label class="rad">أصلية
-                                            <input class="required" aria-required="true" type="radio" checked="checked" name="radio">
+                                            <input type="radio" name="type-1" class="required">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="rad">تشليح
-                                            <input class="required" aria-required="true" type="radio" name="radio">
+                                            <input type="radio" name="type-1">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="rad">تجارية
-                                            <input class="required" aria-required="true" type="radio" name="radio">
+                                            <input type="radio" name="type-1">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
@@ -387,7 +387,7 @@
                                     <div class="radio-list dist-list">
                                         <label class="rad">
                                             <div class="checking"> القصيم لتجارة قطع الغيار </div>
-                                            <input class="required" aria-required="true" type="radio" checked="checked" name="radio2" data-toggle="modal" data-target="#not-avl" data-dismiss='modal'>
+                                            <input class="required" type="radio" name="distributer" data-toggle="modal" data-target="#not-avl" data-dismiss='modal'>
                                             <span class="checkmark"></span>
                                             <span class="check-img">
                                                 <img src="img/logo.png">
@@ -398,7 +398,7 @@
                                         </label>
                                         <label class="rad">
                                             <div class="checking"> القصيم لتجارة قطع الغيار </div>
-                                            <input class="required" aria-required="true" type="radio" name="radio2">
+                                            <input class="required" type="radio" name="distributer">
                                             <span class="checkmark"></span>
                                             <span class="check-img">
                                                 <img src="img/logo.png">
@@ -409,7 +409,7 @@
                                         </label>
                                         <label class="rad">
                                             <div class="checking"> القصيم لتجارة قطع الغيار </div>
-                                            <input class="required" aria-required="true" type="radio" name="radio2">
+                                            <input class="required" type="radio" name="distributer">
                                             <span class="checkmark"></span>
                                             <span class="check-img">
                                                 <img src="img/logo.png">
@@ -650,18 +650,7 @@
 
                             <div class="col-xs-12">
                                 <ul class="all-dtls" id="myList">
-                                    <li>
-                                        <ul class="inDetails">
-                                            <li>
-                                                <label class="new-p">
-                                                    <input type="checkbox" class="if-check">
-                                                    <span class="checkmark"></span>
-                                                    <span class="name-p">اسم القطعة فرعى</span>
-                                                </label>
-                                            </li>
-
-                                        </ul>
-                                    </li>
+                                    
 
                                     <li>
                                         <ul class="inDetails">
@@ -693,7 +682,7 @@
 
                         </div>
 
-                        <input class="fxd-btn" id="fxd-btn" type="submit" value="إتمام" data-dismiss='modal' disabled>
+                        <input class="fxd-btn" type="submit" value="إتمام" data-dismiss='modal'>
                     </form>
                 </div>
 
@@ -835,13 +824,13 @@
 
                         <div class="row">
 
-                            <div class="col-md-4 col-xs-12">
+                            <div class="col-lg-4 col-md-3 col-xs-12">
                                 <a class="piece1" data-fancybox="Gallery" data-caption="اسم القطعة" href="img/slide1.png">
                                     <img src="img/slide1.png">
                                 </a>
                             </div>
 
-                            <div class="col-md-8 col-xs-12">
+                            <div class="col-lg-8 col-md-9 col-xs-12">
                                 <ol class="all-dtls">
                                     <li>
                                         <ul class="inDetails">
@@ -854,7 +843,7 @@
                                                 <span class="code-p">9655254</span>
                                             </li>
                                             <li>
-                                                <span class="name-p">اسم القطعة فرعى</span>
+                                                <span class="name-p">اسم غديد</span>
                                             </li>
                                             <li>
                                                 <label class="new-p">
@@ -876,7 +865,7 @@
                                                 <span class="code-p">9655254</span>
                                             </li>
                                             <li>
-                                                <span class="name-p">اسم القطعة فرعى</span>
+                                                <span class="name-p">برودكت</span>
                                             </li>
                                             <li>
                                                 <label class="new-p">
@@ -898,7 +887,7 @@
                                                 <span class="code-p">9655254</span>
                                             </li>
                                             <li>
-                                                <span class="name-p">اسم القطعة فرعى</span>
+                                                <span class="name-p">رئيسى</span>
                                             </li>
                                             <li>
                                                 <label class="new-p">
@@ -913,7 +902,7 @@
 
                         </div>
 
-                        <input class="fxd-btn" id="fxd-btn" type="submit" value="إتمام" data-dismiss='modal' disabled>
+                        <input class="fxd-btn" id="fxd-btn" type="submit" value="إتمام" data-dismiss='modal'>
                     </section>
                 </div>
 
@@ -1019,6 +1008,11 @@
                     //                    alert("Submitted!");
                 }
             });
+            
+             $("a[href='#finish']").click(function(){
+                $("#orders-form").submit();
+                 
+            })
         })
         $(document).delegate('#goPrev', 'click', function() {
             var a = $(".wizard").steps("previous");
@@ -1038,6 +1032,9 @@
     <script>
         $(document).ready(function() {
             $(".js-select2").select2();
+            $(".select2").click(function(e){
+                e.stopPropagation();
+            });
         });
 
     </script>
@@ -1103,9 +1100,9 @@
     <script>
         $(document).ready(function() {
             //            status of each input type number 
-            var empty = true;
+//            var empty = true;
             //            total number of appended input type number
-            var numss = 0;
+//            var numss = 0;
             $('.new-p :checkbox').change(function() {
                 var $this = $(this);
                 if ($this.is(':checked')) {
@@ -1124,13 +1121,29 @@
                             .parent(".quant")
                             .find(".number");
                         $n.val(Number($n.val()) + 1);
-
-                        if (Number($n.val()) == 0 || Number($n.val()) == 0) {
-                            empty = true;
-                        } else {
-                            empty = false;
-                        }
-
+//
+//                        if (Number($n.val()) == 0) {
+//                            empty = true;
+//                            $('#fxd-btn').attr('disabled', 'disabled');
+//                            console.log(' zero in increment')
+//                        } else {   
+//                            empty = false;
+//                            $('#fxd-btn').removeAttr('disabled');
+//                             console.log('not zero in increment')
+//
+//                        }
+                        
+//                        if (Number($n.val()).length == 0) {
+//                            empty = true;
+//                            $('#fxd-btn').attr('disabled', 'disabled');
+//                        } else {   
+//                            empty = false;
+//                                                $('#fxd-btn').removeAttr('disabled');
+//                                                        console.log('not zero in increment')
+//
+//                        }
+//                        
+                        
                     });
                     var incrementMinus = buttonMinus.click(function() {
                         var $n = $(this)
@@ -1140,43 +1153,71 @@
                         var amount = Number($n.val());
                         if (amount > 0) {
                             $n.val(amount - 1);
-                        }
-
-
-                        if (Number($n.val()) == 0 || Number($n.val()) == 0) {
-                            empty = true;
-                        } else {
-                            empty = false;
+                            
+//                             if (Number($n.val()) == 0) {
+//                            empty = true;
+//                                 $('#fxd-btn').attr('disabled', 'disabled');
+//                                console.log('zero in decrement')
+//                        } else {   
+//                            empty = false;
+//                            $('#fxd-btn').removeAttr('disabled');                    
+//                            console.log('not zero in decrement')
+//                        }
                         }
 
                     });
-                    numss++;
+//                    numss++;
                 } else {
-                    numss--;
+//                    numss--;
                     $($this).closest('.inDetails').find('.addme').remove();
                 }
 
-                $('.inDetails .number').each(function() {
-                    $(this).change(function() {
-                        if (($(this).val().length == 0) || ($(this).val() == 0)) {
-                            empty = true;
-                        } else {
-                            empty = false;
-                        }
-                    });
-                });
+//                $('.inDetails .number').each(function() {
+//                    $(this).blur(function() {
+//                        if (Number($(this).val()) == 0) {
+//                            empty = true;
+//                            $('#fxd-btn').attr('disabled', 'disabled');
+//                            console.log('zero in change')
+//                        } else {   
+//                            empty = false;
+//                            $('#fxd-btn').removeAttr('disabled');
+//                            console.log('not zero in change')
+//                        }
+//                        
+//                        if(($(this).val()) == ""){
+//                            empty = true;
+//                            $('#fxd-btn').attr('disabled', 'disabled');
+//                            console.log('null in change')
+//                        } else {   
+//                            empty = false;
+//                            $('#fxd-btn').removeAttr('disabled');
+//                            console.log('not null in change')
+//                        }
+//                          
+//                    });
+//                });
 
-
-                console.log(empty);
-                if ((numss == 0) || (empty == true)) {
-                    $('#fxd-btn').attr('disabled', 'disabled');
-                    console.log("11111111111111");
-                } else {
-                    $('#fxd-btn').removeAttr('disabled');
-                    console.log("99999999999999999999");
-                }
+//                console.log(numss);
+//                if (numss == 0) {
+//                    $('#fxd-btn').attr('disabled', 'disabled');
+//
+//                } else {
+//                    $('#fxd-btn').removeAttr('disabled');
+//                }
+                
 
             });
+            
+            $("#fxd-btn").click(function(){
+                $('.new-p :checkbox').each(function(){
+                     var $this = $(this);
+                if ($this.is(':checked')) {
+                    var theName = $this.parents('li').prev('li').find('.name-p').html();
+                    console.log(theName)
+                    }
+                })
+            })
+            
         });
 
     </script>
@@ -1184,13 +1225,13 @@
     <!---------- Radio Button Required ------------>
     <script>
         $(document).ready(function() {
+            
             var $radio = $('input:radio[name="choice"]');
             $radio.addClass("validate[required]");
         });
 
     </script>
     <!--------------------------------------------->
-
 
     <!------------ Remove Piece ------------------->
     <script>
@@ -1218,9 +1259,7 @@
         });
 
     </script>
-
-
-
+    
     <!----------- Search Input -------------------->
     <script>
         $(document).ready(function() {
@@ -1231,43 +1270,8 @@
                 });
             });
         });
-
     </script>
     <!-------------------->
-
-
-
-    <!--------- Form Submit --------------->
-<!--
-    <script>
-        onFinished: function(event, currentIndex) {
-            $("#account-form").submit();
-        }
-
-    </script>
--->
-    <!------------------------------------>
-
-
-
-    
-    <script>
-//$(document).ready(function() {
-//var parentElement = $(".new-select");
-//
-//        if ($('.select2').length) {
-//            $('.select2').select2({
-//                "dropdownParent": parentElement,
-//                "allowClear": !0,
-//                "width": "100%"
-//            });
-//        }
-//});
-$('select').select2().on('select2:open', function() {
-  var container = .$('.select2-container').last();
-  /*Add some css-class to container or reposition it*/
-});
-    </script>
 
     <!----------- Input Required ----------->
 <!--

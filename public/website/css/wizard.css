@@ -34,6 +34,7 @@
   position: relative;
   display: block;
   width: 100%;
+        overflow: hidden;
 }
 .wizard > .steps > ul {
   display: table;
@@ -447,7 +448,9 @@ position: absolute !important;
     display: block !important;
     direction: rtl !important;
 }
-
+.custom-gp{
+    position: relative;
+}
 /********************** Image ***************************************/
 
 .images-upload-block a {
@@ -636,7 +639,7 @@ div#appended-pic {
 
 .modalIn {
     background-color: #fff;
-    z-index: 9999;
+    z-index: 9999999;
 }
 
 .modalIn .modal-backdrop {
@@ -791,7 +794,13 @@ div#appended-pic {
 }
 .all-dtls{
     list-style: none;
-  counter-reset: my-awesome-counter;
+    counter-reset: my-awesome-counter;
+    height: calc(100vh - 350px);
+    overflow-y: scroll;
+    padding: 12px 0 0 5px;
+}
+#details .all-dtls {
+    height: calc(100vh - 168px);
 }
 .all-dtls > li{
     padding: 0 8px 0 0;
@@ -824,6 +833,9 @@ div#appended-pic {
     width: 60%;
     font-weight: bold;
     margin: 0 auto;
+}
+#details .inDetails {
+    width: 50%;
 }
 .inDetails li {
     margin: 0 0 10px 0;
@@ -1017,9 +1029,10 @@ li.addme {
 #name-piece .new-p .checkmark {
     left: auto;
     right: 0;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    top: 0;
 }
 #name-piece .new-p {
      width: auto; 
@@ -1400,6 +1413,11 @@ div#temp {
 
  #pac-input ,  #temp-input:focus {
     border-color: #ff5e00;
+     left: 0 !important;
+    right: 0px !important;
+    top: 60px !important;
+    margin: 0px auto !important;
+    width: 100% !important;
 }
 
 #title {
@@ -1448,6 +1466,9 @@ div#temp {
 .p-tble td{
    font-weight: bold;
 }
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
+    background-color: #ff5e00 !important;
+}
 /****************** Payment Radio Buttons ************************/
 .carry .form-group {
     width: 400px;
@@ -1479,7 +1500,7 @@ div#temp {
     display: inline-block;
     font-weight: bold;
     font-size: 19px;
-    margin: 0 0 0 12px;
+    margin: 0 0 20px 12px;
 }
 .carry2 .photo{
     margin: 0;
@@ -1511,12 +1532,20 @@ div#temp {
 
 
 /********************************************************************************************************************************************************************** Media **************************************************************************************************************/
+@media (max-width: 1200px) {
+    .piece1 {
+        height: 200px;
+    }
+}
 @media (max-width: 991px) {
     .tfasel {
         width: 100%;
     }
+    #details .all-dtls {
+        height: calc(100vh - 350px);
+    }
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .wizard > .content > .body {
         padding: 0 20px;
     }
@@ -1540,19 +1569,22 @@ div#temp {
     margin: 6px 0 10px 0;
 }
     .inDetails {
-    width: 100%;
+    width: 100% !important;
+    }
+    .all-dtls , #details .all-dtls{
+        height: auto !important;
+        overflow-y: unset;
     }
     #details .all-dtls > li {
-    padding: 0 38px 0 0;
+    padding: 0 28px 0 0;
     }
-    li.addme {
-    position: static;
-    }
+
     .fxd-btn {
-    position: static;
+    position: static !important;
     }
     a.piece1 {
     margin: 0 auto 20px auto;
+        height: 200px;
 }
     #details .inDetails {
     display: block;
@@ -1561,10 +1593,48 @@ div#temp {
     display: inline-block;
     text-align: center;
     word-break: break-all;
+    font-size: 10px !important;
+    max-width: 50px;
+            vertical-align: middle;
 }
+        .name-p {
+    font-size: 12px !important;
+}
+    .all-dtls > li:before {
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+            top: 4px;
+    }
     #details .inDetails li {
-    margin: 0 0 10px 0;
-    width: 49%;
+    margin: 0 0 10px 13px;
+        vertical-align: middle;
+}
+    #details .inDetails li:nth-child(4){
+        margin: 0 0 10px 0;
+    }
+    .new-p {
+    width: 23px;
+    height: 23px;
+    line-height: 23px;
+    }
+
+    .name-p {
+    font-size: 12px !important;
+    max-width: 98px  !important;
+    word-break: break-word;
+    overflow: hidden;
+    display: block;
+}
+    .new-p input ~ .checkmark:after {
+    font-size: 13px;
+    }
+    .new-p .checkmark {
+    top: 0;
+    }
+    .piece-sm {
+    width: 43px;
+    max-height: 43px;
 }
     div#DataTables_Table_0_paginate , div#DataTables_Table_0_info{
         margin: 0 auto;
@@ -1587,6 +1657,43 @@ div#temp {
     table.dataTable tbody th, table.dataTable tbody td {
         vertical-align: top;
     }
+    
+    .count {
+        width: 100px;
+            height: 36px;
+    line-height: 36px;
+    }
+    .quant .value-button {
+        width: 17px;
+        font-size: 14px;
+    }
+    .quant input#number {
+        width: calc(100% - 34px);
+    }
+    
+    /******* name Piece **********/
+    #name-piece .all-dtls li {
+        padding: 0;
+        display: inline-block;
+    width: 100%;
+    }
+    #name-piece .all-dtls li.addme {
+            padding: 0;
+    display: inline-block;
+    position: absolute;
+    margin: 0 !important;
+        width: auto !important;
+    }
+        #name-piece .name-p {
+font-size: 12px !important;
+    max-width: calc(100% - 100px) !important;
+    display: inline-block !important;
+    overflow: visible !important;
+    word-break: unset !important;
+}
+    #name-piece .new-p {
+    padding: 0 30px 0 0;
+}
     
 }
 @media (max-width: 500px) {
@@ -1637,12 +1744,6 @@ div#temp {
     height: 30px;
     line-height: 29px;
 }
-    
-    .dist-list .check-img {
-    display: block;
-    margin: 5px 0 0 0 !important;
-    }
-    
     .filtrtion {
         justify-content: center;
     }
@@ -1654,4 +1755,43 @@ div#temp {
     width: 95%;
     font-size: 14px !important;
     }
+    
+        #details span.code-p {
+    font-size: 10px !important;
+}
+    .name-p {
+font-size: 12px !important;
+}
+        #details .new-p {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+    li.addme {
+        position: static;
+        display: block;
+        margin: 0 auto !important;
+        width: 100% !important;
+    }
+    .quant {
+        margin: 0 auto;
+        text-align: center;
+    }
+    .dist-list .rad {
+        padding: 0 19px 0 0;
+        border-bottom: 1px solid #cbcbcb;
+    }
+    .dist-list .checking {
+        padding: 2px 3px;
+        width: unset;
+        max-width: 180px;
+        word-break: break-word;
+    }
+    .dist-list .check-img {
+        width: 40px;
+        height: 40px;
+        margin: 0 3px 0 0;
+    }
+    
+    
 }
