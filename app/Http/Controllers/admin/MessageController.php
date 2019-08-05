@@ -78,4 +78,21 @@ class MessageController extends Controller
             ]
         );
     }
+
+    public function test(Request $request,$chat_id){
+        $message = $request->user()->messages()->create([
+            'body' => $request->body,
+            'chat_id'=>$chat_id,
+        ]);
+        $message->load(['user']);
+
+        $chat = Chat::find($chat_id);
+        $receiver_id = $chat->messages()->where('user_id','!=',auth()->id())->first()->user_id;
+//        $tokens = Device::where('user_id',$receiver_id)->pluck('device');
+
+        $firebase = new firebase();
+        $firebase->sendMessage(['dtH8SvSCYxs:APA91bEelHTT_Hd96Ej5EPmLObg_uNcCZ8SZ3VyIryfb0OaASn9W07GpMS3oHisWT-O0BReQ8gELAuH5o616dRISXBSN1BH5dPCUuTib69kRZcqNLDmFQocmt0ulpHjnKAzqPxAGhduy'],$message->body,null,"here is the user image");
+
+        return "success";
+    }
 }

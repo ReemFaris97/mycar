@@ -58,24 +58,7 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin','middleware'=>'admin'],
 //    Route::get('/message/{id}', 'MessageController@index')->name('message');
     Route::post('/message/{id}', 'MessageController@store')->name('message.store');
 
-    Route::get('test-send/{id}',function (Request $request,$chat_id){
-
-        $message = $request->user()->messages()->create([
-            'body' => $request->body,
-            'chat_id'=>$chat_id,
-        ]);
-        $message->load(['user']);
-
-        $chat = Chat::find($chat_id);
-        $receiver_id = $chat->messages()->where('user_id','!=',auth()->id())->first()->user_id;
-        $tokens = Device::where('user_id',$receiver_id)->pluck('device');
-
-        $firebase = new firebase();
-        $firebase->sendMessage($tokens,$message->body,null,"here is the user image");
-
-        return "success";
-
-    });
+    Route::get('test-send/{id}','MessageController@test')->name('message.test');
 
 
 
