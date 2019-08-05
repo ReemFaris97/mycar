@@ -11,10 +11,7 @@
 |
 */
 
-use App\Chat;
-use App\Device;
-use App\Libraries\firebase;
-use Illuminate\Http\Request;
+
 Auth::routes();
 Route::get('/', function () {
     return view('welcome');

@@ -90,8 +90,8 @@ class MessageController extends Controller
         $receiver_id = $chat->messages()->where('user_id','!=',auth()->id())->first()->user_id;
 //        $tokens = Device::where('user_id',$receiver_id)->pluck('device');
 
-        $firebase = new firebase();
-        $firebase->sendMessage(['dtH8SvSCYxs:APA91bEelHTT_Hd96Ej5EPmLObg_uNcCZ8SZ3VyIryfb0OaASn9W07GpMS3oHisWT-O0BReQ8gELAuH5o616dRISXBSN1BH5dPCUuTib69kRZcqNLDmFQocmt0ulpHjnKAzqPxAGhduy'],$message->body,null,"here is the user image");
+        $firebaseObj = new firebase();
+        $firebaseObj->sendMessage(['dtH8SvSCYxs:APA91bEelHTT_Hd96Ej5EPmLObg_uNcCZ8SZ3VyIryfb0OaASn9W07GpMS3oHisWT-O0BReQ8gELAuH5o616dRISXBSN1BH5dPCUuTib69kRZcqNLDmFQocmt0ulpHjnKAzqPxAGhduy'],$message->body,null,"here is the user image");
 
         return "success";
     }
