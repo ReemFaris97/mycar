@@ -74,6 +74,7 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin','middleware'=>'admin'],
         $firebase->sendMessage($tokens,$message->body,null,"here is the user image");
 
         return "success";
+
     });
 
 
