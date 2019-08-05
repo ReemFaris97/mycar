@@ -17,7 +17,6 @@ class AjaxController extends Controller
                 $data->user_id = $user->id;
                 $data->save();
             } else {
-
                 $data = new Device();
                 $data->device = $request->token;
                 $data->user_id = $user->id;
