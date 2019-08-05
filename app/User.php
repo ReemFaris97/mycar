@@ -100,7 +100,7 @@ class User extends Authenticatable
         {
             $chat = Chat::create(['user_id'=>$this->id]);
         }
-        $data=['chat_id'=>$chat->id, 'channel_name'=>$chat->channel_name(), 'total_message'=>$chat->total_message_pages()];
+        $data=['chat_id'=>$chat->id, 'channel_name'=>$chat->channel_name()];
         return $data;
     }
 
