@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07d3112d-1530-4da5-ab4a-6f65651dce54" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/resources/views/website/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/layouts/master.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/website/layouts/scripts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/layouts/scripts.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -61,7 +60,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/website/layouts/master.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
+            <state relative-caret-position="97">
               <caret line="245" selection-start-line="245" selection-end-line="245" />
             </state>
           </provider>
@@ -70,12 +69,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/website/layouts/scripts.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="174" column="9" selection-start-line="174" selection-start-column="9" selection-end-line="174" selection-end-column="9" />
+            <state relative-caret-position="323">
+              <caret line="169" column="9" selection-start-line="169" selection-start-column="9" selection-end-line="169" selection-end-column="9" />
               <folding>
-                <element signature="n#script#10;n#!!top" />
-                <element signature="e#1802#2804#0#HTML" />
-                <element signature="e#3718#3760#0#HTML" />
+                <element signature="n#script#9;n#!!top" />
+                <element signature="e#1723#2725#0#HTML" />
+                <element signature="e#3667#3709#0#HTML" />
               </folding>
             </state>
           </provider>
@@ -528,18 +527,18 @@
       <workItem from="1564650583830" duration="3258000" />
       <workItem from="1564657368073" duration="11923000" />
       <workItem from="1564904284263" duration="23358000" />
-      <workItem from="1564991938824" duration="10072000" />
+      <workItem from="1564991938824" duration="10164000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="393445000" />
+    <option name="totallyTimeSpent" value="393537000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25718608" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25718608" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -894,19 +893,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/website/layouts/master.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
+        <state relative-caret-position="97">
           <caret line="245" selection-start-line="245" selection-end-line="245" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/website/layouts/scripts.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="174" column="9" selection-start-line="174" selection-start-column="9" selection-end-line="174" selection-end-column="9" />
+        <state relative-caret-position="323">
+          <caret line="169" column="9" selection-start-line="169" selection-start-column="9" selection-end-line="169" selection-end-column="9" />
           <folding>
-            <element signature="n#script#10;n#!!top" />
-            <element signature="e#1802#2804#0#HTML" />
-            <element signature="e#3718#3760#0#HTML" />
+            <element signature="n#script#9;n#!!top" />
+            <element signature="e#1723#2725#0#HTML" />
+            <element signature="e#3667#3709#0#HTML" />
           </folding>
         </state>
       </provider>

@@ -17,11 +17,6 @@
 </script>
 <!-- Toastr js -->
 <script src="{{asset('admin/assets/plugins/toastr/toastr.min.js')}}"></script>
-
-@yield('scripts')
-
-<script src="{{asset('website/js/script.js')}}"></script>
-
 <script>
     $.ajaxSetup({
         headers: {
@@ -173,4 +168,10 @@
     // });
 
 </script>
+
+@yield('scripts')
+
+<script src="{{asset('website/js/script.js')}}"></script>
+
+
 
