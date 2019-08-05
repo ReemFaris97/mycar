@@ -175,81 +175,12 @@
      ===================================-->
 @include('website.layouts.scripts')
 <script>
-    new WOW().init();
-
-</script>
-
-<!----------- This for here only ------------>
-<script src="{{asset('website/js/jquery.fancybox.min.js')}}"></script>
-<script src="{{asset('website/js/owl.carousel.min.js')}}"></script>
-<script>
-    $("#owl-demo").owlCarousel({
-        rtl: true,
-        loop: true,
-        autoplay: false,
-        items: 1,
-        dots: true,
-        autoplayHoverPause: false,
-        animateOut: 'flipOutX',
-        animateIn: 'flipInX',
-        nav: true,
-        navText: [
-            '<i class="fas fa-angle-right"></i>',
-            '<i class="fas fa-angle-left"></i>'
-        ],
-        rewindNav: false,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 1
-            },
-            991: {
-                items: 1
-            },
-            1000: {
-                items: 1
-            }
-        }
-    });
-
-</script>
-<script>
-    $("#owl-suggest").owlCarousel({
-        rtl: true,
-        items: 3,
-        autoplay: false,
-        autoplayTimeout: 2500,
-        autoplayHoverPause: true,
-        loop: true,
-        itemsDesktop: [1199, 3],
-        itemsDesktopSmall: [979, 2],
-        nav: true,
-        navText: ["<i class='fas fa-angle-right'>", "<i class='fas fa-angle-left'>"],
-        dots: false,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 2
-            },
-            1000: {
-                items: 3
-            }
-        }
-    });
-
-</script>
-
-<script>
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    // Initialize Firebase
+    // Initialize Firebase ....
     var config = {
         apiKey: "AIzaSyDYkaLf81OdUKQrb5ASJMfLRAo-zZGbhTQ",
         authDomain: "mycar-part.firebaseapp.com",
@@ -335,28 +266,28 @@
         //            'image':payload.data.image,
         //        };
 
-        // $('#notifyPanel').prepend(
-        //
-        //     '<li class="list-group-item"> '+
-        //     '<a href="'+payload.data.click_action+'" class="user-list-item"><span class="name">'+payload.data.username+'</span>'+
-        //     '<div class="avatar">'+
-        //     '<img src="'+payload.data.image+'" alt="">'+
-        //     '</div>'+
-        //     '<div class="user-desc">'+
-        //     '<span class="name">'+payload.data.title+'</span><span class="desc"> '+payload.data.body+' </span>'+
-        //     '</div>'+
-        //     '</a>'+
-        //     '</li>'
-        // );
+        $('#notifyPanel').prepend(
 
-        // var sound = document.getElementById("myAudio");
-        // if(sound.play()){
-        //     console.log('sound played well');
-        // }
-        // else
-        // {
-        //     console.log('can not be played');
-        // }
+            '<li class="list-group-item"> '+
+            '<a href="'+payload.data.click_action+'" class="user-list-item"><span class="name">'+payload.data.username+'</span>'+
+            '<div class="avatar">'+
+            '<img src="'+payload.data.image+'" alt="">'+
+            '</div>'+
+            '<div class="user-desc">'+
+            '<span class="name">'+payload.data.title+'</span><span class="desc"> '+payload.data.body+' </span>'+
+            '</div>'+
+            '</a>'+
+            '</li>'
+        );
+
+        var sound = document.getElementById("myAudio");
+        if(sound.play()){
+            console.log('sound played well');
+        }
+        else
+        {
+            console.log('can not be played');
+        }
 
 
         toastr.options = {
@@ -383,14 +314,79 @@
     });
 
 </script>
+<script>
+    new WOW().init();
+
+</script>
+
+<!----------- This for here only ------------>
+<script src="{{asset('website/js/jquery.fancybox.min.js')}}"></script>
+<script src="{{asset('website/js/owl.carousel.min.js')}}"></script>
+<script>
+    $("#owl-demo").owlCarousel({
+        rtl: true,
+        loop: true,
+        autoplay: false,
+        items: 1,
+        dots: true,
+        autoplayHoverPause: false,
+        animateOut: 'flipOutX',
+        animateIn: 'flipInX',
+        nav: true,
+        navText: [
+            '<i class="fas fa-angle-right"></i>',
+            '<i class="fas fa-angle-left"></i>'
+        ],
+        rewindNav: false,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 1
+            },
+            991: {
+                items: 1
+            },
+            1000: {
+                items: 1
+            }
+        }
+    });
+
+</script>
+<script>
+    $("#owl-suggest").owlCarousel({
+        rtl: true,
+        items: 3,
+        autoplay: false,
+        autoplayTimeout: 2500,
+        autoplayHoverPause: true,
+        loop: true,
+        itemsDesktop: [1199, 3],
+        itemsDesktopSmall: [979, 2],
+        nav: true,
+        navText: ["<i class='fas fa-angle-right'>", "<i class='fas fa-angle-left'>"],
+        dots: false,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 2
+            },
+            1000: {
+                items: 3
+            }
+        }
+    });
+
+</script>
+
+
 <!-- -->
 <script>
 
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
     // This piece of code for toaster notification....
     //---------------------------------------------------
 
@@ -447,6 +443,8 @@
     //*************************************************************
 
 </script>
+@yield('scripts')
+
 
 
 </body>
