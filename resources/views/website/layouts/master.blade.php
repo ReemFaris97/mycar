@@ -72,52 +72,53 @@
 <!-- End Footer -->
 
 
+
 <!----------------- Start Chat Modal -------------------->
 <div id="modal-container" class="modaling">
     <div class="modal-background">
         <div class="modal">
             <span class="closeit"> <i class="fas fa-times"></i> </span>
-            <h2>@lang('web.direct_q_customer_service')</h2>
+            <h2>سؤال مباشر - خدمة العملاء</h2>
 
             <div class="chats" id="chats">
 
-
                 @forelse($webChannel->messages as $message)
-                    @if($message->user_id !=auth()->id())
-                <div class="chat1 recieve">
-                    <div class="chat-img">
-                        <img src="{{asset('website/img/1.png')}}">
-                    </div>
-                    <div class="chat-body">
-                        <p>
-                           {{$message->body}}
-                        </p>
-                    </div>
-                </div>
+                                    @if($message->user_id !=auth()->id())
+                                <div class="chat1 recieve">
+                                    <div class="chat-img">
+                                        <img src="{{asset('website/img/1.png')}}">
+                                    </div>
+                                    <div class="chat-body">
+                                        <p>
+                                           {{$message->body}}
+                                        </p>
+                                    </div>
+                                </div>
+{{----}}
+                                    @else
+{{----}}
+                                <div class="chat1 send">
+                                    <div class="chat-img">
+                                        <img src="{{asset('website/img/1.png')}}">
+                                    </div>
+                                    <div class="chat-body">
+                                        <p>
+                                            {{$message->body}}
+                                        </p>
+                                    </div>
+                                </div>
+                                    @endif
+{{----}}
+                                @empty
+{{----}}
+                                @endforelse
 
-                    @else
-
-                <div class="chat1 send">
-                    <div class="chat-img">
-                        <img src="{{asset('website/img/1.png')}}">
-                    </div>
-                    <div class="chat-body">
-                        <p>
-                            {{$message->body}}
-                        </p>
-                    </div>
-                </div>
-                    @endif
-
-                @empty
-
-                @endforelse
 
 
             </div>
 
             <form class="chatting" id="my_form">
-                <textarea rows="4" cols="95" id="inbox" class="form-control input-lg" data-fv-field="inbox" placeholder="@lang('web.enter_message')"></textarea>
+                <textarea rows="4" cols="95" id="inbox" class="form-control input-lg" data-fv-field="inbox" placeholder="اكتب رسالتك..."></textarea>
                 <button type="button" id="sendnow"> <i class="fas fa-arrow-right"></i> </button>
             </form>
 
@@ -130,6 +131,8 @@
     </div>
 </div>
 <!----------------- End Chat Modal -------------------->
+
+
 
 <!----------------- Start Call Modal -------------------->
 <div id="modal-call" class="">
@@ -174,146 +177,6 @@
      SCRIPT
      ===================================-->
 @include('website.layouts.scripts')
-<script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    // Initialize Firebase ....
-    var config = {
-        apiKey: "AIzaSyDYkaLf81OdUKQrb5ASJMfLRAo-zZGbhTQ",
-        authDomain: "mycar-part.firebaseapp.com",
-        databaseURL: "https://mycar-part.firebaseio.com",
-        projectId: "mycar-part",
-        storageBucket: "",
-        messagingSenderId: "439752799792",
-        appId: "1:439752799792:web:252944a701d8d363"
-    };
-    firebase.initializeApp(config);
-
-    // Retrieve Firebase Messaging object.
-    const messaging = firebase.messaging();
-
-    messaging.requestPermission().then(function() {
-        console.log('Notification permission granted.');
-        // TODO(developer): Retrieve an Instance ID token for use with FCM.
-        // ...
-        getRegToken();
-
-
-    }).catch(function(err) {
-        console.log('Unable to get permission to notify.', err);
-    });
-
-
-
-
-    function getRegToken(){
-        // Get Instance ID token. Initially this makes a network call, once retrieved
-        // subsequent calls to getToken will return from cache.
-        messaging.getToken().then(function(currentToken) {
-            if (currentToken) {
-                console.log(currentToken);
-                saveTokenInDatabase(currentToken);
-                // updateUIForPushEnabled(currentToken);
-                setTokenSentToServer(true);
-            } else {
-                // Show permission request.
-                console.log('No Instance ID token available. Request permission to generate one.');
-                // Show permission UI.
-                // updateUIForPushPermissionRequired();
-                setTokenSentToServer(false);
-            }
-        }).catch(function(err) {
-            console.log('An error occurred while retrieving token. ', err);
-            //   showToken('Error retrieving Instance ID token. ', err);
-            //   setTokenSentToServer(false);
-        });
-    }
-
-
-    function setTokenSentToServer(sent) {
-        window.localStorage.setItem('sentToServer', sent ? '1' : '0');
-    }
-
-    function isTokenSentToServer() {
-        return window.localStorage.getItem('sentToServer') === '1';
-    }
-
-    function saveTokenInDatabase(currentToken){
-
-        if (userId) {
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: {id: userId, token: currentToken},
-                success: function (data) {
-                    console.log('token saved in database successfully')
-                }
-            });
-        }
-
-    }
-
-
-    messaging.onMessage(function(payload) {
-        console.log('Message received. ', payload);
-        //        title = payload.data.title;
-        //        options = {
-        //            'body':payload.data.body,
-        //            'icon':payload.data.icon,
-        //            'image':payload.data.image,
-        //        };
-
-        $('#notifyPanel').prepend(
-
-            '<li class="list-group-item"> '+
-            '<a href="'+payload.data.click_action+'" class="user-list-item"><span class="name">'+payload.data.username+'</span>'+
-            '<div class="avatar">'+
-            '<img src="'+payload.data.image+'" alt="">'+
-            '</div>'+
-            '<div class="user-desc">'+
-            '<span class="name">'+payload.data.title+'</span><span class="desc"> '+payload.data.body+' </span>'+
-            '</div>'+
-            '</a>'+
-            '</li>'
-        );
-
-        var sound = document.getElementById("myAudio");
-        if(sound.play()){
-            console.log('sound played well');
-        }
-        else
-        {
-            console.log('can not be played');
-        }
-
-
-        toastr.options = {
-            "closeButton": false,
-            "debug": false,
-            "newestOnTop": false,
-            "progressBar": false,
-            "positionClass": "toast-top-right",
-            "preventDuplicates": false,
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "20000",
-            "extendedTimeOut": "20000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        }
-
-        toastr["success"](payload.data.title,payload.data.body);
-
-
-    });
-
-</script>
 <script>
     new WOW().init();
 
@@ -383,10 +246,151 @@
 
 </script>
 
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyDYkaLf81OdUKQrb5ASJMfLRAo-zZGbhTQ",
+        authDomain: "mycar-part.firebaseapp.com",
+        databaseURL: "https://mycar-part.firebaseio.com",
+        projectId: "mycar-part",
+        storageBucket: "",
+        messagingSenderId: "439752799792",
+        appId: "1:439752799792:web:252944a701d8d363"
+    };
+    firebase.initializeApp(config);
 
+    // Retrieve Firebase Messaging object.
+    const messaging = firebase.messaging();
+
+    messaging.requestPermission().then(function() {
+        console.log('Notification permission granted.');
+        // TODO(developer): Retrieve an Instance ID token for use with FCM.
+        // ...
+        getRegToken();
+
+
+    }).catch(function(err) {
+        console.log('Unable to get permission to notify.', err);
+    });
+
+
+    function getRegToken(){
+        // Get Instance ID token. Initially this makes a network call, once retrieved
+        // subsequent calls to getToken will return from cache.
+        messaging.getToken().then(function(currentToken) {
+            if (currentToken) {
+                console.log(currentToken);
+                saveTokenInDatabase(currentToken);
+                // updateUIForPushEnabled(currentToken);
+                setTokenSentToServer(true);
+            } else {
+                // Show permission request.
+                console.log('No Instance ID token available. Request permission to generate one.');
+                // Show permission UI.
+                // updateUIForPushPermissionRequired();
+                setTokenSentToServer(false);
+            }
+        }).catch(function(err) {
+            console.log('An error occurred while retrieving token. ', err);
+            //   showToken('Error retrieving Instance ID token. ', err);
+            //   setTokenSentToServer(false);
+        });
+    }
+
+
+    function setTokenSentToServer(sent) {
+        window.localStorage.setItem('sentToServer', sent ? '1' : '0');
+    }
+
+    function isTokenSentToServer() {
+        return window.localStorage.getItem('sentToServer') === '1';
+    }
+
+    function saveTokenInDatabase(currentToken){
+
+        if (userId) {
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {id: userId, token: currentToken},
+                success: function (data) {
+                    console.log('token saved in database successfully')
+                }
+            });
+        }
+
+    }
+
+
+    messaging.onMessage(function(payload) {
+        console.log('Message received. ', payload);
+        //        title = payload.data.title;
+        //        options = {
+        //            'body':payload.data.body,
+        //            'icon':payload.data.icon,
+        //            'image':payload.data.image,
+        //        };
+
+        // $('#notifyPanel').prepend(
+        //
+        //     '<li class="list-group-item"> '+
+        //     '<a href="'+payload.data.click_action+'" class="user-list-item"><span class="name">'+payload.data.username+'</span>'+
+        //     '<div class="avatar">'+
+        //     '<img src="'+payload.data.image+'" alt="">'+
+        //     '</div>'+
+        //     '<div class="user-desc">'+
+        //     '<span class="name">'+payload.data.title+'</span><span class="desc"> '+payload.data.body+' </span>'+
+        //     '</div>'+
+        //     '</a>'+
+        //     '</li>'
+        // );
+
+        // var sound = document.getElementById("myAudio");
+        // if(sound.play()){
+        //     console.log('sound played well');
+        // }
+        // else
+        // {
+        //     console.log('can not be played');
+        // }
+
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "20000",
+            "extendedTimeOut": "20000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+
+        toastr["success"](payload.data.title,payload.data.body);
+
+
+    });
+
+</script>
 <!-- -->
 <script>
 
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     // This piece of code for toaster notification....
     //---------------------------------------------------
 
@@ -443,9 +447,6 @@
     //*************************************************************
 
 </script>
-@yield('scripts')
-
-
 
 </body>
 
