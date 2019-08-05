@@ -64,7 +64,6 @@ $(document).ready(function () {
             if (isEmptyOrSpaces(message)) {
                 alert("Enter Some Text In Textarea");
             } else {
-
                 var msgSend = $(".chat1.send").val();
                 $(".chats").append('<div class="chat1 send"><div class="chat-img"><img src="img/1.png"></div><div class="chat-body"><p class="newmsg">' + message + '</p></div></div>');
                 //      $(".newmsg").text();
@@ -75,20 +74,17 @@ $(document).ready(function () {
             $('#chats').scrollTop($('#chats')[0].scrollHeight);
             return false;
             $('#inbox').focus();
-
         }
     });
 
     $('#sendnow').click(function () {
         $('#inbox').focus();
         var message = $("#inbox").val();
-
         function isEmptyOrSpaces(str) {
             return str === null || str.match(/^ *$/) !== null;
         }
         if (isEmptyOrSpaces(message)) {
             alert("Enter Some Text In Textarea");
-
         } else {
 
             var msgSend = $(".chat1.send").val();

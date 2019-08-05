@@ -81,37 +81,27 @@
             <h2>سؤال مباشر - خدمة العملاء</h2>
 
             <div class="chats" id="chats">
+                <div class="chat1 recieve">
+                    <div class="chat-img">
+                        <img src="img/1.png">
+                    </div>
+                    <div class="chat-body">
+                        <p>
+                            مرحبا بك، كيف أساعدك ياقمر ؟
+                        </p>
+                    </div>
+                </div>
 
-                @forelse($webChannel->messages as $message)
-                                    @if($message->user_id !=auth()->id())
-                                <div class="chat1 recieve">
-                                    <div class="chat-img">
-                                        <img src="{{asset('website/img/1.png')}}">
-                                    </div>
-                                    <div class="chat-body">
-                                        <p>
-                                           {{$message->body}}
-                                        </p>
-                                    </div>
-                                </div>
-{{----}}
-                                    @else
-{{----}}
-                                <div class="chat1 send">
-                                    <div class="chat-img">
-                                        <img src="{{asset('website/img/1.png')}}">
-                                    </div>
-                                    <div class="chat-body">
-                                        <p>
-                                            {{$message->body}}
-                                        </p>
-                                    </div>
-                                </div>
-                                    @endif
-{{----}}
-                                @empty
-{{----}}
-                                @endforelse
+                <div class="chat1 send">
+                    <div class="chat-img">
+                        <img src="img/1.png">
+                    </div>
+                    <div class="chat-body">
+                        <p>
+                            شكرا يا بيه أنا مبشحتش على فكرة والله و شكرا شكرا اوى لحد كده شكرا عاوزة اكتب كلام كتير و انزل سطر عشان كده برغى الحقيقة
+                        </p>
+                    </div>
+                </div>
 
 
 
@@ -131,6 +121,8 @@
     </div>
 </div>
 <!----------------- End Chat Modal -------------------->
+
+
 
 
 
@@ -179,7 +171,6 @@
 @include('website.layouts.scripts')
 <script>
     new WOW().init();
-
 </script>
 
 <!----------- This for here only ------------>
