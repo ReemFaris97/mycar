@@ -51,7 +51,7 @@ $(document).ready(function () {
     });
 
 
-    ////////////// enter submit /////////////
+    ///////////////////// enter submit /////////////
     $('#inbox').keydown(function () {
         $('#chats').scrollTop($('#chats')[0].scrollHeight);
 
