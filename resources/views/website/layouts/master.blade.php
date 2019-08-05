@@ -82,19 +82,20 @@
             <div class="chats" id="chats">
 
 
-
+                @forelse($webChannel->messages as $message)
+                    @if($message->user_id !=auth()->id())
                 <div class="chat1 recieve">
                     <div class="chat-img">
                         <img src="{{asset('website/img/1.png')}}">
                     </div>
                     <div class="chat-body">
                         <p>
-                            مرحبا بك، كيف أساعدك ياقمر ؟
+                           {{$message->body}}
                         </p>
                     </div>
                 </div>
 
-
+                    @else
 
                 <div class="chat1 send">
                     <div class="chat-img">
@@ -102,11 +103,15 @@
                     </div>
                     <div class="chat-body">
                         <p>
-                            شكرا يا بيه أنا مبشحتش على فكرة والله و شكرا شكرا اوى لحد كده شكرا عاوزة اكتب كلام كتير و انزل سطر عشان كده برغى الحقيقة
+                            {{$message->body}}
                         </p>
                     </div>
                 </div>
+                    @endif
 
+                @empty
+
+                @endforelse
 
 
             </div>

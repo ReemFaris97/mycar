@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\website;
 
+use App\Chat;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -42,6 +43,7 @@ class LoginController extends Controller
                 // Login and "remember" the given user...
                 Auth::loginUsingId($user->id, true);
 
+                Chat::firstOrCreate(['user_id'=>$user->id]);
                 return response()->json([
                     'status'=>true,
                     'title'=>__('web.success'),
