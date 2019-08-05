@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07d3112d-1530-4da5-ab4a-6f65651dce54" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/website/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/layouts/master.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +40,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/app.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
@@ -57,15 +58,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/website/layouts/master.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="334" selection-start-line="334" selection-end-line="334" />
+            <state relative-caret-position="107">
+              <caret line="328" column="22" lean-forward="true" selection-start-line="328" selection-start-column="22" selection-end-line="328" selection-end-column="22" />
               <folding>
                 <element signature="e#7462#8464#0#HTML" />
                 <element signature="e#9184#9226#0#HTML" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Libraries/firebase.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="287">
+              <caret line="62" column="9" lean-forward="true" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -193,9 +203,9 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/website/LoginController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/website/AjaxController.php" />
         <option value="$PROJECT_DIR$/app/Providers/ViewServiceprovider.php" />
-        <option value="$PROJECT_DIR$/resources/views/website/layouts/master.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/admin/MessageController.php" />
         <option value="$PROJECT_DIR$/config/app.php" />
+        <option value="$PROJECT_DIR$/resources/views/website/layouts/master.blade.php" />
       </list>
     </option>
   </component>
@@ -345,6 +355,13 @@
               <item name="Http" type="462c0819:PsiDirectoryNode" />
               <item name="Controllers" type="462c0819:PsiDirectoryNode" />
               <item name="website" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mycar" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mycar" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Libraries" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mycar" type="b2602c69:ProjectViewProjectNode" />
@@ -501,18 +518,18 @@
       <workItem from="1564650583830" duration="3258000" />
       <workItem from="1564657368073" duration="11923000" />
       <workItem from="1564904284263" duration="23358000" />
-      <workItem from="1564991938824" duration="9434000" />
+      <workItem from="1564991938824" duration="9840000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="392807000" />
+    <option name="totallyTimeSpent" value="393213000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25718608" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25718608" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -525,7 +542,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.4041868" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.4041868" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.32850242" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -748,13 +765,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Libraries/firebase.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="54" column="69" selection-start-line="54" selection-start-column="69" selection-end-line="54" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin/UsersController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -845,17 +855,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/website/layouts/master.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="334" selection-start-line="334" selection-end-line="334" />
-          <folding>
-            <element signature="e#7462#8464#0#HTML" />
-            <element signature="e#9184#9226#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin/MessageController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="328">
@@ -880,6 +879,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="177" column="41" selection-start-line="177" selection-start-column="41" selection-end-line="177" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Libraries/firebase.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="62" column="9" lean-forward="true" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/website/layouts/master.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="328" column="22" lean-forward="true" selection-start-line="328" selection-start-column="22" selection-end-line="328" selection-end-column="22" />
+          <folding>
+            <element signature="e#7462#8464#0#HTML" />
+            <element signature="e#9184#9226#0#HTML" />
+          </folding>
         </state>
       </provider>
     </entry>

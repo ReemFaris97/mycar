@@ -325,13 +325,16 @@
 
     }
 
-    messaging.onMessage((payload) => {
-        console.log('Message received. ', payload);
-        // [START_EXCLUDE]
-        // Update the UI to include the received message.
-        // appendMessage(payload);
-        // [END_EXCLUDE]
-    });
+    messaging.onMessage(
+        alert('hello')
+    //     (payload) => {
+    //     console.log('Message received. ', payload);
+    //     // [START_EXCLUDE]
+    //     // Update the UI to include the received message.
+    //     // appendMessage(payload);
+    //     // [END_EXCLUDE]
+    // }
+    );
 
     // messaging.onMessage(function(payload) {
     //     alert('received');
