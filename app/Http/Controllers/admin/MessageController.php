@@ -43,10 +43,19 @@ class MessageController extends Controller
 
         $chat = Chat::find($chat_id);
         $receiver_id = $chat->messages()->where('user_id','!=',auth()->id())->first()->user_id;
-        $tokens = Device::where('user_id',$receiver_id)->pluck('device');
+        if($receiver_id){
+            $tokens = Device::where('user_id',$receiver_id)->pluck('device');
 
-        $firebase = new firebase();
-        $firebase->sendMessage($tokens,$message->body,null,"here is the user image");
+            $firebase = new firebase();
+            $firebase->sendMessage($tokens,$message->body,null,"here is the user image");
+            return response()->json([
+                    'status'=>true,
+                    'title'=>"نجاح",
+                    'message'=>"تم الإرسال بنجاح"
+                ]
+            );
+        }
+
 
 
 //        $this->sendNotification($message,$chat_id);
@@ -71,12 +80,7 @@ class MessageController extends Controller
 //            }
 //        }
 
-        return response()->json([
-                'status'=>true,
-                'title'=>"نجاح",
-                'message'=>"تم الإرسال بنجاح"
-            ]
-        );
+
     }
 
     public function test(Request $request,$chat_id){
@@ -88,11 +92,14 @@ class MessageController extends Controller
 
         $chat = Chat::find($chat_id);
         $receiver_id = $chat->messages()->where('user_id','!=',auth()->id())->first()->user_id;
-//        $tokens = Device::where('user_id',$receiver_id)->pluck('device');
+        if($receiver_id){
+            //        $tokens = Device::where('user_id',$receiver_id)->pluck('device');
 
-        $firebaseObj = new firebase();
-        $firebaseObj->sendMessage(['dtH8SvSCYxs:APA91bEelHTT_Hd96Ej5EPmLObg_uNcCZ8SZ3VyIryfb0OaASn9W07GpMS3oHisWT-O0BReQ8gELAuH5o616dRISXBSN1BH5dPCUuTib69kRZcqNLDmFQocmt0ulpHjnKAzqPxAGhduy'],$message->body,null,"here is the user image");
+            $firebaseObj = new firebase();
+            $firebaseObj->sendMessage(['dtH8SvSCYxs:APA91bEelHTT_Hd96Ej5EPmLObg_uNcCZ8SZ3VyIryfb0OaASn9W07GpMS3oHisWT-O0BReQ8gELAuH5o616dRISXBSN1BH5dPCUuTib69kRZcqNLDmFQocmt0ulpHjnKAzqPxAGhduy'],$message->body,null,"here is the user image");
 
-        return "success";
+            return "success";
+        }
+
     }
 }
