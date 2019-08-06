@@ -1323,7 +1323,8 @@ li.addme {
     border: 0;
     border-radius: 0;
     padding: 0;
-        width: auto;
+    width: auto;
+    max-width: unset;
 }
 .deliver .dist-list .check-img {
     width: 25px;
@@ -1413,12 +1414,12 @@ div#temp {
 }
 
  #pac-input ,  #temp-input:focus {
-    border-color: #ff5e00;
-     left: 0 !important;
+     border-color: #ff5e00;
+    left: 0 !important;
     right: 0px !important;
-    top: 60px !important;
+    top: 10px !important;
     margin: 0px auto !important;
-    width: 100% !important;
+    width: 400px !important;
 }
 
 #title {
@@ -1710,7 +1711,9 @@ font-size: 12px !important;
     #name-piece .new-p {
     padding: 0 30px 0 0;
 }
-    
+    #pac-input ,  #temp-input:focus {
+         top: 60px !important;
+    }
 }
 @media (max-width: 500px) {
     
@@ -1804,6 +1807,10 @@ font-size: 12px !important;
     }
     .dist-list .rad b {
         font-size: 12px !important;
+    }
+    
+     #pac-input ,  #temp-input:focus {
+         width: 100% !important;
     }
     
 }
