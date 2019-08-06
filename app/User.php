@@ -110,8 +110,6 @@ class User extends Authenticatable
     }
 
 
-
-
 //    public function generateLoginCode(){
 //        $code = '1234';
 //        $this->login_code = $code;

@@ -42,7 +42,7 @@ class MessageController extends Controller
         $message->load(['user']);
 
         $chat = Chat::find($chat_id);
-        $receiver_id = $chat->messages()->where('user_id','!=',auth()->id())->first()->user_id;
+        $receiver_id = $chat->user_id;
         if($receiver_id){
             $tokens = Device::where('user_id',$receiver_id)->pluck('device');
 

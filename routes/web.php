@@ -223,6 +223,8 @@ Route::group(['namespace'=>'website'], function (){
 Route::group(['namespace'=>'website','middleware'=>'userMiddleware'], function (){
     Route::post('user/update/token','AjaxController@updateUserToken')->name('web.update.token');
 
+    Route::post('/message/{id}', 'MessageController@store')->name('web.message.store');
+
 
 
     Route::get('/home','HomeController@home')->name('web.home');
