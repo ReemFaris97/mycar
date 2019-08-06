@@ -838,7 +838,7 @@ div#appended-pic {
     width: 50%;
 }
 .inDetails li {
-    margin: 0 0 10px 0;
+    margin: 0 0 15px 0;
 }
 .piece-sm{
     width: 70px;
@@ -858,10 +858,7 @@ div#appended-pic {
 /******* Custom Checkmark *****************/
 
 .new-p{
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
+    text-align: right;
     vertical-align: middle;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -871,6 +868,7 @@ div#appended-pic {
     margin: 0;
     padding: 0;
         cursor: pointer;
+        padding: 0 37px 0 0;
 }
 
 .new-p input {
@@ -883,10 +881,10 @@ div#appended-pic {
 .new-p .checkmark {
 position: absolute;
     top: 0;
-    left: 0;
     right: 0;
-    width: 100%;
-    height: 100%;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
     text-align: center;
     margin: 0 auto;
     background-color: #eee;

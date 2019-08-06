@@ -70,7 +70,7 @@ $(document).ready(function () {
                 //      $('#my_form').submit();
                 //      alert("Your message is sent succesfully:- " );
             }
-            $("textarea").val('');
+            $("#inbox").val('');
             $('#chats').scrollTop($('#chats')[0].scrollHeight);
             return false;
             $('#inbox').focus();
@@ -94,7 +94,7 @@ $(document).ready(function () {
             //                $('#my_form').submit();
             //                alert("Your message is sent succesfully:- " );
         }
-        $("textarea").val('');
+        $("#inbox").val('');
 
         //                var len = $('#chats').height();
         //                console.log(len);
