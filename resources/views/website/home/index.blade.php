@@ -171,11 +171,11 @@
                 <form data-parsley-validate novalidate id="CommentForm" method="post" action="{{route('web.suggest.comment')}}">
                         {{csrf_field()}}
                     <div class="form-group">
-                        <textarea name="comment" required data-parsley-required-message="@lang('web.field_required')" rows="4" cols="95" id="inbox" class="form-control input-lg" data-fv-field="inbox" placeholder="@lang('web.write_suggest')"></textarea>
+                        <textarea name="comment" required data-parsley-required-message="@lang('web.field_required')" rows="4" cols="95" class="form-control input-lg" data-fv-field="inbox" placeholder="@lang('web.write_suggest')"></textarea>
                         <input type="hidden" name="user_id" value="3">
                     </div>
                     <div class="modal-footer">
-                        <button id="commentSubmitButton" type="submit">@lang('web.send')</button>
+                        <button id="commentSubmitButton" type="submit" data-dismiss="modal">@lang('web.send')</button>
                     </div>
                 </form>
 
