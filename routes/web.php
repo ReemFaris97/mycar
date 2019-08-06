@@ -244,6 +244,9 @@ Route::group(['namespace'=>'website','middleware'=>'userMiddleware'], function (
     Route::post('/notifications/delete','ProfileController@deleteNotificaiton')->name('web.delete.notification');
 
 
+    Route::get('/start-order','OrdersController@getWizard')->name('web.order.getWizard');
+
+
     route::post('user/logout','LoginController@logout')->name('web.user.logout');
 
 });

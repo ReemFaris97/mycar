@@ -93,7 +93,7 @@
             <img src="{{asset('website/img/index.png')}}">
         </a>
 
-        <a href="wizard-divider.html" class="apply"> @lang('web.search_supplier') </a>
+{{--        <a href="wizard-divider.html" class="apply"> @lang('web.search_supplier') </a>--}}
 
     </div>
 </section>

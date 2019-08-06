@@ -1,128 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('website.layouts.master')
 
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="HandheldFriendly" content="true">
-    <title> قطعة سيارتى </title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="shortcut icon" href="img/logo-sm.png">
-    <link rel="stylesheet" href="css/all.min.css">
-    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
-    <link rel="stylesheet" href="css/select2.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/wizard.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.foundation.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.jqueryui.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.material.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.semanticui.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.uikit.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables_themeroller.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
-</head>
+@section('styles')
+    <style>
+        .parsley-error , .parsley-errors-list {
+            color: red;
+        }
+    </style>
+    <link rel="stylesheet" href="{{asset('website/css/wizard.css')}}">
+@endsection
 
-<body>
-    <div class="body-overlay"></div>
-    <!-- Start Loading-Page -->
-    <div class="loader">
-        <div class="loading-window">
-            <div class="car">
-                <div class="strike"></div>
-                <div class="strike strike2"></div>
-                <div class="strike strike3"></div>
-                <div class="strike strike4"></div>
-                <div class="strike strike5"></div>
-                <div class="car-detail spoiler"></div>
-                <div class="car-detail back"></div>
-                <div class="car-detail center"></div>
-                <div class="car-detail center1"></div>
-                <div class="car-detail front"></div>
-                <div class="car-detail wheel"></div>
-                <div class="car-detail wheel wheel2"></div>
-            </div>
-            <div class="text">
-                <span>Loading</span><span class="dots">...</span>
-            </div>
-        </div>
-    </div>
-    <!-- End Loading-Page -->
-    <!-- Start Top Nav -->
-    <section class="top-nav">
-        <div class="row">
-            <div class="col-md-7 col-sm-6 col-xs-5 no-padd-sm">
-                <div class="top-r">
-                    جميع قطع الغيار أصلية
-                </div>
-            </div>
-            <div class="col-md-5 col-sm-6 col-xs-7 no-padding">
-                <ul class="top-l">
-                    <li>
-                        <a href="sign-divider.html">انضم كمورد</a>
-                    </li> .
-                    <!---- if in arabic -->
-                    <li class="lang">
-                        <a href="#">Eng</a> -
-                        <span>العربية</span>
-                    </li>
-                    <!---- if in english -->
-                    <!--
-                    <li class="lang">
-                        <a href="#">العربية</a> - 
-                        <span>Eng</span>
-                    </li>
--->
-                </ul>
-            </div>
-        </div>
-    </section>
-    <!-- End Top Nav -->
-    <!--Start Navbar-->
-    <div class="navbar">
-        <div class="row">
-            <div class="col-md-2 col-sm-2 col-xs-4 no-padding">
-                <div class="nav-right">
-                    <a href="index.html" class="logo-nav"><img src="img/logo.png"></a>
-                </div>
-            </div>
-            <div class="col-md-7 col-sm-6 col-xs-2 no-padding">
-                <div class="right-one">
-                    <div id="nav-icon1">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                    <div class="navy">
-                        <ul class="nav cf" id="ul1">
-                            <li><a href="begin.html">الرئيسية</a></li>
-                            <li><a href="account-information.html">حسابى</a></li>
-                            <li><a href="who-us.html">من نحن</a></li>
-                            <li><a href="contact.html">اتصل بنا</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4 col-xs-6 no-padding">
-                <ul class="nav-left">
-                    <li>
-                        <button class="modal-btn" id="seven">
-                            سؤال مباشر
-                        </button>
-                    </li>
-                    <li>
-                        <button class="modal-btn" id="two">
-                            اتصل بنا
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!--End Navbar-->
+@section('content')
+
     <section class="wizards">
         <div class="container">
             <div id="jquery-steps">
@@ -139,14 +27,14 @@
                                         <div class="rad1">
                                             <input type="radio" name="choiceb" id="choose-1" class="required" />
                                             <label for="choose-1" class="lbl1">
-                                                <img src="img/toyota.jpg" />
+                                                <img src="{{asset('website/img/toyota.jpg')}}" />
                                                 <p>تويوتا</p>
                                             </label>
                                         </div>
                                         <div class="rad1">
                                             <input type="radio" name="choiceb" id="choose-2" class="required" />
                                             <label for="choose-2" class="lbl1">
-                                                <img src="img/lexus.png" />
+                                                <img src="{{asset('website/img/lexus.png')}}" />
                                                 <p>ليكزس</p>
                                             </label>
                                         </div>
@@ -211,6 +99,8 @@
                         </div>
                     </form>
                 </section>
+
+
                 <h3></h3>
                 <section>
                     <h3 class="h3-after">بيانات الطلب</h3>
@@ -248,11 +138,12 @@
                         </div>
                     </form>
                 </section>
+
+
                 <h3></h3>
                 <section>
                     <button type="button" class="delt-all">إلغاء الطلب</button>
                     <h3 class="h3-after">الطلبات</h3>
-
                     <form id="orders-form" action="distributers.html" novalidate="validate">
                         <!--
                         <div class="row">
@@ -309,7 +200,7 @@
                                             <input class="required" type="radio" name="distributer" data-toggle="modal" data-target="#not-avl" data-dismiss='modal'>
                                             <span class="checkmark"></span>
                                             <span class="check-img">
-                                                <img src="img/logo.png">
+                                                <img src="{{asset('website/img/logo.png')}}">
                                             </span>
                                             <b>مواعيد العمل :
                                                 <span> السبت - الخميس , 9 صباحا - 11 مساءا </span>
@@ -320,7 +211,7 @@
                                             <input class="required" type="radio" name="distributer">
                                             <span class="checkmark"></span>
                                             <span class="check-img">
-                                                <img src="img/logo.png">
+                                                <img src="{{asset('website/img/logo.png')}}">
                                             </span>
                                             <b>مواعيد العمل :
                                                 <span> السبت - الخميس , 9 صباحا - 11 مساءا </span>
@@ -331,7 +222,7 @@
                                             <input class="required" type="radio" name="distributer">
                                             <span class="checkmark"></span>
                                             <span class="check-img">
-                                                <img src="img/logo.png">
+                                                <img src="{{asset('website/img/logo.png')}}">
                                             </span>
                                             <b>مواعيد العمل :
                                                 <span> السبت - الخميس , 9 صباحا - 11 مساءا </span>
@@ -346,138 +237,10 @@
             </div>
         </div>
     </section>
-    <!-- Start Footer -->
-    <section class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-6">
-                        <div class="foot1">
-                            <h3>عن قطعة سيارتى</h3>
-                            <ul>
-                                <li> <a href="who-us.html">من نحن</a> </li>
-                                <li> <a href="sign-divider.html">انضم الينا</a> </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3 col-xs-6">
-                        <div class="foot1">
-                            <h3>قبل أن تبدأ</h3>
-                            <ul>
-                                <li> <a href="terms.html">الشروط والأحكام</a> </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3 col-xs-6">
-                        <div class="foot1">
-                            <h3>اتصل بنا</h3>
-                            <ul>
-                                <li> <a href="mailto:reem@sayarty.com">reem@sayarty.com</a> </li>
-                                <li> <a href="https://wa.me/15551234567">+15551234567</a> </li>
-                                <li> Suadi Arabia - Al qassim </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3 col-xs-6">
-                        <div class="foot1">
-                            <h3>تابعونا</h3>
-                            <ul class="social">
-                                <li><a href="#"> <i class="fab fa-instagram"></i> </a></li>
-                                <li><a href="#"> <i class="fab fa-twitter"></i> </a></li>
-                                <li><a href="#"> <i class="fab fa-facebook"></i> </a></li>
-                                <li><a href="#"> <i class="fab fa-google-plus"></i> </a></li>
-                                <li><a href="#"> <i class="fab fa-whatsapp"></i> </a></li>
-                                <li><a href="#"> <i class="fab fa-snapchat-ghost"></i> </a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-xs-12">
-                        <form class="subsc">
-                            <h3>ليصلك كل جديد</h3>
-                            <input type="text" class="form-control" placeholder="البريد الالكترونى...">
-                            <button type="submit">
-                                ارسال
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="sharing">
-            <span>مشاركة الموقع : </span>
-            <ul>
-                <li><a href="#"> <i class="fab fa-instagram"></i> </a></li>
-                <li><a href="#"> <i class="fab fa-twitter"></i> </a></li>
-                <li><a href="#"> <i class="fab fa-facebook"></i> </a></li>
-                <li><a href="#"> <i class="fab fa-google-plus"></i> </a></li>
-                <li><a href="#"> <i class="fab fa-whatsapp"></i> </a></li>
-                <li><a href="#"> <i class="fab fa-snapchat-ghost"></i> </a></li>
-            </ul>
-        </div>
-        <div class="copyright">
-            &copy; Qet3et Sayaraty Website by <a href="http://panorama-alqassim.com">Panorama Al Qassim</a>
-        </div>
-    </section>
-    <!-- End Footer -->
-    <!----------------- Start Chat Modal -------------------->
-    <div id="modal-container" class="modaling">
-        <div class="modal-background">
-            <div class="modal">
-                <span class="closeit"> <i class="fas fa-times"></i> </span>
-                <h2>سؤال مباشر - خدمة العملاء</h2>
-                <div class="chats" id="chats">
-                    <div class="chat1 recieve">
-                        <div class="chat-img">
-                            <img src="img/1.png">
-                        </div>
-                        <div class="chat-body">
-                            <p>
-                                مرحبا بك، كيف أساعدك ياقمر ؟
-                            </p>
-                        </div>
-                    </div>
-                    <div class="chat1 send">
-                        <div class="chat-img">
-                            <img src="img/1.png">
-                        </div>
-                        <div class="chat-body">
-                            <p>
-                                شكرا يا بيه أنا مبشحتش على فكرة والله و شكرا شكرا اوى لحد كده شكرا عاوزة اكتب كلام كتير و انزل سطر عشان كده برغى الحقيقة
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <form class="chatting" id="my_form">
-                    <textarea rows="4" cols="95" id="inbox" class="form-control input-lg" data-fv-field="inbox" placeholder="اكتب رسالتك..."></textarea>
-                    <button type="button" id="sendnow"> <i class="fas fa-arrow-right"></i> </button>
-                </form>
-                <!--
-                <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
-                    <rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
-                </svg>
--->
-            </div>
-        </div>
-    </div>
-    <!----------------- End Chat Modal -------------------->
-    <!----------------- Start Call Modal -------------------->
-    <div id="modal-call" class="">
-        <div class="modal-background">
-            <div class="modal">
-                <span class="closeit"> <i class="fas fa-times"></i> </span>
-                <a href="index.html"> <img src="img/logo.png"> </a>
-                <p>
-                    سيتم الاتصال بك على الرقم <span>+965158156</span>
-                </p>
-                <p>
-                    من أحد موظفين خدمة العملاء
-                </p>
-                <p id="demo" class="timer"></p>
-                <input class="end-details" type="submit" value="تقديم عرض">
-            </div>
-        </div>
-    </div>
-    <!----------------- End Call Modal -------------------->
+
+
+            <!-- ------------------------------ Order Modals ---------------------------------------------- -->
+
 
     <!-- name-piece Modal -->
     <div class="modal fade modalIn" id="name-piece" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -592,55 +355,55 @@
                                 <div class="filtrtion">
                                     <div class="suggest item1">
                                         <a data-toggle="modal" data-target="#details" data-dismiss='modal' class="to-dtls">
-                                            <img src="img/slide1.png" class="sgsting">
+                                            <img src="{{asset('website/img/slide1.png')}}" class="sgsting">
                                             <h4 class="">اسم القطعة اسم القطعة اسم القطعة اسم القطعة اسم القطعة </h4>
                                         </a>
                                     </div>
                                     <div class="suggest item1">
                                         <a data-toggle="modal" data-target="#details" data-dismiss='modal' class="to-dtls">
-                                            <img src="img/slide1.png" class="sgsting">
+                                            <img src="{{asset('website/img/slide1.png')}}" class="sgsting">
                                             <h4 class="">اسم القطعة اسم القطعة اسم القطعة اسم القطعة اسم القطعة </h4>
                                         </a>
                                     </div>
                                     <div class="suggest item1">
                                         <a data-toggle="modal" data-target="#details" data-dismiss='modal' class="to-dtls">
-                                            <img src="img/slide1.png" class="sgsting">
+                                            <img src="{{asset('website/img/slide1.png')}}" class="sgsting">
                                             <h4 class="">اسم القطعة اسم القطعة اسم القطعة اسم القطعة اسم القطعة </h4>
                                         </a>
                                     </div>
                                     <div class="suggest item1">
                                         <a data-toggle="modal" data-target="#details" data-dismiss='modal' class="to-dtls">
-                                            <img src="img/slide1.png" class="sgsting">
+                                            <img src="{{asset('website/img/slide1.png')}}" class="sgsting">
                                             <h4 class="">اسم القطعة اسم القطعة اسم القطعة اسم القطعة اسم القطعة </h4>
                                         </a>
                                     </div>
                                     <div class="suggest item1">
                                         <a data-toggle="modal" data-target="#details" data-dismiss='modal' class="to-dtls">
-                                            <img src="img/slide1.png" class="sgsting">
+                                            <img src="{{asset('website/img/slide1.png')}}" class="sgsting">
                                             <h4 class="">اسم القطعة اسم القطعة اسم القطعة اسم القطعة اسم القطعة </h4>
                                         </a>
                                     </div>
                                     <div class="suggest item1">
                                         <a data-toggle="modal" data-target="#details" data-dismiss='modal' class="to-dtls">
-                                            <img src="img/slide1.png" class="sgsting">
+                                            <img src="{{asset('website/img/slide1.png')}}" class="sgsting">
                                             <h4 class="">اسم القطعة اسم القطعة اسم القطعة اسم القطعة اسم القطعة </h4>
                                         </a>
                                     </div>
                                     <div class="suggest item1">
                                         <a data-toggle="modal" data-target="#details" data-dismiss='modal' class="to-dtls">
-                                            <img src="img/slide1.png" class="sgsting">
+                                            <img src="{{asset('website/img/slide1.png')}}" class="sgsting">
                                             <h4 class="">اسم القطعة اسم القطعة اسم القطعة اسم القطعة اسم القطعة </h4>
                                         </a>
                                     </div>
                                     <div class="suggest item1">
                                         <a data-toggle="modal" data-target="#details" data-dismiss='modal' class="to-dtls">
-                                            <img src="img/slide1.png" class="sgsting">
+                                            <img src="{{asset('website/img/slide1.png')}}" class="sgsting">
                                             <h4 class="">اسم القطعة اسم القطعة اسم القطعة اسم القطعة اسم القطعة </h4>
                                         </a>
                                     </div>
                                     <div class="suggest item1">
                                         <a data-toggle="modal" data-target="#details" data-dismiss='modal' class="to-dtls">
-                                            <img src="img/slide1.png" class="sgsting">
+                                            <img src="{{asset('website/img/slide1.png')}}" class="sgsting">
                                             <h4 class="">اسم القطعة اسم القطعة اسم القطعة اسم القطعة اسم القطعة </h4>
                                         </a>
                                     </div>
@@ -664,8 +427,8 @@
                     <section class="dtls-piece">
                         <div class="row">
                             <div class="col-lg-4 col-md-3 col-xs-12">
-                                <a class="piece1" data-fancybox="Gallery" data-caption="اسم القطعة" href="img/slide1.png">
-                                    <img src="img/slide1.png">
+                                <a class="piece1" data-fancybox="Gallery" data-caption="اسم القطعة" href="{{asset('website/img/slide1.png')}}">
+                                    <img src="{{asset('website/img/slide1.png')}}">
                                 </a>
                             </div>
                             <div class="col-lg-8 col-md-9 col-xs-12">
@@ -673,8 +436,8 @@
                                     <li>
                                         <ul class="inDetails">
                                             <li>
-                                                <a class="piece-sm" data-fancybox="Gallery" data-caption="اسم القطعة" href="img/slide1.png">
-                                                    <img src="img/slide1.png">
+                                                <a class="piece-sm" data-fancybox="Gallery" data-caption="اسم القطعة" href="{{asset('website/img/slide1.png')}}">
+                                                    <img src="{{asset('website/img/slide1.png')}}">
                                                 </a>
                                             </li>
                                             <li>
@@ -693,8 +456,8 @@
                                     <li>
                                         <ul class="inDetails">
                                             <li>
-                                                <a class="piece-sm" data-fancybox="Gallery" data-caption="اسم القطعة" href="img/slide1.png">
-                                                    <img src="img/slide1.png">
+                                                <a class="piece-sm" data-fancybox="Gallery" data-caption="اسم القطعة" href="{{asset('website/img/slide1.png')}}">
+                                                    <img src="{{asset('website/img/slide1.png')}}">
                                                 </a>
                                             </li>
                                             <li>
@@ -714,8 +477,8 @@
                                     <li>
                                         <ul class="inDetails">
                                             <li>
-                                                <a class="piece-sm" data-fancybox="Gallery" data-caption="اسم القطعة" href="img/slide1.png">
-                                                    <img src="img/slide1.png">
+                                                <a class="piece-sm" data-fancybox="Gallery" data-caption="اسم القطعة" href="{{asset('website/img/slide1.png')}}">
+                                                    <img src="{{asset('website/img/slide1.png')}}">
                                                 </a>
                                             </li>
                                             <li>
@@ -748,7 +511,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><i class="fas fa-times"></i></button>
                 </div>
-                <div class="logo-nav"><img src="img/logo.png"></div>
+                <div class="logo-nav"><img src="{{asset('website/img/logo.png')}}"></div>
                 <div class="choosing">
                     <p>
                         الموزع غير متاح حاليا سنذكرك عندما يكون متاح
@@ -759,20 +522,13 @@
             </div>
         </div>
     </div>
-    <!--Scroll Button-->
-    <div id="scroll-top">
-        <i class="fa fa-angle-up"></i>
-    </div>
-    <!-- Strat End -->
-    <!--===============================
-         SCRIPT
-         ===================================-->
-    <script src="js/jquery-2.2.4.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+@endsection
+
+@section('scripts')
     <!-- Start Form -->
     <!-- jQuery easing plugin -->
-    <script src="js/jquery.validate.min.js" type="text/javascript"></script>
-    <script src="js/jquery.steps.js" type="text/javascript"></script>
+    <script src="{{asset('website/js/jquery.validate.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('website/js/jquery.steps.js')}}" type="text/javascript"></script>
     <script>
         $(document).ready(function() {
             $('#account-form').validate({
@@ -824,10 +580,11 @@
 
     </script>
     <!-- End Form -->
-    <script src="js/jquery.fancybox.min.js"></script>
-    <script src="js/all.min.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/select2.full.js" type="text/javascript"></script>
+    <script src="{{asset('website/js/jquery.fancybox.min.js')}}"></script>
+
+    <!-- Select_2 -->
+
+    <script src="{{asset('website/js/select2.full.js')}}" type="text/javascript"></script>
     <script>
         $(document).ready(function() {
             $(".js-select2").select2();
@@ -987,43 +744,4 @@
 
     </script>
     <!-------------------->
-    <!----------- Input Required ----------->
-    <!--
-    <script>
-        $(document).ready(function() {
-            $("#account-form").validate({
-                rules: {
-                    "choiseC]": "required"
-                },
-                messages: {
-                    "choiseC": "Please select category",
-                }
-            });
-        });
-    </script>
--->
-
-    <!--------------------->
-    <!--------- Data Table ---------------->
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.foundation.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.jqueryui.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.material.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.semanticui.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.uikit.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('.mytable').DataTable({
-                responsive: true
-            });
-        });
-
-    </script>
-</body>
-
-</html>
+@endsection

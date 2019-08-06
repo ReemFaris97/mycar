@@ -9,4 +9,5 @@
 <link rel="stylesheet" href="{{asset('website/css/owl.carousel.css')}}">
 <link rel="stylesheet" href="{{asset('website/css/jquery.fancybox.min.css')}}">
 <!-- -->
+<link rel="stylesheet" href="{{asset('website/css/select2.min.css')}}">
 <link rel="stylesheet" href="{{asset('website/css/style.css')}}">

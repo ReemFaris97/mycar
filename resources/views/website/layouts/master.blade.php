@@ -83,7 +83,7 @@
             <div class="chats" id="chats">
                 <div class="chat1 recieve">
                     <div class="chat-img">
-                        <img src="img/1.png">
+                        <img src="{{asset('website/img/1.png')}}">
                     </div>
                     <div class="chat-body">
                         <p>
@@ -94,7 +94,7 @@
 
                 <div class="chat1 send">
                     <div class="chat-img">
-                        <img src="img/1.png">
+                        <img src="{{asset('website/img/1.png')}}">
                     </div>
                     <div class="chat-body">
                         <p>
