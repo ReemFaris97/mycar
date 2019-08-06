@@ -713,7 +713,7 @@ div#appended-pic {
 }
 
 .select2-container{
-    z-index: 9999;
+    z-index: 9999999;
 }
 
 .filtrtion{
@@ -1400,15 +1400,16 @@ div#temp {
 }
 
  #pac-input ,  #temp-input {
-    background-color: #eee;
+background-color: #eee;
     font-size: 15px;
     font-weight: 300;
-    margin-left: 12px;
-    padding: 0 11px 0 13px;
+    margin: 0 auto !important;
+    padding: 0 11px 0 13px !important;
     text-overflow: ellipsis;
-    width: 80% !important;
-    position: relative;
-     right: 0;
+    width: 400px !important;
+    position: relative !important;
+    right: 0;
+    top: 20px !important;
 }
 
  #pac-input ,  #temp-input:focus {
@@ -1558,6 +1559,9 @@ table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before,
     }
     .distributers b span {
         margin: 0 2px 0 0;
+    }
+    #pac-input, #temp-input {
+        top: 60px !important;
     }
 }
 @media (max-width: 767px) {
@@ -1709,9 +1713,7 @@ font-size: 12px !important;
     #name-piece .new-p {
     padding: 0 30px 0 0;
 }
-    #pac-input ,  #temp-input:focus {
-         top: 60px !important;
-    }
+
 }
 @media (max-width: 500px) {
     
@@ -1808,7 +1810,11 @@ font-size: 12px !important;
     }
     
      #pac-input ,  #temp-input:focus {
-         width: 100% !important;
+         width: 90% !important;
+    }
+    .deliver .dist-list .checking {
+        font-size: 13px;
+        padding: 4px 0;
     }
     
 }
