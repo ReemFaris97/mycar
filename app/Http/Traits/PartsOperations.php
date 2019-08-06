@@ -23,6 +23,8 @@ trait PartsOperations
     }
 
     public function AddPartImages($request,$part){
+        $parent_id = $part->id;
+
         $ar_names=  $request->ar_name;
         $en_names=  $request->en_name;
         $codes = $request->codes;
@@ -30,12 +32,13 @@ trait PartsOperations
         $images = $request->images;
 //        foreach ($images as $image)
         for ($i=0;$i < count($ar_names);$i++){
-            $part->part_images()->create([
+            Part::create([
+                'parent_id'=>$parent_id,
                 'ar_name'=>$ar_names[$i],
                 'en_name'=>$en_names[$i],
                 'code'=>$codes[$i],
                 'image'=>arrayUploader($request,'images',$i),
-                'number'=>$numbers[$i],
+                'number'=>$numbers[$i]
             ]);
         }
 

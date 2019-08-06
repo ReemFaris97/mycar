@@ -11,3 +11,4 @@
 <!-- -->
 <link rel="stylesheet" href="{{asset('website/css/select2.min.css')}}">
 <link rel="stylesheet" href="{{asset('website/css/style.css')}}">
+<link rel="stylesheet" href="{{asset('website/css/wizard.css')}}">

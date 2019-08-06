@@ -12,10 +12,10 @@ class CreateOrdersTable extends Migration {
 			$table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('company_id');
             $table->unsignedBigInteger('company_model_id');
-            $table->unsignedBigInteger('city_id');
+//            $table->unsignedBigInteger('city_id');
 
             $table->integer('year');
-            $table->enum('parts_type', array('new', 'used'));
+            $table->enum('parts_type', array('original', 'used','commercial'));
             $table->string('form_image')->nullable();
             $table->string('structure_number')->nullable();
             $table->enum('payment_type', array('cash', 'online','network'));
@@ -32,9 +32,9 @@ class CreateOrdersTable extends Migration {
 
             $table->foreign('company_model_id')->references('id')->on('company_models')
                 ->onDelete('cascade');
-
-            $table->foreign('city_id')->references('id')->on('cities')
-                ->onDelete('cascade');
+//
+//            $table->foreign('city_id')->references('id')->on('cities')
+//                ->onDelete('cascade');
 
 
 

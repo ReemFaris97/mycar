@@ -6,7 +6,10 @@
             color: red;
         }
     </style>
-    <link rel="stylesheet" href="{{asset('website/css/wizard.css')}}">
+    <link rel="stylesheet" href="{{asset('website/css/jquery.fancybox.min.css')}}">
+
+
+
 @endsection
 
 @section('content')
@@ -355,55 +358,55 @@
                                 <div class="filtrtion">
                                     <div class="suggest item1">
                                         <a data-toggle="modal" data-target="#details" data-dismiss='modal' class="to-dtls">
-                                            <img src="{{asset('website/img/slide1.png')}}" class="sgsting">
+                                            <img src="img/slide1.png" class="sgsting">
                                             <h4 class="">اسم القطعة اسم القطعة اسم القطعة اسم القطعة اسم القطعة </h4>
                                         </a>
                                     </div>
                                     <div class="suggest item1">
                                         <a data-toggle="modal" data-target="#details" data-dismiss='modal' class="to-dtls">
-                                            <img src="{{asset('website/img/slide1.png')}}" class="sgsting">
+                                            <img src="img/slide1.png" class="sgsting">
                                             <h4 class="">اسم القطعة اسم القطعة اسم القطعة اسم القطعة اسم القطعة </h4>
                                         </a>
                                     </div>
                                     <div class="suggest item1">
                                         <a data-toggle="modal" data-target="#details" data-dismiss='modal' class="to-dtls">
-                                            <img src="{{asset('website/img/slide1.png')}}" class="sgsting">
+                                            <img src="img/slide1.png" class="sgsting">
                                             <h4 class="">اسم القطعة اسم القطعة اسم القطعة اسم القطعة اسم القطعة </h4>
                                         </a>
                                     </div>
                                     <div class="suggest item1">
                                         <a data-toggle="modal" data-target="#details" data-dismiss='modal' class="to-dtls">
-                                            <img src="{{asset('website/img/slide1.png')}}" class="sgsting">
+                                            <img src="img/slide1.png" class="sgsting">
                                             <h4 class="">اسم القطعة اسم القطعة اسم القطعة اسم القطعة اسم القطعة </h4>
                                         </a>
                                     </div>
                                     <div class="suggest item1">
                                         <a data-toggle="modal" data-target="#details" data-dismiss='modal' class="to-dtls">
-                                            <img src="{{asset('website/img/slide1.png')}}" class="sgsting">
+                                            <img src="img/slide1.png" class="sgsting">
                                             <h4 class="">اسم القطعة اسم القطعة اسم القطعة اسم القطعة اسم القطعة </h4>
                                         </a>
                                     </div>
                                     <div class="suggest item1">
                                         <a data-toggle="modal" data-target="#details" data-dismiss='modal' class="to-dtls">
-                                            <img src="{{asset('website/img/slide1.png')}}" class="sgsting">
+                                            <img src="img/slide1.png" class="sgsting">
                                             <h4 class="">اسم القطعة اسم القطعة اسم القطعة اسم القطعة اسم القطعة </h4>
                                         </a>
                                     </div>
                                     <div class="suggest item1">
                                         <a data-toggle="modal" data-target="#details" data-dismiss='modal' class="to-dtls">
-                                            <img src="{{asset('website/img/slide1.png')}}" class="sgsting">
+                                            <img src="img/slide1.png" class="sgsting">
                                             <h4 class="">اسم القطعة اسم القطعة اسم القطعة اسم القطعة اسم القطعة </h4>
                                         </a>
                                     </div>
                                     <div class="suggest item1">
                                         <a data-toggle="modal" data-target="#details" data-dismiss='modal' class="to-dtls">
-                                            <img src="{{asset('website/img/slide1.png')}}" class="sgsting">
+                                            <img src="img/slide1.png" class="sgsting">
                                             <h4 class="">اسم القطعة اسم القطعة اسم القطعة اسم القطعة اسم القطعة </h4>
                                         </a>
                                     </div>
                                     <div class="suggest item1">
                                         <a data-toggle="modal" data-target="#details" data-dismiss='modal' class="to-dtls">
-                                            <img src="{{asset('website/img/slide1.png')}}" class="sgsting">
+                                            <img src="img/slide1.png" class="sgsting">
                                             <h4 class="">اسم القطعة اسم القطعة اسم القطعة اسم القطعة اسم القطعة </h4>
                                         </a>
                                     </div>
@@ -427,8 +430,8 @@
                     <section class="dtls-piece">
                         <div class="row">
                             <div class="col-lg-4 col-md-3 col-xs-12">
-                                <a class="piece1" data-fancybox="Gallery" data-caption="اسم القطعة" href="{{asset('website/img/slide1.png')}}">
-                                    <img src="{{asset('website/img/slide1.png')}}">
+                                <a class="piece1" data-fancybox="Gallery" data-caption="اسم القطعة" href="img/slide1.png">
+                                    <img src="img/slide1.png">
                                 </a>
                             </div>
                             <div class="col-lg-8 col-md-9 col-xs-12">
@@ -436,8 +439,8 @@
                                     <li>
                                         <ul class="inDetails">
                                             <li>
-                                                <a class="piece-sm" data-fancybox="Gallery" data-caption="اسم القطعة" href="{{asset('website/img/slide1.png')}}">
-                                                    <img src="{{asset('website/img/slide1.png')}}">
+                                                <a class="piece-sm" data-fancybox="Gallery" data-caption="اسم القطعة" href="img/slide1.png">
+                                                    <img src="img/slide1.png">
                                                 </a>
                                             </li>
                                             <li>
@@ -446,9 +449,9 @@
 
                                             <li>
                                                 <label class="new-p">
+                                                    <span class="name-p">اسم غديد</span>
                                                     <input type="checkbox" class="if-check">
                                                     <span class="checkmark"></span>
-                                                    <span class="name-p">اسم غديد</span>
                                                 </label>
                                             </li>
                                         </ul>
@@ -456,8 +459,8 @@
                                     <li>
                                         <ul class="inDetails">
                                             <li>
-                                                <a class="piece-sm" data-fancybox="Gallery" data-caption="اسم القطعة" href="{{asset('website/img/slide1.png')}}">
-                                                    <img src="{{asset('website/img/slide1.png')}}">
+                                                <a class="piece-sm" data-fancybox="Gallery" data-caption="اسم القطعة" href="img/slide1.png">
+                                                    <img src="img/slide1.png">
                                                 </a>
                                             </li>
                                             <li>
@@ -467,7 +470,6 @@
                                             <li>
                                                 <label class="new-p">
                                                     <span class="name-p">برودكت</span>
-
                                                     <input type="checkbox" class="if-check">
                                                     <span class="checkmark"></span>
                                                 </label>
@@ -477,8 +479,8 @@
                                     <li>
                                         <ul class="inDetails">
                                             <li>
-                                                <a class="piece-sm" data-fancybox="Gallery" data-caption="اسم القطعة" href="{{asset('website/img/slide1.png')}}">
-                                                    <img src="{{asset('website/img/slide1.png')}}">
+                                                <a class="piece-sm" data-fancybox="Gallery" data-caption="اسم القطعة" href="img/slide1.png">
+                                                    <img src="img/slide1.png">
                                                 </a>
                                             </li>
                                             <li>
@@ -488,7 +490,6 @@
                                             <li>
                                                 <label class="new-p">
                                                     <span class="name-p">رئيسى</span>
-
                                                     <input type="checkbox" class="if-check">
                                                     <span class="checkmark"></span>
                                                 </label>
@@ -511,7 +512,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><i class="fas fa-times"></i></button>
                 </div>
-                <div class="logo-nav"><img src="{{asset('website/img/logo.png')}}"></div>
+                <div class="logo-nav"><img src="img/logo.png"></div>
                 <div class="choosing">
                     <p>
                         الموزع غير متاح حاليا سنذكرك عندما يكون متاح
@@ -581,16 +582,14 @@
     </script>
     <!-- End Form -->
     <script src="{{asset('website/js/jquery.fancybox.min.js')}}"></script>
-
-    <!-- Select_2 -->
-
+    <script src="{{asset('website/js/all.min.js')}}"></script>
     <script src="{{asset('website/js/select2.full.js')}}" type="text/javascript"></script>
     <script>
         $(document).ready(function() {
             $(".js-select2").select2();
-            $(".select2").click(function(e) {
-                e.stopPropagation();
-            });
+        //     $(".select2").click(function(e) {
+        //         e.stopPropagation();
+        // });
         });
 
     </script>
@@ -689,10 +688,13 @@
                         var itemQuantity = $(this).parents('li').next('li.addme').find('input').val();
                         console.log(itemQuantity);
 
-                        $("#the-choseen-parts").append('<div class="prod1"><a class="close"> <svg class="svg-inline--fa fa-times fa-w-11" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" role="img"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" data-fa-i2svg=""><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg></a><h4<input type="hidden" value="itemName"> ' + itemName + '</h4><span class="qnt"><input type="hidden" value="itemQuantity"> ' + itemQuantity + '</span></div>')
+                        $("#the-choseen-parts").append('<div class="prod1"><a class="close"> <svg class="svg-inline--fa fa-times fa-w-11" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" role="img"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" data-fa-i2svg=""><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg></a><input type="hidden" value="' + itemName + '"> <h4> ' + itemName + '</h4> <input type="hidden" value="' + itemQuantity + '"> <span class="qnt"> ' + itemQuantity + '</span></div>')
                     }
 
-
+                    /**********************  Remove Piece *****************/
+                    $(".close").click(function() {
+                        $(this).parent(".prod1").remove();
+                    });
                 })
             })
         });
@@ -707,15 +709,7 @@
 
     </script>
     <!--------------------------------------------->
-    <!------------ Remove Piece ------------------->
-    <script>
-        $(document).ready(function() {
-            $(".close").click(function() {
-                $(this).parent(".prod1").fadeOut(500);
-            })
-        });
 
-    </script>
     <!---------------------------------->
     <!------------  Toggle ------------------->
     <script>
@@ -744,4 +738,20 @@
 
     </script>
     <!-------------------->
+    <!----------- Input Required ----------->
+    <!--
+    <script>
+        $(document).ready(function() {
+            $("#account-form").validate({
+                rules: {
+                    "choiseC]": "required"
+                },
+                messages: {
+                    "choiseC": "Please select category",
+                }
+            });
+        });
+    </script>
+-->
+
 @endsection

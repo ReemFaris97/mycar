@@ -28,6 +28,7 @@
                 <div class="row">
                     <div class="col-sm-12">
 
+                        @if($part->subCategory)
                         <div class="col-md-4">
                             <h4>القسم الرئيسي</h4>
                             <h5 style="font-weight: 600;">{{$part->subCategory->category->ar_name }}</h5>
@@ -37,7 +38,7 @@
                             <h4>القسم الفرعي:</h4>
                             <h5 style="font-weight: 600;">{{$part->subCategory->ar_name}}</h5>
                         </div>
-
+                        @endif
                         <div class="col-md-4">
                             <h4>الإسم بالعربية:</h4>
                             <h5 style="font-weight: 600;">{{$part->ar_name}}</h5>
@@ -51,17 +52,26 @@
                         <div class="col-md-4">
                             <h4>نوع القطعة</h4>
                             <h5 style="font-weight: 600;">
-                            @if($part->code == null)
-                                بها قطع آخرى
+                                @if($part->parent_id == null)
+                                    قطعة رئيسية
                                 @else
-                                رئيسية
+                                    قطعة فرعية
                                 @endif
                             </h5>
                         </div>
 
+                            @if($part->parent_id != null)
+                            <div class="col-md-4">
+                                <h4>إسم القطعة الرئيسية</h4>
+                                <h5 style="font-weight: 600;">
+                                    {{$part->parent->ar_name}}
+                                </h5>
+                            </div>
+                            @endif
 
 
-                        <div class="col-md-4">
+
+                            <div class="col-md-4">
                             <h4>صورة القطعة</h4>
                             <div  style="width: 200px; height: 150px;">
                                     <a href="{{getimg($part->image)}}" class="image-popup" title="Screenshot-1">

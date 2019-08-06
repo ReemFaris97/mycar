@@ -61,11 +61,15 @@ class PartsController extends Controller
             'images.*'=>"image",
         ];
         $this->validate($request,$roles);
+
         $part = $this->AddPart($request);
+
 
         if($request->has('otherParts') && $request->otherParts == 'on'){
             $this->AddPartImages($request,$part);
         }
+
+
 
         session()->flash('success','تم الإضافة بنجاح');
         return redirect()->route('parts.index');
@@ -92,11 +96,17 @@ class PartsController extends Controller
     public function edit($id)
     {
         $part = Part::findOrFail($id);
-
+        $subCategories = collect();
+        $models = collect();
         $categories = Category::all();
-        $subCategories = SubCategory::where('category_id',$part->subCategory->category->id)->get();
+        if($part->subCategory){
+            $subCategories = SubCategory::where('category_id',$part->subCategory->category->id)->get();
+        }
         $companies = Company::whereIsActive(1)->get();
-        $models = CompanyModel::where('company_id',$part->company_model->company->id)->get();
+
+        if($part->company_id != null){
+            $models = CompanyModel::where('company_id',$part->company_model->company->id)->get();
+        }
 
         return view('admin.parts.edit',compact('part','categories','subCategories','companies','models'));
     }

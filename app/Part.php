@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Part extends Model
 {
     use SoftDeletes;
-    protected $fillable = ['ar_name','en_name','image','code','company_model_id','sub_category_id'];
+    protected $fillable = ['ar_name','en_name','image','code','company_model_id','sub_category_id','parent_id'];
 
      public function name()
      {
@@ -34,4 +34,16 @@ class Part extends Model
          if($this->code == null) return 1;
          else return 0 ;
      }
+
+
+    public function parent()
+    {
+        return $this->belongsTo(Part::class, 'parent_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany(Part::class, 'parent_id');
+    }
+
 }

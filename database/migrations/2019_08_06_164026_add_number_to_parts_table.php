@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddSubCategoryIdToPartsTable extends Migration
+class AddNumberToPartsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,7 @@ class AddSubCategoryIdToPartsTable extends Migration
     public function up()
     {
         Schema::table('parts', function (Blueprint $table) {
-            $table->unsignedBigInteger('sub_category_id')->nullable();
-            $table->foreign('sub_category_id')->references('id')->on('sub_categories')->onDelete('cascade');
+            $table->integer('number')->nullable()->after('parent_id');
         });
     }
 
@@ -27,8 +26,7 @@ class AddSubCategoryIdToPartsTable extends Migration
     public function down()
     {
         Schema::table('parts', function (Blueprint $table) {
-            $table->dropForeign('sub_category_id');
-            $table->dropColumn('sub_category_id');
+            $table->dropColumn('number');
         });
     }
 }

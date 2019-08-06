@@ -19,7 +19,7 @@ class CreatePartsTable extends Migration
             $table->string('en_name');
             $table->string('image');
             $table->string('code')->nullable();
-            $table->unsignedBigInteger('company_model_id');
+            $table->unsignedBigInteger('company_model_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('company_model_id')->references('id')->on('company_models')
