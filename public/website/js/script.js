@@ -55,7 +55,7 @@ $(document).ready(function () {
     $('#inbox').keydown(function () {
         $('#chats').scrollTop($('#chats')[0].scrollHeight);
 
-        var message = $("textarea").val();
+        var message = $("#inbox").val();
 
         function isEmptyOrSpaces(str) {
             return str === null || str.match(/^ *$/) !== null;
@@ -81,7 +81,7 @@ $(document).ready(function () {
 
     $('#sendnow').click(function () {
         $('#inbox').focus();
-        var message = $("textarea").val();
+        var message = $("#inbox").val();
 
         function isEmptyOrSpaces(str) {
             return str === null || str.match(/^ *$/) !== null;
