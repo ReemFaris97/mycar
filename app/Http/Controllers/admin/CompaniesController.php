@@ -41,9 +41,12 @@ class companiesController extends Controller
         $rules = [
             'ar_name'=>'required|string|max:191',
             'en_name'=>'required|string|max:191',
+            'image'=>'required|image',
         ];
         $this->validate($request,$rules);
-        Company::create($request->all());
+        $inputs = $request->all();
+        $inputs['image'] = uploader($request,'image');
+        Company::create($inputs);
         session()->flash('success','تمت الإضافة بنجاح');
         return redirect()->route('companies.index');
     }
@@ -83,10 +86,17 @@ class companiesController extends Controller
         $rules = [
             'ar_name'=>'required|string|max:191',
             'en_name'=>'required|string|max:191',
+            'image'=>'sometimes|image'
         ];
 
+        $company = Company::find($id);
         $this->validate($request,$rules);
-        $company = Company::find($id)->update($request->all());
+        $inputs = $request->all();
+        if($request->has('image') && $request->image != null){
+            deleteImg($company->image);
+            $inputs['image']= uploader($request,'image');
+        }
+        $company->update($inputs);
         session()->flash('success','تم التعديل بنجاح');
         return redirect()->route('companies.index');
     }

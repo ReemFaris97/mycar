@@ -33,6 +33,7 @@
 
                         <th>إسم الشركة بالعربية</th>
                         <th>إسم الشركة بالإنجليزية</th>
+                        <th>شعار الشركة</th>
                         <th>حالة الشركة</th>
                         <th>العمليات المتاحة</th>
                     </tr>
@@ -45,6 +46,9 @@
                             <td>{{$i++}}</td>
                             <td>{{$row->ar_name}}</td>
                             <td>{{$row->en_name}}</td>
+                            <td>
+                                <img style="width: 75px; height: 75px; border-radius: 50%" src="{{getimg($row->image)}}">
+                            </td>
                             <td>
                                 @if($row->is_active ==1)
                                     <span style="margin: auto;" class="label label-success">مفعلة</span>
