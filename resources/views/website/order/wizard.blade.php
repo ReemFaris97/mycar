@@ -21,26 +21,25 @@
                 <section>
                     <button type="button" class="delt-all">إلغاء الطلب</button>
                     <h3 class="h3-after">إضافة سيارة</h3>
-                    <form id="account-form" action="distributers2.html" novalidate="validate">
+
+                    <form id="account-form" method="post" action="{{route('web.order.initiate')}}" novalidate="validate" >
+                        {{csrf_field()}}
+                        <input type="hidden" id="order_type_car" name="order_car_type" value="1" >
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
                                     <label for="userName">اختيار الشركة</label>
-                                    <div class="company-radio">
+                                    <div class="company-radio" id="company-radio">
+
+                                        @foreach($companies as $company)
                                         <div class="rad1">
-                                            <input type="radio" name="choiceb" id="choose-1" class="required" />
-                                            <label for="choose-1" class="lbl1">
-                                                <img src="{{asset('website/img/toyota.jpg')}}" />
-                                                <p>تويوتا</p>
+                                            <input type="radio" name="company_id" value="{{$company->id}}" id="choose-{{$loop->iteration}}" class="required" />
+                                            <label for="choose-{{$loop->iteration}}" class="lbl1">
+                                                <img src="{{getimg($company->image)}}" />
+                                                <p>{{$company->name()}}</p>
                                             </label>
                                         </div>
-                                        <div class="rad1">
-                                            <input type="radio" name="choiceb" id="choose-2" class="required" />
-                                            <label for="choose-2" class="lbl1">
-                                                <img src="{{asset('website/img/lexus.png')}}" />
-                                                <p>ليكزس</p>
-                                            </label>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -48,20 +47,20 @@
                                 <div class="col-sm-6 col-xs-12">
                                     <div class="form-group custom-gp">
                                         <label>الموديل</label>
-                                        <select class="js-select2" id="locationCodesSelect2">
-                                            <option>هاى لوكس</option>
-                                            <option>سوبر لوكس</option>
-                                            <option>لوكس جدا</option>
+
+                                        <select name="company_model_id" class="js-select2" id="locationCodesSelect2">
+                                        {{--  locationCodeSelect2 blade included here --}}
+
                                         </select>
+
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <label>السنة</label>
-                                        <select class="js-select2">
-                                            <option>2019</option>
-                                            <option>2018</option>
-                                            <option>2017</option>
+                                        <select name="year" class="js-select2" id="ModelYears">
+                                            {{--  ModelYears blade included here --}}
+
                                         </select>
                                     </div>
                                 </div>
@@ -101,13 +100,15 @@
                             </div>
                         </div>
                     </form>
+
+
                 </section>
 
 
                 <h3></h3>
                 <section>
                     <h3 class="h3-after">بيانات الطلب</h3>
-                    <form id="profile-form" action="distributers3.html" novalidate="validate">
+
                         <div class="col-xs-12">
                             <div class="form-group">
                                 <label>السيارات السابقة</label>
@@ -139,7 +140,7 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+
                 </section>
 
 
@@ -147,7 +148,7 @@
                 <section>
                     <button type="button" class="delt-all">إلغاء الطلب</button>
                     <h3 class="h3-after">الطلبات</h3>
-                    <form id="orders-form" action="distributers.html" novalidate="validate">
+
                         <!--
                         <div class="row">
                             <label for="userName">User name *</label>
@@ -235,7 +236,7 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+
                 </section>
             </div>
         </div>
@@ -245,7 +246,7 @@
             <!-- ------------------------------ Order Modals ---------------------------------------------- -->
 
 
-    <!-- name-piece Modal -->
+               <!------------------------------- name-piece Modal -------------------------------------->
     <div class="modal fade modalIn" id="name-piece" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -256,31 +257,12 @@
                 <div class="modal-body">
                     <form class="navbar-form " role="search">
                         <div class="row">
-                            <div class="col-sm-6 col-xs-12">
-                                <div class="form-group">
-                                    <label>قسم رئيسى</label>
-                                    <select class="js-select2" title="قسم رئيسى">
-                                        <option>هاى لوكس</option>
-                                        <option>سوبر لوكس</option>
-                                        <option>لوكس جدا</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-xs-12">
-                                <div class="form-group">
-                                    <label>قسم فرعى</label>
-                                    <select class="js-select2">
-                                        <option>هاى لوكس</option>
-                                        <option>سوبر لوكس</option>
-                                        <option>لوكس جدا</option>
-                                    </select>
-                                </div>
-                            </div>
+
                             <div class="col-xs-12">
                                 <div class="form-data">
                                     <label>البحث بالاسم</label>
                                     <div class="form-group searchh">
-                                        <input id="myInput" type="text" class="form-control" placeholder="بحث ...">
+                                        <input name="PartNameSearch" id="myInput" type="text" class="form-control" placeholder="بحث ...">
                                         <!--
                                         <button type="submit">
                                             <i class="fas fa-search"></i>
@@ -292,28 +274,32 @@
                             </div>
                             <div class="col-xs-12">
                                 <ul class="all-dtls" id="myList">
+                                    @foreach($parts as $part)
                                     <li>
                                         <ul class="inDetails">
                                             <li>
                                                 <label class="new-p">
-                                                    <span class="name-p">اسم قطعة وحدة</span>
+                                                    <span class="name-p">{{$part->name()}}</span>
                                                     <input type="checkbox" class="if-check">
                                                     <span class="checkmark"></span>
                                                 </label>
                                             </li>
                                         </ul>
                                     </li>
-                                    <li>
-                                        <ul class="inDetails">
-                                            <li>
-                                                <label class="new-p">
-                                                    <span class="name-p">رئيسى</span>
-                                                    <input type="checkbox" class="if-check">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                            </li>
-                                        </ul>
-                                    </li>
+                                    @endforeach
+
+{{--                                    <li>--}}
+{{--                                        <ul class="inDetails">--}}
+{{--                                            <li>--}}
+{{--                                                <label class="new-p">--}}
+{{--                                                    <span class="name-p">رئيسى</span>--}}
+{{--                                                    <input type="checkbox" class="if-check">--}}
+{{--                                                    <span class="checkmark"></span>--}}
+{{--                                                </label>--}}
+{{--                                            </li>--}}
+{{--                                        </ul>--}}
+{{--                                    </li>--}}
+
                                 </ul>
                             </div>
                         </div>
@@ -323,6 +309,13 @@
             </div>
         </div>
     </div>
+
+               <!-----------------------------End  name-piece Modal --------------------------->
+
+
+
+
+
     <!-- image-piece Modal -->
     <div class="modal fade modalIn" id="img-piece" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -337,79 +330,27 @@
                             <div class="col-sm-6 col-xs-12">
                                 <div class="form-group">
                                     <label>قسم رئيسى</label>
-                                    <select class="js-select2" title="قسم رئيسى">
-                                        <option>هاى لوكس</option>
-                                        <option>سوبر لوكس</option>
-                                        <option>لوكس جدا</option>
+
+                                    <select id="mainCategoriesSelect" class="js-select2" title="قسم رئيسى">
+                                        <option selected disabled>إختار قسم رئيسي</option>
+                                        @foreach($categories as $category)
+                                        <option value="{{$category->id}}">{{$category->name()}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-xs-12">
                                 <div class="form-group">
                                     <label>قسم فرعى</label>
-                                    <select class="js-select2">
-                                        <option>هاى لوكس</option>
-                                        <option>سوبر لوكس</option>
-                                        <option>لوكس جدا</option>
+                                    <select id="subCategoriesSelect" class="js-select2">
+
+
                                     </select>
                                 </div>
                             </div>
                             <div class="col-xs-12">
-                                <div class="filtrtion">
-                                    <div class="suggest item1">
-                                        <a data-toggle="modal" data-target="#details" data-dismiss='modal' class="to-dtls">
-                                            <img src="img/slide1.png" class="sgsting">
-                                            <h4 class="">اسم القطعة اسم القطعة اسم القطعة اسم القطعة اسم القطعة </h4>
-                                        </a>
-                                    </div>
-                                    <div class="suggest item1">
-                                        <a data-toggle="modal" data-target="#details" data-dismiss='modal' class="to-dtls">
-                                            <img src="img/slide1.png" class="sgsting">
-                                            <h4 class="">اسم القطعة اسم القطعة اسم القطعة اسم القطعة اسم القطعة </h4>
-                                        </a>
-                                    </div>
-                                    <div class="suggest item1">
-                                        <a data-toggle="modal" data-target="#details" data-dismiss='modal' class="to-dtls">
-                                            <img src="img/slide1.png" class="sgsting">
-                                            <h4 class="">اسم القطعة اسم القطعة اسم القطعة اسم القطعة اسم القطعة </h4>
-                                        </a>
-                                    </div>
-                                    <div class="suggest item1">
-                                        <a data-toggle="modal" data-target="#details" data-dismiss='modal' class="to-dtls">
-                                            <img src="img/slide1.png" class="sgsting">
-                                            <h4 class="">اسم القطعة اسم القطعة اسم القطعة اسم القطعة اسم القطعة </h4>
-                                        </a>
-                                    </div>
-                                    <div class="suggest item1">
-                                        <a data-toggle="modal" data-target="#details" data-dismiss='modal' class="to-dtls">
-                                            <img src="img/slide1.png" class="sgsting">
-                                            <h4 class="">اسم القطعة اسم القطعة اسم القطعة اسم القطعة اسم القطعة </h4>
-                                        </a>
-                                    </div>
-                                    <div class="suggest item1">
-                                        <a data-toggle="modal" data-target="#details" data-dismiss='modal' class="to-dtls">
-                                            <img src="img/slide1.png" class="sgsting">
-                                            <h4 class="">اسم القطعة اسم القطعة اسم القطعة اسم القطعة اسم القطعة </h4>
-                                        </a>
-                                    </div>
-                                    <div class="suggest item1">
-                                        <a data-toggle="modal" data-target="#details" data-dismiss='modal' class="to-dtls">
-                                            <img src="img/slide1.png" class="sgsting">
-                                            <h4 class="">اسم القطعة اسم القطعة اسم القطعة اسم القطعة اسم القطعة </h4>
-                                        </a>
-                                    </div>
-                                    <div class="suggest item1">
-                                        <a data-toggle="modal" data-target="#details" data-dismiss='modal' class="to-dtls">
-                                            <img src="img/slide1.png" class="sgsting">
-                                            <h4 class="">اسم القطعة اسم القطعة اسم القطعة اسم القطعة اسم القطعة </h4>
-                                        </a>
-                                    </div>
-                                    <div class="suggest item1">
-                                        <a data-toggle="modal" data-target="#details" data-dismiss='modal' class="to-dtls">
-                                            <img src="img/slide1.png" class="sgsting">
-                                            <h4 class="">اسم القطعة اسم القطعة اسم القطعة اسم القطعة اسم القطعة </h4>
-                                        </a>
-                                    </div>
+                                <div class="filtrtion" id="mainPartsImages">
+                                {{--  Here is the main parts   --}}
                                 </div>
                             </div>
                         </div>
@@ -418,6 +359,10 @@
             </div>
         </div>
     </div>
+
+
+
+
     <!-- details Modal -->
     <div class="modal fade modalIn" id="details" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -430,8 +375,8 @@
                     <section class="dtls-piece">
                         <div class="row">
                             <div class="col-lg-4 col-md-3 col-xs-12">
-                                <a class="piece1" data-fancybox="Gallery" data-caption="اسم القطعة" href="img/slide1.png">
-                                    <img src="img/slide1.png">
+                                <a class="piece1" data-fancybox="Gallery" data-caption="اسم القطعة" href="{{asset('website/img/slide1.png')}}">
+                                    <img src="{{asset('website/img/slide1.png')}}">
                                 </a>
                             </div>
                             <div class="col-lg-8 col-md-9 col-xs-12">
@@ -439,8 +384,8 @@
                                     <li>
                                         <ul class="inDetails">
                                             <li>
-                                                <a class="piece-sm" data-fancybox="Gallery" data-caption="اسم القطعة" href="img/slide1.png">
-                                                    <img src="img/slide1.png">
+                                                <a class="piece-sm" data-fancybox="Gallery" data-caption="اسم القطعة" href="{{asset('website/img/slide1.png')}}">
+                                                    <img src="{{asset('website/img/slide1.png')}}">
                                                 </a>
                                             </li>
                                             <li>
@@ -459,8 +404,8 @@
                                     <li>
                                         <ul class="inDetails">
                                             <li>
-                                                <a class="piece-sm" data-fancybox="Gallery" data-caption="اسم القطعة" href="img/slide1.png">
-                                                    <img src="img/slide1.png">
+                                                <a class="piece-sm" data-fancybox="Gallery" data-caption="اسم القطعة" href="{{asset('website/img/slide1.png')}}">
+                                                    <img src="{{asset('website/img/slide1.png')}}">
                                                 </a>
                                             </li>
                                             <li>
@@ -479,8 +424,8 @@
                                     <li>
                                         <ul class="inDetails">
                                             <li>
-                                                <a class="piece-sm" data-fancybox="Gallery" data-caption="اسم القطعة" href="img/slide1.png">
-                                                    <img src="img/slide1.png">
+                                                <a class="piece-sm" data-fancybox="Gallery" data-caption="اسم القطعة" href="{{asset('website/img/slide1.png')}}">
+                                                    <img src="{{asset('website/img/slide1.png')}}">
                                                 </a>
                                             </li>
                                             <li>
@@ -512,7 +457,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><i class="fas fa-times"></i></button>
                 </div>
-                <div class="logo-nav"><img src="img/logo.png"></div>
+                <div class="logo-nav"><img src="{{asset('website/img/logo.png')}}"></div>
                 <div class="choosing">
                     <p>
                         الموزع غير متاح حاليا سنذكرك عندما يكون متاح
@@ -526,10 +471,18 @@
 @endsection
 
 @section('scripts')
+
     <!-- Start Form -->
     <!-- jQuery easing plugin -->
     <script src="{{asset('website/js/jquery.validate.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('website/js/jquery.steps.js')}}" type="text/javascript"></script>
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
     <script>
         $(document).ready(function() {
             $('#account-form').validate({
@@ -571,6 +524,70 @@
             $("a[href='#finish']").click(function() {
                 $("#orders-form").submit();
             })
+
+
+            //----------------------------------------------------------------------------------------------------
+            //---------------------------------------    Added By ZAIN   -----------------------------------------
+            //----------------------------------------------------------------------------------------------------
+
+
+            // Ajax Code of Changeing Radio button value -- first wizard Form ....
+            // account-form
+            $(document).ready(function(){
+                $('#company-radio input[type=radio]').change(function(){
+                   var RadioCompanyValue = $("input[name='company_id']:checked").val();
+                    $.ajax({
+                        type: 'POST',
+                        url: '{{ route('web.get.companyModels') }}',
+                        data: {id: RadioCompanyValue},
+                        dataType: 'json',
+                        success: function (data) {
+                            $('#locationCodesSelect2').html(data.data);
+                        }
+                    });
+                });
+
+                $('#locationCodesSelect2').change(function(){
+                    var selectModelId = $(this).val();
+                    $.ajax({
+                        type: 'POST',
+                        url: '{{ route('web.get.modelYears') }}',
+                        data: {id: selectModelId},
+                        dataType: 'json',
+                        success: function (data) {
+                            $('#ModelYears').html(data.data);
+                        }
+                    });
+                });
+
+                $('#mainCategoriesSelect').change(function(){
+                    var id = $(this).val();
+                    $.ajax({
+                        type: 'POST',
+                        url: '{{ route('web.get.subCategories') }}',
+                        data: {id: id},
+                        dataType: 'json',
+                        success: function (data) {
+                            $('#subCategoriesSelect').html(data.data);
+                        }
+                    });
+                });
+
+                $('#subCategoriesSelect').change(function(){
+                    var id = $(this).val();
+                    $.ajax({
+                        type: 'POST',
+                        url: '{{ route('web.get.mainParts') }}',
+                        data: {id: id},
+                        dataType: 'json',
+                        success: function (data) {
+                            $('#mainPartsImages').html(data.data);
+                        }
+                    });
+                });
+            });
+
+
         })
         $(document).delegate('#goPrev', 'click', function() {
             var a = $(".wizard").steps("previous");
@@ -705,6 +722,7 @@
         $(document).ready(function() {
             var $radio = $('input:radio[name="choice"]');
             $radio.addClass("validate[required]");
+
         });
 
     </script>
@@ -714,13 +732,20 @@
     <!------------  Toggle ------------------->
     <script>
         $(document).ready(function() {
+
             $(".tgle").slideUp();
             $(".text-down").slideUp();
             $(".to-tgle").click(function() {
+
+                var Ordertype = $('#order_type_car');
+                var orderVal = Ordertype.val();
+
+                Ordertype.val(orderVal == 1 ? 0 : 1);
                 $(".tgle").slideToggle(500);
                 $(".up-tgle").slideToggle(500);
                 $(".text-down").slideToggle(500);
                 $(".text-up").slideToggle(500);
+
             });
         });
 
@@ -753,5 +778,7 @@
         });
     </script>
 -->
+
+
 
 @endsection

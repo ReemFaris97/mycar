@@ -245,7 +245,12 @@ Route::group(['namespace'=>'website','middleware'=>'userMiddleware'], function (
 
 
     Route::get('/start-order','OrdersController@getWizard')->name('web.order.getWizard');
+    Route::post('/initiate-order','OrdersController@initiateOrder')->name('web.order.initiate');
 
+    Route::post('/get/companyModels','AjaxController@getCompanyModelsById')->name('web.get.companyModels');
+    Route::post('/get/modelYears','AjaxController@getModelYears')->name('web.get.modelYears');
+    Route::post('/get/subCategories','AjaxController@getSubCategories')->name('web.get.subCategories');
+    Route::post('get/MainParts','AjaxController@getMainParts')->name('web.get.mainParts');
 
 
 
