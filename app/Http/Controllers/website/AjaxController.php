@@ -58,10 +58,19 @@ class AjaxController extends Controller
 
     public function getMainParts(Request $request){
 
-        $mainParts = Part::whereParentId(null)->get();
+        $mainParts = Part::whereParentId(null)->where('sub_category_id',$request->id)->get();
         return response()->json([
             'status'=>true,
             'data'=>view('website.order.mainParts')->with('mainParts',$mainParts)->render()
+        ]);
+    }
+
+    public function getPartDetails(Request $request){
+        $part = Part::whereId($request->id)->with('children')->first();
+
+        return response()->json([
+            'status'=>true,
+            'data'=>$part
         ]);
 
     }

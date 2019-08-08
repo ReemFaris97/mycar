@@ -569,6 +569,7 @@
                         dataType: 'json',
                         success: function (data) {
                             $('#subCategoriesSelect').html(data.data);
+
                         }
                     });
                 });
@@ -582,13 +583,41 @@
                         dataType: 'json',
                         success: function (data) {
                             $('#mainPartsImages').html(data.data);
+
+
+
+
+                            $('.partDetails').click(function(){
+                                var id = $(this).attr('data-id');
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '{{ route('web.get.PartDetails') }}',
+                                    data: {id: id},
+                                    dataType: 'json',
+                                    success: function (data) {
+                                        alert("hellllloooooo");
+
+
+                                    }
+                                });
+                            });
+
+
+
                         }
                     });
                 });
+
+
+
+
             });
 
 
-        })
+        });
+
+
+
         $(document).delegate('#goPrev', 'click', function() {
             var a = $(".wizard").steps("previous");
             if (!a) {

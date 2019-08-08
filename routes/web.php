@@ -251,6 +251,7 @@ Route::group(['namespace'=>'website','middleware'=>'userMiddleware'], function (
     Route::post('/get/modelYears','AjaxController@getModelYears')->name('web.get.modelYears');
     Route::post('/get/subCategories','AjaxController@getSubCategories')->name('web.get.subCategories');
     Route::post('get/MainParts','AjaxController@getMainParts')->name('web.get.mainParts');
+    Route::post('get/PartDetails','AjaxController@getPartDetails')->name('web.get.PartDetails');
 
 
 
