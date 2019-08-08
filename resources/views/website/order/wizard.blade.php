@@ -195,37 +195,63 @@
                                     <h3 class="h3-after">البحث عن موزع</h3>
                                     <div class="radio-list">
                                         <label class="rad">أصلية
-                                            <input type="radio" name="type-1" class="required">
+                                            <input value="original" type="radio" name="type-1" class="required">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="rad">تشليح
-                                            <input type="radio" name="type-1">
+                                            <input value="used" type="radio" name="type-1">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="rad">تجارية
-                                            <input type="radio" name="type-1">
+                                            <input value="commercial" type="radio" name="type-1">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
                                     <b>
                                         المدينة :-
+                                        @if(auth()->user()->region == "inside")
                                         <span>بريدة</span>
+                                            @else
+                                            <span>خارج بريدة</span>
+                                        @endif
                                     </b>
                                     <b>
                                         اختر الموزع
                                     </b>
                                     <div class="radio-list dist-list">
+
+
+{{--                                        <label class="rad">--}}
+{{--                                            <div class="checking"> القصيم لتجارة قطع الغيار </div>--}}
+{{--                                            <input class="required" type="radio" name="distributer" data-toggle="modal" data-target="#not-avl" data-dismiss='modal'>--}}
+{{--                                            <span class="checkmark"></span>--}}
+{{--                                            <span class="check-img">--}}
+{{--                                                <img src="{{asset('website/img/logo.png')}}">--}}
+{{--                                            </span>--}}
+{{--                                            <b>مواعيد العمل :--}}
+{{--                                                <span> السبت - الخميس , 9 صباحا - 11 مساءا </span>--}}
+{{--                                            </b>--}}
+{{--                                        </label>--}}
+
+                                        @foreach(App\User::where('type','supplier')->get() as $user)
                                         <label class="rad">
-                                            <div class="checking"> القصيم لتجارة قطع الغيار </div>
-                                            <input class="required" type="radio" name="distributer" data-toggle="modal" data-target="#not-avl" data-dismiss='modal'>
+                                            <div class="checking"> {{$user->name}} </div>
+                                            <input class="required" type="radio" name="distributer">
                                             <span class="checkmark"></span>
                                             <span class="check-img">
-                                                <img src="{{asset('website/img/logo.png')}}">
+                                                @if($user->image != null)
+                                                    <img src="{{getimg($user->image)}}">
+                                                @else
+                                                    <img src="{{asset('website/img/logo.png')}}">
+                                                @endif
                                             </span>
-                                            <b>مواعيد العمل :
-                                                <span> السبت - الخميس , 9 صباحا - 11 مساءا </span>
-                                            </b>
+{{--                                            <b>مواعيد العمل :--}}
+{{--                                                <span> السبت - الخميس , 9 صباحا - 11 مساءا </span>--}}
+{{--                                            </b>--}}
                                         </label>
+                                        @endforeach
+
+
                                         <label class="rad">
                                             <div class="checking"> القصيم لتجارة قطع الغيار </div>
                                             <input class="required" type="radio" name="distributer">
@@ -237,17 +263,8 @@
                                                 <span> السبت - الخميس , 9 صباحا - 11 مساءا </span>
                                             </b>
                                         </label>
-                                        <label class="rad">
-                                            <div class="checking"> القصيم لتجارة قطع الغيار </div>
-                                            <input class="required" type="radio" name="distributer">
-                                            <span class="checkmark"></span>
-                                            <span class="check-img">
-                                                <img src="{{asset('website/img/logo.png')}}">
-                                            </span>
-                                            <b>مواعيد العمل :
-                                                <span> السبت - الخميس , 9 صباحا - 11 مساءا </span>
-                                            </b>
-                                        </label>
+
+
                                     </div>
                                 </div>
                             </div>

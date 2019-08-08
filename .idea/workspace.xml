@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="07d3112d-1530-4da5-ab4a-6f65651dce54" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/website/AjaxController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/website/AjaxController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/order/PartDetailsModalData.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/order/locationCodesSelect2.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/order/locationCodesSelect2.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/website/order/wizard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/order/wizard.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,8 +43,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/website/order/wizard.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="571" column="67" selection-start-line="571" selection-start-column="67" selection-end-line="571" selection-end-column="67" />
+            <state relative-caret-position="194">
+              <caret line="337" column="30" lean-forward="true" selection-start-line="337" selection-start-column="30" selection-end-line="337" selection-end-column="30" />
               <folding>
                 <element signature="e#19384#19391#1#HTML" expanded="true" />
                 <element signature="e#62#69#1" expanded="true" />
@@ -79,10 +76,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>aria-disabled=&quot;false&quot;</find>
-      <find>&lt;/form&gt;</find>
-      <find>&lt;form</find>
-      <find>&lt;/form</find>
       <find>اختر القطع</find>
       <find>myList</find>
       <find>myInput</find>
@@ -109,6 +102,10 @@
       <find>choiseC</find>
       <find>getPartDetails</find>
       <find>partDetails</find>
+      <find>البحث عن موزع</find>
+      <find>type-1</find>
+      <find>menuitem</find>
+      <find>إتمام</find>
     </findStrings>
     <replaceStrings>
       <replace>Company</replace>
@@ -492,18 +489,18 @@
       <workItem from="1565089978308" duration="11264000" />
       <workItem from="1565169671617" duration="21035000" />
       <workItem from="1565249269915" duration="8574000" />
-      <workItem from="1565262337011" duration="10213000" />
+      <workItem from="1565262337011" duration="12369000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="464384000" />
+    <option name="totallyTimeSpent" value="466540000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23298033" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23298033" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -908,8 +905,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/website/order/wizard.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="571" column="67" selection-start-line="571" selection-start-column="67" selection-end-line="571" selection-end-column="67" />
+        <state relative-caret-position="194">
+          <caret line="337" column="30" lean-forward="true" selection-start-line="337" selection-start-column="30" selection-end-line="337" selection-end-column="30" />
           <folding>
             <element signature="e#19384#19391#1#HTML" expanded="true" />
             <element signature="e#62#69#1" expanded="true" />
