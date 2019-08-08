@@ -66,12 +66,15 @@ class AjaxController extends Controller
     }
 
     public function getPartDetails(Request $request){
+
         $part = Part::whereId($request->id)->with('children')->first();
 
         return response()->json([
             'status'=>true,
-            'data'=>$part
+            'part_id'=>$part->id,
+            'part_name'=>$part->ar_name,
+            'main_image'=>getimg($part->image),
+            'data'=>view('website.order.partDetailsModal')->with('part',$part)->render()
         ]);
-
     }
 }

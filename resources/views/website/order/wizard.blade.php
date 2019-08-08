@@ -20,12 +20,18 @@
                 <h3></h3>
                 <section>
                     <button type="button" class="delt-all">إلغاء الطلب</button>
+
                     <h3 class="h3-after">إضافة سيارة</h3>
+
 
                     <form id="account-form" method="post" action="{{route('web.order.initiate')}}" novalidate="validate" >
                         {{csrf_field()}}
                         <input type="hidden" id="order_type_car" name="order_car_type" value="1" >
+
+
                         <div class="row">
+
+
                             <div class="col-xs-12">
                                 <div class="form-group">
                                     <label for="userName">اختيار الشركة</label>
@@ -33,7 +39,7 @@
 
                                         @foreach($companies as $company)
                                         <div class="rad1">
-                                            <input type="radio" name="company_id" value="{{$company->id}}" id="choose-{{$loop->iteration}}" class="required" />
+                                            <input type="radio" data-company-name="{{$company->name()}}" name="company_id" value="{{$company->id}}" id="choose-{{$loop->iteration}}" class="required" />
                                             <label for="choose-{{$loop->iteration}}" class="lbl1">
                                                 <img src="{{getimg($company->image)}}" />
                                                 <p>{{$company->name()}}</p>
@@ -43,7 +49,11 @@
                                     </div>
                                 </div>
                             </div>
+
+
+
                             <div class="up-tgle">
+
                                 <div class="col-sm-6 col-xs-12">
                                     <div class="form-group custom-gp">
                                         <label>الموديل</label>
@@ -55,22 +65,25 @@
 
                                     </div>
                                 </div>
+
                                 <div class="col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <label>السنة</label>
-                                        <select name="year" class="js-select2" id="ModelYears">
+                                        <select  name="year" class="js-select2" id="ModelYears">
                                             {{--  ModelYears blade included here --}}
 
                                         </select>
                                     </div>
                                 </div>
+
                             </div>
+
                             <div class="tgle col-xs-12 no-padding">
                                 <div class="col-sm-8 col-xs-12">
                                     <div class="form-data">
                                         <label> ادخل رقم الهيكل أو ارفق صورة الاستمارة</label>
                                         <div class="form-group">
-                                            <input type="number" class="form-control" name="choiseC" id="dwn-btn" />
+                                            <input type="number" class="form-control" name="structure_number" id="dwn-btn" />
                                             <span class="focus-border"><i></i></span>
                                         </div>
                                     </div>
@@ -80,7 +93,7 @@
                                     <div class="profile-pic">
                                         <div class="images-upload-block photo">
                                             <label class="upload-img photo" for="upp-btn">
-                                                <input type="file" id="upp-btn" accept="image/*" class="image-uploader form-control" name="choiseC">
+                                                <input type="file" id="upp-btn" accept="image/*" class="image-uploader form-control" name="form_image">
                                                 <b><i class="fas fa-image"></i></b>
                                             </label>
                                         </div>
@@ -111,15 +124,16 @@
 
                         <div class="col-xs-12">
                             <div class="form-group">
-                                <label>السيارات السابقة</label>
-                                <p class="model1">تويوتا كرولا 2019</p>
-                                <p class="model1">تويوتا فورتشينر 2019</p>
+{{--                                --}}
+{{--                                <label>السيارات السابقة</label>--}}
+{{--                                <p class="model1">تويوتا كرولا 2019</p>--}}
+{{--                                <p class="model1">تويوتا فورتشينر 2019</p>--}}
                             </div>
                         </div>
                         <div class="col-xs-12">
                             <div class="form-group">
                                 <label>معلومات السيارة الحالية</label>
-                                <p class="dtls">تويوتا كرولا 2019</p>
+                                <p id="currentCar" class="dtls"></p>
                                 <a href="#previous" role="menuitem" class="replace" id="goPrev"> تبديل السيارة </a>
                             </div>
                         </div>
@@ -158,15 +172,17 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
-                                    <label>السيارات السابقة</label>
-                                    <p class="model1">تويوتا كرولا 2019</p>
-                                    <p class="model1">تويوتا فورتشينر 2019</p>
+
+{{--                                    <label>السيارات السابقة</label>--}}
+{{--                                    <p class="model1">تويوتا كرولا 2019</p>--}}
+{{--                                    <p class="model1">تويوتا فورتشينر 2019</p>--}}
+
                                 </div>
                             </div>
                             <div class="col-xs-12">
                                 <div class="form-group">
                                     <label>معلومات السيارة الحالية</label>
-                                    <p class="dtls">تويوتا كرولا 2019</p>
+                                    <p id="currentCar2" class="dtls"></p>
                                 </div>
                             </div>
                             <div class="col-xs-12">
@@ -368,79 +384,23 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="h3-after">اسم القطعة</h3>
+                    <h3 id="PartNameModal" class="h3-after">اسم القطعة</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
                     <section class="dtls-piece">
                         <div class="row">
                             <div class="col-lg-4 col-md-3 col-xs-12">
-                                <a class="piece1" data-fancybox="Gallery" data-caption="اسم القطعة" href="{{asset('website/img/slide1.png')}}">
-                                    <img src="{{asset('website/img/slide1.png')}}">
+                                <a id="mainPartImage-href" class="piece1" data-fancybox="Gallery" data-caption="اسم القطعة" href="{{asset('website/img/slide1.png')}}">
+                                    <img id="mainPartImage-src" src="{{asset('website/img/slide1.png')}}">
                                 </a>
                             </div>
                             <div class="col-lg-8 col-md-9 col-xs-12">
-                                <ol class="all-dtls">
-                                    <li>
-                                        <ul class="inDetails">
-                                            <li>
-                                                <a class="piece-sm" data-fancybox="Gallery" data-caption="اسم القطعة" href="{{asset('website/img/slide1.png')}}">
-                                                    <img src="{{asset('website/img/slide1.png')}}">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <span class="code-p">9655254</span>
-                                            </li>
+                                <ol id="part-childrens" class="all-dtls">
 
-                                            <li>
-                                                <label class="new-p">
-                                                    <span class="name-p">اسم غديد</span>
-                                                    <input type="checkbox" class="if-check">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <ul class="inDetails">
-                                            <li>
-                                                <a class="piece-sm" data-fancybox="Gallery" data-caption="اسم القطعة" href="{{asset('website/img/slide1.png')}}">
-                                                    <img src="{{asset('website/img/slide1.png')}}">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <span class="code-p">9655254</span>
-                                            </li>
 
-                                            <li>
-                                                <label class="new-p">
-                                                    <span class="name-p">برودكت</span>
-                                                    <input type="checkbox" class="if-check">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <ul class="inDetails">
-                                            <li>
-                                                <a class="piece-sm" data-fancybox="Gallery" data-caption="اسم القطعة" href="{{asset('website/img/slide1.png')}}">
-                                                    <img src="{{asset('website/img/slide1.png')}}">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <span class="code-p">9655254</span>
-                                            </li>
 
-                                            <li>
-                                                <label class="new-p">
-                                                    <span class="name-p">رئيسى</span>
-                                                    <input type="checkbox" class="if-check">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                            </li>
-                                        </ul>
-                                    </li>
+
                                 </ol>
                             </div>
                         </div>
@@ -449,6 +409,7 @@
                 </div>
             </div>
         </div>
+
     </div>
     <!-- NOT AVALAIBLE Modal -->
     <div id="not-avl" class="modal fade suggest-mdl" role="dialog">
@@ -534,8 +495,13 @@
             // Ajax Code of Changeing Radio button value -- first wizard Form ....
             // account-form
             $(document).ready(function(){
+
+                var carName,carModel,carYear;
+
                 $('#company-radio input[type=radio]').change(function(){
                    var RadioCompanyValue = $("input[name='company_id']:checked").val();
+                   carName = $("input[name='company_id']:checked").attr('data-company-name');
+
                     $.ajax({
                         type: 'POST',
                         url: '{{ route('web.get.companyModels') }}',
@@ -549,6 +515,8 @@
 
                 $('#locationCodesSelect2').change(function(){
                     var selectModelId = $(this).val();
+                    carModel = $(this).find('option:selected').text();
+
                     $.ajax({
                         type: 'POST',
                         url: '{{ route('web.get.modelYears') }}',
@@ -560,6 +528,12 @@
                     });
                 });
 
+                $('#ModelYears').change(function(){
+                    carYear = $(this).find('option:selected').text();
+                    $('#currentCar').text(carName+" "+ carModel+" "+carYear);
+                    $('#currentCar2').text(carName+" "+ carModel+" "+carYear);
+                });
+
                 $('#mainCategoriesSelect').change(function(){
                     var id = $(this).val();
                     $.ajax({
@@ -569,7 +543,6 @@
                         dataType: 'json',
                         success: function (data) {
                             $('#subCategoriesSelect').html(data.data);
-
                         }
                     });
                 });
@@ -584,9 +557,6 @@
                         success: function (data) {
                             $('#mainPartsImages').html(data.data);
 
-
-
-
                             $('.partDetails').click(function(){
                                 var id = $(this).attr('data-id');
                                 $.ajax({
@@ -595,14 +565,75 @@
                                     data: {id: id},
                                     dataType: 'json',
                                     success: function (data) {
-                                        alert("hellllloooooo");
+                                        console.log(data.part_name);
+                                        $('#PartNameModal').html(data.part_name);
+                                        $('#mainPartImage-href').attr('href',data.main_image);
+                                        $('#mainPartImage-src').attr('src',data.main_image);
+                                        $('#part-childrens').html("");
+                                        $('#part-childrens').html(data.data);
 
 
+                                        var numberOfItems = 0;
+                                        $('.new-p :checkbox').change(function() {
+                                            var $this = $(this);
+                                            if ($this.is(':checked')) {
+                                                var newInput = $('<li class="addme"><div class="quant"><div class="count"><div class="value-button cart-qty-plus" > <i class="fas fa-arrow-circle-up"></i> </div><input type="number" readonly min="1" value="1" id="number" class="number"><div class="value-button cart-qty-minus" > <i class="fas fa-arrow-circle-down"></i> </div></div></div></li>');
+                                                $($this).closest('.inDetails').append(newInput);
+                                                numberOfItems++;
+                                                //                    input number simulator function
+                                                var incrementPlus;
+                                                var incrementMinus;
+                                                var buttonPlus = $(this).parents('li').next("li.addme").find(".cart-qty-plus");
+                                                var buttonMinus = $(this).parents('li').next("li.addme").find(".cart-qty-minus");
+                                                var incrementPlus = buttonPlus.click(function() {
+                                                    var $n = $(this)
+                                                        .parent(".count")
+                                                        .parent(".quant")
+                                                        .find(".number");
+                                                    $n.val(Number($n.val()) + 1);
+                                                });
+                                                var incrementMinus = buttonMinus.click(function() {
+                                                    var $n = $(this)
+                                                        .parent(".count")
+                                                        .parent(".quant")
+                                                        .find(".number");
+                                                    var amount = Number($n.val());
+                                                    if (amount > 1) {
+                                                        $n.val(amount - 1);
+                                                    }
+                                                });
+                                            } else {
+                                                $($this).closest('.inDetails').find('.addme').remove();
+                                                numberOfItems--;
+                                            }
+                                            console.log(numberOfItems);
+                                            if (numberOfItems == 0) {
+                                                $(".fxd-btn").attr('disabled', 'true');
+                                            } else {
+                                                $(".fxd-btn").removeAttr('disabled');
+                                            }
+                                        });
+                                        $(".fxd-btn").click(function() {
+                                            $("#the-choseen-parts").html('');
+                                            $('.new-p input.if-check').each(function() {
+                                                if ($(this).is(':checked')) {
+                                                    var itemName = $(this).prev('.name-p').html();
+                                                    console.log(itemName);
+                                                    var itemQuantity = $(this).parents('li').next('li.addme').find('input').val();
+                                                    console.log(itemQuantity);
+
+                                                    $("#the-choseen-parts").append('<div class="prod1"><a class="close"> <svg class="svg-inline--fa fa-times fa-w-11" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" role="img"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" data-fa-i2svg=""><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg></a><input type="hidden" value="' + itemName + '"> <h4> ' + itemName + '</h4> <input type="hidden" value="' + itemQuantity + '"> <span class="qnt"> ' + itemQuantity + '</span></div>')
+                                                }
+
+                                                /**********************  Remove Piece *****************/
+                                                $(".close").click(function() {
+                                                    $(this).parent(".prod1").remove();
+                                                });
+                                            })
+                                        })
                                     }
                                 });
                             });
-
-
 
                         }
                     });
@@ -770,6 +801,7 @@
                 var orderVal = Ordertype.val();
 
                 Ordertype.val(orderVal == 1 ? 0 : 1);
+
                 $(".tgle").slideToggle(500);
                 $(".up-tgle").slideToggle(500);
                 $(".text-down").slideToggle(500);
