@@ -121,7 +121,7 @@
                 <h3></h3>
                 <section>
                     <h3 class="h3-after">بيانات الطلب</h3>
-
+<form id="orders-form" action="distributers.html" novalidate="validate">
                         <div class="col-xs-12">
                             <div class="form-group">
 {{--                                --}}
@@ -154,7 +154,7 @@
                                 </button>
                             </div>
                         </div>
-
+                    </form>
                 </section>
 
 
