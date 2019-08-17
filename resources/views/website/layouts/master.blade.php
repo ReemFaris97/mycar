@@ -348,7 +348,7 @@
             'image':payload.data.image,
         };
         var image = "{{asset('website/img/1.png')}}";
-        $('#chats').prepend('' +
+        $('#chats').append(
             '<div class="chat1 recieve">' +
             '<div class="chat-img">' +
             '<img src="'+image+'"' +
