@@ -349,16 +349,17 @@
         };
         var image = "{{asset('website/img/1.png')}}";
         $('#chats').append(
-            '<div class="chat1 recieve">' +
-            '<div class="chat-img">' +
-            '<img src="'+image+'"' +
-            '</div>' +
-            '<div class="chat-body">' +
-            '<p>' +
-            payload.data.body+
-            '</p>' +
-            '</div>' +
-            '</div>');
+            '<div class="chat1 recieve">\n' +
+            '                    <div class="chat-img">\n' +
+            '                        <img src="'+image+'">\n' +
+            '                    </div>\n' +
+            '                    <div class="chat-body">\n' +
+            '                        <p>\n' +
+            payload.data.body +
+            '                        </p>\n' +
+            '                    </div>\n' +
+            '                </div>'
+        );
 
 
         {{--<div class="chat1 recieve">--}}
