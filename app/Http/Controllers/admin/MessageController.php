@@ -43,6 +43,7 @@ class MessageController extends Controller
 
         $chat = Chat::find($chat_id);
         $receiver_id = $chat->user_id;
+
         if($receiver_id){
             $tokens = Device::where('user_id',$receiver_id)->pluck('device');
 
@@ -55,31 +56,6 @@ class MessageController extends Controller
                 ]
             );
         }
-
-
-//
-////        $this->sendNotification($message,$chat_id);
-//        $users_id = Message::find($message['id'])->channel->messages->pluck('user_id');
-//        $users = User::WhereIn('id',$users_id)->get();
-//
-//        foreach ($users as $user)
-//        {
-//            $message = Message::find($message['id']);
-//            if ($user->id != $message->user_id)
-//            {
-//                $data=['title'=>'هناك رسالة جديدة','content'=>$message->body,'chat_id'=>$message->chat_id, 'channel_name'=>$message->channel_name(), 'total_message'=>$message->channel->total_message_pages(),'type'=>'chat'];
-//                if ($user->fcm_token_android != null)
-//                {
-//                    $this->notifyByFirebase('هناك رسالة جديدة',$message->body,[$user->fcm_token_android],$data,0);
-//                }
-//
-//                if ($user->fcm_token_ios != null)
-//                {
-//                    $this->notifyByFirebase('هناك رسالة جديدة',$message->body,[$user->fcm_token_android],$data,0);
-//                }
-//            }
-//        }
-
 
     }
 

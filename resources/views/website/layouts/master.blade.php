@@ -84,27 +84,46 @@
             <h2>سؤال مباشر - خدمة العملاء</h2>
 
             <div class="chats" id="chats">
+
+                @forelse($webChannel->messages as $message)
+                    @if($message->user_id != auth()->id())
                 <div class="chat1 recieve">
                     <div class="chat-img">
                         <img src="{{asset('website/img/1.png')}}">
                     </div>
                     <div class="chat-body">
                         <p>
-                            مرحبا بك، كيف أساعدك ياقمر ؟
+                            {{$message->body}}
+                        </p>
+                    </div>
+                </div>
+                @else
+
+                <div class="chat1 send">
+                    <div class="chat-img">
+                        <img src="{{getimg(auth()->user()->image)}}">
+                    </div>
+                    <div class="chat-body">
+                        <p>
+                            {{$message->body}}
                         </p>
                     </div>
                 </div>
 
-                <div class="chat1 send">
-                    <div class="chat-img">
-                        <img src="{{asset('website/img/1.png')}}">
+                @endif
+
+                @empty
+                    <div class="chat1 recieve">
+                        <div class="chat-img">
+                            <img src="{{asset('website/img/1.png')}}">
+                        </div>
+                        <div class="chat-body">
+                            <p>
+                                مرحبا بك، كيف نساعدك ؟؟
+                            </p>
+                        </div>
                     </div>
-                    <div class="chat-body">
-                        <p>
-                            شكرا يا بيه أنا مبشحتش على فكرة والله و شكرا شكرا اوى لحد كده شكرا عاوزة اكتب كلام كتير و انزل سطر عشان كده برغى الحقيقة
-                        </p>
-                    </div>
-                </div>
+                @endforelse
 
 
 
@@ -320,7 +339,7 @@
 
     messaging.onMessage(function(payload) {
         console.log('Message received. ', payload);
-        alert("Message received");
+
 
         title = payload.data.title;
         options = {
