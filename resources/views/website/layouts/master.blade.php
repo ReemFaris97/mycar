@@ -347,20 +347,30 @@
             'icon':payload.data.icon,
             'image':payload.data.image,
         };
-        // $('#notifyPanel').prepend(
-        //
-        //     '<li class="list-group-item"> '+
-        //     '<a href="'+payload.data.click_action+'" class="user-list-item"><span class="name">'+payload.data.username+'</span>'+
-        //     '<div class="avatar">'+
-        //     '<img src="'+payload.data.image+'" alt="">'+
-        //     '</div>'+
-        //     '<div class="user-desc">'+
-        //     '<span class="name">'+payload.data.title+'</span><span class="desc"> '+payload.data.body+' </span>'+
-        //     '</div>'+
-        //     '</a>'+
-        //     '</li>'
-        // );
+        var image = "{{asset('website/img/1.png')}}";
+        $('#chats').prepend('' +
+            '<div class="chat1 recieve">' +
+            '<div class="chat-img">' +
+            '<img src="'+image+'"' +
+            '</div>' +
+            '<div class="chat-body">' +
+            '<p>' +
+            payload.data.body+
+            '</p>' +
+            '</div>' +
+            '</div>');
 
+
+        {{--<div class="chat1 recieve">--}}
+        {{--    <div class="chat-img">--}}
+        {{--    <img src="{{asset('website/img/1.png')}}">--}}
+        {{--    </div>--}}
+        {{--    <div class="chat-body">--}}
+        {{--    <p>--}}
+        {{--    {{$message->body}}--}}
+        {{--    </p>--}}
+        {{--    </div>--}}
+        {{--    </div>--}}
         var sound = document.getElementById("myAudio");
         if(sound.play()){
             console.log('sound played well');
