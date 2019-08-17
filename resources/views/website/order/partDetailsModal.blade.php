@@ -1,5 +1,5 @@
-@if($part->children->count() >0 )
-@foreach($part->children as $child)
+
+@forelse($part->children as $child)
 <li>
     <ul class="inDetails">
         <li>
@@ -20,9 +20,7 @@
         </li>
     </ul>
 </li>
-@endforeach
-
-    @else
+@empty
 
     <li>
         <ul class="inDetails">
@@ -38,10 +36,11 @@
             <li>
                 <label class="new-p">
                     <span class="name-p">{{$part->name()}}</span>
-                    <input name="part_id" value="{{$child->id}}" type="checkbox" class="if-check">
+                    <input name="part_id" value="{{$part->id}}" type="checkbox" class="if-check">
                     <span class="checkmark"></span>
                 </label>
             </li>
         </ul>
     </li>
-@endif
+
+@endforelse
