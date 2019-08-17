@@ -121,13 +121,10 @@
                 <h3></h3>
                 <section>
                     <h3 class="h3-after">بيانات الطلب</h3>
-<form id="orders-form" action="distributers.html" novalidate="validate">
+        <form id="orders-form" action="distributers.html" novalidate="validate">
                         <div class="col-xs-12">
                             <div class="form-group">
-{{--                                --}}
-{{--                                <label>السيارات السابقة</label>--}}
-{{--                                <p class="model1">تويوتا كرولا 2019</p>--}}
-{{--                                <p class="model1">تويوتا فورتشينر 2019</p>--}}
+
                             </div>
                         </div>
                         <div class="col-xs-12">
@@ -163,19 +160,11 @@
                     <button type="button" class="delt-all">إلغاء الطلب</button>
                     <h3 class="h3-after">الطلبات</h3>
 
-                        <!--
-                        <div class="row">
-                            <label for="userName">User name *</label>
-                            <input id="userName" name="userName" type="text" class="required">
-                        </div>
--->
+
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
 
-{{--                                    <label>السيارات السابقة</label>--}}
-{{--                                    <p class="model1">تويوتا كرولا 2019</p>--}}
-{{--                                    <p class="model1">تويوتا فورتشينر 2019</p>--}}
 
                                 </div>
                             </div>
@@ -195,15 +184,15 @@
                                     <h3 class="h3-after">البحث عن موزع</h3>
                                     <div class="radio-list">
                                         <label class="rad">أصلية
-                                            <input value="original" type="radio" name="type-1" class="required">
+                                            <input value="original" type="radio" name="parts_type" class="required">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="rad">تشليح
-                                            <input value="used" type="radio" name="type-1">
+                                            <input value="used" type="radio" name="parts_type">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="rad">تجارية
-                                            <input value="commercial" type="radio" name="type-1">
+                                            <input value="commercial" type="radio" name="parts_type">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
@@ -221,17 +210,6 @@
                                     <div class="radio-list dist-list">
 
 
-{{--                                        <label class="rad">--}}
-{{--                                            <div class="checking"> القصيم لتجارة قطع الغيار </div>--}}
-{{--                                            <input class="required" type="radio" name="distributer" data-toggle="modal" data-target="#not-avl" data-dismiss='modal'>--}}
-{{--                                            <span class="checkmark"></span>--}}
-{{--                                            <span class="check-img">--}}
-{{--                                                <img src="{{asset('website/img/logo.png')}}">--}}
-{{--                                            </span>--}}
-{{--                                            <b>مواعيد العمل :--}}
-{{--                                                <span> السبت - الخميس , 9 صباحا - 11 مساءا </span>--}}
-{{--                                            </b>--}}
-{{--                                        </label>--}}
 
                                         @foreach(App\User::where('type','supplier')->get() as $user)
                                         <label class="rad">
@@ -269,7 +247,6 @@
                                 </div>
                             </div>
                         </div>
-
                 </section>
             </div>
         </div>
@@ -312,7 +289,7 @@
                                         <ul class="inDetails">
                                             <li>
                                                 <label class="new-p">
-                                                    <span class="name-p">{{$part->name()}}</span>
+                                                    <span data-id="{{$part->id}}" class="name-p">{{$part->name()}}</span>
                                                     <input type="checkbox" class="if-check">
                                                     <span class="checkmark"></span>
                                                 </label>
@@ -320,18 +297,6 @@
                                         </ul>
                                     </li>
                                     @endforeach
-
-{{--                                    <li>--}}
-{{--                                        <ul class="inDetails">--}}
-{{--                                            <li>--}}
-{{--                                                <label class="new-p">--}}
-{{--                                                    <span class="name-p">رئيسى</span>--}}
-{{--                                                    <input type="checkbox" class="if-check">--}}
-{{--                                                    <span class="checkmark"></span>--}}
-{{--                                                </label>--}}
-{{--                                            </li>--}}
-{{--                                        </ul>--}}
-{{--                                    </li>--}}
 
                                 </ul>
                             </div>
@@ -344,9 +309,6 @@
     </div>
 
                <!-----------------------------End  name-piece Modal --------------------------->
-
-
-
 
 
     <!-- image-piece Modal -->
@@ -395,7 +357,6 @@
 
 
 
-
     <!-- details Modal -->
     <div class="modal fade modalIn" id="details" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -414,8 +375,6 @@
                             </div>
                             <div class="col-lg-8 col-md-9 col-xs-12">
                                 <ol id="part-childrens" class="all-dtls">
-
-
 
 
                                 </ol>
@@ -640,11 +599,12 @@
                                             $('.new-p input.if-check').each(function() {
                                                 if ($(this).is(':checked')) {
                                                     var itemName = $(this).prev('.name-p').html();
-                                                    console.log(itemName);
+                                                    var itemId = $(this).prev('.name-p').data('id');
+                                                    console.log(itemId);
                                                     var itemQuantity = $(this).parents('li').next('li.addme').find('input').val();
                                                     console.log(itemQuantity);
 
-                                                    $("#the-choseen-parts").append('<div class="prod1"><a class="close"> <svg class="svg-inline--fa fa-times fa-w-11" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" role="img"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" data-fa-i2svg=""><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg></a><input type="hidden" value="' + itemName + '"> <h4> ' + itemName + '</h4> <input type="hidden" value="' + itemQuantity + '"> <span class="qnt"> ' + itemQuantity + '</span></div>')
+                                                    $("#the-choseen-parts").append('<div class="prod1"><a class="close"> <svg class="svg-inline--fa fa-times fa-w-11" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" role="img"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" data-fa-i2svg=""><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg></a><input name="part_ids[]" type="hidden" value="' + itemId + '"> <h4> ' + itemName + '</h4> <input type="hidden" name="qy[]" value="' + itemQuantity + '"> <span class="qnt"> ' + itemQuantity + '</span></div>')
                                                 }
 
                                                 /**********************  Remove Piece *****************/
@@ -656,17 +616,11 @@
                                     }
                                 });
                             });
-
                         }
                     });
                 });
-
-
             });
-
-
         });
-
 
 
         $(document).delegate('#goPrev', 'click', function() {
@@ -733,85 +687,12 @@
         });
 
     </script>
-    <!------------ IF Checked --------------->
-{{--    <script>--}}
-{{--        $(document).ready(function() {--}}
-{{--            var numberOfItems = 0;--}}
-{{--            $('.new-p :checkbox').change(function() {--}}
-{{--                var $this = $(this);--}}
-{{--                if ($this.is(':checked')) {--}}
-{{--                    var newInput = $('<li class="addme"><div class="quant"><div class="count"><div class="value-button cart-qty-plus" > <i class="fas fa-arrow-circle-up"></i> </div><input type="number" readonly min="1" value="1" id="number" class="number"><div class="value-button cart-qty-minus" > <i class="fas fa-arrow-circle-down"></i> </div></div></div></li>');--}}
-{{--                    $($this).closest('.inDetails').append(newInput);--}}
-{{--                    numberOfItems++;--}}
-{{--                    //                    input number simulator function--}}
-{{--                    var incrementPlus;--}}
-{{--                    var incrementMinus;--}}
-{{--                    var buttonPlus = $(this).parents('li').next("li.addme").find(".cart-qty-plus");--}}
-{{--                    var buttonMinus = $(this).parents('li').next("li.addme").find(".cart-qty-minus");--}}
-{{--                    var incrementPlus = buttonPlus.click(function() {--}}
-{{--                        var $n = $(this)--}}
-{{--                            .parent(".count")--}}
-{{--                            .parent(".quant")--}}
-{{--                            .find(".number");--}}
-{{--                        $n.val(Number($n.val()) + 1);--}}
-{{--                    });--}}
-{{--                    var incrementMinus = buttonMinus.click(function() {--}}
-{{--                        var $n = $(this)--}}
-{{--                            .parent(".count")--}}
-{{--                            .parent(".quant")--}}
-{{--                            .find(".number");--}}
-{{--                        var amount = Number($n.val());--}}
-{{--                        if (amount > 1) {--}}
-{{--                            $n.val(amount - 1);--}}
-{{--                        }--}}
-{{--                    });--}}
-{{--                } else {--}}
-{{--                    $($this).closest('.inDetails').find('.addme').remove();--}}
-{{--                    numberOfItems--;--}}
-{{--                }--}}
-{{--                console.log(numberOfItems);--}}
-{{--                if (numberOfItems == 0) {--}}
-{{--                    $(".fxd-btn").attr('disabled', 'true');--}}
-{{--                } else {--}}
-{{--                    $(".fxd-btn").removeAttr('disabled');--}}
-{{--                }--}}
-{{--            });--}}
-{{--            $(".fxd-btn").click(function() {--}}
-{{--                $("#the-choseen-parts").html('');--}}
-{{--                $('.new-p input.if-check').each(function() {--}}
-{{--                    if ($(this).is(':checked')) {--}}
-{{--                        var itemName = $(this).prev('.name-p').html();--}}
-{{--                        console.log(itemName);--}}
-{{--                        var itemQuantity = $(this).parents('li').next('li.addme').find('input').val();--}}
-{{--                        console.log(itemQuantity);--}}
 
-{{--                        $("#the-choseen-parts").append('<div class="prod1"><a class="close"> <svg class="svg-inline--fa fa-times fa-w-11" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" role="img"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" data-fa-i2svg=""><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg></a><input type="hidden" value="' + itemName + '"> <h4> ' + itemName + '</h4> <input type="hidden" value="' + itemQuantity + '"> <span class="qnt"> ' + itemQuantity + '</span></div>')--}}
-{{--                    }--}}
-
-{{--                    /**********************  Remove Piece *****************/--}}
-{{--                    $(".close").click(function() {--}}
-{{--                        $(this).parent(".prod1").remove();--}}
-{{--                    });--}}
-{{--                })--}}
-{{--            })--}}
-{{--        });--}}
-
-{{--    </script>--}}
     <!---------- Radio Button Required ------------>
     <script>
         $(document).ready(function() {
             var $radio = $('input:radio[name="choice"]');
             $radio.addClass("validate[required]");
-            var OrderType = $('#order_type_car').val();
-
-            // if(OrderType == 0){
-            //     $('#dwn-btn').attr('required','required');
-            //     if($('#form_image').val() == null){
-            //
-            //     }
-            // }
-
-
         });
 
     </script>
@@ -854,23 +735,5 @@
         });
 
     </script>
-    <!-------------------->
-    <!----------- Input Required ----------->
-    <!--
-    <script>
-        $(document).ready(function() {
-            $("#account-form").validate({
-                rules: {
-                    "choiseC]": "required"
-                },
-                messages: {
-                    "choiseC": "Please select category",
-                }
-            });
-        });
-    </script>
--->
-
-
 
 @endsection

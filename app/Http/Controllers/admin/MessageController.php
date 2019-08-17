@@ -57,11 +57,11 @@ class MessageController extends Controller
         }
 
 
-
-//        $this->sendNotification($message,$chat_id);
+//
+////        $this->sendNotification($message,$chat_id);
 //        $users_id = Message::find($message['id'])->channel->messages->pluck('user_id');
 //        $users = User::WhereIn('id',$users_id)->get();
-
+//
 //        foreach ($users as $user)
 //        {
 //            $message = Message::find($message['id']);

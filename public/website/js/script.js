@@ -35,77 +35,77 @@ $(document).ready(function () {
     });
 
 
-    ////////////// chat modal/////////////////////////////////////////////////////////////////////////////////////////
-    $('#seven').click(function () {
-        //////////////////// textarea focus //////////////////////////////////////
-        $('#inbox').focus();
-        var buttonId = $(this).attr('id');
-        $('#modal-container').removeAttr('class').addClass(buttonId);
-        $('body').addClass('modal-active');
-        $('#chats').scrollTop($('#chats')[0].scrollHeight);
-    });
-
-    $('.closeit').click(function () {
-        $('#modal-container').addClass('out');
-        $('body').removeClass('modal-active');
-    });
-
-
-    ///////////////////// enter submit /////////////
-    $('#inbox').keydown(function () {
-        $('#chats').scrollTop($('#chats')[0].scrollHeight);
-
-        var message = $("#inbox").val();
-
-        function isEmptyOrSpaces(str) {
-            return str === null || str.match(/^ *$/) !== null;
-        }
-        if (event.keyCode == 13) {
-            if (isEmptyOrSpaces(message)) {
-                alert("Enter Some Text In Textarea");
-            } else {
-                var msgSend = $(".chat1.send").val();
-                $(".chats").append('<div class="chat1 send"><div class="chat-img"><img src="img/1.png"></div><div class="chat-body"><p class="newmsg">' + message + '</p></div></div>');
-                //      $(".newmsg").text();
-                //      $('#my_form').submit();
-                //      alert("Your message is sent succesfully:- " );
-            }
-            $("#inbox").val('');
-            $('#chats').scrollTop($('#chats')[0].scrollHeight);
-            return false;
-            $('#inbox').focus();
-        }
-    });
-
-    $('#sendnow').click(function () {
-        $('#inbox').focus();
-        var message = $("#inbox").val();
-        function isEmptyOrSpaces(str) {
-            return str === null || str.match(/^ *$/) !== null;
-        }
-        if (isEmptyOrSpaces(message)) {
-            alert("Enter Some Text In Textarea");
-        } else {
-
-            var msgSend = $(".chat1.send").val();
-            $(".chats").append('<div class="chat1 send"><div class="chat-img"><img src="img/1.png"></div><div class="chat-body"><p class="newmsg">' + message + '</p></div></div>');
-            //                $(".newmsg").text();
-
-            //                $('#my_form').submit();
-            //                alert("Your message is sent succesfully:- " );
-        }
-        $("#inbox").val('');
-
-        //                var len = $('#chats').height();
-        //                console.log(len);
-        //               $('#chats').scrollTop(len * 1000);
-
-        $('#chats').scrollTop($('#chats')[0].scrollHeight);
-
-        return false;
-    });
-
-    //////////// Append Chat .///////////////////////
+    // ////////////// chat modal/////////////////////////////////////////////////////////////////////////////////////////
+    // $('#seven').click(function () {
+    //     //////////////////// textarea focus //////////////////////////////////////
+    //     $('#inbox').focus();
+    //     var buttonId = $(this).attr('id');
+    //     $('#modal-container').removeAttr('class').addClass(buttonId);
+    //     $('body').addClass('modal-active');
+    //     $('#chats').scrollTop($('#chats')[0].scrollHeight);
+    // });
+    //
+    // $('.closeit').click(function () {
+    //     $('#modal-container').addClass('out');
+    //     $('body').removeClass('modal-active');
+    // });
+    //
+    //
+    // ///////////////////// enter submit /////////////
+    // $('#inbox').keydown(function () {
+    //     $('#chats').scrollTop($('#chats')[0].scrollHeight);
+    //
+    //     var message = $("#inbox").val();
+    //
+    //     function isEmptyOrSpaces(str) {
+    //         return str === null || str.match(/^ *$/) !== null;
+    //     }
+    //     if (event.keyCode == 13) {
+    //         if (isEmptyOrSpaces(message)) {
+    //             alert("Enter Some Text In Textarea");
+    //         } else {
+    //             var msgSend = $(".chat1.send").val();
+    //             $(".chats").append('<div class="chat1 send"><div class="chat-img"><img src="img/1.png"></div><div class="chat-body"><p class="newmsg">' + message + '</p></div></div>');
+    //             //      $(".newmsg").text();
+    //             //      $('#my_form').submit();
+    //             //      alert("Your message is sent succesfully:- " );
+    //         }
+    //         $("#inbox").val('');
+    //         $('#chats').scrollTop($('#chats')[0].scrollHeight);
+    //         return false;
+    //         $('#inbox').focus();
+    //     }
+    // });
+    //
+    // $('#sendnow').click(function () {
+    //     $('#inbox').focus();
+    //     var message = $("#inbox").val();
+    //     function isEmptyOrSpaces(str) {
+    //         return str === null || str.match(/^ *$/) !== null;
+    //     }
+    //     if (isEmptyOrSpaces(message)) {
+    //         alert("Enter Some Text In Textarea");
+    //     } else {
+    //
+    //         var msgSend = $(".chat1.send").val();
+    //         $(".chats").append('<div class="chat1 send"><div class="chat-img"><img src="img/1.png"></div><div class="chat-body"><p class="newmsg">' + message + '</p></div></div>');
+    //         //                $(".newmsg").text();
+    //
+    //         //                $('#my_form').submit();
+    //         //                alert("Your message is sent succesfully:- " );
+    //     }
+    //     $("#inbox").val('');
+    //
+    //     //                var len = $('#chats').height();
+    //     //                console.log(len);
+    //     //               $('#chats').scrollTop(len * 1000);
+    //
+    //     $('#chats').scrollTop($('#chats')[0].scrollHeight);
+    //
+    //     return false;
+    // });
+    //
+    // //////////// Append Chat .///////////////////////
 
     ///////////////////////////////////////////
 
