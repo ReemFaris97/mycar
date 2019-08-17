@@ -129,7 +129,7 @@
 
             </div>
 
-            <form class="chatting" id="messageForm" method="post" action="{{route('message.store',$channel->id)}}" >
+            <form class="chatting" id="messageForm" method="post" action="{{route('message.store',$webChannel->id)}}" >
                 <textarea rows="4" cols="95" id="inbox" class="form-control input-lg" data-fv-field="inbox" placeholder="اكتب رسالتك..."></textarea>
                 <button type="button" id="sendnow"> <i class="fas fa-arrow-right"></i> </button>
             </form>
