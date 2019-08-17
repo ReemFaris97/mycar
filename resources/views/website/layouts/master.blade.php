@@ -129,7 +129,7 @@
 
             </div>
 
-            <form class="chatting" id="my_form">
+            <form class="chatting" id="messageForm" method="post" action="{{route('message.store',$channel->id)}}" >
                 <textarea rows="4" cols="95" id="inbox" class="form-control input-lg" data-fv-field="inbox" placeholder="اكتب رسالتك..."></textarea>
                 <button type="button" id="sendnow"> <i class="fas fa-arrow-right"></i> </button>
             </form>
@@ -355,7 +355,7 @@
             '                    </div>\n' +
             '                    <div class="chat-body">\n' +
             '                        <p>\n' +
-            payload.data.body +
+                payload.data.body +
             '                        </p>\n' +
             '                    </div>\n' +
             '                </div>'
@@ -437,16 +437,72 @@
             if (isEmptyOrSpaces(message)) {
                 alert("Enter Some Text In Textarea");
             } else {
-                var msgSend = $(".chat1.send").val();
-                $(".chats").append('<div class="chat1 send"><div class="chat-img"><img src="{{asset('website/img/1.png')}}"></div><div class="chat-body"><p class="newmsg">' + message + '</p></div></div>');
-                //      $(".newmsg").text();
-                //      $('#my_form').submit();
-                //      alert("Your message is sent succesfully:- " );
+
+
+                var form = $('#messageForm');
+
+
+                $.ajax({
+                    type: 'POST',
+                    url: form.attr('action'),
+                    data: {body:message},
+                    // cache: false,
+                    // contentType: false,
+                    // processData: false,
+                    success: function (data) {
+
+                        if (data.status === true) {
+
+                            var title = data.title;
+                            var msg = data.message;
+                            toastr.options = {
+                                positionClass : 'toast-top-left',
+                                onclick:null
+                            };
+                            // var $toast = toastr['success'](msg,title);
+                            // $toastlast = $toast;
+                            $('#messageForm').each(function () {
+                                this.reset();
+                            });
+
+                            var msgSend = $(".chat1.send").val();
+                            $(".chats").append('<div class="chat1 send"><div class="chat-img"><img src="img/1.png"></div><div class="chat-body"><p class="newmsg">' + message + '</p></div></div>');
+                            $("textarea").val('');
+                            $('#chats').scrollTop($('#chats')[0].scrollHeight);
+                            return false;
+                            $('#inbox').focus();
+
+                        } else {
+                            var title = data.title;
+                            var msg = data.message;
+                            toastr.options = {
+                                positionClass : 'toast-top-left',
+                                onclick:null
+                            };
+                            var $toast = toastr['error'](msg,title);
+                            $toastlast = $toast;
+
+                        }
+                    },
+                    error: function (data) {
+
+                    }
+                });
+
+
+
+
             }
-            $("#inbox").val('');
-            $('#chats').scrollTop($('#chats')[0].scrollHeight);
-            return false;
-            $('#inbox').focus();
+            {{--    var msgSend = $(".chat1.send").val();--}}
+            {{--    $(".chats").append('<div class="chat1 send"><div class="chat-img"><img src="{{asset('website/img/1.png')}}"></div><div class="chat-body"><p class="newmsg">' + message + '</p></div></div>');--}}
+            {{--    //      $(".newmsg").text();--}}
+            {{--    //      $('#my_form').submit();--}}
+            {{--    //      alert("Your message is sent succesfully:- " );--}}
+            {{--}--}}
+            {{--$("#inbox").val('');--}}
+            {{--$('#chats').scrollTop($('#chats')[0].scrollHeight);--}}
+            {{--return false;--}}
+            {{--$('#inbox').focus();--}}
         }
     });
 
