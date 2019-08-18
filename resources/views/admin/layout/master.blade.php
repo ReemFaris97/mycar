@@ -236,7 +236,7 @@
                     "hideMethod": "fadeOut"
                 }
 
-                toastr["success"]("رسالة من المستخدم",payload.data.body);
+                toastr["success"]("رسالة من المستخدم : رقم الهاتف :",payload.data.body);
 
 
             });
