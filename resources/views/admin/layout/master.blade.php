@@ -179,26 +179,44 @@
 
             messaging.onMessage(function(payload) {
                 console.log('Message received. ', payload);
-        //        title = payload.data.title;
-        //        options = {
-        //            'body':payload.data.body,
-        //            'icon':payload.data.icon,
-        //            'image':payload.data.image,
-        //        };
+                title = payload.data.title;
+                options = {
+                    'body':payload.data.body,
+                    'icon':payload.data.icon,
+                    'image':payload.data.image,
+                };
+                var image = "{{asset('website/img/1.png')}}";
+                var user_id = payload.data.user_id;
+                var auth_id = "{{auth()->id()}}";
 
-                $('#notifyPanel').prepend(
+                if(user_id != auth_id) {
+                    $('#chats').append(
+                        '<div class="chat1 recieve">\n' +
+                        '                    <div class="chat-img">\n' +
+                        '                        <img src="' + image + '">\n' +
+                        '                    </div>\n' +
+                        '                    <div class="chat-body">\n' +
+                        '                        <p>\n' +
+                        payload.data.body +
+                        '                        </p>\n' +
+                        '                    </div>\n' +
+                        '                </div>'
+                    );
+                }
 
-                    '<li class="list-group-item"> '+
-                    '<a href="'+payload.data.click_action+'" class="user-list-item"><span class="name">'+payload.data.username+'</span>'+
-                    '<div class="avatar">'+
-                    '<img src="'+payload.data.image+'" alt="">'+
-                    '</div>'+
-                    '<div class="user-desc">'+
-                    '<span class="name">'+payload.data.title+'</span><span class="desc"> '+payload.data.body+' </span>'+
-                    '</div>'+
-                    '</a>'+
-                    '</li>'
-                );
+                // $('#notifyPanel').prepend(
+                //
+                //     '<li class="list-group-item"> '+
+                //     '<a href="'+payload.data.click_action+'" class="user-list-item"><span class="name">'+payload.data.username+'</span>'+
+                //     '<div class="avatar">'+
+                //     '<img src="'+payload.data.image+'" alt="">'+
+                //     '</div>'+
+                //     '<div class="user-desc">'+
+                //     '<span class="name">'+payload.data.title+'</span><span class="desc"> '+payload.data.body+' </span>'+
+                //     '</div>'+
+                //     '</a>'+
+                //     '</li>'
+                // );
 
                 var sound = document.getElementById("myAudio");
                 if(sound.play()){
