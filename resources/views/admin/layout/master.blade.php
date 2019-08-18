@@ -178,31 +178,14 @@
 
 
             messaging.onMessage(function(payload) {
-                alert("message received");
-                title = payload.data.title;
-                options = {
-                    'body':payload.data.body,
-                    'icon':payload.data.icon,
-                    'image':payload.data.image,
-                };
-                var image = "{{asset('website/img/1.png')}}";
-                {{--var user_id = payload.data.user_id;--}}
-                {{--var auth_id = "{{auth()->id()}}";--}}
-
-                // if(user_id != auth_id) {
-                    $('#chats').append(
-                        '<div class="chat1 recieve">\n' +
-                        '                    <div class="chat-img">\n' +
-                        '                        <img src="' + image + '">\n' +
-                        '                    </div>\n' +
-                        '                    <div class="chat-body">\n' +
-                        '                        <p>\n' +
-                        payload.data.body +
-                        '                        </p>\n' +
-                        '                    </div>\n' +
-                        '                </div>'
-                    );
-                // }
+                console.log('Message received. ', payload);
+                alert(payload);
+        //        title = payload.data.title;
+        //        options = {
+        //            'body':payload.data.body,
+        //            'icon':payload.data.icon,
+        //            'image':payload.data.image,
+        //        };
 
                 // $('#notifyPanel').prepend(
                 //
