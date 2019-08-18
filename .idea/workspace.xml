@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07d3112d-1530-4da5-ab4a-6f65651dce54" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/MessageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/MessageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/website/MessageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/website/MessageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Libraries/firebase.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Libraries/firebase.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/website/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/layouts/master.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -54,8 +51,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/website/layouts/master.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="407" column="47" selection-start-line="407" selection-start-column="45" selection-end-line="407" selection-end-column="47" />
+            <state relative-caret-position="500">
+              <caret line="409" column="9" selection-start-line="409" selection-start-column="9" selection-end-line="409" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -119,8 +116,8 @@
       <find>chats</find>
       <find>if (isEmptyOrSpaces(message)) {</find>
       <find>messageForm</find>
-      <find>&lt;form</find>
       <find>message.store</find>
+      <find>myAudio</find>
     </findStrings>
     <replaceStrings>
       <replace>Company</replace>
@@ -534,12 +531,12 @@
       <workItem from="1565390761965" duration="28000" />
       <workItem from="1565391602676" duration="55000" />
       <workItem from="1566027393746" duration="22014000" />
-      <workItem from="1566114893631" duration="567000" />
+      <workItem from="1566114893631" duration="1281000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="490205000" />
+    <option name="totallyTimeSpent" value="490919000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -952,8 +949,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/website/layouts/master.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="407" column="47" selection-start-line="407" selection-start-column="45" selection-end-line="407" selection-end-column="47" />
+        <state relative-caret-position="500">
+          <caret line="409" column="9" selection-start-line="409" selection-start-column="9" selection-end-line="409" selection-end-column="9" />
         </state>
       </provider>
     </entry>

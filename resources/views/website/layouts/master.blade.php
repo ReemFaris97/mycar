@@ -377,6 +377,7 @@
         {{--    </p>--}}
         {{--    </div>--}}
         {{--    </div>--}}
+
         var sound = document.getElementById("myAudio");
         if(sound.play()){
             console.log('sound played well');
@@ -386,27 +387,27 @@
             console.log('can not be played');
         }
 
+        if(user_id != auth_id) {
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "20000",
+                "extendedTimeOut": "20000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
 
-        toastr.options = {
-            "closeButton": false,
-            "debug": false,
-            "newestOnTop": false,
-            "progressBar": false,
-            "positionClass": "toast-top-right",
-            "preventDuplicates": false,
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "20000",
-            "extendedTimeOut": "20000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
+            toastr["success"]("رسالة من الإدارة", payload.data.body);
         }
-
-        toastr["success"]("رسالة من الإدارة",payload.data.body);
-
 
     });
 
