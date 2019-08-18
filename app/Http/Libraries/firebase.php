@@ -52,12 +52,13 @@ class firebase
     }
 
 
-    public  function sendMessage($tokens,$body,$icon=null,$image=null){
+    public  function sendMessage($tokens,$body,$icon=null,$image=null,$user_id){
 
         $msg = [
             "body"=>$body,
             "icon"=>$icon,
             "image"=>$image,
+            "user_id"=>$user_id
         ];
 
         $payload = ['registration_ids'=>$tokens,

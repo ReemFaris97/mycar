@@ -349,19 +349,23 @@
             'image':payload.data.image,
         };
         var image = "{{asset('website/img/1.png')}}";
-        $('#chats').append(
-            '<div class="chat1 recieve">\n' +
-            '                    <div class="chat-img">\n' +
-            '                        <img src="'+image+'">\n' +
-            '                    </div>\n' +
-            '                    <div class="chat-body">\n' +
-            '                        <p>\n' +
-                payload.data.body +
-            '                        </p>\n' +
-            '                    </div>\n' +
-            '                </div>'
-        );
+        var user_id = payload.data.user_id;
+        var auth_id = "{{auth()->id()}}";
 
+        if(user_id != auth_id) {
+            $('#chats').append(
+                '<div class="chat1 recieve">\n' +
+                '                    <div class="chat-img">\n' +
+                '                        <img src="' + image + '">\n' +
+                '                    </div>\n' +
+                '                    <div class="chat-body">\n' +
+                '                        <p>\n' +
+                payload.data.body +
+                '                        </p>\n' +
+                '                    </div>\n' +
+                '                </div>'
+            );
+        }
 
         {{--<div class="chat1 recieve">--}}
         {{--    <div class="chat-img">--}}
@@ -401,7 +405,7 @@
             "hideMethod": "fadeOut"
         }
 
-        toastr["success"](payload.data.title,payload.data.body);
+        toastr["success"]("رسالة من الإدارة",payload.data.body);
 
 
     });

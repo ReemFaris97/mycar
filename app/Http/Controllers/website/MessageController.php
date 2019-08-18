@@ -25,7 +25,7 @@ class MessageController extends Controller
             $tokens = Device::where('user_id',$receiver_id)->pluck('device');
 
             $firebase = new firebase();
-            $firebase->sendMessage($tokens,$message->body,null,"here is the user image");
+            $firebase->sendMessage($tokens,$message->body,null,"here is the user image",auth()->id());
             return response()->json([
                     'status'=>true,
                     'title'=>"نجاح",
