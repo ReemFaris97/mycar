@@ -289,7 +289,7 @@
                                         <ul class="inDetails">
                                             <li>
                                                 <label class="new-p">
-                                                    <span data-id="{{$part->id}}" class="name-p">{{$part->name()}}</span>
+                                                    <span  class="name-p">{{$part->name()}}</span>
                                                     <input type="checkbox" class="if-check">
                                                     <span class="checkmark"></span>
                                                 </label>
@@ -599,12 +599,12 @@
                                             $('.new-p input.if-check').each(function() {
                                                 if ($(this).is(':checked')) {
                                                     var itemName = $(this).prev('.name-p').html();
-                                                    var itemId = $(this).prev('.name-p').data('id');
-                                                    console.log(itemId);
+                                                    // var itemId = $(this).prev('.name-p').attr('data-partId');
+                                                    // console.log(itemId);
                                                     var itemQuantity = $(this).parents('li').next('li.addme').find('input').val();
                                                     console.log(itemQuantity);
 
-                                                    $("#the-choseen-parts").append('<div class="prod1"><a class="close"> <svg class="svg-inline--fa fa-times fa-w-11" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" role="img"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" data-fa-i2svg=""><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg></a><input name="part_ids[]" type="hidden" value="' + itemId + '"> <h4> ' + itemName + '</h4> <input type="hidden" name="qy[]" value="' + itemQuantity + '"> <span class="qnt"> ' + itemQuantity + '</span></div>')
+                                                    $("#the-choseen-parts").append('<div class="prod1"><a class="close"> <svg class="svg-inline--fa fa-times fa-w-11" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" role="img"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" data-fa-i2svg=""><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg></a><input name="part_ids[]" type="hidden" value=""> <h4> ' + itemName + '</h4> <input type="hidden" name="qy[]" value="' + itemQuantity + '"> <span class="qnt"> ' + itemQuantity + '</span></div>')
                                                 }
 
                                                 /**********************  Remove Piece *****************/

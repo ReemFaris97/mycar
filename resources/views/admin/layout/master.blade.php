@@ -217,7 +217,6 @@
                     console.log('can not be played');
                 }
 
-
                 toastr.options = {
                     "closeButton": false,
                     "debug": false,
@@ -237,8 +236,6 @@
                 }
 
                 toastr["success"]("رسالة من المستخدم : رقم الهاتف :",payload.data.body);
-
-
             });
 
     </script>
