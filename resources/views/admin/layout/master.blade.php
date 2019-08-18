@@ -186,10 +186,10 @@
                     'image':payload.data.image,
                 };
                 var image = "{{asset('website/img/1.png')}}";
-                var user_id = payload.data.user_id;
-                var auth_id = "{{auth()->id()}}";
+                {{--var user_id = payload.data.user_id;--}}
+                {{--var auth_id = "{{auth()->id()}}";--}}
 
-                if(user_id != auth_id) {
+                // if(user_id != auth_id) {
                     $('#chats').append(
                         '<div class="chat1 recieve">\n' +
                         '                    <div class="chat-img">\n' +
@@ -202,7 +202,7 @@
                         '                    </div>\n' +
                         '                </div>'
                     );
-                }
+                // }
 
                 // $('#notifyPanel').prepend(
                 //
