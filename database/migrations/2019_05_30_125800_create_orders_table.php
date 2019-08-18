@@ -10,11 +10,11 @@ class CreateOrdersTable extends Migration {
 		Schema::create('orders', function(Blueprint $table) {
 			$table->bigIncrements('id');
 			$table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('company_id');
-            $table->unsignedBigInteger('company_model_id');
+            $table->unsignedBigInteger('company_id')->nullable();
+            $table->unsignedBigInteger('company_model_id')->nullable();
 //            $table->unsignedBigInteger('city_id');
 
-            $table->integer('year');
+            $table->integer('year')->nullable();
             $table->enum('parts_type', array('original', 'used','commercial'));
             $table->string('form_image')->nullable();
             $table->string('structure_number')->nullable();
@@ -32,11 +32,6 @@ class CreateOrdersTable extends Migration {
 
             $table->foreign('company_model_id')->references('id')->on('company_models')
                 ->onDelete('cascade');
-//
-//            $table->foreign('city_id')->references('id')->on('cities')
-//                ->onDelete('cascade');
-
-
 
         });
 	}

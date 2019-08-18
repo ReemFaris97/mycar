@@ -13,7 +13,7 @@
 
         <li>
             <label class="new-p">
-                <span class="name-p">{{$child->name()}}</span>
+                <span class="name-p" data-partid="{{$child->id}}">{{$child->name()}}</span>
                 <input name="part_id" value="{{$child->id}}" type="checkbox" class="if-check">
                 <span class="checkmark"></span>
             </label>
@@ -35,7 +35,7 @@
 
             <li>
                 <label class="new-p">
-                    <span class="name-p">{{$part->name()}}</span>
+                    <span class="name-p" data-partid="{{$part->id}}">{{$part->name()}}</span>
                     <input name="part_id" value="{{$part->id}}" type="checkbox" class="if-check">
                     <span class="checkmark"></span>
                 </label>

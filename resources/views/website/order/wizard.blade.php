@@ -19,19 +19,24 @@
             <div id="jquery-steps">
                 <h3></h3>
                 <section>
-                    <button type="button" class="delt-all">إلغاء الطلب</button>
+{{--                    <button type="button" class="delt-all">إلغاء الطلب</button>--}}
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li style="display: block;">{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
                     <h3 class="h3-after">إضافة سيارة</h3>
 
 
-                    <form id="account-form" method="post" action="{{route('web.order.initiate')}}" novalidate="validate" >
+                    <form id="account-form"  novalidate="validate" >
                         {{csrf_field()}}
-                        <input type="hidden" id="order_type_car" name="order_car_type" value="1" >
-
 
                         <div class="row">
-
-
                             <div class="col-xs-12">
                                 <div class="form-group">
                                     <label for="userName">اختيار الشركة</label>
@@ -40,7 +45,7 @@
                                         @foreach($companies as $company)
                                         <div class="rad1">
                                             <input type="radio" data-company-name="{{$company->name()}}" name="company_id" value="{{$company->id}}" id="choose-{{$loop->iteration}}" class="required" />
-                                            <label for="choose-{{$loop->iteration}}" class="lbl1">
+                                            <label for="choose-{{$loop->iteration}}" class="lbl1 companyRadio">
                                                 <img src="{{getimg($company->image)}}" />
                                                 <p>{{$company->name()}}</p>
                                             </label>
@@ -58,7 +63,7 @@
                                     <div class="form-group custom-gp">
                                         <label>الموديل</label>
 
-                                        <select name="company_model_id" class="js-select2" id="locationCodesSelect2">
+                                        <select  class="js-select2" id="locationCodesSelect2">
                                         {{--  locationCodeSelect2 blade included here --}}
 
                                         </select>
@@ -69,7 +74,7 @@
                                 <div class="col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <label>السنة</label>
-                                        <select  name="year" class="js-select2" id="ModelYears">
+                                        <select  class="js-select2" id="ModelYears">
                                             {{--  ModelYears blade included here --}}
 
                                         </select>
@@ -121,7 +126,19 @@
                 <h3></h3>
                 <section>
                     <h3 class="h3-after">بيانات الطلب</h3>
-        <form id="orders-form" action="distributers.html" novalidate="validate">
+        <form id="orders-form" action="{{route('web.order.initiate')}}" method="post" novalidate="validate" enctype="multipart/form-data">
+                    {{csrf_field()}}
+            <div class="hidden-inputs">
+                <input type="hidden" id="order_type_car" name="order_car_type" value="1" >
+                <input type="hidden" id="structure_number" name="structure_number">
+                <input type="hidden" id="form_image" name="form_image">
+                <input name="company_id" type="hidden" id="companyChocie">
+                <input name="company_model_id" type="hidden" id="modelIdHidden">
+                <input name="year" type="hidden" id="yearHidden">
+                <input name="parts_type" type="hidden" id="partsTypeHidden">
+                <input name="supplier_id" type="hidden" id="supplierIdHidden">
+            </div>
+
                         <div class="col-xs-12">
                             <div class="form-group">
 
@@ -157,7 +174,8 @@
 
                 <h3></h3>
                 <section>
-                    <button type="button" class="delt-all">إلغاء الطلب</button>
+
+{{--                    <button type="button" class="delt-all">إلغاء الطلب</button>--}}
                     <h3 class="h3-after">الطلبات</h3>
 
 
@@ -184,15 +202,15 @@
                                     <h3 class="h3-after">البحث عن موزع</h3>
                                     <div class="radio-list">
                                         <label class="rad">أصلية
-                                            <input value="original" type="radio" name="parts_type" class="required">
+                                            <input  value="original" type="radio" name="parts_type" class="required partStatusRadio">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="rad">تشليح
-                                            <input value="used" type="radio" name="parts_type">
+                                            <input class="partStatusRadio" value="used" type="radio" name="parts_type">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="rad">تجارية
-                                            <input value="commercial" type="radio" name="parts_type">
+                                            <input class="partStatusRadio" value="commercial" type="radio" name="parts_type">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
@@ -214,7 +232,7 @@
                                         @foreach(App\User::where('type','supplier')->get() as $user)
                                         <label class="rad">
                                             <div class="checking"> {{$user->name}} </div>
-                                            <input class="required" type="radio" name="supplier_id" value="{{$user->id}}">
+                                            <input class="supplierId required" type="radio" name="supplier_id" value="{{$user->id}}">
                                             <span class="checkmark"></span>
                                             <span class="check-img">
                                                 @if($user->image != null)
@@ -289,7 +307,7 @@
                                         <ul class="inDetails">
                                             <li>
                                                 <label class="new-p">
-                                                    <span  class="name-p">{{$part->name()}}</span>
+                                                    <span  class="name-p" data-partid="{{$part->id}}">{{$part->name()}}</span>
                                                     <input type="checkbox" class="if-check">
                                                     <span class="checkmark"></span>
                                                 </label>
@@ -502,12 +520,14 @@
                             $('#ModelYears').html(data.data);
                         }
                     });
+                    $("#modelIdHidden").val(selectModelId);
                 });
 
                 $('#ModelYears').change(function(){
                     carYear = $(this).find('option:selected').text();
                     $('#currentCar').text(carName+" "+ carModel+" "+carYear);
                     $('#currentCar2').text(carName+" "+ carModel+" "+carYear);
+                    $('#yearHidden').val(carYear);
                 });
 
                 $('#mainCategoriesSelect').change(function(){
@@ -599,12 +619,12 @@
                                             $('.new-p input.if-check').each(function() {
                                                 if ($(this).is(':checked')) {
                                                     var itemName = $(this).prev('.name-p').html();
-                                                    // var itemId = $(this).prev('.name-p').attr('data-partId');
-                                                    // console.log(itemId);
+                                                    var itemId = $(this).prev('.name-p').attr('data-partid');
+                                                    console.log( 'id is'  + itemId);
                                                     var itemQuantity = $(this).parents('li').next('li.addme').find('input').val();
                                                     console.log(itemQuantity);
 
-                                                    $("#the-choseen-parts").append('<div class="prod1"><a class="close"> <svg class="svg-inline--fa fa-times fa-w-11" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" role="img"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" data-fa-i2svg=""><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg></a><input name="part_ids[]" type="hidden" value=""> <h4> ' + itemName + '</h4> <input type="hidden" name="qy[]" value="' + itemQuantity + '"> <span class="qnt"> ' + itemQuantity + '</span></div>')
+                                                    $("#the-choseen-parts").append('<div class="prod1"><a class="close"> <svg class="svg-inline--fa fa-times fa-w-11" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" role="img"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" data-fa-i2svg=""><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg></a><input name="part_ids[]" type="hidden" value="' + itemId + '"> <h4> ' + itemName + '</h4> <input type="hidden" name="qtys[]" value="' + itemQuantity + '"> <span class="qnt"> ' + itemQuantity + '</span></div>')
                                                 }
 
                                                 /**********************  Remove Piece *****************/
@@ -620,6 +640,35 @@
                     });
                 });
             });
+
+
+            // Collecting first Form inputs' values
+
+            $(".companyRadio").click(function () {
+                $("#companyChocie").val($(this).prev("input").val());
+            });
+            $('.partStatusRadio').click(function () {
+                $('#partsTypeHidden').val($(this).val());
+            });
+            $('.supplierId').click(function () {
+                $('#supplierIdHidden').val($(this).val());
+            });
+
+            // for the input type image
+            // $('.upload-img.photo').click(function () {
+            //     $('#form_image').val($("#upp-btn").val());
+            // });
+
+
+
+            $('#dwn-btn').keyup(function () {
+                $('#structure_number').val($(this).val());
+            })
+
+
+
+
+
         });
 
 
@@ -650,7 +699,29 @@
             $('#upp-btn').change(function(event) {
                 $('#appended-pic').html(' ');
                 $('#appended-pic').append('<div class="uploaded-block"><img src="' + URL.createObjectURL(event.target.files[0]) + '"><button class="close">&times;</button></div>');
+
+                console.log(' old is' + event.target.files[0]);
             });
+
+
+
+            document.getElementById("upp-btn").onchange = function(event) {
+                var reader = new FileReader();
+                reader.readAsDataURL(event.srcElement.files[0]);
+                var me = this;
+                reader.onload = function () {
+                    var fileContent = reader.result;
+                    console.log( 'new is' + fileContent);
+
+                    $('#form_image').val(fileContent);
+
+
+                }
+            }
+
+
+
+
             // REMOVE IMAGE
             $('#appended-pic').on('click', '.close', function() {
                 $(this).parents('.uploaded-block').remove();

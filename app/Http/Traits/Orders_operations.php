@@ -15,6 +15,13 @@ trait Orders_operations
      * @return \Illuminate\Http\RedirectResponse
      */
 
+    public function initiateOrder($request,$user_id){
+
+    }
+
+
+
+
     public function AcceptReply($request,$reply){
         $order = Order::find($request->order_id);
         $supplier =User::find($reply->supplier_id);
