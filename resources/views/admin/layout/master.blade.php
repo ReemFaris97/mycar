@@ -179,6 +179,7 @@
 
             messaging.onMessage(function(payload) {
                 console.log('Message received. ', payload);
+
                 alert(payload);
         //        title = payload.data.title;
         //        options = {
