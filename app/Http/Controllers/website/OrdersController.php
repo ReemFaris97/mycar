@@ -9,9 +9,12 @@ use App\Part;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Traits\Orders_operations;
 
 class OrdersController extends Controller
 {
+        use Orders_operations;
+
     public function getWizard(){
         $oldOrders = Order::whereUserId(auth()->id())->get();
         $parts = Part::all();
@@ -55,7 +58,8 @@ class OrdersController extends Controller
 
             $this->validate($request,$rules,$messages);
 
-
+            $order = $this->InitiateTheOrder($request,auth()->id());
+            return $order;
 
 
 

@@ -64,6 +64,33 @@ function uploader($request,$img_name)
     $path = \Storage::disk('public')->putFile(uploadpath(), $request->file($img_name));
     return $path;
 }
+
+function uploader_base_64($image)
+{
+//    $img1 = str_replace('data:image/jpeg;base64,','',$image);
+//    $img2 = str_replace(' ','+',$img1);
+//    $data = base64_decode($img2);
+//    $new_image = base64_decode($data);
+//    $NewName = str_random(10) . rand(0, 10);
+//
+//    $path =  file_put_contents(public_path(env('UPLOAD_PATH')) . '/' . $NewName . '.jpg', $new_image);
+//
+//   dd($path);
+
+}
+
+
+
+
+//    $name = time().'_'.auth()->id().'_form_image.jpg';
+//    $img1 = str_replace('data:image/jpeg;base64,','',$image);
+//    $img2 = str_replace(' ','+',$img1);
+//    $data = base64_decode($img2);
+//    \Storage::disk('public')->put($name,$data);
+//    $path = url('photos/').'/'.$name;
+//    return $path;
+
+
 function arrayUploader($request,$img_name,$i)
 {
     $path = \Storage::disk('public')->putFile(uploadpath(), $request->file($img_name)[$i]);

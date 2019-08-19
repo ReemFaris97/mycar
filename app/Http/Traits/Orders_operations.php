@@ -15,8 +15,17 @@ trait Orders_operations
      * @return \Illuminate\Http\RedirectResponse
      */
 
-    public function initiateOrder($request,$user_id){
+    public function InitiateTheOrder($request,$user_id){
+        $inputs = $request->all();
+        $inputs['user_id'] = $user_id;
+        if($request->has('form_image') && $request->form_image != null){
+            $image = uploader_base_64($request->form_image);
+            return $image;
 
+        }
+
+        $order = Order::create($inputs);
+        return $order;
     }
 
 
