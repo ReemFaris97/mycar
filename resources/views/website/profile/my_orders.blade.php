@@ -111,15 +111,17 @@
                                                     <td>{{$row->created_at->toDateString()}}</td>
                                                     <td>{{$row->total}}</td>
                                                     <td>
-{{--                                                        @if(in_array($row->status,['new']))--}}
-{{--                                                            جديد--}}
+
+{{--                                                        @if(in_array($row->status,['waiting', 'accepted','prepare','onWay']))--}}
+{{--                                                            قيد الإنتظار--}}
 {{--                                                        @endif--}}
-                                                        @if(in_array($row->status,['waiting', 'accepted','prepare','onWay']))
-                                                            قيد الإنتظار
-                                                        @endif
-{{--                                                        @if(in_array($row->status,['refused','delivered','completed']))--}}
-{{--                                                            منتهي--}}
-{{--                                                        @endif--}}
+                                                        @switch($row->status)
+                                                            @case('waiting') قيد الإنتظار@break
+                                                            @case('accepted') قيد التنفيذ@break
+                                                            @case('prepare') جاري التنفيذ@break
+                                                            @case('onWay') تم التسليم للمندوب@break
+                                                        @endswitch
+
                                                     </td>
                                                     <td>
                                                         <a href="waiting-details.html"> تفاصيل</a>
@@ -138,7 +140,7 @@
                                          <table class="mytable">
                                            <thead>
                                                <tr>
-                                                   <th>اسم الطلب</th>
+                                                   <th>الشركة المصنعة</th>
                                                    <th>طلب رقم</th>
                                                    <th>التاريخ</th>
                                                    <th>القيمة</th>
@@ -148,17 +150,28 @@
                                                </tr>
                                            </thead>
                                            <tbody>
+                                           @forelse($finished_orders as $row)
                                                <tr>
-                                                   <td>تويوتا 2019</td>
-                                                   <td>000002558</td>
-                                                   <td>25/4/2019</td>
-                                                   <td>1500$</td>
-                                                   <td>تم التوصيل</td>
+                                                   <td>{{$row->company->name()}}</td>
+                                                   <td>{{$row->id}}</td>
+                                                   <td>{{$row->created_at}}</td>
+                                                   <td>{{$row->total}}</td>
+                                                   <td>
+                                                       @switch($row->status)
+                                                           @case('refused')  مرفوض @break
+                                                           @case('delivered') تم التوصيل@break
+                                                           @case('completed') مكتمل@break
+                                                       @endswitch
+                                                   </td>
 
                                                    <td>
                                                        <a href="finshed-details.html"> تفاصيل</a>
                                                    </td>
                                                </tr>
+                                               @empty
+
+                                               @endforelse
+
                                                <tr>
                                                    <td>تويوتا 2019</td>
                                                    <td>000002558</td>

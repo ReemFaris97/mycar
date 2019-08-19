@@ -58,10 +58,20 @@ class ProfileController extends Controller
 //    ------------ My Orders Routes Actions -------------------------------
 
     public function getMyOrders(){
-        $new_orders = Order::whereUserId(auth()->id())->whereStatus('new')->get()->reverse();
-        $waiting_orders = Order::whereUserId(auth()->id())->where('status','waiting')->orWhere('status','accepted')
-            ->orWhere('status','prepare')->orWhere('status','onWay')->get()->reverse();
-        return view('website.profile.my_orders',compact('new_orders','waiting_orders'));
+        $new_orders = Order::whereUserId(auth()->id())
+            ->whereStatus('new')->get()->reverse();
+
+        $waiting_orders = Order::whereUserId(auth()->id())
+            ->where('status','waiting')
+            ->orWhere('status','accepted')
+            ->orWhere('status','prepare')
+            ->orWhere('status','onWay')->get()->reverse();
+
+        $finished_orders = Order::whereUserId(auth()->id())
+            ->where('status','refused')
+            ->orWhere('status','delivered')
+            ->orWhere('status','completed')->get()->reverse();
+        return view('website.profile.my_orders',compact('new_orders','waiting_orders','finished_orders'));
     }
 
 
