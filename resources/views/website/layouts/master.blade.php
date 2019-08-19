@@ -13,6 +13,9 @@
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
 
 
+
+
+
     <link rel="manifest" href="{{asset('manifest.json')}}">
 
     @if(auth()->check())

@@ -110,10 +110,10 @@
                         </div>
 
 
-                        <div class="col-md-4">
-                            <h3>المدينة: </h3>
-                            <h4 style="font-weight: 600;">{{$order->city->ar_name}}</h4>
-                        </div>
+{{--                        <div class="col-md-4">--}}
+{{--                            <h3>المدينة: </h3>--}}
+{{--                            <h4 style="font-weight: 600;">{{$order->city->ar_name}}</h4>--}}
+{{--                        </div>--}}
 
 
                         <div class="col-md-12">
@@ -135,10 +135,12 @@
                             <h4 style="font-weight: 600;">{{$order->year}}</h4>
                         </div>
 
-                        <div class="col-md-4">
-                            <h3>سعر التوصيل : </h3>
-                            <h4 style="font-weight: 600;">{{$order->city->delivery_price}}</h4>
-                        </div>
+{{--                        <div class="col-md-4">--}}
+{{--                            <h3>سعر التوصيل : </h3>--}}
+{{--                            <h4 style="font-weight: 600;">--}}
+{{--                                {{optional($order)->city->delivery_price}}--}}
+{{--                            </h4>--}}
+{{--                        </div>--}}
 
                         @if($order->hasAnyReplyByAuthSupplier())
                         <div class="col-md-4">
@@ -165,7 +167,7 @@
                                 <th>رقم الهيكل</th>
                                 <th>صورة الاستمارة</th>
                                 <th style="width: 120px;">جديد او مستعمل</th>
-                                <th>الوصف</th>
+{{--                                <th>الوصف</th>--}}
                                 <th style="width: 70px;">عدد القطع</th>
                                 <th>صورة للقطعة</th>
 
@@ -177,14 +179,18 @@
                                 <tr>
                                     <td>{{$i++}}</td>
                                     <td>{{$row->part->ar_name}}</td>
-                                    <td>{{$order->structure_number}}</td>
+                                    <td>{{$order->structure_number == null?"لا يوجد" : $order->structure_number}}</td>
 
                                     <td style="width: 10%;">
+                                        @if($row->form_image != null)
                                         <a data-fancybox="gallery"
-                                           href="{{getimg($row->image)}}">
+                                           href="{{getimg($row->form_image)}}">
                                             <img style="width: 50%; border-radius: 50%; height: 49px;"
-                                                 src="{{getimg($row->image)}}"/>
+                                                 src="{{getimg($row->form_image)}}"/>
                                         </a>
+                                            @else
+                                            لا يوجد
+                                        @endif
 
                                     </td>
                                     <td>
@@ -194,14 +200,14 @@
                                             مستعمل
                                         @endif
                                     </td>
-                                    <td>{{$row->description}}</td>
+{{--                                    <td>{{$row->description}}</td>--}}
                                     <td>{{$row->quantity}}</td>
 
                                     <td style="width: 10%;">
                                         <a data-fancybox="gallery"
-                                           href="{{getimg($row->image)}}">
+                                           href="{{getimg($row->part->image)}}">
                                             <img style="width: 50%; border-radius: 50%; height: 49px;"
-                                                 src="{{getimg($row->image)}}"/>
+                                                 src="{{getimg($row->part->image)}}"/>
                                         </a>
                                     </td>
 
@@ -218,12 +224,12 @@
                             <label class="help-block">(تسعير - إنهاء )</label>
                             <a id="pricing_done" style="display: none;" disabled class="btn btn-success waves-effect waves-light btn-lg m-b-5" >تم إرسال الطلب</a>
 
-                            @if($order->hasAnyReplyByAuthSupplier())
+{{--                            @if($order->hasAnyReplyByAuthSupplier())--}}
                                 <a id="pricing_done"  disabled class="btn btn-success waves-effect waves-light btn-lg m-b-5" >تم إرسال الطلب</a>
-                            @else
+{{--                            @else--}}
                                 <a href="#custom-modal" id="pricing_button" class="btn btn-primary waves-effect waves-light btn-lg m-b-5" data-animation="swell" data-plugin="custommodal"
                                    data-overlaySpeed="100" data-overlayColor="#36404a">تسعير الطلب</a>
-                            @endif
+{{--                            @endif--}}
 
                         </div>
 

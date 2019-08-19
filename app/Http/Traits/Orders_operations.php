@@ -3,6 +3,7 @@
 namespace App\Http\Traits;
 
 use App\Order;
+use App\OrderDetails;
 use App\Reply;
 use App\User;
 use Illuminate\Http\Request;
@@ -19,13 +20,22 @@ trait Orders_operations
         $inputs = $request->all();
         $inputs['user_id'] = $user_id;
         if($request->has('form_image') && $request->form_image != null){
-            $image = uploader_base_64($request->form_image);
-            return $image;
-
+            $inputs['form_image']  = uploader_base_64($request->form_image);
         }
-
         $order = Order::create($inputs);
         return $order;
+    }
+
+    public function AddOrderDetails($request,$order_id){
+        $part_ids = $request->part_ids;
+        $qtys = $request->qtys;
+        for($i = 0 ; $i <count($part_ids) ; $i++){
+            OrderDetails::create([
+                'order_id'=>$order_id,
+                'part_id'=>$part_ids[$i],
+                'quantity'=>$qtys[$i],
+            ]);
+        }
     }
 
 

@@ -247,6 +247,11 @@ Route::group(['namespace'=>'website','middleware'=>'userMiddleware'], function (
     Route::get('/start-order','OrdersController@getWizard')->name('web.order.getWizard');
     Route::post('/initiate-order','OrdersController@initiateOrder')->name('web.order.initiate');
 
+    Route::get('my/orders','ProfileController@getMyOrders')->name('web.profile.getMyOrders');
+
+
+
+//    Ajax Controller and Routes for collecting data
     Route::post('/get/companyModels','AjaxController@getCompanyModelsById')->name('web.get.companyModels');
     Route::post('/get/modelYears','AjaxController@getModelYears')->name('web.get.modelYears');
     Route::post('/get/subCategories','AjaxController@getSubCategories')->name('web.get.subCategories');

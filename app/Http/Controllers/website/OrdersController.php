@@ -57,33 +57,11 @@ class OrdersController extends Controller
         }
 
             $this->validate($request,$rules,$messages);
-
             $order = $this->InitiateTheOrder($request,auth()->id());
-            return $order;
-
-
-
-
-
-
-//        $valResult = Validator::make($request->all(),$rules);
-
-//        if($valResult->passes()){
-//            return "ok";
-//            if($request->order_car_type == 1){
-////                create order by model
-//            }else{
-//
-//            }
-//
-//        }else{
-//            return  $errors = $valResult->messages();
-//            return redirect()->back()->withInput()
-//                ->withErrors($errors);
-//
-//        }
-
-
-
+            $this->AddOrderDetails($request,$order->id);
+            $order->load('order_details');
+            return view('website.order.OrderCreated');
     }
+
+
 }

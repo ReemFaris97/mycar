@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Order extends Model
 {
     use SoftDeletes;
-    protected $fillable =  ['user_id','company_id','company_model_id','year','parts_type','form_image','structure_number','payment_type','status','completed_status','winner_reply_id','app_percentage','total','supplier_percent','supplier_id'];
+    protected $fillable =  ['user_id','order_car_type','company_id','company_model_id','year','parts_type','form_image','structure_number','payment_type','status','completed_status','winner_reply_id','app_percentage','total','supplier_percent','supplier_id'];
 
     public function order_details(){
         return $this->hasMany(OrderDetails::class,'order_id');
@@ -43,6 +43,7 @@ class Order extends Model
         if($countCheck >0) return 1;
         else return 0;
    }
+
    public function hasRefusedReplyByAuthSupplier(){
         $checkFinished =  $this->replies()->where('supplier_id',auth()->id())->where('status','finished')->first();
         $checkRefused =  $this->replies()->where('supplier_id',auth()->id())->where('status','refused')->first();

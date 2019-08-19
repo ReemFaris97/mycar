@@ -10,16 +10,17 @@ class CreateOrdersTable extends Migration {
 		Schema::create('orders', function(Blueprint $table) {
 			$table->bigIncrements('id');
 			$table->unsignedBigInteger('user_id');
+			$table->boolean('order_car_type')->default(1);
             $table->unsignedBigInteger('company_id')->nullable();
             $table->unsignedBigInteger('company_model_id')->nullable();
 //            $table->unsignedBigInteger('city_id');
-
+              
             $table->integer('year')->nullable();
             $table->enum('parts_type', array('original', 'used','commercial'));
             $table->string('form_image')->nullable();
             $table->string('structure_number')->nullable();
             $table->enum('payment_type', array('cash', 'online','network'));
-            $table->enum('status', array('new', 'current', 'accepted', 'completed'));
+            $table->enum('status', array('new', 'waiting', 'accepted','prepare','refused','onWay','delivered', 'completed'));
             $table->string('completed_status')->nullable();
             $table->timestamps();
             $table->softDeletes();
