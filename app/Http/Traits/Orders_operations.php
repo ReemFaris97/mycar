@@ -39,9 +39,7 @@ trait Orders_operations
     }
 
 
-
-
-    public function AcceptReply($request,$reply){
+    public function AcceptReply($request,$reply,$delivery){
         $order = Order::find($request->order_id);
         $supplier =User::find($reply->supplier_id);
         // update replies status ...
@@ -53,7 +51,12 @@ trait Orders_operations
         $orderUdates['supplier_id'] = $reply->supplier_id ;
         $orderUdates['app_percentage'] = $supplier->commission ;
         $orderUdates['total'] = $reply->total;
+        if($delivery->delivery_type == 'delivery'){
+            $orderUdates['delivery_value'] = $delivery->value;
+        }
+
         $orderUdates['supplier_percent'] = $this->calcSupplierPercent($reply->total,$supplier->commission);
+//        dd($orderUdates);
         $order->update($orderUdates);
 //      make transactions  .....
         $supplier->make_transaction($orderUdates['supplier_percent'],'wait');

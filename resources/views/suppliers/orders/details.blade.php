@@ -224,12 +224,12 @@
                             <label class="help-block">(تسعير - إنهاء )</label>
                             <a id="pricing_done" style="display: none;" disabled class="btn btn-success waves-effect waves-light btn-lg m-b-5" >تم إرسال الطلب</a>
 
-{{--                            @if($order->hasAnyReplyByAuthSupplier())--}}
+                            @if($order->hasAnyReplyByAuthSupplier())
                                 <a id="pricing_done"  disabled class="btn btn-success waves-effect waves-light btn-lg m-b-5" >تم إرسال الطلب</a>
-{{--                            @else--}}
+                            @else
                                 <a href="#custom-modal" id="pricing_button" class="btn btn-primary waves-effect waves-light btn-lg m-b-5" data-animation="swell" data-plugin="custommodal"
                                    data-overlaySpeed="100" data-overlayColor="#36404a">تسعير الطلب</a>
-{{--                            @endif--}}
+                            @endif
 
                         </div>
 
@@ -264,8 +264,8 @@
         <h4 class="custom-modal-title">قائمة تسعير المنتجات</h4>
         <form id="pricing_form" data-parsley-validate novalidate method="post" action="{{route('supplier.order.pricing',$order->id)}}" class="form-horizontal" enctype="multipart/form-data">
         <div class="modal-body">
-
                 {{csrf_field()}}
+
             <table  class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                 @if($errors->has('part_price'))
                     <p class="help-block" style="color: #FF0000;">

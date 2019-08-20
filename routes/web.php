@@ -253,6 +253,9 @@ Route::group(['namespace'=>'website','middleware'=>'userMiddleware'], function (
 //    WebSite order details and actions -----------------------
     Route::get('order/details/{id}','OrderDetailsController@orderDetails')->name('web.order.getDetails');
 
+    Route::post('order/submit/delivery','OrderDetailsController@submitDelivery')->name('web.order.submitDelivery');
+    Route::get('order/payment/{id}','OrderDetailsController@getPaymentPage')->name('web.order.getPayment');
+    Route::post('order/payment/submit','OrderDetailsController@submitPayment')->name('web.order.submitPayment');
 
 
 //    Ajax Controller and Routes for collecting data

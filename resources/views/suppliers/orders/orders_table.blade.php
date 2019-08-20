@@ -2,7 +2,8 @@
     <thead>
     <tr>
         <th>م</th>
-        <th>اسم مقدم الطلب</th>
+        <th>اسم مقدم ( إن وجد )</th>
+        <th>الرقم الجوال</th>
         <th>عدد القطع بالطلب</th>
         <th>حالة الطلب</th>
         <th style="width: 250px;" >العمليات المتاحة</th>
@@ -13,7 +14,8 @@
     @foreach($orders as $order)
         <tr>
             <td>{{$i++}}</td>
-            <td>{{$order->user->name}}</td>
+            <td>{{$order->user->name ==""?"-----":$order->user->name}}</td>
+            <td>{{$order->user->phone}}</td>
             <td>{{$order->order_details->count()}}</td>
             <td>
                 @if($order->status != 'new' && $order->supplier_id != auth()->id())

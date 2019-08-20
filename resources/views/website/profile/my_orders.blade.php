@@ -124,7 +124,7 @@
 
                                                     </td>
                                                     <td>
-                                                        <a href="waiting-details.html"> تفاصيل</a>
+                                                        <a href="{{route('web.order.getDetails',$row->id)}}"> تفاصيل</a>
                                                     </td>
                                                 </tr>
                                              @empty
@@ -165,7 +165,7 @@
                                                    </td>
 
                                                    <td>
-                                                       <a href="finshed-details.html"> تفاصيل</a>
+                                                       <a href="{{route('web.order.getDetails',$row->id)}}"> تفاصيل</a>
                                                    </td>
                                                </tr>
                                                @empty
@@ -196,7 +196,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td>
-                                                    <a href="return-details.html"> تفاصيل</a>
+                                                    <a href="{{route('web.order.getDetails',$row->id)}}"> تفاصيل</a>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -207,7 +207,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td>
-                                                    <a href="return-details.html"> تفاصيل</a>
+                                                    <a href="{{route('web.order.getDetails',$row->id)}}"> تفاصيل</a>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -218,7 +218,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td>
-                                                    <a href="return-details.html"> تفاصيل</a>
+                                                    <a href="{{route('web.order.getDetails',$row->id)}}"> تفاصيل</a>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -229,7 +229,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td>
-                                                    <a href="return-details.html"> تفاصيل</a>
+                                                    <a href="{{route('web.order.getDetails',$row->id)}}"> تفاصيل</a>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -240,7 +240,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td>
-                                                    <a href="return-details.html"> تفاصيل</a>
+                                                    <a href="{{route('web.order.getDetails',$row->id)}}"> تفاصيل</a>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -251,7 +251,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td>
-                                                    <a href="return-details.html"> تفاصيل</a>
+                                                    <a href="{{route('web.order.getDetails',$row->id)}}"> تفاصيل</a>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -262,7 +262,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td>
-                                                    <a href="return-details.html"> تفاصيل</a>
+                                                    <a href="{{route('web.order.getDetails',$row->id)}}"> تفاصيل</a>
                                                 </td>
                                             </tr>
                                             </tbody>

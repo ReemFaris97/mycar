@@ -58,6 +58,8 @@
                         </tbody>
                     </table>
                     <b><h4>قائمة التسعير</h4></b>
+
+                    @if($order->checkSupplierReply())
                     <table class="mytable">
                         <thead>
                         <tr>
@@ -67,48 +69,77 @@
                             <th>الكمية</th>
                             <th>الإجمالى</th>
                             <th>صورة القطعة</th>
-                            <th>حذف</th>
+{{--                            <th>حذف</th>--}}
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($order->supplierReply()->reply_details as $row)
                         <tr>
-                            <td>1</td>
-                            <td>صدام أمامى فوق</td>
-                            <td>300 ريال</td>
-                            <td>1</td>
-                            <td> 315 ريال </td>
-                            <td><img src="{{asset('website/img/logo.png')}}"></td>
-                            <td> <button class="close"> <i class="fas fa-times"></i> </button> </td>
+                            <td>{{$loop->iteration}}</td>
+                            <td>{{$row->order_details->part->name()}}</td>
+                            <td>{{$row->part_price}}</td>
+                            <td>{{$row->order_details->quantity}}</td>
+                            <td>{{$row->total_parts}}</td>
+                            <td><img src="{{getimg($row->order_details->part->image)}}"></td>
+{{--                            <td> <button class="close"> <i class="fas fa-times"></i> </button> </td>--}}
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>صدام خلفى</td>
-                            <td>400 ريال</td>
-                            <td>5</td>
-                            <td> 840 ريال </td>
-                            <td><img src="{{asset('website/img/logo.png')}}"></td>
-                            <td> <button class="close"> <i class="fas fa-times"></i> </button> </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>سقف أمامى</td>
-                            <td>600 ريال</td>
-                            <td>3</td>
-                            <td> 700 ريال </td>
-                            <td><img src="{{asset('website/img/logo.png')}}"></td>
-                            <td> <button class="close"> <i class="fas fa-times"></i> </button> </td>
-                        </tr>
+                        @endforeach
+
                         </tbody>
                     </table>
+                    @else
+                        <b><h1>في إنتظار تسعير الموزع</h1></b>
+                    @endif
+
+
+
+                        @if($order->hasDelivery())
+                        <b><h4>بيانات الشحن</h4></b>
+                            @if($order->delivery->delivery_type == 'delivery')
+                            <table class="p-tble">
+                                <tbody>
+                                <tr>
+                                    <th>نوع التوصيل</th>
+                                    <td>توصيل القطع</td>
+                                </tr>
+                                <tr>
+                                    <th>الإجمالى</th>
+                                    <td>{{$order->total}}</td>
+                                </tr>
+                                <tr>
+                                    <th>قيمة التوصيل</th>
+                                    <td>{{$order->delivery_value}}</td>
+                                </tr>
+                                <tr>
+                                    <th>إجمالى الطلب</th>
+                                    <td>{{$order->delivery_value + $order->total}}</td>
+                                </tr>
+                                </tbody></table>
+                            @else
+                                <table class="p-tble">
+                                    <tbody>
+                                    <tr>
+                                        <th>نوع التوصيل</th>
+                                        <td>الإستلام من الوكالة</td>
+                                    </tr>
+                                    <tr>
+                                        <th>إجمالى الطلب</th>
+                                        <td>{{$order->total}}</td>
+                                    </tr>
+                                    </tbody></table>
+
+                            @endif
+                        @endif
+
 
                 </div>
             </div>
-            <form data-parsley-validate novalidate action="" method="get" enctype="multipart/form-data">
+            @if($order->checkSupplierReply())
+            @if(!$order->hasDelivery())
+            <form data-parsley-validate novalidate action="{{route('web.order.submitDelivery')}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
             <div class="sha7n">
                 <h3 class="h3-after">الشحن</h3>
-
-
 
                 <div class="deliver">
                     <div class="radio-list dist-list">
@@ -119,7 +150,7 @@
                                     <img src="{{asset('website/img/deliver1.svg')}}">
                                 </span>
                                 توصيل القطع إلى ( الورشة - البنشر - المنزل - مكان العمل ) </div>
-                            <input type="radio" checked="checked" name="chkPinNo" id="chk1">
+                            <input type="radio" checked="checked" name="delivery_type" id="chk1" value="delivery">
                             <span class="checkmark"></span>
                         </label>
 
@@ -133,44 +164,46 @@
                                 </span>
                                 الإستلام من الوكالة ( لتكون القطع جاهزة وخيارات الدفع متعددة )
                             </div>
-                            <input type="radio" name="chkPinNo">
+                            <input type="radio" name="delivery_type" value="receive">
                             <span class="checkmark"></span>
                             <!--                            <a href="payment.html" class="trn">ادفع هنا</a>-->
                         </label>
 
                         <div class="maps">
 
-                            <input id="pac-input" name="address" required value="{{ old('address') }}"
-                                   data-parsley-required-message="@lang('web.address_required')"
-                                   class="controls"
-                                   type="text"
-                                   style="z-index: 0;position: absolute;top: 11px;left: 113px;height: 34px;width: 63%;"
-                                   placeholder="@lang('web.search_your_location')">
+{{--                            <input id="pac-input" name="address" required value="{{ old('address') }}"--}}
+{{--                                   data-parsley-required-message="@lang('web.address_required')"--}}
+{{--                                   class="controls"--}}
+{{--                                   type="text"--}}
+{{--                                   style="z-index: 0;position: absolute;top: 11px;left: 113px;height: 34px;width: 63%;"--}}
+{{--                                   placeholder="@lang('web.search_your_location')">--}}
 
-                            @if($errors->has('address'))
-                                <p class="help-block error">
-                                    {{ $errors->first('address') }}
-                                </p>
-                            @endif
+{{--                            @if($errors->has('address'))--}}
+{{--                                <p class="help-block error">--}}
+{{--                                    {{ $errors->first('address') }}--}}
+{{--                                </p>--}}
+{{--                            @endif--}}
 
-                            <div id="map" style="width: 100%; height: 450px;"></div>
-                            <input type="hidden" name="lat" id="lat"/>
-                            <input type="hidden" name="lng" id="lng"/>
-
-
-{{--                            <div class="map1" id="div1">--}}
+{{--                            <div id="map" style="width: 100%; height: 450px;"></div>--}}
+{{--                            <input type="hidden" name="lat" id="lat"/>--}}
+{{--                            <input type="hidden" name="lng" id="lng"/>--}}
 
 
-{{--                                <input id="pac-input" class="controls form-control from-shop-input" type="text" placeholder="البحث عن ..">--}}
-{{--                                <div id="map" class="from-shop"></div>--}}
+                            <div class="map1" id="div1">
 
-{{--                                <div class="form-data">--}}
-{{--                                    <label>وصف العنوان</label>--}}
-{{--                                    <div class="form-group">--}}
-{{--                                        <textarea required data-parsley-required-message="هذا الحقل مطلوب" id="address_description" rows="4" cols="95" class="form-control input-lg" placeholder="اوصف العنوان"></textarea>--}}
-{{--                                        <span class="focus-border"><i></i></span>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
+                                <input type="hidden" name="order_id" value="{{$order->id}}">
+                                <input id="pac-input" class="controls form-control from-shop-input" type="text" placeholder="البحث عن ..">
+                                <div id="map" class="from-shop"></div>
+
+                                <div class="form-data">
+                                    <label>وصف العنوان</label>
+                                    <div class="form-group">
+                                        <textarea name="address" required data-parsley-required-message="هذا الحقل مطلوب" id="address_description" rows="4" cols="95" class="form-control input-lg" placeholder="اوصف العنوان"></textarea>
+                                        <span class="focus-border"><i></i></span>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="lat" id="hiddenLat" >
+                                <input type="hidden" name="lng" id="hiddenLng" >
 
                             </div>
 
@@ -190,9 +223,12 @@
                     <button type="submit" class="delt-all">ادفع هنا</button>
 
                 </div>
-
             </div>
             </form>
+            <input type="hidden" id="supplierLat" value="{{$order->supplier->lat}}">
+            <input type="hidden" id="supplierLng" value="{{$order->supplier->lng}}">
+            @endif
+            @endif
         </div>
     </section>
 
@@ -201,11 +237,11 @@
 
 @section('scripts')
     <script>
-        $(document).ready(function() {
-            $(".close").click(function() {
-                $(this).closest("tr").fadeOut(500);
-            });
-        });
+        // $(document).ready(function() {
+        //     $(".close").click(function() {
+        //         $(this).closest("tr").fadeOut(500);
+        //     });
+        // });
 
     </script>
     <!--------- Data Table ---------------->
@@ -234,74 +270,76 @@
 
     <!-------------- Map ------------------------>
 
-    <script>
 
+
+
+
+    <script type="text/javascript">
+        // When the window has finished loading create our google map below
+
+        //        google.maps.event.addDomListener(window, 'load', init);
 
         function initAutocomplete() {
 
+//            "use strict";
+
+
             var map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 24.774265, lng: 46.738586},
-                zoom: 8,
+                center: {lat: 59.325, lng: 18.067},
+                zoom: 13,
                 mapTypeId: 'roadmap'
             });
 
 
-            var marker;
-            google.maps.event.addListener(map, 'click', function (event) {
-                map.setZoom();
-                var mylocation = event.latLng;
-                map.setCenter(mylocation);
+
+//            var mapOptions = {
+//                scrollwheel: false,
+//                zoom: 13,
+//                                    marker: marker,
+//
+//                center: {
+//                    lat: 59.325,
+//                    lng: 18.067
+//                },
+//            };
+//
+//            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
 
-                $('#lat').val(event.latLng.lat());
-                $('#lng').val(event.latLng.lng());
+
+            {{--var supplierLat = "{{$order->supplier->lat}}";--}}
+            {{--var supplierLng = "{{$order->supplier->lng}}";--}}
 
 
-                codeLatLng(event.latLng.lat(), event.latLng.lng());
-
-                setTimeout(function () {
-                    if (!marker)
-                        marker = new google.maps.Marker({position: mylocation, map: map});
-                    else
-                        marker.setPosition(mylocation);
-                }, 600);
-
-            });
-
-
-            // Create the search box and link it to the UI element.
             var input = document.getElementById('pac-input');
             var searchBox = new google.maps.places.SearchBox(input);
             map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
             // Bias the SearchBox results towards current map's viewport.
-            map.addListener('bounds_changed', function () {
+            map.addListener('bounds_changed', function() {
                 searchBox.setBounds(map.getBounds());
             });
-
 
             var markers = [];
             // Listen for the event fired when the user selects a prediction and retrieve
             // more details for that place.
-            searchBox.addListener('places_changed', function () {
+            searchBox.addListener('places_changed', function() {
                 var places = searchBox.getPlaces();
-                // var location = place.geometry.location;
-                // var lat = location.lat();
-                // var lng = location.lng();
+
                 if (places.length == 0) {
                     return;
                 }
 
-                // Clear out the old markers.
-                markers.forEach(function (marker) {
+// Clear out the old markers.
+                markers.forEach(function(marker) {
                     marker.setMap(null);
                 });
                 markers = [];
 
-
-                // For each place, get the icon, name and location.
+// For each place, get the icon, name and location.
                 var bounds = new google.maps.LatLngBounds();
-                places.forEach(function (place) {
+
+                places.forEach(function(place) {
                     if (!place.geometry) {
                         console.log("Returned place contains no geometry");
                         return;
@@ -319,8 +357,15 @@
                         map: map,
                         icon: icon,
                         title: place.name,
-                        position: place.geometry.location
+                        position: place.geometry.location,
+                        draggable: true,
+                        animation: google.maps.Animation.DROP,
                     }));
+
+                    //giving inputs for lat and lng ...
+                    $('#hiddenLat').val(place.geometry.location.lat());
+                    $('#hiddenLng').val(place.geometry.location.lng());
+
 
                     if (place.geometry.viewport) {
                         // Only geocodes have viewport.
@@ -328,243 +373,96 @@
                     } else {
                         bounds.extend(place.geometry.location);
                     }
-                    $('#lat').val(place.geometry.location.lat());
-                    $('#lng').val(place.geometry.location.lng());
-                    $('#address').val(place.formatted_address);
-
                 });
-
-
                 map.fitBounds(bounds);
             });
 
-        }
 
 
-        function showPosition(position) {
+//                var marker = new google.maps.Marker({
+//                map: map,
+//                draggable: true,
+//                icon: 'img/flag-map-marker.png',
+//                title: 'قطعة سيارتى',
+//                animation: google.maps.Animation.DROP,
+//                position: {
+//                    lat: 59.325,
+//                    lng: 18.067
+//                }
+//            });
+//            marker.addListener('click', toggleBounce);
 
-            map.setCenter({lat: position.coords.latitude, lng: position.coords.longitude});
-            codeLatLng(position.coords.latitude, position.coords.longitude);
-
-
-        }
-
-
-        function codeLatLng(lat, lng) {
-
-            var geocoder = new google.maps.Geocoder();
-            var latlng = new google.maps.LatLng(lat, lng);
-            geocoder.geocode({
-                'latLng': latlng
-            }, function (results, status) {
-                if (status === google.maps.GeocoderStatus.OK) {
-                    if (results[1]) {
-                        // console.log(results[1].formatted_address);
-                        $("#demo").html(results[1].formatted_address);
-
-                        $("#addressProfile").val(results[1].formatted_address);
-                        $("#pac-input").val(results[1].formatted_address);
-
-                    } else {
+            $("#from-home").click(function() {
+                $('#address_description').removeAttr('required');
+                $("#map").attr("id", "temp");
+                $(".from-home").attr("id", "map");
+                $("#pac-input").attr("id", "temp-input");
+                $(".from-home-input").attr("id", "pac-input");
+                var supplierLat =parseFloat( $('#supplierLat').val()) ;
+                var supplierLng = parseFloat($('#supplierLng').val());
+                console.log(supplierLat)
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    center: {lat: supplierLat, lng:supplierLng},
+                    zoom: 13,
+                    mapTypeId: 'roadmap'
+                });
+                var input = document.getElementById('pac-input');
+                var searchBox = new google.maps.places.SearchBox(input);
+                map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+                var marker = new google.maps.Marker({
+                    map: map,
+                    icon: '{{asset("website/img/flag-map-marker.png")}}',
+                    title: 'قطعة سيارتى',
+                    position: {
+                        lat: supplierLat,
+                        lng: supplierLng
                     }
-                } else {
-                    alert('Geocoder failed due to: ' + status);
-                }
+                });
+
             });
+
+            $("#from-shop").click(function() {
+                $("#map").attr("id", "temp");
+                $(".from-shop").attr("id", "map");
+                $("#pac-input").attr("id", "temp-input");
+                $(".from-home-input").attr("id", "pac-input");
+            });
+
         }
+
+        function toggleBounce() {
+            if (marker.getAnimation() !== null) {
+                marker.setAnimation(null);
+            } else {
+                marker.setAnimation(google.maps.Animation.BOUNCE);
+            }
+        }
+
+        //
+        //            map.addListener('bounds_changed', function() {
+        //                searchBox.setBounds(map.getBounds());
+        //            });
+
+
 
 
 
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjBZsq9Q11itd0Vjz_05CtBmnxoQIEGK8&language=ar&libraries=places&callback=initAutocomplete"
-            async defer></script>
 
-
-
-{{--    <script type="text/javascript">--}}
-{{--        // When the window has finished loading create our google map below--}}
-
-{{--        //        google.maps.event.addDomListener(window, 'load', init);--}}
-
-{{--        function initAutocomplete() {--}}
-
-{{--//            "use strict";--}}
-
-
-{{--            var map = new google.maps.Map(document.getElementById('map'), {--}}
-{{--                center: {lat: 59.325, lng: 18.067},--}}
-{{--                zoom: 13,--}}
-{{--                mapTypeId: 'roadmap'--}}
-{{--            });--}}
-
-
-
-{{--//            var mapOptions = {--}}
-{{--//                scrollwheel: false,--}}
-{{--//                zoom: 13,--}}
-{{--//                                    marker: marker,--}}
-{{--//--}}
-{{--//                center: {--}}
-{{--//                    lat: 59.325,--}}
-{{--//                    lng: 18.067--}}
-{{--//                },--}}
-{{--//            };--}}
-{{--//--}}
-{{--//            var map = new google.maps.Map(document.getElementById('map'), mapOptions);--}}
-
-
-
-
-
-
-{{--            var input = document.getElementById('pac-input');--}}
-{{--            var searchBox = new google.maps.places.SearchBox(input);--}}
-{{--            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);--}}
-
-{{--            // Bias the SearchBox results towards current map's viewport.--}}
-{{--            map.addListener('bounds_changed', function() {--}}
-{{--                searchBox.setBounds(map.getBounds());--}}
-{{--            });--}}
-
-{{--            var markers = [];--}}
-{{--            // Listen for the event fired when the user selects a prediction and retrieve--}}
-{{--            // more details for that place.--}}
-{{--            searchBox.addListener('places_changed', function() {--}}
-{{--                var places = searchBox.getPlaces();--}}
-
-{{--                if (places.length == 0) {--}}
-{{--                    return;--}}
-{{--                }--}}
-
-{{--// Clear out the old markers.--}}
-{{--                markers.forEach(function(marker) {--}}
-{{--                    marker.setMap(null);--}}
-{{--                });--}}
-{{--                markers = [];--}}
-
-{{--// For each place, get the icon, name and location.--}}
-{{--                var bounds = new google.maps.LatLngBounds();--}}
-{{--                places.forEach(function(place) {--}}
-{{--                    if (!place.geometry) {--}}
-{{--                        console.log("Returned place contains no geometry");--}}
-{{--                        return;--}}
-{{--                    }--}}
-{{--                    var icon = {--}}
-{{--                        url: place.icon,--}}
-{{--                        size: new google.maps.Size(71, 71),--}}
-{{--                        origin: new google.maps.Point(0, 0),--}}
-{{--                        anchor: new google.maps.Point(17, 34),--}}
-{{--                        scaledSize: new google.maps.Size(25, 25)--}}
-{{--                    };--}}
-
-{{--                    // Create a marker for each place.--}}
-{{--                    markers.push(new google.maps.Marker({--}}
-{{--                        map: map,--}}
-{{--                        icon: icon,--}}
-{{--                        title: place.name,--}}
-{{--                        position: place.geometry.location,--}}
-{{--                        draggable: true,--}}
-{{--                        animation: google.maps.Animation.DROP,--}}
-{{--                    }));--}}
-
-{{--                    if (place.geometry.viewport) {--}}
-{{--                        // Only geocodes have viewport.--}}
-{{--                        bounds.union(place.geometry.viewport);--}}
-{{--                    } else {--}}
-{{--                        bounds.extend(place.geometry.location);--}}
-{{--                    }--}}
-{{--                });--}}
-{{--                map.fitBounds(bounds);--}}
-{{--            });--}}
-
-
-
-{{--//                var marker = new google.maps.Marker({--}}
-{{--//                map: map,--}}
-{{--//                draggable: true,--}}
-{{--//                icon: 'img/flag-map-marker.png',--}}
-{{--//                title: 'قطعة سيارتى',--}}
-{{--//                animation: google.maps.Animation.DROP,--}}
-{{--//                position: {--}}
-{{--//                    lat: 59.325,--}}
-{{--//                    lng: 18.067--}}
-{{--//                }--}}
-{{--//            });--}}
-{{--//            marker.addListener('click', toggleBounce);--}}
-
-{{--            $("#from-home").click(function() {--}}
-{{--                $("#map").attr("id", "temp");--}}
-{{--                $(".from-home").attr("id", "map");--}}
-{{--                $("#pac-input").attr("id", "temp-input");--}}
-{{--                $(".from-home-input").attr("id", "pac-input");--}}
-{{--                var map = new google.maps.Map(document.getElementById('map'), {--}}
-{{--                    center: {lat: 59.325, lng: 18.067},--}}
-{{--                    zoom: 13,--}}
-{{--                    mapTypeId: 'roadmap'--}}
-{{--                });--}}
-{{--                var input = document.getElementById('pac-input');--}}
-{{--                var searchBox = new google.maps.places.SearchBox(input);--}}
-{{--                map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);--}}
-{{--                var marker = new google.maps.Marker({--}}
-{{--                    map: map,--}}
-{{--                    icon: 'img/flag-map-marker.png',--}}
-{{--                    title: 'قطعة سيارتى',--}}
-{{--                    position: {--}}
-{{--                        lat: 59.325,--}}
-{{--                        lng: 18.067--}}
-{{--                    }--}}
-{{--                });--}}
-
-{{--            });--}}
-
-{{--            $("#from-shop").click(function() {--}}
-{{--                $("#map").attr("id", "temp");--}}
-{{--                $(".from-shop").attr("id", "map");--}}
-{{--                $("#pac-input").attr("id", "temp-input");--}}
-{{--                $(".from-home-input").attr("id", "pac-input");--}}
-{{--            });--}}
-
-{{--        }--}}
-
-{{--        function toggleBounce() {--}}
-{{--            if (marker.getAnimation() !== null) {--}}
-{{--                marker.setAnimation(null);--}}
-{{--            } else {--}}
-{{--                marker.setAnimation(google.maps.Animation.BOUNCE);--}}
-{{--            }--}}
-{{--        }--}}
-
-{{--        //--}}
-{{--        //            map.addListener('bounds_changed', function() {--}}
-{{--        //                searchBox.setBounds(map.getBounds());--}}
-{{--        //            });--}}
-
-
-
-
-
-{{--    </script>--}}
-
-{{--    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBi7RVqBGvLWMhmV_uv81zZ2Iv1ZvWOT9M&libraries=places&callback=initAutocomplete" async defer></script>--}}
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBi7RVqBGvLWMhmV_uv81zZ2Iv1ZvWOT9M&libraries=places&callback=initAutocomplete" async defer></script>
 
     <!--------- Deliver Button ----------->
     <script>
         $(document).ready(function() {
 
             $(function() {
-                $('#temp-input').attr('required','required');
-                $("input[name='chkPinNo']").click(function() {
+                $("input[name='delivery_type']").click(function() {
                     if ($("#chk1").is(":checked")) {
                         $("#div1").show();
                         $("#div2").hide();
-                        $('#address_description').attr('required','required');
-                        $('#address_description').attr('data-parsley-required-message','هذا الحقل مطلوب');
-                        $('#temp-input').attr('required','required');
                     } else {
                         $("#div1").hide();
                         $("#div2").show();
-                        $('#address_description').removeAttr('required');
-                        $('#temp-input').removeAttr('required');
                     }
                 });
             });
@@ -572,5 +470,7 @@
         });
 
     </script>
+
+
 
 @endsection

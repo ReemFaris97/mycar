@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Order extends Model
 {
     use SoftDeletes;
-    protected $fillable =  ['user_id','order_car_type','company_id','company_model_id','year','parts_type','form_image','structure_number','payment_type','status','completed_status','winner_reply_id','app_percentage','total','supplier_percent','supplier_id'];
+    protected $fillable =  ['user_id','order_car_type','company_id',
+        'company_model_id','year','parts_type','form_image','structure_number','payment_type','payment_status','status','completed_status','winner_reply_id','app_percentage','total','supplier_percent','supplier_id','delivery_value'];
 
     public function order_details(){
         return $this->hasMany(OrderDetails::class,'order_id');
@@ -29,6 +30,8 @@ class Order extends Model
    public function replies(){
         return $this->hasMany(Reply::class);
    }
+
+
    public function city(){
         return $this->belongsTo(City::class);
    }
@@ -40,7 +43,23 @@ class Order extends Model
 
    public function hasAnyReplyByAuthSupplier(){
         $countCheck =  $this->replies()->where('supplier_id',auth()->id())->count();
-        if($countCheck >0) return 1;
+        if($countCheck > 0) return 1;
+        else return 0;
+   }
+
+
+   public function supplierReply(){
+        return $this->replies()->where('supplier_id',$this->supplier_id)->first();
+   }
+
+   public function checkSupplierReply(){
+        $check = $this->replies()->where('supplier_id',$this->supplier_id)->first();
+        if($check) return 1;
+        else return 0;
+   }
+
+   public function hasDelivery(){
+        if($this->delivery()->count() >0 ) return 1;
         else return 0;
    }
 
@@ -88,6 +107,10 @@ class Order extends Model
 
    public function supplier(){
        return $this->belongsTo(User::class,'supplier_id');
+   }
+
+   public function delivery(){
+        return $this->hasOne(Delivery::class,'order_id');
    }
 
 
