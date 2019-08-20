@@ -86,6 +86,10 @@ class Order extends Model
    }
 
 
+   public function supplier(){
+       return $this->belongsTo(User::class,'supplier_id');
+   }
+
 
 //   public function userMadeReply(){
 //        if($this->replies->supplier->where('supplier_id',auth()->id())->count() > 0) return true;

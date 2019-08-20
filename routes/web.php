@@ -250,6 +250,10 @@ Route::group(['namespace'=>'website','middleware'=>'userMiddleware'], function (
     Route::get('my/orders','ProfileController@getMyOrders')->name('web.profile.getMyOrders');
 
 
+//    WebSite order details and actions -----------------------
+    Route::get('order/details/{id}','OrderDetailsController@orderDetails')->name('web.order.getDetails');
+
+
 
 //    Ajax Controller and Routes for collecting data
     Route::post('/get/companyModels','AjaxController@getCompanyModelsById')->name('web.get.companyModels');

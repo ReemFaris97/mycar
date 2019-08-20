@@ -20,7 +20,7 @@ class CreateOrdersTable extends Migration {
             $table->string('form_image')->nullable();
             $table->string('structure_number')->nullable();
             $table->enum('payment_type', array('cash', 'online','network'));
-            $table->enum('status', array('new', 'waiting', 'accepted','prepare','refused','onWay','delivered', 'completed'));
+            $table->enum('status', array('new', 'waiting', 'accepted','prepare','refused','onWay','delivered', 'completed','canceled'));
             $table->string('completed_status')->nullable();
             $table->timestamps();
             $table->softDeletes();

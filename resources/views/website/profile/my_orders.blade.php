@@ -79,7 +79,7 @@
                                                 <td>{{$row->created_at}}</td>
 {{--                                                <td class="font-s">00:26:48</td>--}}
                                                 <td>
-                                                    <a href="new-details.html"> تفاصيل</a>
+                                                    <a href="{{route('web.order.getDetails',$row->id)}}"> تفاصيل</a>
                                                 </td>
                                             </tr>
                                             @empty
