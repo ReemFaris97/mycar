@@ -30,7 +30,7 @@
                         </div>
                     @endif
 
-                    <h3 class="h3-after">إضافة سيارة</h3>
+                    <h3 class="h3-after">@lang('web.add_car')</h3>
 
 
                     <form id="account-form"  novalidate="validate" >
@@ -39,7 +39,7 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
-                                    <label for="userName">اختيار الشركة</label>
+                                    <label for="userName">@lang('web.choose_company')</label>
                                     <div class="company-radio" id="company-radio">
 
                                         @foreach($companies as $company)
@@ -61,7 +61,7 @@
 
                                 <div class="col-sm-6 col-xs-12">
                                     <div class="form-group custom-gp">
-                                        <label>الموديل</label>
+                                        <label>@lang('web.model')</label>
 
                                         <select  class="js-select2" id="locationCodesSelect2">
                                         {{--  locationCodeSelect2 blade included here --}}
@@ -73,7 +73,7 @@
 
                                 <div class="col-sm-6 col-xs-12">
                                     <div class="form-group">
-                                        <label>السنة</label>
+                                        <label>@lang('web.year')</label>
                                         <select  class="js-select2" id="ModelYears">
                                             {{--  ModelYears blade included here --}}
 
@@ -86,7 +86,7 @@
                             <div class="tgle col-xs-12 no-padding">
                                 <div class="col-sm-8 col-xs-12">
                                     <div class="form-data">
-                                        <label> ادخل رقم الهيكل أو ارفق صورة الاستمارة</label>
+                                        <label> @lang('web.enter_image_or_struc_num')</label>
                                         <div class="form-group">
                                             <input type="number" class="form-control" name="structure_number" id="dwn-btn" />
                                             <span class="focus-border"><i></i></span>
@@ -109,10 +109,10 @@
                             <div class="col-xs-12">
                                 <a class="to-tgle">
                                     <span class="text-up">
-                                        ما لقيت سيارتك ؟ (ديزل - بنزين) - إرفق رقم الهيكل لتطابق القطع 100%
+                                        @lang('web.not_found_car')
                                     </span>
                                     <span class="text-down">
-                                        أدخل موديل السيارة أو السنة
+                                        @lang('web.enter_car_model')
                                     </span>
                                 </a>
                             </div>
@@ -125,7 +125,7 @@
 
                 <h3></h3>
                 <section>
-                    <h3 class="h3-after">بيانات الطلب</h3>
+                    <h3 class="h3-after">@lang('web.order_data')</h3>
         <form id="orders-form" action="{{route('web.order.initiate')}}" method="post" novalidate="validate" enctype="multipart/form-data">
                     {{csrf_field()}}
             <div class="hidden-inputs">
@@ -146,9 +146,9 @@
                         </div>
                         <div class="col-xs-12">
                             <div class="form-group">
-                                <label>معلومات السيارة الحالية</label>
+                                <label>@lang('web.current_car_info')</label>
                                 <p id="currentCar" class="dtls"></p>
-                                <a href="#previous" role="menuitem" class="replace" id="goPrev"> تبديل السيارة </a>
+                                <a href="#previous" role="menuitem" class="replace" id="goPrev"> @lang('web.switch_car') </a>
                             </div>
                         </div>
                         <div class="col-xs-12">
@@ -159,11 +159,11 @@
                         <div class="col-xs-12">
                             <div class="form-group">
                                 <button type="button" class="btn-piece" data-toggle="modal" data-target="#name-piece" data-dismiss='modal'>
-                                    اختر القطع بالاسم
+                                    @lang('web.choose_car_by_name')
                                     <i class="fas fa-text-height"></i>
                                 </button>
                                 <button type="button" class="btn-piece" data-toggle="modal" data-target="#img-piece" data-dismiss='modal'>
-                                    اختر القطع بالصورة
+                                    @lang('web.choose_car_by_image')
                                     <i class="fas fa-image"></i>
                                 </button>
                             </div>
@@ -176,7 +176,7 @@
                 <section>
 
 {{--                    <button type="button" class="delt-all">إلغاء الطلب</button>--}}
-                    <h3 class="h3-after">الطلبات</h3>
+                    <h3 class="h3-after">@lang('web.orders')</h3>
 
 
                         <div class="row">
@@ -188,7 +188,7 @@
                             </div>
                             <div class="col-xs-12">
                                 <div class="form-group">
-                                    <label>معلومات السيارة الحالية</label>
+                                    <label>@lang('web.current_car_info')</label>
                                     <p id="currentCar2" class="dtls"></p>
                                 </div>
                             </div>
@@ -199,31 +199,31 @@
                             </div>
                             <div class="col-xs-12">
                                 <div class="distributers">
-                                    <h3 class="h3-after">البحث عن موزع</h3>
+                                    <h3 class="h3-after">@lang('web.search_supplier')</h3>
                                     <div class="radio-list">
-                                        <label class="rad">أصلية
+                                        <label class="rad">@lang('web.original')
                                             <input  value="original" type="radio" name="parts_type" class="required partStatusRadio">
                                             <span class="checkmark"></span>
                                         </label>
-                                        <label class="rad">تشليح
+                                        <label class="rad">@lang('web.used')
                                             <input class="partStatusRadio" value="used" type="radio" name="parts_type">
                                             <span class="checkmark"></span>
                                         </label>
-                                        <label class="rad">تجارية
+                                        <label class="rad">@lang('web.commercial')
                                             <input class="partStatusRadio" value="commercial" type="radio" name="parts_type">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
                                     <b>
-                                        المدينة :-
+                                        @lang('web.city') :-
                                         @if(auth()->user()->region == "inside")
-                                        <span>بريدة</span>
+                                        <span>@lang('web.buraidah')</span>
                                             @else
-                                            <span>خارج بريدة</span>
+                                            <span>@lang('web.outside_buraidah')</span>
                                         @endif
                                     </b>
                                     <b>
-                                        اختر الموزع
+                                        @lang('web.choose_supplier')
                                     </b>
                                     <div class="radio-list dist-list">
 
@@ -279,7 +279,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="h3-after">اختر القطع</h3>
+                    <h3 class="h3-after">@lang('web.choose_parts')</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
@@ -288,9 +288,9 @@
 
                             <div class="col-xs-12">
                                 <div class="form-data">
-                                    <label>البحث بالاسم</label>
+                                    <label>@lang('web.search_by_name')</label>
                                     <div class="form-group searchh">
-                                        <input name="PartNameSearch" id="myInput" type="text" class="form-control" placeholder="بحث ...">
+                                        <input name="PartNameSearch" id="myInput" type="text" class="form-control" placeholder="@lang('web.search_for')">
                                         <!--
                                         <button type="submit">
                                             <i class="fas fa-search"></i>
@@ -319,7 +319,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <input class="fxd-btn" id="fxd-btn" type="submit" value="إتمام" data-dismiss='modal' disabled>
+                        <input class="fxd-btn" id="fxd-btn" type="submit" value="@lang('web.complete')" data-dismiss='modal' disabled>
                     </form>
                 </div>
             </div>
@@ -334,7 +334,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="h3-after">اختر القطع بالصورة</h3>
+                    <h3 class="h3-after">@lang('web.choose_car_by_image')</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
@@ -342,10 +342,10 @@
                         <div class="row">
                             <div class="col-sm-6 col-xs-12">
                                 <div class="form-group">
-                                    <label>قسم رئيسى</label>
+                                    <label>@lang('web.main_cats')</label>
 
-                                    <select id="mainCategoriesSelect" class="js-select2" title="قسم رئيسى">
-                                        <option selected disabled>إختار قسم رئيسي</option>
+                                    <select id="mainCategoriesSelect" class="js-select2" title="@lang('web.main_cats')">
+                                        <option selected disabled>@lang('web.choose_main_cat')</option>
                                         @foreach($categories as $category)
                                         <option value="{{$category->id}}">{{$category->name()}}</option>
                                         @endforeach
@@ -354,7 +354,7 @@
                             </div>
                             <div class="col-sm-6 col-xs-12">
                                 <div class="form-group">
-                                    <label>قسم فرعى</label>
+                                    <label>@lang('web.sub_cat')</label>
                                     <select id="subCategoriesSelect" class="js-select2">
 
 
@@ -380,14 +380,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 id="PartNameModal" class="h3-after">اسم القطعة</h3>
+                    <h3 id="PartNameModal" class="h3-after">@lang('web.part_name')</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
                     <section class="dtls-piece">
                         <div class="row">
                             <div class="col-lg-4 col-md-3 col-xs-12">
-                                <a id="mainPartImage-href" class="piece1" data-fancybox="Gallery" data-caption="اسم القطعة" href="{{asset('website/img/slide1.png')}}">
+                                <a id="mainPartImage-href" class="piece1" data-fancybox="Gallery" data-caption="@lang('web.part_name')" href="{{asset('website/img/slide1.png')}}">
                                     <img id="mainPartImage-src" src="{{asset('website/img/slide1.png')}}">
                                 </a>
                             </div>
@@ -398,7 +398,7 @@
                                 </ol>
                             </div>
                         </div>
-                        <input class="fxd-btn" id="fxd-btn" type="submit" value="إتمام" data-dismiss='modal' disabled>
+                        <input class="fxd-btn" id="fxd-btn" type="submit" value="@lang('web.complete')" data-dismiss='modal' disabled>
                     </section>
                 </div>
             </div>

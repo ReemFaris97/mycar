@@ -30,14 +30,14 @@
                         <div class="tab-content ">
 
                             <div class="details waiting-details">
-                                <h3 class="h3-after">طلباتي
+                                <h3 class="h3-after">@lang('web.my_orders')
                                     <!--
                                     <span class="span1"></span>
                                     <span class="span2"></span>
 -->
                                 </h3>
                                 <button type="button" class="return-btn" data-toggle="modal" data-target="#return">
-                                    ارجاع الطلب
+                                    @lang('web.return_order')
                                 </button>
                                 <div class="status-in">
                                     @switch($order->status)
@@ -51,22 +51,22 @@
                                 <div class="top-details data-user">
                                     <div class="h-ditails">
                                         <ul class="data-top">
-                                            <li>طلب رقم
+                                            <li>@lang('web.order_number')
                                                 <span>{{$order->id}}</span>
                                             </li>
                                             <li>
-                                                التاريخ
+                                                @lang('web.date')
                                                 <span>{{$order->created_at}}</span>
                                             </li>
 
                                             <li>
-                                                نوع الطلب:
+                                                @lang('web.order_type')
                                                 <span>
                                                     @switch($order->status)
-                                                    @case('accepted')    قيد التنفيذ  @break
-                                                    @case('accepted')    جاري التجهيز @break
-                                                    @case('accepted') تم التسليم للمندوب @break
-                                                    @case('accepted') تم التوصيل @break
+                                                    @case('accepted')    @lang('web.processing')  @break
+                                                    @case('accepted')   @lang('web.on_working') @break
+                                                    @case('accepted')@lang('web.delivery_receive')@break
+                                                    @case('accepted')@lang('web,delivered') @break
                                                     @endswitch
                                                 </span>
                                             </li>
@@ -77,10 +77,10 @@
                                     <div class="b-details">
                                         <div class="col-md-6 col-xs-12 ">
                                             <ul class="data-left">
-                                                <li>العنوان </li>
+                                                <li>@lang('web.address') </li>
                                                 <li>{{$order->delivery->address}} </li>
-                                                <li>المملكة العربية السعودية</li>
-                                                <li>الموزع :
+                                                <li>@lang('web.ksa')</li>
+                                                <li>@lang('web.supplier') :
                                                     @if($order->supplier->image != null)
                                                     <img src="{{getimg($order->supplier->image)}}">
                                                     @else
@@ -99,9 +99,9 @@
                                                     <span>{{$order->year}}</span>
                                                 </li>
                                                 @else
-                                                <li>رقم الهيكل :
+                                                <li>@lang('web.structure_number')
                                                     <span>{{$order->structre_number}}</span>
-                                                    <div>صورة الهيكل :
+                                                    <div>@lang('web.form_image')
                                                         <img src="{{getimg($order->form_image)}}">
                                                     </div>
                                                 </li>
@@ -114,7 +114,7 @@
                                     <div class="h-ditails">
                                         <ul class="data-top text-center">
                                             <li>
-                                                <h5>بيانات الدفع</h5>
+                                                <h5>@lang('web.payment_date')</h5>
                                             </li>
                                         </ul>
                                     </div>
@@ -122,9 +122,9 @@
                                         <div class="col-md-4 col-xs-12 ">
                                             <ul class="data-right">
                                                 <div class="col-xs-12">
-                                                    <li class="no-border">نوع الدفع :
-                                                        @if($order->payment_type == 'cash')<span>كاش عند الإستلام</span> @endif
-                                                        @if($order->payment_type == 'network')<span>الدفع شبكة عند الإستلام</span> @endif
+                                                    <li class="no-border">@lang('web.payment_type')
+                                                        @if($order->payment_type == 'cash')<span>@lang('web.cash')</span> @endif
+                                                        @if($order->payment_type == 'network')<span>@lang('web.network')</span> @endif
 
                                                     </li>
                                                 </div>
@@ -156,12 +156,12 @@
                                 <table class="mytable">
                                     <thead>
                                     <tr>
-                                        <th> م</th>
-                                        <th> اسم القطعة</th>
-                                        <th>قيمة القطعة</th>
-                                        <th>الكمية</th>
-                                        <th>الإجمالى</th>
-                                        <th>صورة القطعة</th>
+                                        <th> @lang('web.NO')</th>
+                                        <th>@lang('web.part_name')</th>
+                                        <th>@lang('web.part_value')</th>
+                                        <th>@lang('web.qty')</th>
+                                        <th>@lang('web.total')</th>
+                                        <th>@lang('web.part_image')</th>
                                     </tr>
                                     </thead>
                                     <tbody class="bord-t">
@@ -179,11 +179,11 @@
                                     </tbody>
                                 </table>
                                 <div class="end-waiting-details">
-                                    <div class="total-order">قيمة التوصيل</div>
-                                    <div class="all-moany">{{$order->delivery_value}} ريال</div>
+                                    <div class="total-order">@lang('web.delivery_value')</div>
+                                    <div class="all-moany">{{$order->delivery_value}} @lang('web.ryal')</div>
 
-                                    <div class="total-order">إجمالي الطلب</div>
-                                    <div class="all-moany">{{$order->total}} ريال</div>
+                                    <div class="total-order">@lang('web.total_order')</div>
+                                    <div class="all-moany">{{$order->total}} @lang('web.ryal')</div>
                                 </div>
                             </div>
 

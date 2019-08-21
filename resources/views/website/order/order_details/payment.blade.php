@@ -35,12 +35,12 @@
                     <table class="mytable">
                         <thead>
                         <tr>
-                            <th>م</th>
-                            <th>اسم القطعة</th>
-                            <th>قيمة القطعة</th>
-                            <th>الكمية</th>
-                            <th>الإجمالى</th>
-                            <th>صورة القطعة</th>
+                            <th>@lang('web.NO')</th>
+                            <th>@lang('web.part_name')</th>
+                            <th>@lang('web.part_value')</th>
+                            <th>@lang('web.qty')</th>
+                            <th>@lang('web.total')</th>
+                            <th>@lang('web.part_image')</th>
                 {{--<th>حذف</th>--}}
                         </tr>
                         </thead>
@@ -63,16 +63,16 @@
 
                     <table class="p-tble">
                         <tr>
-                            <th>الإجمالى</th>
-                            <td>{{$order->total}}  ريال</td>
+                            <th>@lang('web.total')</th>
+                            <td>{{$order->total}}@lang('web.ryal')</td>
                         </tr>
                         <tr>
-                            <th>قيمة التوصيل</th>
-                            <td>{{$order->delivery_value}} ريال</td>
+                            <th>@lang('web.delivery_value')</th>
+                            <td>{{$order->delivery_value}}@lang('web.ryal')</td>
                         </tr>
                         <tr>
-                            <th>إجمالى الطلب</th>
-                            <td>{{$order->delivery_value + $order->total}} ريال</td>
+                            <th>@lang('web.total_order')</th>
+                            <td>{{$order->delivery_value + $order->total}}@lang('web.ryal')</td>
                         </tr>
                     </table>
 
@@ -80,7 +80,7 @@
             </div>
 
             <div class="sha7n">
-                <h3 class="h3-after">الدفع</h3>
+                <h3 class="h3-after">@lang('web.payment')</h3>
 
                 <form class="deliver" method="post" action="{{route('web.order.submitPayment')}}">
                     {{csrf_field()}}
@@ -92,7 +92,7 @@
                                 <span class="check-img">
                                     <img src="{{asset('website/img/money.svg')}}">
                                 </span>
-                                نقدى عند الاستلام كاش</div>
+                                @lang('web.cash')</div>
                             <input type="radio" checked="checked" name="payment_type" value="cash">
                             <span class="checkmark"></span>
                         </label>
@@ -103,7 +103,7 @@
                                 <span class="check-img">
                                     <img src="{{asset('website/img/money.svg')}}">
                                 </span>
-                                نقدى عند الاستلام شبكة
+                                @lang('web.network')
                             </div>
                             <input type="radio" name="payment_type" value="network">
                             <span class="checkmark"></span>
@@ -235,7 +235,7 @@
 
                     </div>
 
-                    <button type="submit" class="delt-all">إتمام الطلب</button>
+                    <button type="submit" class="delt-all">@lang('web.complete_order')</button>
 
                 </form>
 

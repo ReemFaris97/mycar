@@ -9,7 +9,7 @@
 
             <span> <i class="fas fa-check-circle"></i> </span>
             <p>
-                تم إنشاء الطلب بنجاح .. في إنتظار رد المورد
+                @lang('web.order_created_successfully')
             </p>
 
         </div>

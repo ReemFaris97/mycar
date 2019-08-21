@@ -158,14 +158,14 @@
                                                    <td>{{$row->total}}</td>
                                                    <td>
                                                        @switch($row->status)
-                                                           @case('refused')  مرفوض @break
-                                                           @case('delivered') تم التوصيل@break
-                                                           @case('completed') مكتمل@break
+                                                           @case('refused')  @lang('web.refused') @break
+                                                           @case('delivered') @lang('web.delivered')@break
+                                                           @case('completed')@lang('web.completed')@break
                                                        @endswitch
                                                    </td>
 
                                                    <td>
-                                                       <a href="{{route('web.order.getDetails',$row->id)}}"> تفاصيل</a>
+                                                       <a href="{{route('web.order.getDetails',$row->id)}}"> @lang('web.details')</a>
                                                    </td>
                                                </tr>
                                                @empty

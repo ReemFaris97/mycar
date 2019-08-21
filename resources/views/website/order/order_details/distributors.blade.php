@@ -22,24 +22,24 @@
 @section('content')
     <section class="all-sections">
         <div class="container">
-            <button type="button" class="delt-all">إلغاء الطلب</button>
-            <h3 class="h3-after">الأسعار</h3>
-            <a href="#" class="trn">سياسة الإرجاع</a>
+            <button type="button" class="delt-all">@lang('web.cancel_order')</button>
+            <h3 class="h3-after">@lang('web.prices')</h3>
+            <a href="#" class="trn">@lang('web.return_policy')</a>
             <div class="the-distrb">
-                <b>الموزع : <h4>{{$order->supplier->name}}</h4></b>
+                <b>@lang('web.distributor') : <h4>{{$order->supplier->name}}</h4></b>
 
                 <div class="tfasel">
                     <div class="tools"></div>
-                    <b><h4>تفاصيل الطلب</h4></b>
+                    <b><h4>@lang('web.order_details')</h4></b>
                     <table class="mytable">
                         <thead>
                         <tr>
                             <th>م</th>
-                            <th>اسم القطعة</th>
+                            <th>@lang('web.part_name')</th>
 {{--                            <th>قيمة القطعة</th>--}}
-                            <th>الكمية</th>
+                            <th>@lang('web.qty')</th>
 {{--                            <th>الإجمالى</th>--}}
-                            <th>صورة القطعة</th>
+                            <th>@lang('web.part_image')</th>
 {{--                            <th>حذف</th>--}}
                         </tr>
                         </thead>
@@ -57,18 +57,18 @@
                     @endforeach
                         </tbody>
                     </table>
-                    <b><h4>قائمة التسعير</h4></b>
+                    <b><h4>@lang('web.pricing_list')</h4></b>
 
                     @if($order->checkSupplierReply())
                     <table class="mytable">
                         <thead>
                         <tr>
-                            <th>م</th>
-                            <th>اسم القطعة</th>
-                            <th>قيمة القطعة</th>
-                            <th>الكمية</th>
-                            <th>الإجمالى</th>
-                            <th>صورة القطعة</th>
+                            <th>@lang('web.NO')</th>
+                            <th>@lang('web.part_name')</th>
+                            <th>@lang('web.part_value')</th>
+                            <th>@lang('web.qty')</th>
+                            <th>@lang('web.total')</th>
+                            <th>@lang('web.part_image')</th>
 {{--                            <th>حذف</th>--}}
                         </tr>
                         </thead>
@@ -88,30 +88,30 @@
                         </tbody>
                     </table>
                     @else
-                        <b><h1>في إنتظار تسعير الموزع</h1></b>
+                        <b><h1>@lang('web.waiting_supplier_reply')</h1></b>
                     @endif
 
 
 
                         @if($order->hasDelivery())
-                        <b><h4>بيانات الشحن</h4></b>
+                        <b><h4>@lang('web.delivery_date')</h4></b>
                             @if($order->delivery->delivery_type == 'delivery')
                             <table class="p-tble">
                                 <tbody>
                                 <tr>
-                                    <th>نوع التوصيل</th>
-                                    <td>توصيل القطع</td>
+                                    <th>@lang('web.delivery_type')</th>
+                                    <td>@lang('web.parts_delivery')</td>
                                 </tr>
                                 <tr>
-                                    <th>الإجمالى</th>
+                                    <th>@lang('web.total')</th>
                                     <td>{{$order->total}}</td>
                                 </tr>
                                 <tr>
-                                    <th>قيمة التوصيل</th>
+                                    <th>@lang('web.delivery_value')</th>
                                     <td>{{$order->delivery_value}}</td>
                                 </tr>
                                 <tr>
-                                    <th>إجمالى الطلب</th>
+                                    <th>@lang('web.order_total')</th>
                                     <td>{{$order->delivery_value + $order->total}}</td>
                                 </tr>
                                 </tbody></table>
@@ -119,11 +119,11 @@
                                 <table class="p-tble">
                                     <tbody>
                                     <tr>
-                                        <th>نوع التوصيل</th>
-                                        <td>الإستلام من الوكالة</td>
+                                        <th>@lang('web.delivery_type')</th>
+                                        <td>@lang('web.receive_from_shop')</td>
                                     </tr>
                                     <tr>
-                                        <th>إجمالى الطلب</th>
+                                        <th>@lang('web.order_total')</th>
                                         <td>{{$order->total}}</td>
                                     </tr>
                                     </tbody></table>
@@ -139,7 +139,7 @@
             <form data-parsley-validate novalidate action="{{route('web.order.submitDelivery')}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
             <div class="sha7n">
-                <h3 class="h3-after">الشحن</h3>
+                <h3 class="h3-after">@lang('web.delivery')</h3>
 
                 <div class="deliver">
                     <div class="radio-list dist-list">
@@ -149,7 +149,7 @@
                                 <span class="check-img">
                                     <img src="{{asset('website/img/deliver1.svg')}}">
                                 </span>
-                                توصيل القطع إلى ( الورشة - البنشر - المنزل - مكان العمل ) </div>
+                                @lang('web.delivery_label')</div>
                             <input type="radio" checked="checked" name="delivery_type" id="chk1" value="delivery">
                             <span class="checkmark"></span>
                         </label>
@@ -162,7 +162,7 @@
                                 <span class="check-img">
                                     <img src="{{asset('website/img/deliver2.svg')}}">
                                 </span>
-                                الإستلام من الوكالة ( لتكون القطع جاهزة وخيارات الدفع متعددة )
+                                @lang('web.receive_label')
                             </div>
                             <input type="radio" name="delivery_type" value="receive">
                             <span class="checkmark"></span>
@@ -192,13 +192,13 @@
                             <div class="map1" id="div1">
 
                                 <input type="hidden" name="order_id" value="{{$order->id}}">
-                                <input id="pac-input" class="controls form-control from-shop-input" type="text" placeholder="البحث عن ..">
+                                <input id="pac-input" class="controls form-control from-shop-input" type="text" placeholder="@lang('web.search_for')">
                                 <div id="map" class="from-shop"></div>
 
                                 <div class="form-data">
-                                    <label>وصف العنوان</label>
+                                    <label>@lang('web.address_desc')</label>
                                     <div class="form-group">
-                                        <textarea name="address" required data-parsley-required-message="هذا الحقل مطلوب" id="address_description" rows="4" cols="95" class="form-control input-lg" placeholder="اوصف العنوان"></textarea>
+                                        <textarea name="address" required data-parsley-required-message="@lang('web.field_required')" id="address_description" rows="4" cols="95" class="form-control input-lg" placeholder="@lang('web.descripe_address')"></textarea>
                                         <span class="focus-border"><i></i></span>
                                     </div>
                                 </div>
@@ -220,7 +220,7 @@
 
                     </div>
 
-                    <button type="submit" class="delt-all">ادفع هنا</button>
+                    <button type="submit" class="delt-all">@lang('web.pay_here')</button>
 
                 </div>
             </div>
