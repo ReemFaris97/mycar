@@ -354,21 +354,42 @@
         var image = "{{asset('website/img/1.png')}}";
         var user_id = payload.data.user_id;
         var auth_id = "{{auth()->id()}}";
+        var deleteUrl = "{{route('web.delete.notification')}}";
+        var imageSrc  = "{{asset('website/img/bell.svg')}}";
+        if(payload.data.type == 'order') {
+            $('.notification').append(
+                '<div class="notice" id="NotifiyDiv'+payload.data.notify_id+'"'+
+                '<button data-id="'+payload.data.notify_id+'"'+'data-url="'+deleteUrl+'" type="button" class="close">×</button>'+
+                '<img src="'+imageSrc+'">'+
+                '<h4>' + payload.data.title + '</h4>'+
+                '<a href="#">'+payload.data.message+'</a>'+'</div>'
 
-        if(user_id != auth_id) {
-            $('#chats').append(
-                '<div class="chat1 recieve">\n' +
-                '                    <div class="chat-img">\n' +
-                '                        <img src="' + image + '">\n' +
-                '                    </div>\n' +
-                '                    <div class="chat-body">\n' +
-                '                        <p>\n' +
-                payload.data.body +
-                '                        </p>\n' +
-                '                    </div>\n' +
-                '                </div>'
+
+                {{--<div class="notice" id="NotifyDiv{{$notify->id}}">--}}
+                {{--<button data-id="{{$notify->id}}" data-url="{{route('web.delete.notification')}}" type="button" class="close">×</button>--}}
+                {{--    <img src="{{asset('website/img/bell.svg')}}">--}}
+                {{--<h4>{{$notify->title()}}</h4>--}}
+                {{--<a href="#">{{$notify->message()}}</a>--}}
+                // </div>
             );
+        }else{
+            if(user_id != auth_id) {
+                $('#chats').append(
+                    '<div class="chat1 recieve">\n' +
+                    '                    <div class="chat-img">\n' +
+                    '                        <img src="' + image + '">\n' +
+                    '                    </div>\n' +
+                    '                    <div class="chat-body">\n' +
+                    '                        <p>\n' +
+                    payload.data.body +
+                    '                        </p>\n' +
+                    '                    </div>\n' +
+                    '                </div>'
+                );
+            }
         }
+
+
 
         {{--<div class="chat1 recieve">--}}
         {{--    <div class="chat-img">--}}

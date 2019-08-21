@@ -108,6 +108,7 @@ class OrdersController extends Controller
         $en_title = "Order status Changed";
         $ar_message ="لديك طلب تم تغيير حالته رقم ". $order->id ;
         $en_message ="you have an Order with changed status No ". $order->id ;
+
         $data=[
             'user_id'=>$order->user_id,
             'order_id'=>$order->id,
@@ -117,13 +118,15 @@ class OrdersController extends Controller
             'en_message'=>$en_message,
         ];
 
-        Notification::insert($data);
+        $notify = Notification::create($data);
+        $title = $notify->title();
+        $message= $notify->message();
 
 //              push using firebase
 
         $tokens = Device::where('user_id',$order->user_id)->pluck('device');
         $firebase = new firebase();
-        $firebase->sendNotify($tokens,$ar_title,$en_title,$ar_message,$en_message,'order',$order->id);
+        $firebase->sendNotify($tokens,$title,$message,'order',$notify->id,$order->id);
 
 
         return response()->json([
