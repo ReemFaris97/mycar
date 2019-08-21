@@ -3,19 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="07d3112d-1530-4da5-ab4a-6f65651dce54" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/website/OrderDetailsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/website/OrderDetailsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Traits/Orders_operations.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Traits/Orders_operations.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/OrderDetails.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/OrderDetails.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Reply.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Reply.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/ReplyDetails.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ReplyDetails.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Transaction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Transaction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/orders/details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/orders/details.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/orders/orders_table.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/orders/orders_table.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/order/order_details/distributors.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/order/order_details/distributors.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/profile/my_orders.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/profile/my_orders.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,7 +21,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
+            <state relative-caret-position="4080">
               <caret line="249" column="45" selection-start-line="249" selection-start-column="28" selection-end-line="249" selection-end-column="45" />
             </state>
           </provider>
@@ -43,8 +30,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/website/profile/my_orders.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-631">
-              <caret line="264" column="103" selection-start-line="264" selection-start-column="103" selection-end-line="264" selection-end-column="103" />
+            <state relative-caret-position="340">
+              <caret line="295" column="68" lean-forward="true" selection-start-line="295" selection-start-column="68" selection-end-line="295" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -551,18 +538,19 @@
       <workItem from="1566200751128" duration="24787000" />
       <workItem from="1566250989589" duration="905000" />
       <workItem from="1566286290290" duration="7223000" />
-      <workItem from="1566298934411" duration="18633000" />
+      <workItem from="1566298934411" duration="18811000" />
+      <workItem from="1566373211017" duration="897000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="565433000" />
+    <option name="totallyTimeSpent" value="566508000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2708018" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23373677" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -943,15 +931,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
+        <state relative-caret-position="4080">
           <caret line="249" column="45" selection-start-line="249" selection-start-column="28" selection-end-line="249" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/website/profile/my_orders.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-631">
-          <caret line="264" column="103" selection-start-line="264" selection-start-column="103" selection-end-line="264" selection-end-column="103" />
+        <state relative-caret-position="340">
+          <caret line="295" column="68" lean-forward="true" selection-start-line="295" selection-start-column="68" selection-end-line="295" selection-end-column="68" />
         </state>
       </provider>
     </entry>
