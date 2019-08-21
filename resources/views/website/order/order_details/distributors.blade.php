@@ -81,7 +81,7 @@
                             <td>{{$row->order_details->quantity}}</td>
                             <td>{{$row->total_parts}}</td>
                             <td><img src="{{getimg($row->order_details->part->image)}}"></td>
-{{--                            <td> <button class="close"> <i class="fas fa-times"></i> </button> </td>--}}
+{{--                       <td> <button class="close"> <i class="fas fa-times"></i> </button> </td>--}}
                         </tr>
                         @endforeach
 

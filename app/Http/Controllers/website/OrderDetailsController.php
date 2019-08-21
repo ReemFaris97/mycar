@@ -13,6 +13,11 @@ class OrderDetailsController extends Controller
     use Orders_operations;
     public function orderDetails($id){
         $order = Order::findOrFail($id);
+        if($order->status == 'accepted'){
+            return view('website.order.order_details.finished_details',compact('order'));
+        }
+
+
         return view('website.order.order_details.distributors',compact('order'));
     }
 
@@ -44,6 +49,6 @@ class OrderDetailsController extends Controller
         $order->payment_status = 1;
         $order->status = 'accepted';
         $order->save();
-        return view('website.order.order_details.done');
+        return view('website.order.order_details.done',compact('order'));
     }
 }
