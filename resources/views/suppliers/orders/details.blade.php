@@ -76,36 +76,63 @@
                         <h3>حالة الطلب :</h3>
 
                         <h4 style="font-weight: 600;">
-                    @if($order->status != 'new' && $order->supplier_id != auth()->id())
+{{--                            @if($order->status != 'new')--}}
+{{--                                --}}
+{{--                            @else--}}
 
-                                <label class="label label-danger">مرفوض</label>
-                    @else
+                                @switch($order->status)
+                                    @case('new')
+                                        @if($order->hasDelivery())
+                                            <label class="label label-primary">قيد انتظار تأكيد العميل</label>
+                                        @else
+                                            <label class="label label-primary">جديد</label>
+                                        @endif
+                                    @break
 
-                            @if($order->status == 'new')
-                                <label class="label label-success">جديد</label>
-                            @endif
+                                    @case('accepted')
+                                        <label class="label label-success">تم الموافقة من العميل</label>
+                                    @break
 
-                            @if($order->status == 'waiting')
-                                @if($order->hasAnyReplyByAuthSupplier())
-                                    <label class="label label-primary">قيد الإنتظار</label>
-                                @else
-                                    <label class="label label-success">جديد</label>
-                                @endif
-                            @endif
+                                    @case('prepare')
+                                        <label class="label label-purple">جاري التجهيز</label>
+                                    @break
 
-                            @if($order->status == 'received')
-                                <label class="label label-success">طلبات معتمده</label>
-                            @endif
+                                    @case('onWay')
+                                        <label class="label label-pink">تم التسليم للمندوب</label>
+                                    @break
 
-                            @if($order->status == 'finished')
-                                @if($order->hasRefusedReplyByAuthSupplier())
-                                    <label class="label label-danger">مرفوض</label>
-                                @else
-                                    <label class="label label-purple">منتهي</label>
-                                @endif
-                            @endif
+                                    @case('delivered')
+                                        <label class="label label-inverse">تم التوصيل</label>
+                                    @break
 
-                    @endif
+
+                                @endswitch
+
+{{--                            @if($order->status == 'new')--}}
+{{--                                <label class="label label-success">جديد</label>--}}
+{{--                            @endif--}}
+
+{{--                            @if($order->status == 'waiting')--}}
+{{--                                @if($order->hasAnyReplyByAuthSupplier())--}}
+{{--                                    <label class="label label-primary">قيد الإنتظار</label>--}}
+{{--                                @else--}}
+{{--                                    <label class="label label-success">جديد</label>--}}
+{{--                                @endif--}}
+{{--                            @endif--}}
+
+{{--                            @if($order->status == 'received')--}}
+{{--                                <label class="label label-success">طلبات معتمده</label>--}}
+{{--                            @endif--}}
+
+{{--                            @if($order->status == 'finished')--}}
+{{--                                @if($order->hasRefusedReplyByAuthSupplier())--}}
+{{--                                    <label class="label label-danger">مرفوض</label>--}}
+{{--                                @else--}}
+{{--                                    <label class="label label-purple">منتهي</label>--}}
+{{--                                @endif--}}
+{{--                            @endif--}}
+
+{{--                    @endif--}}
                         </h4>
                         </div>
 
@@ -222,6 +249,8 @@
                         <div class="col-md-12">
                             <h3>إجراءات الطلب </h3>
                             <label class="help-block">(تسعير - إنهاء )</label>
+
+                            @if($order->status != 'accepted')
                             <a id="pricing_done" style="display: none;" disabled class="btn btn-success waves-effect waves-light btn-lg m-b-5" >تم إرسال الطلب</a>
 
                             @if($order->hasAnyReplyByAuthSupplier())
@@ -230,6 +259,26 @@
                                 <a href="#custom-modal" id="pricing_button" class="btn btn-primary waves-effect waves-light btn-lg m-b-5" data-animation="swell" data-plugin="custommodal"
                                    data-overlaySpeed="100" data-overlayColor="#36404a">تسعير الطلب</a>
                             @endif
+
+                            @endif
+
+
+                                @if($order->status =='accepted')
+                                    <a href="javascript:;" data-action="prepare"    data-id="{{$order->id}}"   class="changeOrderStatus btn btn-primary waves-effect waves-light btn-lg m-b-5" >جاري التجهييز</a>
+                                @endif
+
+                                @if($order->status == 'prepare')
+                                    <a href="javascript:;" data-action="onWay"      data-id="{{$order->id}}"   class="changeOrderStatus btn btn-primary waves-effect waves-light btn-lg m-b-5" >تم تسليم المندوب</a>
+                                @endif
+
+                                @if($order->status == 'onWay')
+                                    <a href="javascript:;" data-action="delivered"  data-id="{{$order->id}}"   class="changeOrderStatus btn btn-primary waves-effect waves-light btn-lg m-b-5" >تم التوصيل</a>
+                                @endif
+
+                                @if($order->status == 'delivered')
+                                <a id="pricing_done"  disabled class="btn btn-success waves-effect waves-light btn-lg m-b-5" >تم التوصيل بنجاح</a>
+                                @endif
+
 
                         </div>
 
@@ -396,6 +445,67 @@
                     }
                 });
             }
+        });
+
+        $('.changeOrderStatus').on('click',function(e){
+            var id = $(this).data('id');
+            var action  = $(this).data('action');
+            var url     = "{{route('supplier.order.changeStatus')}}";
+
+            swal({
+                    title: "هل انت متأكد؟",
+                    text: 'هل تريد تغيير حالة الطلب فعلا ؟',
+                    type: "success",
+                    showCancelButton: true,
+                    confirmButtonColor: "#27dd24",
+                    confirmButtonText: "موافق",
+                    cancelButtonText: "إلغاء",
+                    confirmButtonClass:"btn-success waves-effect waves-light",
+                    closeOnConfirm: true,
+                    closeOnCancel: true,
+                },
+                function (isConfirm) {
+                    if(isConfirm){
+                        $.ajax({
+                            type:'post',
+                            url :url,
+                            data:{id:id,action:action},
+                            dataType:'json',
+                            success:function(data){
+                                if(data.status == true){
+                                    var title = data.title;
+                                    var msg = data.message;
+                                    toastr.options = {
+                                        positionClass : 'toast-top-left',
+                                        onclick:null
+                                    };
+
+                                    var $toast = toastr['success'](msg,title);
+                                    $toastlast = $toast;
+
+                                    setTimeout(function(){
+                                        location.reload();
+                                        }, 2500);
+                                    // tr.find('td').fadeOut(1000, function () {
+                                    //     tr.remove();
+                                    // });
+                                }else {
+                                    var title = data.title;
+                                    var msg = data.message;
+                                    toastr.options = {
+                                        positionClass : 'toast-top-left',
+                                        onclick:null
+                                    };
+
+                                    var $toast = toastr['error'](msg,title);
+                                    $toastlast = $toast
+                                }
+                            }
+                        });
+                    }
+
+                }
+            );
         });
     </script>
 

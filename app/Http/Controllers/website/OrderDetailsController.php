@@ -13,7 +13,7 @@ class OrderDetailsController extends Controller
     use Orders_operations;
     public function orderDetails($id){
         $order = Order::findOrFail($id);
-        if($order->status == 'accepted'){
+        if(in_array($order->status,['accepted','prepare','onWay','delivered'])){
             return view('website.order.order_details.finished_details',compact('order'));
         }
 

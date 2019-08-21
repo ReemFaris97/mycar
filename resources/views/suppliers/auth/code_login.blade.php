@@ -3,7 +3,7 @@
     {{----------------------------------------------------------------}}
     <div class="m-t-40 card-box">
         <div class="text-center">
-            <h4 class="text-uppercase font-bold m-b-0">@lang('suplliers.login_code')  (@lang('suppliers.supplier'))</h4>
+            <h4 class="text-uppercase font-bold m-b-0">@lang('suppliers.login_code')  (@lang('suppliers.supplier'))</h4>
         </div>
         <div class="panel-body">
 

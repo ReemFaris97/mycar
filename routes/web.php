@@ -179,6 +179,10 @@ Route::group(['prefix'=>"suppliers",'namespace'=>'supplier','middleware'=>"suppl
 
 
 
+    Route::post('order/change/status','OrdersController@changeOrderStatus')->name('supplier.order.changeStatus');
+
+
+
 
 //
 //

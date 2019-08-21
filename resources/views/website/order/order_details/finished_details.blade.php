@@ -80,7 +80,13 @@
                                                 <li>العنوان </li>
                                                 <li>{{$order->delivery->address}} </li>
                                                 <li>المملكة العربية السعودية</li>
-                                                <li>الموزع <img src="{{getimg($order->supplier->image)}}"> {{$order->supplier->name}} </li>
+                                                <li>الموزع :
+                                                    @if($order->supplier->image != null)
+                                                    <img src="{{getimg($order->supplier->image)}}">
+                                                    @else
+{{--                                                        <img src="{{asset('website/img/logo.png')}}">--}}
+                                                    @endif
+                                                    {{$order->supplier->name}} </li>
                                             </ul>
                                         </div>
                                         <div class="col-md-6 col-xs-12">

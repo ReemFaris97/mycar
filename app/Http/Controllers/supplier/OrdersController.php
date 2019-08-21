@@ -93,4 +93,17 @@ class OrdersController extends Controller
         $this->AcceptReply($request,$reply);
 
     }
+
+    public function changeOrderStatus(Request $request){
+        $order = Order::find($request->id);
+        $order->status = $request->action;
+        $order->save();
+        return response()->json([
+            'status'=>true,
+            'title'=>"نجاح",
+            'message'=>"تم تغيير حالة الطلب بنجاح"
+        ]);
+    }
+
+
 }
