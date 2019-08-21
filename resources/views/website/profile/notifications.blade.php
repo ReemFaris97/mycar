@@ -49,9 +49,7 @@
                                         <a href="#">@lang('web.no_notify')</a>
                                     </div>
                                 @endforelse
-
                             </div>
-
                         </div>
                     </div>
                 </div>
