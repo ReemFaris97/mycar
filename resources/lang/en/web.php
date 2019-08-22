@@ -162,4 +162,12 @@ return [
     "new"=>"new",
     "profile_info"=>"Profile information",
     "logout"=>"Logout",
+    "management_notification"=>"NOTIFICATION ",
+    "hi_can_i_help_you"=>"Hi , How can i help you",
+    "login_register"=>"Login/Register",
+    "login"=>"Login",
+    "4_digits_code"=>"A 4 digit code has been sent to your mobile and enter it below to continue",
+    "sent_code"=>"Code sent",
+    "edit_phone"=>"Edit phone number",
+    "choose_your_place"=>"Choose your place",
 ];
