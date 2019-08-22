@@ -45,17 +45,17 @@
                         <div class="tab-content">
 
                             <div id="menu2" class="big-child">
-                                <h3 class="h3-after">طلباتي
+                                <h3 class="h3-after">@lang('web.my_orders')
                                     <!--
                                                                         <span class="span1"></span>
                                                                         <span class="span2"></span>
                                     -->
                                 </h3>
                                 <ul class="nav nav-tabs child-tabs">
-                                    <li class="active"><a data-toggle="tab" href="#new">جديد</a></li>
-                                    <li ><a data-toggle="tab" href="#waiting">قيد الانتظار</a></li>
-                                    <li><a data-toggle="tab" href="#finshed">المنتهية </a></li>
-                                    <!------- show   this in  user -------> <li><a data-toggle="tab" href="#menu3">المرتجعات </a></li>
+                                    <li class="active"><a data-toggle="tab" href="#new">@lang('web.new')</a></li>
+                                    <li ><a data-toggle="tab" href="#waiting">@lang('web.wait')</a></li>
+                                    <li><a data-toggle="tab" href="#finshed">@lang('web.finished')</a></li>
+                                    <!------- show   this in  user -------> <li><a data-toggle="tab" href="#menu3">@lang('web.backs')</a></li>
                                 </ul>
 
                                 <div class="tab-content">
@@ -64,9 +64,9 @@
                                         <table class="mytable">
                                             <thead>
                                             <tr>
-                                                <th>الشركة المصنعة</th>
-                                                <th>طلب رقم</th>
-                                                <th>التاريخ</th>
+                                                <th>@lang('web.factory_company')</th>
+                                                <th>@lang('web.order_no')</th>
+                                                <th>@lang('web.date')</th>
 {{--                                                <th>عداد الوقت</th>--}}
                                                 <th></th>
                                             </tr>
@@ -79,7 +79,7 @@
                                                 <td>{{$row->created_at}}</td>
 {{--                                                <td class="font-s">00:26:48</td>--}}
                                                 <td>
-                                                    <a href="{{route('web.order.getDetails',$row->id)}}"> تفاصيل</a>
+                                                    <a href="{{route('web.order.getDetails',$row->id)}}">@lang('web.details')</a>
                                                 </td>
                                             </tr>
                                             @empty
@@ -95,11 +95,11 @@
                                         <table class="mytable">
                                             <thead>
                                                 <tr>
-                                                    <th>الشركة المصنعة</th>
-                                                    <th>طلب رقم</th>
-                                                    <th>التاريخ</th>
-                                                    <th>القيمة</th>
-                                                    <th>الحالة</th>
+                                                    <th>@lang('web.factory_company')</th>
+                                                    <th>@lang('web.order_no')</th>
+                                                    <th>@lang('web.date')</th>
+                                                    <th>@lang('web.value')</th>
+                                                    <th>@lang('web.status')</th>
                                                     <th></th>
                                                 </tr>
                                             </thead>
@@ -116,15 +116,15 @@
 {{--                                                            قيد الإنتظار--}}
 {{--                                                        @endif--}}
                                                         @switch($row->status)
-                                                            @case('waiting') قيد الإنتظار@break
-                                                            @case('accepted') قيد التنفيذ@break
-                                                            @case('prepare') جاري التنفيذ@break
-                                                            @case('onWay') تم التسليم للمندوب@break
+                                                            @case('waiting') @lang('web.wait') @break
+                                                            @case('accepted') @lang('web.processing') @break
+                                                            @case('prepare') @lang('web.on_working') @break
+                                                            @case('onWay') @lang('web.delivery_receive')@break
                                                         @endswitch
 
                                                     </td>
                                                     <td>
-                                                        <a href="{{route('web.order.getDetails',$row->id)}}"> تفاصيل</a>
+                                                        <a href="{{route('web.order.getDetails',$row->id)}}"> @lang('web.details')</a>
                                                     </td>
                                                 </tr>
                                              @empty
@@ -140,11 +140,11 @@
                                          <table class="mytable">
                                            <thead>
                                                <tr>
-                                                   <th>الشركة المصنعة</th>
-                                                   <th>طلب رقم</th>
-                                                   <th>التاريخ</th>
-                                                   <th>القيمة</th>
-                                                   <th>الحالة</th>
+                                                   <th>@lang('web.factory_company')</th>
+                                                   <th>@lang('web.order_no')</th>
+                                                   <th>@lang('web.date')</th>
+                                                   <th>@lang('web.value')</th>
+                                                   <th>@lang('web.status')</th>
 
                                                    <th></th>
                                                </tr>
@@ -178,9 +178,9 @@
                                         <table class="mytable">
                                             <thead>
                                             <tr>
-                                                <th>اسم الطلب</th>
-                                                <th>طلب رقم</th>
-                                                <th>التاريخ</th>
+                                                <th>@lang('web.order_no') </th>
+                                                <th>@lang('web.order_no')</th>
+                                                <th>@lang('web.date')</th>
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>

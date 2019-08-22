@@ -122,7 +122,7 @@
                         </div>
                         <div class="chat-body">
                             <p>
-                                مرحبا بك، كيف نساعدك ؟؟
+                                @lang('web.hi_can_i_help_you')
                             </p>
                         </div>
                     </div>
@@ -430,7 +430,7 @@
                 "hideMethod": "fadeOut"
             }
 
-            toastr["success"]("رسالة من الإدارة", payload.data.body);
+            toastr["success"]("@lang('web.management_notification')", payload.data.body);
         }
 
     });
