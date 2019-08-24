@@ -256,7 +256,7 @@
                             @if($order->hasAnyReplyByAuthSupplier())
                                 <a id="pricing_done"  disabled class="btn btn-success waves-effect waves-light btn-lg m-b-5" >تم إرسال الطلب</a>
                             @else
-                                <a href="#custom-modal" id="pricing_button" class="btn btn-primary waves-effect waves-light btn-lg m-b-5" data-animation="swell" data-plugin="custommodal"
+                                <a href="#custom-modal" id="pricing_button" class="btn btn-primary waves-effect waves-light btn-lg m-b-5" data-animation="superscaled" data-plugin="custommodal"
                                    data-overlaySpeed="100" data-overlayColor="#36404a">تسعير الطلب</a>
                             @endif
 

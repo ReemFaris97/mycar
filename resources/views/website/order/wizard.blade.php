@@ -273,8 +273,7 @@
 
             <!-- ------------------------------ Order Modals ---------------------------------------------- -->
 
-
-               <!------------------------------- name-piece Modal -------------------------------------->
+            <!--------------------------------- name-piece Modal -------------------------------------->
     <div class="modal fade modalIn" id="name-piece" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -489,6 +488,86 @@
             // Ajax Code of Changeing Radio button value -- first wizard Form ....
             // account-form
             $(document).ready(function(){
+
+
+
+
+
+                var numberOfItems = 0;
+                $('.new-p :checkbox').change(function() {
+                    var $this = $(this);
+                    if ($this.is(':checked')) {
+
+                        var newInput = $('<li class="addme"><div class="quant"><div class="count"><div class="value-button cart-qty-plus" > <i class="fas fa-arrow-circle-up"></i> </div><input type="number" readonly min="1" value="1" id="number" class="number"><div class="value-button cart-qty-minus" > <i class="fas fa-arrow-circle-down"></i> </div></div></div></li>');
+                        $($this).closest('.inDetails').append(newInput);
+                        numberOfItems++;
+                        //                    input number simulator function
+                        var incrementPlus;
+                        var incrementMinus;
+                        var buttonPlus = $(this).parents('li').next("li.addme").find(".cart-qty-plus");
+                        var buttonMinus = $(this).parents('li').next("li.addme").find(".cart-qty-minus");
+                        var incrementPlus = buttonPlus.click(function() {
+                            var $n = $(this)
+                                .parent(".count")
+                                .parent(".quant")
+                                .find(".number");
+                            $n.val(Number($n.val()) + 1);
+                        });
+                        var incrementMinus = buttonMinus.click(function() {
+                            var $n = $(this)
+                                .parent(".count")
+                                .parent(".quant")
+                                .find(".number");
+                            var amount = Number($n.val());
+                            if (amount > 1) {
+                                $n.val(amount - 1);
+                            }
+                        });
+                    } else {
+                        $($this).closest('.inDetails').find('.addme').remove();
+                        numberOfItems--;
+                    }
+                    console.log(numberOfItems);
+                    if (numberOfItems == 0) {
+                        $(".fxd-btn").attr('disabled', 'true');
+                    } else {
+                        $(".fxd-btn").removeAttr('disabled');
+                    }
+                });
+                $(".fxd-btn").click(function() {
+                    $("#the-choseen-parts").html('');
+                    $('.new-p input.if-check').each(function() {
+                        if ($(this).is(':checked')) {
+                            var itemName = $(this).prev('.name-p').html();
+                            var itemId = $(this).prev('.name-p').attr('data-partid');
+                            console.log( 'id is'  + itemId);
+                            var itemQuantity = $(this).parents('li').next('li.addme').find('input').val();
+                            console.log(itemQuantity);
+
+                            $("#the-choseen-parts").append('<div class="prod1"><a class="close"> <svg class="svg-inline--fa fa-times fa-w-11" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" role="img"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" data-fa-i2svg=""><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg></a><input name="part_ids[]" type="hidden" value="' + itemId + '"> <h4> ' + itemName + '</h4> <input type="hidden" name="qtys[]" value="' + itemQuantity + '"> <span class="qnt"> ' + itemQuantity + '</span></div>')
+                        }
+
+                        /**********************  Remove Piece *****************/
+                        $(".close").click(function() {
+                            $(this).parent(".prod1").remove();
+                        });
+                    })
+                })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 var carName,carModel,carYear;
 

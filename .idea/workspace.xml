@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="07d3112d-1530-4da5-ab4a-6f65651dce54" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/orders/details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/orders/details.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/website/order/wizard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/order/wizard.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,21 +19,15 @@
     </execution>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/lang/ar/web.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="169" column="38" lean-forward="true" selection-start-line="169" selection-start-column="38" selection-end-line="169" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/lang/en/web.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/website/order/wizard.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="171" column="43" selection-start-line="171" selection-start-column="43" selection-end-line="171" selection-end-column="43" />
+            <state relative-caret-position="180">
+              <caret line="659" selection-start-line="659" selection-end-line="659" />
+              <folding>
+                <element signature="e#62#69#1" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -49,11 +45,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>done</find>
-      <find>$order_deta</find>
-      <find>الموزع</find>
-      <find>LOGIN</find>
-      <find>su</find>
       <find>removeElement</find>
       <find>changeOrderStatus</find>
       <find>suppliers</find>
@@ -79,6 +70,11 @@
       <find>MY CAR</find>
       <find>قطعة سيار</find>
       <find>logout</find>
+      <find>custom-modal</find>
+      <find>pricing_button</find>
+      <find>PartNameSearch</find>
+      <find>name-piece</find>
+      <find>memovicAppend</find>
     </findStrings>
     <replaceStrings>
       <replace>Company</replace>
@@ -141,7 +137,6 @@
         <option value="$PROJECT_DIR$/app/Order.php" />
         <option value="$PROJECT_DIR$/resources/views/suppliers/auth/code_login.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/resources/views/suppliers/orders/details.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/website/OrderDetailsController.php" />
         <option value="$PROJECT_DIR$/resources/views/website/profile/profile.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_08_21_161837_add_order_id_to_notifications_table.php" />
@@ -157,13 +152,14 @@
         <option value="$PROJECT_DIR$/resources/views/website/order/ModelYears.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/website/order/OrderCreated.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/website/order/subCategories.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/website/order/wizard.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/website/profile/my_orders.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/website/profile/side_menu.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/website/layouts/master.blade.php" />
         <option value="$PROJECT_DIR$/resources/lang/ar/web.php" />
         <option value="$PROJECT_DIR$/resources/views/website/home/landing.blade.php" />
         <option value="$PROJECT_DIR$/resources/lang/en/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/suppliers/orders/details.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/website/order/wizard.blade.php" />
       </list>
     </option>
   </component>
@@ -278,7 +274,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -294,47 +289,6 @@
             <path>
               <item name="mycar" type="b2602c69:ProjectViewProjectNode" />
               <item name="mycar" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mycar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mycar" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mycar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mycar" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mycar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mycar" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="supplier" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mycar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mycar" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Libraries" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mycar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mycar" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mycar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mycar" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -356,7 +310,7 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="website" type="462c0819:PsiDirectoryNode" />
-              <item name="home" type="462c0819:PsiDirectoryNode" />
+              <item name="order" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mycar" type="b2602c69:ProjectViewProjectNode" />
@@ -373,13 +327,14 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ptm" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -496,18 +451,21 @@
       <workItem from="1566373211017" duration="7401000" />
       <workItem from="1566385644766" duration="14799000" />
       <workItem from="1566461616186" duration="3058000" />
-      <workItem from="1566464884196" duration="4956000" />
+      <workItem from="1566464884196" duration="5225000" />
+      <workItem from="1566477632244" duration="979000" />
+      <workItem from="1566481622046" duration="465000" />
+      <workItem from="1566644800203" duration="1348000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="595825000" />
+    <option name="totallyTimeSpent" value="598886000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24508321" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24962178" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -612,16 +570,6 @@
           <caret line="15" column="75" selection-start-line="15" selection-start-column="75" selection-end-line="15" selection-end-column="75" />
           <folding>
             <element signature="e#48#65#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/suppliers/orders/details.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="278" column="142" selection-start-line="278" selection-start-column="142" selection-end-line="278" selection-end-column="142" />
-          <folding>
-            <element signature="e#15203#17456#0#HTML" />
           </folding>
         </state>
       </provider>
@@ -758,16 +706,6 @@
         <state relative-caret-position="-918" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/website/order/wizard.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6210">
-          <caret line="417" column="68" lean-forward="true" selection-start-line="417" selection-start-column="68" selection-end-line="417" selection-end-column="68" />
-          <folding>
-            <element signature="e#62#69#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/website/profile/my_orders.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2871">
@@ -849,17 +787,34 @@
     <entry file="file://$PROJECT_DIR$/resources/views/website/home/terms.blade.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/suppliers/orders/details.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1316">
+          <caret line="427" column="33" lean-forward="true" selection-start-line="427" selection-start-column="33" selection-end-line="427" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/lang/ar/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="169" column="38" lean-forward="true" selection-start-line="169" selection-start-column="38" selection-end-line="169" selection-end-column="38" />
+        <state relative-caret-position="443">
+          <caret line="169" column="38" selection-start-line="169" selection-start-column="38" selection-end-line="169" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/lang/en/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
+        <state relative-caret-position="468">
           <caret line="171" column="43" selection-start-line="171" selection-start-column="43" selection-end-line="171" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/website/order/wizard.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="659" selection-start-line="659" selection-end-line="659" />
+          <folding>
+            <element signature="e#62#69#1" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
