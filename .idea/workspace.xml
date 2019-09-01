@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="07d3112d-1530-4da5-ab4a-6f65651dce54" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/orders/details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/orders/details.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/order/wizard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/order/wizard.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,15 +17,12 @@
     </execution>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/website/order/wizard.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/layout/scripts.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="659" selection-start-line="659" selection-end-line="659" />
-              <folding>
-                <element signature="e#62#69#1" expanded="true" />
-              </folding>
+            <state relative-caret-position="102">
+              <caret line="111" column="36" lean-forward="true" selection-start-line="111" selection-start-column="7" selection-end-line="111" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -45,7 +40,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>removeElement</find>
       <find>changeOrderStatus</find>
       <find>suppliers</find>
       <find>prefix</find>
@@ -75,6 +69,7 @@
       <find>PartNameSearch</find>
       <find>name-piece</find>
       <find>memovicAppend</find>
+      <find>alert('check');</find>
     </findStrings>
     <replaceStrings>
       <replace>Company</replace>
@@ -284,11 +279,6 @@
             <path>
               <item name="mycar" type="b2602c69:ProjectViewProjectNode" />
               <item name="mycar" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mycar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mycar" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -302,15 +292,15 @@
               <item name="mycar" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="website" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mycar" type="b2602c69:ProjectViewProjectNode" />
               <item name="mycar" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="website" type="462c0819:PsiDirectoryNode" />
-              <item name="order" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="layout" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mycar" type="b2602c69:ProjectViewProjectNode" />
@@ -454,18 +444,21 @@
       <workItem from="1566464884196" duration="5225000" />
       <workItem from="1566477632244" duration="979000" />
       <workItem from="1566481622046" duration="465000" />
-      <workItem from="1566644800203" duration="1348000" />
+      <workItem from="1566644800203" duration="2197000" />
+      <workItem from="1566721736476" duration="108000" />
+      <workItem from="1567070877884" duration="96000" />
+      <workItem from="1567071059006" duration="92000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="598886000" />
+    <option name="totallyTimeSpent" value="600031000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24962178" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26096824" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -491,16 +484,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/website/done.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1446">
-          <caret line="136" selection-start-line="136" selection-end-line="146" />
-          <folding>
-            <element signature="n#section#1;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/website/ProfileController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="341">
@@ -810,11 +793,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/website/order/wizard.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
+        <state relative-caret-position="1231">
           <caret line="659" selection-start-line="659" selection-end-line="659" />
-          <folding>
-            <element signature="e#62#69#1" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/layout/scripts.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="111" column="36" lean-forward="true" selection-start-line="111" selection-start-column="7" selection-end-line="111" selection-end-column="36" />
         </state>
       </provider>
     </entry>
