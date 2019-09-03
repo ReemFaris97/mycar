@@ -1,5 +1,17 @@
 $(document).ready(function () {
 
+    /*Start Input Image*/
+    // ADD IMAGE
+    $('.image-uploader').change(function (event) {
+        $(this).parents('.images-upload-block').append('<div class="uploaded-block"><img src="' + URL.createObjectURL(event.target.files[0]) + '"><button class="close">&times;</button></div>');
+    });
+
+    // REMOVE IMAGE
+    $('.images-upload-block').on('click', '.close', function () {
+        $(this).parents('.uploaded-block').remove();
+    });
+    /*End Input Image*/
+
     /// loading website
 
     jQuery(window).load(function () {
@@ -35,77 +47,79 @@ $(document).ready(function () {
     });
 
 
-    // ////////////// chat modal/////////////////////////////////////////////////////////////////////////////////////////
-    // $('#seven').click(function () {
-    //     //////////////////// textarea focus //////////////////////////////////////
-    //     $('#inbox').focus();
-    //     var buttonId = $(this).attr('id');
-    //     $('#modal-container').removeAttr('class').addClass(buttonId);
-    //     $('body').addClass('modal-active');
-    //     $('#chats').scrollTop($('#chats')[0].scrollHeight);
-    // });
-    //
-    // $('.closeit').click(function () {
-    //     $('#modal-container').addClass('out');
-    //     $('body').removeClass('modal-active');
-    // });
-    //
-    //
-    // ///////////////////// enter submit /////////////
-    // $('#inbox').keydown(function () {
-    //     $('#chats').scrollTop($('#chats')[0].scrollHeight);
-    //
-    //     var message = $("#inbox").val();
-    //
-    //     function isEmptyOrSpaces(str) {
-    //         return str === null || str.match(/^ *$/) !== null;
-    //     }
-    //     if (event.keyCode == 13) {
-    //         if (isEmptyOrSpaces(message)) {
-    //             alert("Enter Some Text In Textarea");
-    //         } else {
-    //             var msgSend = $(".chat1.send").val();
-    //             $(".chats").append('<div class="chat1 send"><div class="chat-img"><img src="img/1.png"></div><div class="chat-body"><p class="newmsg">' + message + '</p></div></div>');
-    //             //      $(".newmsg").text();
-    //             //      $('#my_form').submit();
-    //             //      alert("Your message is sent succesfully:- " );
-    //         }
-    //         $("#inbox").val('');
-    //         $('#chats').scrollTop($('#chats')[0].scrollHeight);
-    //         return false;
-    //         $('#inbox').focus();
-    //     }
-    // });
-    //
-    // $('#sendnow').click(function () {
-    //     $('#inbox').focus();
-    //     var message = $("#inbox").val();
-    //     function isEmptyOrSpaces(str) {
-    //         return str === null || str.match(/^ *$/) !== null;
-    //     }
-    //     if (isEmptyOrSpaces(message)) {
-    //         alert("Enter Some Text In Textarea");
-    //     } else {
-    //
-    //         var msgSend = $(".chat1.send").val();
-    //         $(".chats").append('<div class="chat1 send"><div class="chat-img"><img src="img/1.png"></div><div class="chat-body"><p class="newmsg">' + message + '</p></div></div>');
-    //         //                $(".newmsg").text();
-    //
-    //         //                $('#my_form').submit();
-    //         //                alert("Your message is sent succesfully:- " );
-    //     }
-    //     $("#inbox").val('');
-    //
-    //     //                var len = $('#chats').height();
-    //     //                console.log(len);
-    //     //               $('#chats').scrollTop(len * 1000);
-    //
-    //     $('#chats').scrollTop($('#chats')[0].scrollHeight);
-    //
-    //     return false;
-    // });
-    //
-    // //////////// Append Chat .///////////////////////
+    ////////////// chat modal/////////////////////////////////////////////////////////////////////////////////////////
+    $('#seven').click(function () {
+        //////////////////// textarea focus //////////////////////////////////////
+        $('#inbox').focus();
+        var buttonId = $(this).attr('id');
+        $('#modal-container').removeAttr('class').addClass(buttonId);
+        $('body').addClass('modal-active');
+        $('#chats').scrollTop($('#chats')[0].scrollHeight);
+    });
+
+    $('.closeit').click(function () {
+        $('#modal-container').addClass('out');
+        $('body').removeClass('modal-active');
+    });
+
+
+    ///////////////////// enter submit /////////////
+    $('#inbox').keydown(function () {
+        $('#chats').scrollTop($('#chats')[0].scrollHeight);
+
+        var message = $("textarea").val();
+        function isEmptyOrSpaces(str){
+            return str === null || str.match(/^ *$/) !== null;
+        }
+        if (event.keyCode == 13) {
+            if(isEmptyOrSpaces(message)){
+                alert("Enter Some Text In Textarea");
+            } else {
+
+                var msgSend = $(".chat1.send").val();
+                $(".chats").append('<div class="chat1 send"><div class="chat-img"><img src="img/1.png"></div><div class="chat-body"><p class="newmsg">' + message + '</p></div></div>');
+                //      $(".newmsg").text();
+                //      $('#my_form').submit();
+                //      alert("Your message is sent succesfully:- " );
+            }
+            $("textarea").val('');
+            $('#chats').scrollTop($('#chats')[0].scrollHeight);
+            return false;
+            $('#inbox').focus();
+
+        }
+    });
+
+    $('#sendnow').click(function () {
+        $('#inbox').focus();
+        var message = $("textarea").val();
+        function isEmptyOrSpaces(str){
+            return str === null || str.match(/^ *$/) !== null;
+        }
+        if(isEmptyOrSpaces(message)){
+            alert("Enter Some Text In Textarea");
+
+        } else {
+
+            var msgSend = $(".chat1.send").val();
+            $(".chats").append('<div class="chat1 send"><div class="chat-img"><img src="img/1.png"></div><div class="chat-body"><p class="newmsg">' + message + '</p></div></div>');
+            //                $(".newmsg").text();
+
+            //                $('#my_form').submit();
+            //                alert("Your message is sent succesfully:- " );
+        }
+        $("textarea").val('');
+
+        //                var len = $('#chats').height();
+        //                console.log(len);
+        //               $('#chats').scrollTop(len * 1000);
+
+        $('#chats').scrollTop($('#chats')[0].scrollHeight);
+
+        return false;
+    });
+
+    //////////// Append Chat .///////////////////////
 
     ///////////////////////////////////////////
 
@@ -125,16 +139,16 @@ $(document).ready(function () {
     /**
      * Set timer countdown in seconds with callback
      */
-    $("#two").click(function () {
-        $('#countdown-1').timeTo(120, function () {
-            alert('Countdown finished');
-        });
-        $('#reset-1').click(function () {
-            $('#countdown-1').timeTo('reset');
-        });
-
-
-    });
+//    $("#two").click(function () {
+//        $('#countdown-1').timeTo(120, function () {
+//            alert('Countdown finished');
+//        });
+//        $('#reset-1').click(function () {
+//            $('#countdown-1').timeTo('reset');
+//        });
+//        
+//
+//    });
 
 
     /*********************************************** like and dislike *************************/
@@ -183,16 +197,16 @@ $(document).ready(function () {
         });
 
     });
-
+    
     $("#step3").on("click", function () {
         $(".verfy").slideUp(500);
         $(".step1").slideUp(500);
         $(".area").slideDown(500);
     });
+    
 
 
-
-
+    
     //////////////////////////////
     'use strict';
 
@@ -211,18 +225,6 @@ $(document).ready(function () {
     });
 
 
-
-    ///////////// Modal Overflow
-
-    $('.modal').on('shown.bs.modal', function () {
-        $("body").css('overflow', 'hidden')
-    });
-    $('.modal').on('hidden.bs.modal', function () {
-        $("body").css('overflow', 'visible')
-    });
-
-
-
     $("#scroll-top").click(function () {
         $("html,body").animate({
             scrollTop: 0
@@ -231,7 +233,7 @@ $(document).ready(function () {
 
 
     /************************ Counter *****************************/
-    var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
+            var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
     var x = setInterval(function () {
         var now = new Date().getTime();
         var distance = countDownDate - now;
@@ -241,8 +243,8 @@ $(document).ready(function () {
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 
-        // document.getElementById("demo").innerHTML = hours + "h:" +
-        //     minutes + "m:" + seconds + "s";
+        document.getElementById("demo").innerHTML = hours + "h:" +
+            minutes + "m:" + seconds + "s";
 
 
         if (distance < 0) {
@@ -250,9 +252,9 @@ $(document).ready(function () {
             document.getElementById("demo").innerHTML = "EXPIRED";
         }
     }, 1000);
-
-
-
+    
+    
+    
 
 
 });
