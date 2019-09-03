@@ -1,5 +1,5 @@
 @extends('suppliers.layout.master')
-@section('title','تعديل الصفحة الشخصية')
+@section('title',__('suppliers.edit_profile'))
 
 @section('styles')
     <style>
@@ -16,7 +16,7 @@
 {{--            <div class="btn-group pull-right m-t-15">--}}
 {{--                <a href="{{route('suppliers.index')}}" class="btn btn-custom dropdown-toggle waves-effect waves-light" >رجوع لإدارة الموردين<span class="m-l-5"><i class="fa fa-reply"></i></span></a>--}}
 {{--            </div>--}}
-            <h4 class="page-title">تعديل الصفحة الشخصية</h4>
+            <h4 class="page-title">@lang('suppliers.edit_profile')</h4>
         </div>
     </div>
 
@@ -24,7 +24,7 @@
         <div class="col-sm-12">
             <div class="card-box">
 
-                <h4 class="header-title m-t-0 m-b-30">بيانات المورد: {{$supplier->name}}</h4>
+                <h4 class="header-title m-t-0 m-b-30">@lang('suppliers.supplier_data') {{$supplier->name}}</h4>
 
                 <div class="row">
 
@@ -37,7 +37,7 @@
                                 <label class="col-md-2 control-label">الإسم*</label>
                                 <div class="col-md-10">
                                     <input type="text" required value="{{$supplier->name}}"
-                                           data-parsley-required-message="هذا الحقل مطلوب"
+                                           data-parsley-required-message="@lang('web.field_required')"
                                            data-parsley-trigger="keyup"
                                            data-parsley-maxlength="60"
                                            data-parsley-maxlength-message="أقصى عدد حروف هو 60 حرف"
@@ -55,10 +55,10 @@
 
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="col-md-2 control-label">رقم الجوال*</label>
+                                <label class="col-md-2 control-label">@lang('suppliers.phone')</label>
                                 <div class="col-md-10">
                                     <input type="number" required value="{{$supplier->phone}}"
-                                           data-parsley-required-message="هذا الحقل مطلوب"
+                                           data-parsley-required-message="@lang('web.field_required')"
                                            data-parsley-trigger="keyup"
                                            data-parsley-maxlength="10"
                                            data-parsley-maxlength-message="أقصى عدد ارقام هو 10 ارقام"
@@ -77,12 +77,12 @@
 
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="col-md-2 control-label">الصور الشخصية*</label>
+                                <label class="col-md-2 control-label">@lang('suppliers.profile_image')*</label>
                                 <div class="col-md-10">
                                     <input name="image" type="file" class="dropify" data-max-file-size="6M"
                                            data-allowed-file-extensions="png gif jpg jpeg"
                                            data-errors-position="inside"
-                                           data-parsley-required-message="هذا الحقل مطلوب"
+                                           data-parsley-required-message="@lang('web.field_required')"
                                            data-show-remove="false"
                                            data-default-file="{{getimg($supplier->image)}}"
                                     />
@@ -102,7 +102,7 @@
                         {{--*******************************************************************--}}
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label class="col-md-2 control-label">العنوان*</label>
+                                <label class="col-md-2 control-label">@lang('suppliers.address')*</label>
                                 <div class="col-md-10">
                                     <input id="pac-input" name="address" required value="{{ $supplier->address }}"
                                            data-parsley-required-message="@lang('web.field_required')"
@@ -131,11 +131,11 @@
                         <div class="col-lg-12">
                             <div class="form-group text-right m-t-20">
                                 <button class="btn btn-primary waves-effect waves-light m-t-20" id="btnSubmit" type="submit">
-                                    تعديل
+                                    @lang('suppliers.edit')
                                 </button>
                                 <button onclick="window.history.back();return false;" type="reset"
                                         class="btn btn-default waves-effect waves-light m-l-5 m-t-20">
-                                    إلغاء
+                                    @lang('suppliers.cancel')
                                 </button>
                             </div>
                         </div>

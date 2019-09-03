@@ -2,7 +2,7 @@
     <a href="javascript:void(0);" class="right-bar-toggle">
         <i class="zmdi zmdi-close-circle-o"></i>
     </a>
-    <h4 class="">الإشعارات</h4>
+    <h4 class="">@lang('suppliers.notifications')</h4>
     <div class="notification-list nicescroll">
         <ul id="notifyPanel" class="list-group list-no-border user-list">
 
@@ -45,7 +45,7 @@
             <li class="list-group-item">
                 {{--button to delete notification using ajax--}}
                 {{--{{route('notifications.index')}}--}}
-                <a href="" class="user-list-item">عرض كل الإشعارات</a>
+                <a href="" class="user-list-item">@lang('suppliers.view_all_notifications')</a>
             </li>
 
 

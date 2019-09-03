@@ -1,5 +1,5 @@
 @extends('suppliers.layout.master')
-@section('title','الطلبات الجديدة')
+@section('title',__('suppliers.new_orders'))
 
 @section('content')
 
@@ -14,7 +14,7 @@
                 {{--</a>--}}
             </div>
 
-            <h4 class="page-title">طلبات العملاء الجديدة</h4>
+            <h4 class="page-title">@lang('suppliers.new_orders')</h4>
         </div>
     </div>
     <!--End Page-Title -->
@@ -23,7 +23,7 @@
         <div class="col-sm-12">
             <div class="card-box table-responsive">
 
-                <h4 class="header-title m-t-0 m-b-30">كل الطلبات</h4>
+                <h4 class="header-title m-t-0 m-b-30">@lang('suppliers.all_orders')</h4>
 
 
                 @include('suppliers.orders.orders_table',['orders'=>$orders])
