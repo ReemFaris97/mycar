@@ -17,72 +17,72 @@
 
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="card-box">
-                <h4 class="header-title m-t-0 m-b-30">إحصائية</h4>
+                <h4 class="header-title m-t-0 m-b-30">الطلبات الجديدة</h4>
                 <div class="widget-chart-1">
                     <div class="widget-chart-box-1">
                         <input data-plugin="knob" data-width="80" data-height="80" data-fgColor="#ff5e00"
-                               data-bgColor="rgba(249, 162, 112, .7)" value="0"
+                               data-bgColor="rgba(249, 162, 112, .7)" value="{{$data['new_orders_count']}}"
                                data-skin="tron" data-angleOffset="180" data-readOnly=true
                                data-thickness=".15"/>
                     </div>
 
                     <div class="widget-detail-1">
-                        <h2 class="p-t-10 m-b-0"> 00 <i style="color: #ff5e00;" class="fa fa-object-ungroup"></i></h2>
-                        <p class="text-muted">قسم</p>
+                        <h2 class="p-t-10 m-b-0"> {{$data['new_orders_count']}} <i style="color: #ff5e00;" class="fa fa-object-ungroup"></i></h2>
+                        <p class="text-muted">طلب</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="card-box">
-                <h4 class="header-title m-t-0 m-b-30">إحصائية</h4>
+                <h4 class="header-title m-t-0 m-b-30">قيد الإنتظار</h4>
                 <div class="widget-chart-1">
                     <div class="widget-chart-box-1">
                         <input data-plugin="knob" data-width="80" data-height="80" data-fgColor="#ff5e00"
-                               data-bgColor="rgba(249, 162, 112, .7)" value="0"
+                               data-bgColor="rgba(249, 162, 112, .7)" value="{{$data['waiting_orders_count']}}"
                                data-skin="tron" data-angleOffset="180" data-readOnly=true
                                data-thickness=".15"/>
                     </div>
 
                     <div class="widget-detail-1">
-                        <h2 class="p-t-10 m-b-0"> 00 <i style="color: #ff5e00;" class="fa fa-object-ungroup"></i></h2>
-                        <p class="text-muted">قسم</p>
+                        <h2 class="p-t-10 m-b-0"> {{$data['waiting_orders_count']}} <i style="color: #ff5e00;" class="fa fa-object-ungroup"></i></h2>
+                        <p class="text-muted">طلب</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="card-box">
-                <h4 class="header-title m-t-0 m-b-30">إحصائية</h4>
+                <h4 class="header-title m-t-0 m-b-30">طلبات حالية</h4>
                 <div class="widget-chart-1">
                     <div class="widget-chart-box-1">
                         <input data-plugin="knob" data-width="80" data-height="80" data-fgColor="#ff5e00"
-                               data-bgColor="rgba(249, 162, 112, .7)" value="0"
+                               data-bgColor="rgba(249, 162, 112, .7)" value="{{$data['received_orders_count']}}"
                                data-skin="tron" data-angleOffset="180" data-readOnly=true
                                data-thickness=".15"/>
                     </div>
 
                     <div class="widget-detail-1">
-                        <h2 class="p-t-10 m-b-0"> 00 <i style="color: #ff5e00;" class="fa fa-object-ungroup"></i></h2>
-                        <p class="text-muted">قسم</p>
+                        <h2 class="p-t-10 m-b-0"> {{$data['received_orders_count']}} <i style="color: #ff5e00;" class="fa fa-object-ungroup"></i></h2>
+                        <p class="text-muted">طلب</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="card-box">
-                <h4 class="header-title m-t-0 m-b-30">إحصائية</h4>
+                <h4 class="header-title m-t-0 m-b-30">طلبات منتهية</h4>
                 <div class="widget-chart-1">
                     <div class="widget-chart-box-1">
                         <input data-plugin="knob" data-width="80" data-height="80" data-fgColor="#ff5e00"
-                               data-bgColor="rgba(249, 162, 112, .7)" value="0"
+                               data-bgColor="rgba(249, 162, 112, .7)" value="{{$data['finished_orders']}}"
                                data-skin="tron" data-angleOffset="180" data-readOnly=true
                                data-thickness=".15"/>
                     </div>
 
                     <div class="widget-detail-1">
-                        <h2 class="p-t-10 m-b-0"> 00 <i style="color: #ff5e00;" class="fa fa-object-ungroup"></i></h2>
-                        <p class="text-muted">قسم</p>
+                        <h2 class="p-t-10 m-b-0"> {{$data['finished_orders']}} <i style="color: #ff5e00;" class="fa fa-object-ungroup"></i></h2>
+                        <p class="text-muted">طلب</p>
                     </div>
                 </div>
             </div>

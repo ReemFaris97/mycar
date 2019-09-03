@@ -38,7 +38,7 @@
 <div class="wrapper-page">
     <div class="text-center">
         <a href="#" class="logo">
-            <span>@lang('suppliers.title')<span> (@lang('suppliers.suppliers')) </span></span>
+            <span>@lang('suppliers.title')<span> @lang('suppliers.suppliers') </span></span>
 
         </a>
         {{--<h5 class="text-muted m-t-0 font-600">موقع وتطبيق</h5>--}}

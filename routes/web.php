@@ -118,6 +118,9 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin','middleware'=>'admin'],
     route::resource('contacts','ContactsController');
     route::resource('proposals','ProposalsController');
 
+    Route::get('/profile','ProfileController@getProfilePage')->name('admin.profile.getEditForm');
+    Route::post('/profile/update','ProfileController@updateProfile')->name('admin.profile.update');
+
 
     Route::group(['prefix'=>'settings','as'=>'setting.'],function (){
         Route::get('/{slug}','SettingController@index')->name('index');
@@ -181,6 +184,9 @@ Route::group(['prefix'=>"suppliers",'namespace'=>'supplier','middleware'=>"suppl
 
     Route::post('order/change/status','OrdersController@changeOrderStatus')->name('supplier.order.changeStatus');
 
+
+    Route::get('/profile','ProfileController@getProfilePage')->name('profile.getEditForm');
+    Route::post('/profile/update','ProfileController@updateProfile')->name('profile.update');
 
 
 

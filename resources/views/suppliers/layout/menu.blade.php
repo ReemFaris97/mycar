@@ -24,7 +24,7 @@
             <ul class="list-inline">
                 <li>
                     {{--{{route('user.get.profile')}}--}}
-                    <a href="" >
+                    <a href="{{route('profile.getEditForm')}}" >
                         <i class="zmdi zmdi-settings"></i>
                     </a>
                 </li>

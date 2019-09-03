@@ -30,7 +30,7 @@
                                data-parsley-required
                                autocomplete="off"
                                data-parsley-required-message="هذا الحقل مطلوب"
-                               placeholder="إسم المستخدم">
+                               placeholder="البريد الإلكتروني">
 
                         @if ($errors->has('provider'))
                             <span class="help-block error_validation" style=" font-size: 13px;color: #ff5757;">

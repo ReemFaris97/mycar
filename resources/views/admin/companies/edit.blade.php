@@ -66,7 +66,6 @@
                                             <input name="image" type="file" class="dropify" data-max-file-size="6M"
                                                    data-allowed-file-extensions="png gif jpg jpeg"
                                                    data-errors-position="inside"
-                                                   required data-parsley-required-message="صورة شعار الشركة مطلوب"
                                                    data-default-file="{{getimg($company->image)}}"
                                             />
                                         </div>
