@@ -19,9 +19,9 @@ class SuppliersController extends Controller
      */
     public function index()
     {
-        //        if (!Gate::allows('users_manage')) {
-//            return abort(401);
-//        }
+        if (!Gate::allows('suppliers_manage')) {
+            return abort(401);
+        }
         $suppliers = User::whereType('supplier')->get()->reverse();
         return view('admin.suppliers.index',compact('suppliers'));
     }
@@ -33,9 +33,9 @@ class SuppliersController extends Controller
      */
     public function create()
     {
-        //        if (!Gate::allows('users_manage')) {
-//            return abort(401);
-//        }
+        if (!Gate::allows('suppliers_manage')) {
+            return abort(401);
+        }
 
         return view('admin.suppliers.create');
     }
@@ -74,9 +74,9 @@ class SuppliersController extends Controller
      */
     public function show($id)
     {
-        //        if (!Gate::allows('users_manage')) {
-//            return abort(401);
-//        }
+        if (!Gate::allows('suppliers_manage')) {
+            return abort(401);
+        }
         $supplier = User::findOrFail($id);
         return view('admin.suppliers.details',compact('supplier'));
 
@@ -90,9 +90,9 @@ class SuppliersController extends Controller
      */
     public function edit($id)
     {
-        //        if (!Gate::allows('users_manage')) {
-//            return abort(401);
-//        }
+        if (!Gate::allows('suppliers_manage')) {
+            return abort(401);
+        }
         $supplier = User::findOrFail($id);
         return view('admin.suppliers.edit',compact('supplier'));
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\ReturnItem;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class ReturnsController extends Controller
 {
@@ -15,6 +16,9 @@ class ReturnsController extends Controller
      */
     public function index()
     {
+        if (!Gate::allows('returns_manage')) {
+            return abort(401);
+        }
         $returnItems = ReturnItem::all()->reverse();
         return view('admin.returns.index',compact('returnItems'));
     }

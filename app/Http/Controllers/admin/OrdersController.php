@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class OrdersController extends Controller
 {
@@ -15,6 +16,9 @@ class OrdersController extends Controller
      */
     public function index()
     {
+        if (!Gate::allows('users_orders_manage')) {
+            return abort(401);
+        }
         $orders= Order::with('order_details')->get()->reverse();
         return view('admin.orders.index',compact('orders'));
     }
@@ -48,6 +52,9 @@ class OrdersController extends Controller
      */
     public function show($id)
     {
+        if (!Gate::allows('users_orders_manage')) {
+            return abort(401);
+        }
         $order = Order::findOrFail($id);
         return view('admin.orders.details',compact('order'));
     }

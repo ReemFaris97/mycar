@@ -6,6 +6,7 @@ use App\Category;
 use App\SubCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class SubCategoriesController extends Controller
 {
@@ -16,6 +17,9 @@ class SubCategoriesController extends Controller
      */
     public function index()
     {
+        if (!Gate::allows('sub_categories_manage')) {
+            return abort(401);
+        }
         $subCats = SubCategory::all()->reverse();
         return view('admin.subcategories.index',compact('subCats'));
     }
@@ -27,6 +31,9 @@ class SubCategoriesController extends Controller
      */
     public function create()
     {
+        if (!Gate::allows('sub_categories_manage')) {
+            return abort(401);
+        }
         $categories = Category::all();
         return view('admin.subcategories.create',compact('categories'));
     }
@@ -70,6 +77,9 @@ class SubCategoriesController extends Controller
      */
     public function edit($id)
     {
+        if (!Gate::allows('sub_categories_manage')) {
+            return abort(401);
+        }
         $categories = Category::all();
         $subCat = SubCategory::findOrFail($id);
         return view('admin.subcategories.edit',compact('categories','subCat'));

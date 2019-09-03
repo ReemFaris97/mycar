@@ -19,9 +19,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-//        if (!Gate::allows('users_manage')) {
-//            return abort(401);
-//        }
+        if (!Gate::allows('users_manage')) {
+            return abort(401);
+        }
         $users = User::whereType('user')->get()->reverse();
         return view('admin.users.index',compact('users'));
     }
@@ -33,9 +33,9 @@ class UsersController extends Controller
      */
     public function create()
     {
-//        if (!Gate::allows('users_manage')) {
-//            return abort(401);
-//        }
+        if (!Gate::allows('users_manage')) {
+            return abort(401);
+        }
 
         return view('admin.users.create');
     }
@@ -73,9 +73,9 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-//        if (!Gate::allows('users_manage')) {
-//            return abort(401);
-//        }
+        if (!Gate::allows('users_manage')) {
+            return abort(401);
+        }
         $user = User::find($id);
         if($user){
             return view('admin.users.details',compact('user'));
@@ -93,9 +93,9 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-//        if (!Gate::allows('users_manage')) {
-//            return abort(401);
-//        }
+        if (!Gate::allows('users_manage')) {
+            return abort(401);
+        }
         $user = User::findOrFail($id);
         return view('admin.users.edit',compact('user'));
 

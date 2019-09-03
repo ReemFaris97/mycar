@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Setting;
+use Illuminate\Support\Facades\Gate;
 use Session;
 class SettingController extends Controller
 {
@@ -16,6 +17,9 @@ class SettingController extends Controller
      */
     public function index($slug)
     {
+        if (!Gate::allows('settings_manage')) {
+            return abort(401);
+        }
         $settings = Setting::where('slug',$slug)->get();
         if (!$settings)
             return redirect('/dashboard');

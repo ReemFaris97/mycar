@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Contact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class ContactsController extends Controller
 {
@@ -15,6 +16,10 @@ class ContactsController extends Controller
      */
     public function index()
     {
+        if (!Gate::allows('contacts_manage')) {
+            return abort(401);
+        }
+
         $contacts = Contact::all()->reverse();
         return view('admin.contacts.index',compact('contacts'));
     }
@@ -26,7 +31,9 @@ class ContactsController extends Controller
      */
     public function create()
     {
-        //
+        if (!Gate::allows('contacts_manage')) {
+            return abort(401);
+        }
     }
 
     /**

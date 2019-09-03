@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Company;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class companiesController extends Controller
 {
@@ -15,6 +16,10 @@ class companiesController extends Controller
      */
     public function index()
     {
+        if (!Gate::allows('companies_manage')) {
+            return abort(401);
+        }
+
         $companies = Company::all();
 
         return view('admin.companies.index',compact('companies'));
@@ -27,6 +32,10 @@ class companiesController extends Controller
      */
     public function create()
     {
+        if (!Gate::allows('companies_manage')) {
+            return abort(401);
+        }
+
         return view('admin.companies.create');
     }
 
@@ -70,6 +79,10 @@ class companiesController extends Controller
      */
     public function edit($id)
     {
+        if (!Gate::allows('companies_manage')) {
+            return abort(401);
+        }
+
         $company = Company::findOrFail($id);
         return view('admin.companies.edit',compact('company'));
     }

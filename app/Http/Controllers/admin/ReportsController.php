@@ -7,11 +7,17 @@ use App\Reply;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class ReportsController extends Controller
 {
 
     public function SupplierSales(Request $request){
+
+        if (!Gate::allows('reports_manage')) {
+            return abort(401);
+        }
+
         $suppliers = User::whereType('supplier')->get();
 
         if($request->has('type') && $request->type == 'initial'){
@@ -44,12 +50,17 @@ class ReportsController extends Controller
         return view('admin.reports.supplier_sales_report',compact('suppliers','orders'));
     }
     public function SupplierRefused(Request $request){
-
+        if (!Gate::allows('reports_manage')) {
+            return abort(401);
+        }
         return view('admin.reports.supplier_refused_offers');
     }
 
 
     public function CustomerOrders(Request $request){
+        if (!Gate::allows('reports_manage')) {
+            return abort(401);
+        }
         $users = User::whereType('user')->get();
         if($request->has('type') && $request->type == 'initial'){
             $orders = [];
