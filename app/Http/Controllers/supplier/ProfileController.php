@@ -20,10 +20,13 @@ class ProfileController extends Controller
             'lat'=>'required',
             'lng'=>'required'
         ];
+
         $this->validate($request,$rules);
         $user = auth()->user();
         $inputs = $request->all();
-        $inputs['image']= uploader($request,'image');
+        if($request->image && $request->image != null){
+            $inputs['image']= uploader($request,'image');
+        }
         $user->update($inputs);
         session()->flash('success','تم تعديل الصفحة الشخصية بنجاح');
         return back();

@@ -3,21 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="07d3112d-1530-4da5-ab4a-6f65651dce54" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ar/suppliers.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/suppliers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/suppliers.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/suppliers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/financial/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/financial/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/home/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/home/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/layout/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/layout/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/layout/menu.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/layout/notifications.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/layout/notifications.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/layout/scripts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/layout/scripts.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/orders/details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/orders/details.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/orders/finished.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/orders/finished.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/orders/new.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/orders/new.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/orders/orders_table.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/orders/orders_table.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/orders/received.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/orders/received.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/orders/waiting.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/orders/waiting.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/profile/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/profile/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/supplier/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/supplier/ProfileController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,19 +20,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/lang/ar/suppliers.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/supplier/ProfileController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="74" column="32" lean-forward="true" selection-start-line="74" selection-start-column="32" selection-end-line="74" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/lang/en/suppliers.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="88" column="21" selection-start-line="88" selection-start-column="21" selection-end-line="88" selection-end-column="21" />
+            <state relative-caret-position="386">
+              <caret line="27" column="57" selection-start-line="27" selection-start-column="57" selection-end-line="27" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -64,7 +41,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>search_for</find>
       <find>ryal</find>
       <find>payment</find>
       <find>enter_car_model</find>
@@ -94,6 +70,7 @@
       <find>سجل</find>
       <find>email</find>
       <find>comp_slogan_2</find>
+      <find>uts['image']= uploader($request,'image')</find>
     </findStrings>
     <replaceStrings>
       <replace>Company</replace>
@@ -131,7 +108,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/resources/views/suppliers/auth/master.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/supplier/ProfileController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/supplier/OrdersController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/supplier/HomeController.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
@@ -179,8 +155,9 @@
         <option value="$PROJECT_DIR$/resources/views/suppliers/orders/received.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/suppliers/orders/waiting.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/suppliers/profile/edit.blade.php" />
-        <option value="$PROJECT_DIR$/resources/lang/ar/suppliers.php" />
         <option value="$PROJECT_DIR$/resources/lang/en/suppliers.php" />
+        <option value="$PROJECT_DIR$/resources/lang/ar/suppliers.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/supplier/ProfileController.php" />
       </list>
     </option>
   </component>
@@ -495,18 +472,18 @@
       <workItem from="1567341963005" duration="1718000" />
       <workItem from="1567349632259" duration="573000" />
       <workItem from="1567495896326" duration="7763000" />
-      <workItem from="1567508789533" duration="8841000" />
+      <workItem from="1567508789533" duration="10220000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="618926000" />
+    <option name="totallyTimeSpent" value="620305000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2473525" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2473525" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -532,13 +509,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin/AjaxController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin/AdminsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -870,6 +840,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/lang/ar/suppliers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="74" column="32" lean-forward="true" selection-start-line="74" selection-start-column="32" selection-end-line="74" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/lang/en/suppliers.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
@@ -877,10 +854,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/lang/ar/suppliers.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/supplier/ProfileController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="74" column="32" lean-forward="true" selection-start-line="74" selection-start-column="32" selection-end-line="74" selection-end-column="32" />
+        <state relative-caret-position="386">
+          <caret line="27" column="57" selection-start-line="27" selection-start-column="57" selection-end-line="27" selection-end-column="57" />
         </state>
       </provider>
     </entry>
