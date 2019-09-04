@@ -1,12 +1,12 @@
 <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
     <thead>
     <tr>
-        <th>م</th>
-        <th>اسم مقدم ( إن وجد )</th>
-        <th>الرقم الجوال</th>
-        <th>عدد القطع بالطلب</th>
-        <th>حالة الطلب</th>
-        <th style="width: 250px;" >العمليات المتاحة</th>
+        <th>@lang('suppliers.no')</th>
+        <th>@lang('suppliers.order_owner')</th>
+        <th>@lang('suppliers.phone')</th>
+        <th>@lang('suppliers.parts_count')</th>
+        <th>@lang('suppliers.order_status')</th>
+        <th style="width: 250px;" >@lang('suppliers.options')</th>
     </tr>
     </thead>
     <tbody>
@@ -20,30 +20,30 @@
             <td>
                 @if($order->status != 'new' && $order->supplier_id != auth()->id())
 
-                    <label class="label label-danger">مرفوض</label>
+                    <label class="label label-danger">@lang('suppliers.refused')</label>
                 @else
 
                     @if($order->status == 'new')
-                        <label class="label label-success">جديد</label>
+                        <label class="label label-success">@lang('suppliers.new')</label>
                     @endif
 
                     @if($order->status == 'waiting')
                         @if($order->hasAnyReplyByAuthSupplier())
-                            <label class="label label-primary">قيد الإنتظار</label>
+                            <label class="label label-primary">@lang('suppliers.waiting_orders')</label>
                         @else
-                            <label class="label label-success">جديد</label>
+                            <label class="label label-success">@lang('suppliers.new')</label>
                         @endif
                     @endif
 
                     @if($order->status == 'received')
-                        <label class="label label-success">طلبات معتمده</label>
+                        <label class="label label-success">@lang('suppliers.confirmed_orders')</label>
                     @endif
 
                     @if($order->status == 'finished')
                         @if($order->hasRefusedReplyByAuthSupplier())
-                            <label class="label label-danger">مرفوض</label>
+                            <label class="label label-danger">@lang('suppliers.refused')</label>
                         @else
-                            <label class="label label-purple">منتهي</label>
+                            <label class="label label-purple">@lang('suppliers.finished')</label>
                         @endif
                     @endif
 
@@ -52,7 +52,7 @@
             </td>
 
             <td>
-                <a href="{{route('supplier.orders.show',$order->id)}}" class="btn btn-primary waves-effect waves-light btn-sm m-b-5">تفاصيل</a>
+                <a href="{{route('supplier.orders.show',$order->id)}}" class="btn btn-primary waves-effect waves-light btn-sm m-b-5">@lang('orders.details')</a>
                 {{--<a href="{{route('orders.edit',$row->id)}}" class="label label-warning">تعديل</a>--}}
 
                 {{--@if(auth()->id() != $row->id)--}}

@@ -19,7 +19,7 @@
                     </button>
                 </li>
                 <li>
-                    <h4 class="page-title">لوحة التحكم ( مورد ) </h4>
+                    <h4 class="page-title">@lang('suppliers.control_panel') - @lang('suppliers.supplier')</h4>
                 </li>
             </ul>
 

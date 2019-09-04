@@ -21,9 +21,9 @@ class AdminsController extends Controller
      */
     public function index()
     {
-//        if (!Gate::allows('users_manage')) {
-//            return abort(401);
-//        }
+        if (!Gate::allows('admins_manage')) {
+            return abort(401);
+        }
 
         $query = User::select()->whereHas('roles', function ($q) {
             $q->where('name', '!=', '*');
@@ -42,9 +42,9 @@ class AdminsController extends Controller
      */
     public function create()
     {
-//        if (!Gate::allows('users_manage')) {
-//            return abort(401);
-//        }
+        if (!Gate::allows('admins_manage')) {
+            return abort(401);
+        }
 
         $cities = City::whereIsActive(1)->get();
         $roles = Role::get();
@@ -105,7 +105,7 @@ class AdminsController extends Controller
      */
     public function show($id)
     {
-        if (!Gate::allows('users_manage')) {
+        if (!Gate::allows('admins_manage')) {
             return abort(401);
         }
         $admin = User::find($id);
@@ -121,7 +121,7 @@ class AdminsController extends Controller
      */
     public function edit($id)
     {
-        if (!Gate::allows('users_manage')) {
+        if (!Gate::allows('admins_manage')) {
             return abort(401);
         }
         $cities = City::whereIsActive(1)->get();
@@ -163,7 +163,6 @@ class AdminsController extends Controller
                     if($request->has('password') && $request->password !=""){
                         $user->password = Hash::make($request->password);
                     }
-
 
 
                     if($request->has('image')){

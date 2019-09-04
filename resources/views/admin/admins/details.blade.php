@@ -66,13 +66,17 @@
                             </div>
                         </div>
 
+                        <div class="col-md-4">
+                            <h4>تاريخ الإنشاء:</h4>
+                            <h5 style="font-weight: 600;">{{$admin->created_at}}</h5>
+                        </div>
 
                         <div class="col-md-8">
                             <h4>الأدوار الممنوحة له</h4>
-                            <div  style="width: 200px; height: 150px;">
+                            <div  style=" color: black; width: 200px; height: 150px;">
                             <ul>
                                 @foreach($admin->roles as $role)
-                                <li style="font-weight: 900;">{{$role->title}}</li>
+                                    <li>{{$role->title}}</li>
                                 @endforeach
                             </ul>
                             </div>

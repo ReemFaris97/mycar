@@ -49,19 +49,19 @@
                 <li class="text-muted menu-title">@lang('suppliers.menu')</li>
 
 
-                    <li><a href="{{route('supplier.home')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>الرئيسية</span></a></li>
+                    <li><a href="{{route('supplier.home')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>@lang('suppliers.menu')</span></a></li>
 
 
                 <li class="has_sub">
-                        <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-check-circle"></i><span>الطلبات</span><span class="menu-arrow"></span></a>
+                        <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-check-circle"></i><span>@lang('suppliers.orders')</span><span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
-                            <li><a href="{{route('supplier.orders.new')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>الطلبات الجديدة</span></a></li>
-                            <li><a href="{{route('supplier.orders.waiting')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>طلبات قيد الإنتظار</span></a></li>
-                            <li><a href="{{route('supplier.orders.received')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>طلبات حالية</span></a></li>
-                            <li><a href="{{route('supplier.orders.finished')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>طلبات منتهية</span></a></li>
+                            <li><a href="{{route('supplier.orders.new')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>@lang('suppliers.new_orders')</span></a></li>
+                            <li><a href="{{route('supplier.orders.waiting')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>@lang('suppliers.waiting_orders')</span></a></li>
+                            <li><a href="{{route('supplier.orders.received')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>@lang('suppliers.current_orders')</span></a></li>
+                            <li><a href="{{route('supplier.orders.finished')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>@lang('suppliers.finished_orders')</span></a></li>
                         </ul>
                     </li>
-                <li><a href="{{route('supplier.financial.dues')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>عرض المستحقات</span></a></li>
+                <li><a href="{{route('supplier.financial.dues')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span>@lang('suppliers.financial_dues')</span></a></li>
 
             </ul>
             <div class="clearfix"></div>

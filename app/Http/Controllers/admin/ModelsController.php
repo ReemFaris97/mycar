@@ -7,6 +7,7 @@ use App\CompanyModel;
 use App\ModelYears;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class ModelsController extends Controller
 {
@@ -17,6 +18,9 @@ class ModelsController extends Controller
      */
     public function index()
     {
+        if (!Gate::allows('models_manage')) {
+            return abort(401);
+        }
         $models = CompanyModel::all();
         return view('admin.companies_models.index',compact('models'));
     }
@@ -28,6 +32,9 @@ class ModelsController extends Controller
      */
     public function create()
     {
+        if (!Gate::allows('models_manage')) {
+            return abort(401);
+        }
         $currentYear =  (int) date("Y");
         $companies = Company::whereIsActive(1)->get();
         return view('admin.companies_models.create',compact('companies','currentYear'));
@@ -77,6 +84,9 @@ class ModelsController extends Controller
      */
     public function edit($id)
     {
+        if (!Gate::allows('models_manage')) {
+            return abort(401);
+        }
         $currentYear =  (int) date("Y");
         $companies = Company::whereIsActive(1)->get();
         $model = CompanyModel::findOrFail($id);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Proposal;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class ProposalsController extends Controller
 {
@@ -15,6 +16,9 @@ class ProposalsController extends Controller
      */
     public function index()
     {
+        if (!Gate::allows('proposals_manage')) {
+            return abort(401);
+        }
         $proposals = Proposal::all()->reverse();
         return view('admin.proposals.index',compact('proposals'));
     }
@@ -26,6 +30,9 @@ class ProposalsController extends Controller
      */
     public function create()
     {
+        if (!Gate::allows('proposals_manage')) {
+            return abort(401);
+        }
         return view('admin.proposals.create');
     }
 
@@ -60,6 +67,9 @@ class ProposalsController extends Controller
      */
     public function show($id)
     {
+        if (!Gate::allows('proposals_manage')) {
+            return abort(401);
+        }
         $proposal = Proposal::findOrFail($id);
         return view('admin.proposals.show',compact('proposal'));
     }
@@ -72,6 +82,9 @@ class ProposalsController extends Controller
      */
     public function edit($id)
     {
+        if (!Gate::allows('proposals_manage')) {
+            return abort(401);
+        }
         $proposal = Proposal::findOrFail($id);
         return view('admin.proposals.edit',compact('proposal'));
     }

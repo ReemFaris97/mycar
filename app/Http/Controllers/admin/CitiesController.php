@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\City;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class CitiesController extends Controller
 {
@@ -15,6 +16,9 @@ class CitiesController extends Controller
      */
     public function index()
     {
+        if (!Gate::allows('cities_manage')) {
+            return abort(401);
+        }
         $cities = City::all();
 
         return view('admin.cities.index',compact('cities'));
@@ -27,6 +31,9 @@ class CitiesController extends Controller
      */
     public function create()
     {
+        if (!Gate::allows('cities_manage')) {
+            return abort(401);
+        }
         return view('admin.cities.create');
     }
 
@@ -68,6 +75,9 @@ class CitiesController extends Controller
      */
     public function edit($id)
     {
+        if (!Gate::allows('cities_manage')) {
+            return abort(401);
+        }
         $city = City::findOrFail($id);
         return view('admin.cities.edit',compact('city'));
     }

@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\admin;
 
 
+use App\Company;
+use App\CompanyModel;
 use App\Department;
 use App\Http\Controllers\Controller;
 
 use App\Order;
+use App\Part;
 use App\Product;
 use App\Specialization;
 use Illuminate\Http\Request;
@@ -33,10 +36,11 @@ class HomeController extends Controller
     public function index()
     {
         $data = [
-//            'departments'=>Department::all()->count(),
-//            'specials'=>Specialization::all()->count(),
-//            'products'=>Product::all()->count(),
-//            'admins'=>User::whereRole('super')->get()->count(),
+            'users'=>User::whereType('user')->count(),
+            'companies'=>Company::all()->count(),
+            'Models'=>CompanyModel::all()->count(),
+            'suppliers'=>User::whereType('supplier')->count(),
+            'parts'=>Part::all()->count(),
 //            'coordinators'=>User::whereRole('coordinator')->get()->count(),
 //            'dept_admins'=>User::whereRole('dept_admin')->get()->count(),
 //            'techs'=>User::whereRole('technical')->get()->count(),

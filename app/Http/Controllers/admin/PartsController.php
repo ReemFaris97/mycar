@@ -10,6 +10,7 @@ use App\SubCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\PartsOperations;
+use Illuminate\Support\Facades\Gate;
 
 class PartsController extends Controller
 {
@@ -21,6 +22,9 @@ class PartsController extends Controller
      */
     public function index()
     {
+        if (!Gate::allows('products_manage')) {
+            return abort(401);
+        }
         $parts = Part::all();
         return view('admin.parts.index',compact('parts'));
     }
@@ -32,6 +36,9 @@ class PartsController extends Controller
      */
     public function create()
     {
+        if (!Gate::allows('products_manage')) {
+            return abort(401);
+        }
         $companies = Company::whereIsActive(1)->get();
         $categories = Category::all();
         return view('admin.parts.create',compact('companies','categories'));
@@ -83,6 +90,9 @@ class PartsController extends Controller
      */
     public function show($id)
     {
+        if (!Gate::allows('products_manage')) {
+            return abort(401);
+        }
         $part = Part::findOrFail($id);
         return view('admin.parts.details',compact('part'));
     }
@@ -95,6 +105,9 @@ class PartsController extends Controller
      */
     public function edit($id)
     {
+        if (!Gate::allows('products_manage')) {
+            return abort(401);
+        }
         $part = Part::findOrFail($id);
         $subCategories = collect();
         $models = collect();

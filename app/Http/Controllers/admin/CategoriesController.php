@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class CategoriesController extends Controller
 {
@@ -15,6 +16,9 @@ class CategoriesController extends Controller
      */
     public function index()
     {
+        if (!Gate::allows('categories_manage')) {
+            return abort(401);
+        }
         $categories = Category::all()->reverse();
         return view('admin.categories.index',compact('categories'));
     }
@@ -26,6 +30,9 @@ class CategoriesController extends Controller
      */
     public function create()
     {
+        if (!Gate::allows('categories_manage')) {
+            return abort(401);
+        }
         return view('admin.categories.create');
     }
 
@@ -66,6 +73,9 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
+        if (!Gate::allows('categories_manage')) {
+            return abort(401);
+        }
         $category= Category::findOrFail($id);
         return view('admin.categories.edit',compact('category'));
     }
