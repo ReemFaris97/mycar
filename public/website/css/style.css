@@ -2048,20 +2048,22 @@ section.index.all-sections{
     outline: 0 !important;
 }
 
-.form2 button{
+.form2 button , .submitting{
     border-radius: 30px;
     background-color: #ff5e00;
     margin: 20px auto 0 auto;
     display: table;
     width: 140px;
     height: 40px;
-    line-height: 31px;
+    line-height: 40px;
     font-family: 'Cairo-SemiBold', sans-serif;
     font-size: 16px;
     padding: 0;
+    color: #fff !important;
 }
-.form2 button:hover , .form2 button:focus{
+.form2 button:hover , .form2 button:focus , .submitting:hover , .submitting:focus{
     background-color: rgba(255, 94, 0, 0.8);
+    color: #fff !important;
 }
 /************************ Contact Left ************************************/
 .contact-left{

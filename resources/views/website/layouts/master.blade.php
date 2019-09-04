@@ -169,12 +169,8 @@
                 @lang('web.by_service_agent')
             </p>
 
-            <div id="countdown-1"></div>
-            <p><button id="reset-1" type="button">Reset this timer</button></p>
-
-            <div class="clock"></div>
-            <div class="clock"></div>
-
+           <p id="demo" class="timer"></p>
+                <input class="end-details" type="submit" value="تقديم عرض">
         </div>
     </div>
 </div>
