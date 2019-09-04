@@ -11,11 +11,11 @@
         <div class="user-box">
             <div class="user-img">
                 {{--@php $image = auth()->user()->image; @endphp--}}
-                {{--@if($image != null or $image != "")--}}
-                    {{--<img src="{{getimg($image)}}" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">--}}
-                    {{--@else--}}
+                @if(auth()->user()->image != null or auth()->user()->image != "")
+                    <img src="{{getimg(auth()->user()->image)}}" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
+                    @else
                     <img src="{{asset('supplier/assets/images/noimage.png')}}" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
-                    {{--@endif--}}
+                    @endif
 
                 {{--<div class="user-status offline"><i class="zmdi zmdi-dot-circle"></i></div>--}}
             </div>
