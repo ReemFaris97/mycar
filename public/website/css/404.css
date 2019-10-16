@@ -1,0 +1,56 @@
+svg {
+	max-width: 500px;
+    margin: 50px auto;
+    display: table;
+}
+@keyframes shrug {
+	0% {
+		transform: translate(0, 0);
+	}
+	40% {
+		transform: translate(0, 0);
+	}
+	50% {
+		transform: translate(0, -8%);
+	}
+	60% {
+		transform: translate(0, 0);
+	}
+	100% {
+		transform: translate(0, 0);
+	}
+}
+@keyframes antenna {
+	0% {
+		fill: #ffeb3b;
+	}
+	100% {
+		fill: #9ccc3a;
+	}
+}
+@keyframes eyes {
+	0% {
+		transform: translate(-3px, 2px);
+	}
+	25% {
+		transform: translate(3px, 2px);
+	}
+	50% {
+		transform: translate(3px, -2px);
+	}
+	75% {
+		transform: translate(-3px, -2px);
+	}
+	100% {
+		transform: translate(-3px, 2px);
+	}
+}
+.shrug {
+	animation: shrug 9s infinite;
+}
+.libot-3 {
+	animation: antenna 2s infinite alternate;
+}
+.eyes {
+	animation: eyes 7s infinite;
+}
