@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="btn-group pull-right m-t-15">
-                            <a href="{{route('home')}}" class="btn btn-custom  waves-effect waves-light"
+                            <a href="{{route('homePage')}}" class="btn btn-custom  waves-effect waves-light"
                             >رجوع<span class="m-l-5"><i
                                         class="fa fa-reply"></i></span>
                             </a>

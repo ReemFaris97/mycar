@@ -61,6 +61,25 @@
                                         @endif
                                     </div>
 
+                                    <div class="form-group col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">شعار الشركة</label>
+                                            <div class="col-md-10">
+                                                <input name="image" type="file" class="dropify" data-max-file-size="6M"
+                                                       data-allowed-file-extensions="png gif jpg jpeg"
+                                                       data-errors-position="inside"
+                                                       required data-parsley-required-message="صورة شعار الشركة مطلوب"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @if ($errors->has('image'))
+                                        <span class="help-block error_validation" style=" font-size: 13px;color: #ff5757;">
+                                            <strong>{{ $errors->first('image') }}</strong>
+                                            </span>
+                                    @endif
+
+
 
 
                                 </div>
@@ -83,7 +102,8 @@
                     </div>
                 </div><!-- end col -->
 
-        </div>
+
+
         <!-- end row -->
         </form>
     </div><!-- end col -->
@@ -91,5 +111,23 @@
     <!-- end row -->
 
 @endsection
+@section('scripts')
+    <script>
 
+        $('.dropify').dropify({
+            messages: {
+                'default': 'إضغط هنا او اسحب وافلت الصورة',
+                'replace': 'إسحب وافلت او إضغط للتعديل',
+                'remove': 'حذف',
+                'error': 'حدث خطأ ما'
+            },
+            error: {
+                'fileSize': 'حجم الصورة كبير (6M max).',
+                'fileExtension': 'نوع الصورة غير مدعوم (png - gif - jpg - jpeg)',
+            }
+        });
+
+
+    </script>
+@endsection
 

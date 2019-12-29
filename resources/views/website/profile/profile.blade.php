@@ -52,7 +52,7 @@
 
 @endsection
 
-@include('website.profile.profile_scripts')
+{{--@include('website.profile.profile_scripts')--}}
 
 @section('scripts')
 

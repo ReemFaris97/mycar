@@ -59,6 +59,26 @@
                                 </div>
 
 
+                                <div class="form-group col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">شعار الشركة</label>
+                                        <div class="col-md-10">
+                                            <input name="image" type="file" class="dropify" data-max-file-size="6M"
+                                                   data-allowed-file-extensions="png gif jpg jpeg"
+                                                   data-errors-position="inside"
+                                                   data-default-file="{{getimg($company->image)}}"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                @if ($errors->has('image'))
+                                    <span class="help-block error_validation" style=" font-size: 13px;color: #ff5757;">
+                                            <strong>{{ $errors->first('image') }}</strong>
+                                            </span>
+                                @endif
+
+
+
                                 <div class="col-xs-12">
 
                                     <div class="form-group text-right m-b-0 ">

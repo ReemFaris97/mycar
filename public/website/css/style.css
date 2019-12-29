@@ -101,7 +101,7 @@ body {
     width: 100%;
     height: 100%;
     top: 0;
-    z-index: 9;
+    z-index: 9999999999999;
     opacity: 0;
     display: none;
 }
@@ -346,7 +346,7 @@ input[type=number]::-webkit-outer-spin-button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 999999;
+    z-index: 9999999999999999;
 }
 @keyframes spin {
   0% {
@@ -2048,20 +2048,22 @@ section.index.all-sections{
     outline: 0 !important;
 }
 
-.form2 button{
+.form2 button , .submitting{
     border-radius: 30px;
     background-color: #ff5e00;
     margin: 20px auto 0 auto;
     display: table;
     width: 140px;
     height: 40px;
-    line-height: 31px;
+    line-height: 40px;
     font-family: 'Cairo-SemiBold', sans-serif;
     font-size: 16px;
     padding: 0;
+    color: #fff !important;
 }
-.form2 button:hover , .form2 button:focus{
+.form2 button:hover , .form2 button:focus , .submitting:hover , .submitting:focus{
     background-color: rgba(255, 94, 0, 0.8);
+    color: #fff !important;
 }
 /************************ Contact Left ************************************/
 .contact-left{
@@ -2824,7 +2826,7 @@ table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, tab
     }
     #nav-icon1 {
             display: block;
-    z-index: 999999;
+    z-index: 9999999999;
     line-height: 43px;
     position: absolute;
     left: 0;

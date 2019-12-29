@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Instructions;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class InstructionsController extends Controller
 {
@@ -15,6 +16,9 @@ class InstructionsController extends Controller
      */
     public function index()
     {
+        if (!Gate::allows('instructions_manage')) {
+            return abort(401);
+        }
         $instructions = Instructions::all();
         return view('admin.instructions.index',compact('instructions'));
     }
@@ -26,6 +30,9 @@ class InstructionsController extends Controller
      */
     public function create()
     {
+        if (!Gate::allows('instructions_manage')) {
+            return abort(401);
+        }
         return view('admin.instructions.create');
     }
 
@@ -74,6 +81,9 @@ class InstructionsController extends Controller
      */
     public function edit($id)
     {
+        if (!Gate::allows('instructions_manage')) {
+            return abort(401);
+        }
         $ins = Instructions::findOrFail($id);
         return view('admin.instructions.edit',compact('ins'));
     }

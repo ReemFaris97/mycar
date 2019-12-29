@@ -18,7 +18,7 @@ class RolesController extends Controller
      */
     public function index()
     {
-        if (!Gate::allows('users_manage')) {
+        if (!Gate::allows('roles_manage')) {
             return abort(401);
         }
         $roles = Role::where('name','!=',"*")->get();
@@ -33,7 +33,7 @@ class RolesController extends Controller
      */
     public function create()
     {
-        if (!Gate::allows('users_manage')) {
+        if (!Gate::allows('roles_manage')) {
             return abort(401);
         }
         $abilities = Ability::get();
@@ -93,7 +93,7 @@ class RolesController extends Controller
      */
     public function edit($id)
     {
-        if (!Gate::allows('users_manage')) {
+        if (!Gate::allows('roles_manage')) {
             return abort(401);
         }
         $role = Role::findOrFail($id);

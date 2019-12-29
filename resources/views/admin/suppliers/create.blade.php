@@ -134,7 +134,7 @@
                                            data-parsley-maxlength-message="أقصى عدد ارقام هو 25 رقم"
                                            {{--data-parsley-pattern="^01[0-2]{1}[0-9]{8}"--}}
                                            {{--data-parsley-pattern-message="برجاء إدخال رقم موبايل بصيغة صحيحة"--}}
-                                           {{--oninput="this.value = Math.abs(this.value)"--}}
+                                           oninput="this.value = Math.abs(this.value)"
                                            name="licence_number" class="form-control" placeholder=" رقم السجل التجاري">
                                     @if($errors->has('licence_number'))
                                         <p class="help-block" style="color: #FF0000;">

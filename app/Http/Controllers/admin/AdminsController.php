@@ -21,9 +21,9 @@ class AdminsController extends Controller
      */
     public function index()
     {
-//        if (!Gate::allows('users_manage')) {
-//            return abort(401);
-//        }
+        if (!Gate::allows('admins_manage')) {
+            return abort(401);
+        }
 
         $query = User::select()->whereHas('roles', function ($q) {
             $q->where('name', '!=', '*');
@@ -42,9 +42,9 @@ class AdminsController extends Controller
      */
     public function create()
     {
-//        if (!Gate::allows('users_manage')) {
-//            return abort(401);
-//        }
+        if (!Gate::allows('admins_manage')) {
+            return abort(401);
+        }
 
         $cities = City::whereIsActive(1)->get();
         $roles = Role::get();
@@ -64,16 +64,16 @@ class AdminsController extends Controller
     public function store(Request $request)
     {
 
+
             $roles = [
                 'name'=>'string|required|max:191',
-                'phone'=>"string|required|max:191,unique:users,phone",
-                'email'=>'string|required|max:191,unique:users,phone',
+                'phone'=>"numeric|required|unique:users,phone",
+                'email'=>'string|required|max:191|unique:users,email',
                 'password'=>"required|confirmed",
                 'image'=>'nullable|sometimes|image'
             ];
 
             $this->validate($request,$roles);
-
             $inputs = $request->all();
             $inputs['password']= Hash::make($request->password);
             $inputs['type'] = 'admin';
@@ -105,7 +105,7 @@ class AdminsController extends Controller
      */
     public function show($id)
     {
-        if (!Gate::allows('users_manage')) {
+        if (!Gate::allows('admins_manage')) {
             return abort(401);
         }
         $admin = User::find($id);
@@ -121,7 +121,7 @@ class AdminsController extends Controller
      */
     public function edit($id)
     {
-        if (!Gate::allows('users_manage')) {
+        if (!Gate::allows('admins_manage')) {
             return abort(401);
         }
         $cities = City::whereIsActive(1)->get();
@@ -146,7 +146,15 @@ class AdminsController extends Controller
     {
         $user = User::find($id);
         if($user){
-            $validate = Validator::make(['phone'=>$request->phone],['phone' => 'sometimes|string|max:255|unique:users,phone,' .$id,],['phone.unique'=>"هذا الهاتف مسجل من قبل"]);
+            $validate = Validator::make(
+
+                ['phone'=>$request->phone,'email'=>$request->email],
+                ['phone' => 'sometimes|string|max:255|unique:users,phone,' .$id,
+                 'email' => 'sometimes|string|max:255|unique:users,email,' .$id,],
+                ['phone.unique'=>"هذا الهاتف مسجل من قبل",
+                 "email.unique"=>"هذا البريد مستخدم من قبل"]
+
+            );
             if($validate->passes()){
 
                     $user->name = $request->name;
@@ -155,7 +163,6 @@ class AdminsController extends Controller
                     if($request->has('password') && $request->password !=""){
                         $user->password = Hash::make($request->password);
                     }
-
 
 
                     if($request->has('image')){

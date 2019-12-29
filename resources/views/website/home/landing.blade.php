@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="HandheldFriendly" content="true">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title> قطعة سيارتى </title>
+    <title> @lang('web.site_name') </title>
     <link rel="stylesheet" href="{{asset('website/css/bootstrap.min.css')}}">
     <link rel="shortcut icon" href="{{asset('website/img/logo-sm.png')}}">
     <link rel="stylesheet" href="{{asset('website/css/all.min.css')}}">
@@ -74,7 +74,7 @@
                 </div>
 
                 <div class="col-sm-5 col-xs-12">
-                    <a href="" data-toggle="modal" data-target="#signModal" class="apply"> تسجيل جديد/دخول </a>
+                    <a href="" data-toggle="modal" data-target="#signModal" class="apply"> @lang('web.login_register') </a>
                 </div>
 
             </div>
@@ -93,7 +93,7 @@
             <img src="{{asset('website/img/index.png')}}">
         </a>
 
-        <a href="wizard-divider.html" class="apply"> @lang('web.search_supplier') </a>
+{{--        <a href="wizard-divider.html" class="apply"> @lang('web.search_supplier') </a>--}}
 
     </div>
 </section>
@@ -107,7 +107,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><i class="fas fa-times"></i></button>
-                <h4 class="modal-title">تسجيل الدخول</h4>
+                <h4 class="modal-title">@lang('web.login')</h4>
             </div>
 
 
@@ -115,7 +115,7 @@
 
             <form id="phoneForm" data-parsley-validate method="post" action="{{route('web.sign.phone')}}" class="form2 signing step1">
                 <div class="form-group">
-                    <input type="number" id="phoneNumber" name="phone" required data-parsley-required-message="رقم الهاتف مطلوب"  class="form-control" placeholder="رقم الهاتف">
+                    <input type="number" id="phoneNumber" name="phone" required data-parsley-required-message="@lang('web.field_required')"  class="form-control" placeholder="@lang('web.phone')">
                     <span class="sm-icon"> <i class="fas fa-paper-plane"></i> </span>
                     <span class="focus-border"><i></i></span>
                 </div>
@@ -130,10 +130,10 @@
             <div class="verfy">
                 <form id="checkCodeForm" data-parsley-validate method="post" action="{{route('web.sign.checkCode')}}" class="form2 signing" >
                     <p>
-                        تم ارسال رمز مكون من 4 ارقام الى هاتفك الجوال و أدخله أدناه للمتابعة
+                        @lang('web.4_digits_code')
                     </p>
                     <div class="form-group">
-                        <input type="number" name="code" class="form-control" placeholder="الكود المرسل">
+                        <input type="number" name="code" class="form-control" placeholder="@lang('web.sent_code')">
                         <span class="sm-icon"> <i class="fas fa-check-circle"></i> </span>
                         <span class="focus-border"><i></i></span>
                     </div>
@@ -144,22 +144,22 @@
                     <!--  <button type="button" class="resend">اعادة ارسال</button>-->
                     <button type="submit" class="submit-in" > <i class="fas fa-arrow-right"></i> </button>
                 </form>
-                <button id="edit-1" type="button" class="resend"> تعديل رقم الهاتف </button>
+                <button id="edit-1" type="button" class="resend"> @lang('web.edit_phone')</button>
             </div>
 
             <div class="area">
                 <form id="regionForm" class="form2 signing" action="{{route('web.update.auth.region')}}" method="POST">
 
                     <h5 class="choose">
-                        اختر مكانك
+                        @lang('web.choose_your_place')
                     </h5>
 
                     <div class="radio-list">
-                        <label class="rad">داخل بريدة
+                        <label class="rad">@lang('web.inside_b')
                             <input type="radio" value="inside" checked="checked" name="region">
                             <span class="checkmark"></span>
                         </label>
-                        <label class="rad">خارج بريدة
+                        <label class="rad">@lang('web.outside_b')
                             <input type="radio" value="outside" name="region">
                             <span class="checkmark"></span>
                         </label>
@@ -217,7 +217,7 @@
     function showMessage(message) {
         var shortCutFunction = 'success';
         var msg = message;
-        var title = "نجاح";
+        var title = "@lang('web.success')";
         toastr.options = {
             positionClass: 'toast-top-center',
             onclick: null,

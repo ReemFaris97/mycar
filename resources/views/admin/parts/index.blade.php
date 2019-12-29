@@ -50,14 +50,14 @@
                             <td>{{$i++}}</td>
                             <td>{{$row->ar_name}}</td>
                             <td>{{$row->en_name}}</td>
-                            <td>{{$row->company_model->company->ar_name}}</td>
-                            <td>{{$row->company_model->ar_name}}</td>
+                            <td>{{$row->company_model?$row->company_model->company->ar_name:"قطعة فرعية"}}</td>
+                            <td>{{$row->company_model?$row->company_model->ar_name:"قطعة فرعية"}}</td>
                             <td>
-                                @if($row->code == null)
-                                    بها قطع آخرى
-                                @else
-                                    قطعة أساسية
-                                @endif
+                               @if($row->parent_id == null)
+                                   قطعة رئيسية
+                                   @else
+                                   قطعة فرعية
+                                   @endif
                             </td>
 
                             <td style="width: 150px;">

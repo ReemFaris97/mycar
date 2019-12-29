@@ -6,7 +6,6 @@
     <!-- Page-Title -->
     <div class="row">
         <div class="col-sm-12">
-
             <h4 class="page-title">@lang('suppliers.financial_dues')</h4>
         </div>
     </div>

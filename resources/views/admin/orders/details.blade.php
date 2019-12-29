@@ -54,10 +54,10 @@
                         </div>
 
 
-                        <div class="col-md-4">
-                            <h4>المدينة: </h4>
-                            <h5 style="font-weight: 600;">{{$order->city->ar_name}}</h5>
-                        </div>
+{{--                        <div class="col-md-4">--}}
+{{--                            <h4>المدينة: </h4>--}}
+{{--                            <h5 style="font-weight: 600;">{{$order->city->ar_name}}</h5>--}}
+{{--                        </div>--}}
 
 
                         <div class="col-md-12">
@@ -84,7 +84,7 @@
 
                         <div class="col-md-4">
                             <h4>سعر التوصيل : </h4>
-                            <h5 style="font-weight: 600;">{{$order->city->delivery_price}}</h5>
+                            <h5 style="font-weight: 600;">{{$order->delivery_value}}</h5>
                         </div>
 
 

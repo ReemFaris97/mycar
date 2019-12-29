@@ -11,7 +11,7 @@ class CreateOrderDetailsTable extends Migration {
 			$table->bigIncrements('id');
 			$table->unsignedBigInteger('order_id');
 			$table->unsignedBigInteger('part_id');
-			$table->string('image')->nullable();
+//			$table->string('image')->nullable();
 			$table->integer('quantity');
 
 			$table->longText('description')->nullable();

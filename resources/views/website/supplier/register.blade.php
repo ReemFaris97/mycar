@@ -157,6 +157,16 @@
 
 
 
+                <div class="form-data">
+                        <label>اللوكيشن</label>
+                        <div class="form-group">
+                            <div id="mapholder"></div>
+                            <input type="button" onclick="getLocation();" class="form-control" />
+                            <span class="focus-border"><i></i></span>
+                        </div>
+                    </div>
+                
+<!--
                         <input id="pac-input" name="address" required value="{{ old('address') }}"
                                data-parsley-required-message="@lang('web.address_required')"
                                class="controls"
@@ -173,9 +183,10 @@
                 <div id="map" style="width: 100%; height: 450px;"></div>
                 <input type="hidden" name="lat" id="lat"/>
                 <input type="hidden" name="lng" id="lng"/>
+-->
 
-                <button type="submit"  class="upload">@lang('web.register_as_supplier')</button>
-                <a href="{{route('supplier.home')}}"  class="upload">@lang('web.login_as_supplier')</a>
+<!--                <button type="submit"  class="upload">@lang('web.register_as_supplier')</button>-->
+                <a class="submitting" href="{{route('supplier.home')}}"  class="upload">@lang('web.login_as_supplier')</a>
 
 
 
@@ -224,163 +235,53 @@
 
 </script>
 
-
-<!---------------- Input type file --------------------->
-<script>
-    document.getElementById("uploadBtn").onchange = function() {
-        document.getElementById("uploadFile").value = this.value.replace("C:\\fakepath\\", "");
-    };
-
-    document.getElementById("uploadBtn2").onchange = function() {
-        document.getElementById("uploadFile2").value = this.value.replace("C:\\fakepath\\", "");
-    };
-
-</script>
-<!---->
-<script>
+    <script>
+        function showLocation(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            var latlongvalue = position.coords.latitude + "," +
+                position.coords.longitude;
+            var img_url = "https://maps.googleapis.com/maps/api/staticmap?center=" +
+                latlongvalue + "&zoom=14&size=400x300&key=AIzaSyAa8HeLH2lQMbPeOiMlM9D1VxZ7pbGQq8o";
+            document.getElementById("mapholder").innerHTML =
+                "<img src='" + img_url + "'>";
+        }
 
 
-    function initAutocomplete() {
-
-        var map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 24.774265, lng: 46.738586},
-            zoom: 8,
-            mapTypeId: 'roadmap'
-        });
-
-
-        var marker;
-        google.maps.event.addListener(map, 'click', function (event) {
-            map.setZoom();
-            var mylocation = event.latLng;
-            map.setCenter(mylocation);
-
-
-            $('#lat').val(event.latLng.lat());
-            $('#lng').val(event.latLng.lng());
-
-
-            codeLatLng(event.latLng.lat(), event.latLng.lng());
-
-            setTimeout(function () {
-                if (!marker)
-                    marker = new google.maps.Marker({position: mylocation, map: map});
-                else
-                    marker.setPosition(mylocation);
-            }, 600);
-
-        });
-
-
-        // Create the search box and link it to the UI element.
-        var input = document.getElementById('pac-input');
-        var searchBox = new google.maps.places.SearchBox(input);
-        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-        // Bias the SearchBox results towards current map's viewport.
-        map.addListener('bounds_changed', function () {
-            searchBox.setBounds(map.getBounds());
-        });
-
-
-        var markers = [];
-        // Listen for the event fired when the user selects a prediction and retrieve
-        // more details for that place.
-        searchBox.addListener('places_changed', function () {
-            var places = searchBox.getPlaces();
-            // var location = place.geometry.location;
-            // var lat = location.lat();
-            // var lng = location.lng();
-            if (places.length == 0) {
-                return;
+        function errorHandler(err) {
+            if (err.code == 1) {
+                alert("Error: Access is denied!");
+            } else if (err.code == 2) {
+                alert("Error: Position is unavailable!");
             }
+        }
 
-            // Clear out the old markers.
-            markers.forEach(function (marker) {
-                marker.setMap(null);
-            });
-            markers = [];
-
-
-            // For each place, get the icon, name and location.
-            var bounds = new google.maps.LatLngBounds();
-            places.forEach(function (place) {
-                if (!place.geometry) {
-                    console.log("Returned place contains no geometry");
-                    return;
-                }
-                var icon = {
-                    url: place.icon,
-                    size: new google.maps.Size(71, 71),
-                    origin: new google.maps.Point(0, 0),
-                    anchor: new google.maps.Point(17, 34),
-                    scaledSize: new google.maps.Size(25, 25)
+        function getLocation() {
+            if (navigator.geolocation) {
+                // timeout at 60000 milliseconds (60 seconds)
+                var options = {
+                    timeout: 60000
                 };
-
-                // Create a marker for each place.
-                markers.push(new google.maps.Marker({
-                    map: map,
-                    icon: icon,
-                    title: place.name,
-                    position: place.geometry.location
-                }));
-
-                if (place.geometry.viewport) {
-                    // Only geocodes have viewport.
-                    bounds.union(place.geometry.viewport);
-                } else {
-                    bounds.extend(place.geometry.location);
-                }
-                $('#lat').val(place.geometry.location.lat());
-                $('#lng').val(place.geometry.location.lng());
-                $('#address').val(place.formatted_address);
-
-            });
-
-
-            map.fitBounds(bounds);
-        });
-
-    }
-
-
-    function showPosition(position) {
-
-        map.setCenter({lat: position.coords.latitude, lng: position.coords.longitude});
-        codeLatLng(position.coords.latitude, position.coords.longitude);
-
-
-    }
-
-
-    function codeLatLng(lat, lng) {
-
-        var geocoder = new google.maps.Geocoder();
-        var latlng = new google.maps.LatLng(lat, lng);
-        geocoder.geocode({
-            'latLng': latlng
-        }, function (results, status) {
-            if (status === google.maps.GeocoderStatus.OK) {
-                if (results[1]) {
-                    // console.log(results[1].formatted_address);
-                    $("#demo").html(results[1].formatted_address);
-
-                    $("#addressProfile").val(results[1].formatted_address);
-                    $("#pac-input").val(results[1].formatted_address);
-
-                } else {
-                }
+                navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
             } else {
-                alert('Geocoder failed due to: ' + status);
+                alert("Sorry, browser does not support geolocation!");
             }
-        });
-    }
+        }
 
+    </script>
 
+    <!---------------- Input type file --------------------->
+    <script>
+        document.getElementById("uploadBtn").onchange = function() {
+            document.getElementById("uploadFile").value = this.value.replace("C:\\fakepath\\", "");
+        };
 
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjBZsq9Q11itd0Vjz_05CtBmnxoQIEGK8&language=ar&libraries=places&callback=initAutocomplete"
-        async defer></script>
+        document.getElementById("uploadBtn2").onchange = function() {
+            document.getElementById("uploadFile2").value = this.value.replace("C:\\fakepath\\", "");
+        };
+
+    </script>
+    <!---->
 
 
 <script src="{{asset('website/js/script.js')}}"></script>

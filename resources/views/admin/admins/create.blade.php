@@ -1,6 +1,12 @@
 @extends('admin.layout.master')
 @section('title','إنشاء مدير مساعد')
-
+@section('styles')
+    <style>
+        .help-block{
+            color: red;
+        }
+    </style>
+@endsection
 @section('content')
     <!-- Page Title -->
     <div class="row">

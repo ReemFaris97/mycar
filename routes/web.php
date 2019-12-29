@@ -118,6 +118,9 @@ Route::group(['prefix'=>"dashboard",'namespace'=>'admin','middleware'=>'admin'],
     route::resource('contacts','ContactsController');
     route::resource('proposals','ProposalsController');
 
+    Route::get('/profile','ProfileController@getProfilePage')->name('admin.profile.getEditForm');
+    Route::post('/profile/update','ProfileController@updateProfile')->name('admin.profile.update');
+
 
     Route::group(['prefix'=>'settings','as'=>'setting.'],function (){
         Route::get('/{slug}','SettingController@index')->name('index');
@@ -177,6 +180,13 @@ Route::group(['prefix'=>"suppliers",'namespace'=>'supplier','middleware'=>"suppl
 
     route::get('financial-dues','financialController@index')->name('supplier.financial.dues');
 
+
+
+    Route::post('order/change/status','OrdersController@changeOrderStatus')->name('supplier.order.changeStatus');
+
+
+    Route::get('/profile','ProfileController@getProfilePage')->name('profile.getEditForm');
+    Route::post('/profile/update','ProfileController@updateProfile')->name('profile.update');
 
 
 
@@ -242,6 +252,29 @@ Route::group(['namespace'=>'website','middleware'=>'userMiddleware'], function (
     Route::get('/notifications','ProfileController@notifications')->name('web.notifications');
 
     Route::post('/notifications/delete','ProfileController@deleteNotificaiton')->name('web.delete.notification');
+
+
+    Route::get('/start-order','OrdersController@getWizard')->name('web.order.getWizard');
+    Route::post('/initiate-order','OrdersController@initiateOrder')->name('web.order.initiate');
+
+    Route::get('my/orders','ProfileController@getMyOrders')->name('web.profile.getMyOrders');
+
+
+//    WebSite order details and actions -----------------------
+    Route::get('order/details/{id}','OrderDetailsController@orderDetails')->name('web.order.getDetails');
+
+    Route::post('order/submit/delivery','OrderDetailsController@submitDelivery')->name('web.order.submitDelivery');
+    Route::get('order/payment/{id}','OrderDetailsController@getPaymentPage')->name('web.order.getPayment');
+    Route::post('order/payment/submit','OrderDetailsController@submitPayment')->name('web.order.submitPayment');
+
+
+//    Ajax Controller and Routes for collecting data
+    Route::post('/get/companyModels','AjaxController@getCompanyModelsById')->name('web.get.companyModels');
+    Route::post('/get/modelYears','AjaxController@getModelYears')->name('web.get.modelYears');
+    Route::post('/get/subCategories','AjaxController@getSubCategories')->name('web.get.subCategories');
+    Route::post('get/MainParts','AjaxController@getMainParts')->name('web.get.mainParts');
+    Route::post('get/PartDetails','AjaxController@getPartDetails')->name('web.get.PartDetails');
+
 
 
     route::post('user/logout','LoginController@logout')->name('web.user.logout');

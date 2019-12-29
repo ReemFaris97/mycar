@@ -72,27 +72,27 @@
 
 
 
-                        {{--<div class="col-lg-6">--}}
-                                {{--<div class="form-group">--}}
-                                    {{--<label class="col-md-2 control-label">البريد الإلكتروني*</label>--}}
-                                    {{--<div class="col-md-10">--}}
-                                        {{--<input type="email" required value="{{$admin->email}}"--}}
-                                               {{--data-parsley-type="email"--}}
-                                               {{--data-parsley-type-message = "أدخل إيميل صحيح"--}}
-                                               {{--data-parsley-required-message="هذا الحقل مطلوب"--}}
-                                               {{--data-parsley-trigger="keyup"--}}
-                                               {{--data-parsley-maxlength="60"--}}
-                                               {{--data-parsley-maxlength-message="أقصى عدد حروف هو 60 حرف"--}}
-                                               {{--name="email" class="form-control" placeholder="البريد الإلكتروني">--}}
+                        <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">البريد الإلكتروني*</label>
+                                    <div class="col-md-10">
+                                        <input type="email" required value="{{$admin->email}}"
+                                               data-parsley-type="email"
+                                               data-parsley-type-message = "أدخل إيميل صحيح"
+                                               data-parsley-required-message="هذا الحقل مطلوب"
+                                               data-parsley-trigger="keyup"
+                                               data-parsley-maxlength="60"
+                                               data-parsley-maxlength-message="أقصى عدد حروف هو 60 حرف"
+                                               name="email" class="form-control" placeholder="البريد الإلكتروني">
 
-                                        {{--@if($errors->has('email'))--}}
-                                            {{--<p class="help-block">--}}
-                                                {{--{{ $errors->first('email') }}--}}
-                                            {{--</p>--}}
-                                        {{--@endif--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                        {{--</div>--}}
+                                        @if($errors->has('email'))
+                                            <p class="help-block">
+                                                {{ $errors->first('email') }}
+                                            </p>
+                                        @endif
+                                    </div>
+                                </div>
+                        </div>
 
 
                         <div class="col-lg-6">
@@ -207,7 +207,7 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label">صورة شخصية (إختياري)</label>
                                 <div class="col-md-10">
-                                    <input name="image" type="file" class="dropify" data-max-file-size="1M"
+                                    <input name="image" type="file" class="dropify" data-max-file-size="3M"
                                            data-allowed-file-extensions="png gif jpg jpeg"
                                            data-errors-position="inside"
                                            data-show-remove="false"
@@ -227,7 +227,13 @@
                                         <div class="col-sm-4">
                                             <div class="checkbox checkbox-primary">
                                                 <input name="roles[]" value="{{ $value->id }}" class="requiredField"
-                                                       @if($admin->roles->pluck('name', 'name')) @foreach($admin->roles->pluck('name', 'name') as $roleUser) @if($roleUser == $value->name) checked @endif @endforeach @endif  required id="checkbox{{ $value->id }}"
+                                                       @if($admin->roles->pluck('title', 'title'))
+                                                       @foreach($admin->roles->pluck('title', 'title') as $roleUser)
+                                                            @if($roleUser == $value->title)
+                                                                   checked
+                                                            @endif
+                                                       @endforeach
+                                                       @endif  required id="checkbox{{ $value->id }}"
                                                        type="checkbox"
                                                        data-parsley-required-message="برجاء إختيار دور واحد على الأقل">
                                                 <label for="checkbox{{ $value->id }}">
@@ -279,7 +285,7 @@
                 'error': 'حدث خطأ ما'
             },
             error: {
-                'fileSize': 'حجم الصورة كبير (1M max).',
+                'fileSize': 'حجم الصورة كبير (3M max).',
                 'fileExtension': 'نوع الصورة غير مدعوم (png - gif - jpg - jpeg)',
             }
         });

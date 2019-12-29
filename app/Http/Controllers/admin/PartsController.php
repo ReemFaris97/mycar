@@ -10,6 +10,7 @@ use App\SubCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\PartsOperations;
+use Illuminate\Support\Facades\Gate;
 
 class PartsController extends Controller
 {
@@ -21,6 +22,9 @@ class PartsController extends Controller
      */
     public function index()
     {
+        if (!Gate::allows('products_manage')) {
+            return abort(401);
+        }
         $parts = Part::all();
         return view('admin.parts.index',compact('parts'));
     }
@@ -32,6 +36,9 @@ class PartsController extends Controller
      */
     public function create()
     {
+        if (!Gate::allows('products_manage')) {
+            return abort(401);
+        }
         $companies = Company::whereIsActive(1)->get();
         $categories = Category::all();
         return view('admin.parts.create',compact('companies','categories'));
@@ -61,11 +68,15 @@ class PartsController extends Controller
             'images.*'=>"image",
         ];
         $this->validate($request,$roles);
+
         $part = $this->AddPart($request);
+
 
         if($request->has('otherParts') && $request->otherParts == 'on'){
             $this->AddPartImages($request,$part);
         }
+
+
 
         session()->flash('success','تم الإضافة بنجاح');
         return redirect()->route('parts.index');
@@ -79,6 +90,9 @@ class PartsController extends Controller
      */
     public function show($id)
     {
+        if (!Gate::allows('products_manage')) {
+            return abort(401);
+        }
         $part = Part::findOrFail($id);
         return view('admin.parts.details',compact('part'));
     }
@@ -91,12 +105,21 @@ class PartsController extends Controller
      */
     public function edit($id)
     {
+        if (!Gate::allows('products_manage')) {
+            return abort(401);
+        }
         $part = Part::findOrFail($id);
-
+        $subCategories = collect();
+        $models = collect();
         $categories = Category::all();
-        $subCategories = SubCategory::where('category_id',$part->subCategory->category->id)->get();
+        if($part->subCategory){
+            $subCategories = SubCategory::where('category_id',$part->subCategory->category->id)->get();
+        }
         $companies = Company::whereIsActive(1)->get();
-        $models = CompanyModel::where('company_id',$part->company_model->company->id)->get();
+
+        if($part->company_id != null){
+            $models = CompanyModel::where('company_id',$part->company_model->company->id)->get();
+        }
 
         return view('admin.parts.edit',compact('part','categories','subCategories','companies','models'));
     }

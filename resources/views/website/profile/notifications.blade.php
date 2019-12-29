@@ -36,18 +36,20 @@
                                         <button data-id="{{$notify->id}}" data-url="{{route('web.delete.notification')}}" type="button" class="close">×</button>
                                         <img src="{{asset('website/img/bell.svg')}}">
                                         <h4>{{$notify->title()}}</h4>
-                                        <a href="#">{{$notify->message()}}</a>
+                                        @if($notify->order_id != null)
+                                            <a href="{{route('web.order.getDetails',$notify->order_id)}}">{{$notify->message()}}</a>
+                                        @else
+                                            <a href="javascript:;">{{$notify->message()}}</a>
+                                        @endif
                                     </div>
                                     @empty
                                     <div class="notice back-gr">
                                         <button type="button" class="close">&times;</button>
                                         <img src="{{asset('website/img/bell.svg')}}">
-                                        <a href="#">@lang('web.no_notiify')</a>
+                                        <a href="#">@lang('web.no_notify')</a>
                                     </div>
                                 @endforelse
-
                             </div>
-
                         </div>
                     </div>
                 </div>

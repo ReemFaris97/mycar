@@ -44,7 +44,7 @@
                     @foreach($models as $row)
                         <tr>
                             <td>{{$i++}}</td>
-                            <td>{{$row->company->ar_name}}</td>
+                            <td>{{optional($row->company)->ar_name}}</td>
                             <td>{{$row->ar_name}}</td>
                             <td>{{$row->en_name}}</td>
                             <td>

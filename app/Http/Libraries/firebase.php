@@ -15,15 +15,14 @@ class firebase
 //    const SERVER_API_KEY = '';
     private $header = ['Authorization: key=AAAAZmNPNjA:APA91bEfgIfyomsIoTiO2wHfgsUMC9eBioDAMuiECEJQqiI6Ap2O7KcWVl1Hrne7voD2dqI9O-L6qkP9dAbHhEz3r9LdTBT0-Y-_ZBJPEo0cXr3ha0RZfci5ZMwJqV9xED5OGutvxdDO', 'Content-Type:Application/json',];
 
-    public  function sendNotify($tokens,$title,$body,$icon=null,$image=null,$click_action=null,$username = null){
+    public  function sendNotify($tokens,$title,$message,$type='order',$notify_id,$order_id=null){
 
         $msg = [
             "title"=>$title,
-            "body"=>$body,
-            "icon"=>$icon,
-            "image"=>$image,
-            "click_action"=>$click_action,
-            'username'=>$username
+            "message"=>$message,
+            "type"=>$type,
+            "order_id"=>$order_id,
+            'notify_id'=>$notify_id,
         ];
 
         $payload = ['registration_ids'=>$tokens,
@@ -52,12 +51,13 @@ class firebase
     }
 
 
-    public  function sendMessage($tokens,$body,$icon=null,$image=null){
+    public  function sendMessage($tokens,$body,$icon=null,$image=null,$user_id){
 
         $msg = [
             "body"=>$body,
             "icon"=>$icon,
             "image"=>$image,
+            "user_id"=>$user_id
         ];
 
         $payload = ['registration_ids'=>$tokens,

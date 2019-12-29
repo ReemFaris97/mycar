@@ -52,7 +52,7 @@
                             </a>
                             </td>
                             <td>
-                                <a href="{{route('instructions.show',$row->id)}}" class="label label-primary">تفاصيل</a>
+{{--                                <a href="{{route('instructions.show',$row->id)}}" class="label label-primary">تفاصيل</a>--}}
                                 <a href="{{route('instructions.edit',$row->id)}}" class="label label-warning">تعديل</a>
                                 <a  id="elementRow{{$row->id}}" href="javascript:;" data-id="{{$row->id}}" data-url="{{route('instructions.destroy',$row->id)}}" class="removeElement label label-danger">حذف</a>
                             </td>

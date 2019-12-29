@@ -3,7 +3,7 @@
     {{----------------------------------------------------------------}}
     <div class="m-t-40 card-box">
         <div class="text-center">
-            <h4 class="text-uppercase font-bold m-b-0">@lang('suppliers.login') (@lang('suppliers.supplier'))</h4>
+            <h4 class="text-uppercase font-bold m-b-0">@lang('suppliers.login') @lang('suppliers.supplier')</h4>
         </div>
         <div class="panel-body">
 
@@ -70,7 +70,15 @@
 
                 {{--</div>--}}
                 {{--</div>--}}              {{--تذكرني--}}
-
+                    <div class="form-group text-center m-t-30">
+                        <div class="col-xs-12">
+                        @if(app()->getLocale() == "ar")
+                            <a style="font-size: 19px; line-height: 63px; margin-right: 15px;" href="{{route('lang',['en'])}}" class="lang">English<img alt="english" style="width: 40px;height: 20px; margin-right: 7px;" src="{{asset('supplier/assets/images/flag2.jpg')}}"></a>
+                        @else
+                            <a style="font-size: 19px; line-height: 63px; margin-right: 15px;" href="{{route('lang',['ar'])}}" class="lang">العربية<img alt="arabic"  style="width: 40px;height: 20px; margin-right: 7px;" src="{{asset('supplier/assets/images/flag1.jpg')}}"></a>
+                        @endif
+                        </div>
+                    </div>
 
                 <div class="form-group text-center m-t-30">
                     <div class="col-xs-12">

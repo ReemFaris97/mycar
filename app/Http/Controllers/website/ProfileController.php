@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\website;
 
 use App\Notification;
+use App\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -50,4 +51,28 @@ class ProfileController extends Controller
         session()->flash('success',__('web.profile_updated_successfully'));
         return back();
     }
+
+
+//    ---------------------------------------------------------------------
+
+//    ------------ My Orders Routes Actions -------------------------------
+
+    public function getMyOrders(){
+        $new_orders = Order::whereUserId(auth()->id())
+            ->whereStatus('new')->get()->reverse();
+
+        $waiting_orders = Order::whereUserId(auth()->id())
+            ->where('status','waiting')
+            ->orWhere('status','accepted')
+            ->orWhere('status','prepare')
+            ->orWhere('status','onWay')->get()->reverse();
+
+        $finished_orders = Order::whereUserId(auth()->id())
+            ->where('status','refused')
+            ->orWhere('status','delivered')
+            ->orWhere('status','completed')->get()->reverse();
+        return view('website.profile.my_orders',compact('new_orders','waiting_orders','finished_orders'));
+    }
+
+
 }

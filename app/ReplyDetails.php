@@ -8,7 +8,7 @@ class ReplyDetails extends Model
 {
     protected $fillable = ['reply_id','order_details_id','order_id','part_price','total_parts'];
 
-    public function part(){
+    public function order_details(){
         return $this->belongsTo(OrderDetails::class,'order_details_id');
     }
 

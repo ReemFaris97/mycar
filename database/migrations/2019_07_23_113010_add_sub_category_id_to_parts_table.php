@@ -14,7 +14,7 @@ class AddSubCategoryIdToPartsTable extends Migration
     public function up()
     {
         Schema::table('parts', function (Blueprint $table) {
-            $table->unsignedBigInteger('sub_category_id');
+            $table->unsignedBigInteger('sub_category_id')->nullable();
             $table->foreign('sub_category_id')->references('id')->on('sub_categories')->onDelete('cascade');
         });
     }
